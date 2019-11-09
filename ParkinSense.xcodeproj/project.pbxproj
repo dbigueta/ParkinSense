@@ -22,8 +22,8 @@
 		063FC2482370E30500FDFB45 /* TiltScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063FC2462370E30500FDFB45 /* TiltScoreViewController.swift */; };
 		063FC2492370E30500FDFB45 /* TiltViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063FC2472370E30500FDFB45 /* TiltViewController.swift */; };
 		1497BE6B23715A6300C9120C /* BubbleGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1497BE6A23715A6300C9120C /* BubbleGameScene.swift */; };
-		1497BE6D23715A8100C9120C /* BubbleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1497BE6C23715A8100C9120C /* BubbleViewController.swift */; };
 		1497BE6F23715E0000C9120C /* GameBubbleUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1497BE6E23715E0000C9120C /* GameBubbleUITest.swift */; };
+		1497BE722376356900C9120C /* BubbleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1497BE712376356900C9120C /* BubbleViewController.swift */; };
 		29A920A408E6F54C2BE6A195 /* Pods_ParkinSense.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B083E52DCEF6DB9DB20CB12 /* Pods_ParkinSense.framework */; };
 		8DF7732C236D16940080B392 /* Roots.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8DF7732B236D16930080B392 /* Roots.mp3 */; };
 		A61328BE23627A0700C7066C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61328BD23627A0700C7066C /* AppDelegate.swift */; };
@@ -78,8 +78,8 @@
 		063FC2472370E30500FDFB45 /* TiltViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TiltViewController.swift; sourceTree = "<group>"; };
 		0B083E52DCEF6DB9DB20CB12 /* Pods_ParkinSense.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ParkinSense.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1497BE6A23715A6300C9120C /* BubbleGameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleGameScene.swift; sourceTree = "<group>"; };
-		1497BE6C23715A8100C9120C /* BubbleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleViewController.swift; sourceTree = "<group>"; };
 		1497BE6E23715E0000C9120C /* GameBubbleUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameBubbleUITest.swift; sourceTree = "<group>"; };
+		1497BE712376356900C9120C /* BubbleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleViewController.swift; sourceTree = "<group>"; };
 		1646AE119FC7C3A20EF6D045 /* Pods-ParkinSense-ParkinSenseUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ParkinSense-ParkinSenseUITests.debug.xcconfig"; path = "Target Support Files/Pods-ParkinSense-ParkinSenseUITests/Pods-ParkinSense-ParkinSenseUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		4A37EE9F9EE2DEC48033F828 /* Pods-ParkinSense-ParkinSenseUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ParkinSense-ParkinSenseUITests.release.xcconfig"; path = "Target Support Files/Pods-ParkinSense-ParkinSenseUITests/Pods-ParkinSense-ParkinSenseUITests.release.xcconfig"; sourceTree = "<group>"; };
 		80488E395B128294ECE36291 /* Pods-ParkinSense.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ParkinSense.release.xcconfig"; path = "Target Support Files/Pods-ParkinSense/Pods-ParkinSense.release.xcconfig"; sourceTree = "<group>"; };
@@ -246,7 +246,7 @@
 				038D56C02362C6AD00FFB3DD /* TiltUIViewController.swift */,
 				038D56C22362C6BC00FFB3DD /* BubbleUIViewController.swift */,
 				1497BE6A23715A6300C9120C /* BubbleGameScene.swift */,
-				1497BE6C23715A8100C9120C /* BubbleViewController.swift */,
+				1497BE712376356900C9120C /* BubbleViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -498,7 +498,7 @@
 				A61328F223627A5F00C7066C /* TimeandExtension.swift in Sources */,
 				063FC2442370E2DD00FDFB45 /* TiltGameScene.swift in Sources */,
 				A61328F123627A5F00C7066C /* Utilities.swift in Sources */,
-				1497BE6D23715A8100C9120C /* BubbleViewController.swift in Sources */,
+				1497BE722376356900C9120C /* BubbleViewController.swift in Sources */,
 				0333C3CC23656A5700031C26 /* WeeklyCalendar.swift in Sources */,
 				A61328FA23627A6A00C7066C /* MedicationDetailViewController.swift in Sources */,
 				060A222E236FD2CA00A9324E /* CustomTextField.swift in Sources */,
