@@ -35,7 +35,7 @@
 		A61328FA23627A6A00C7066C /* MedicationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61328F623627A6900C7066C /* MedicationDetailViewController.swift */; };
 		A61328FB23627A6A00C7066C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61328F723627A6900C7066C /* HomeViewController.swift */; };
 		A61328FC23627A6A00C7066C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61328F823627A6900C7066C /* LoginViewController.swift */; };
-		A61328FE23627A8C00C7066C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A61328FD23627A8C00C7066C /* Main.storyboard */; };
+		A61328FE23627A8C00C7066C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A61328FD23627A8C00C7066C /* Main.storyboard */; settings = {ASSET_TAGS = ("show connection", ); }; };
 		A613290023627AAB00C7066C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A61328FF23627AAB00C7066C /* Assets.xcassets */; };
 		B8009D6EE7EC45401DDED022 /* Pods_ParkinSenseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00B5474BFBD87956D8128115 /* Pods_ParkinSenseTests.framework */; };
 		DAB976679075C7AAF7F8397B /* Pods_ParkinSense_ParkinSenseUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1C6B87E30F1E49F0F151584 /* Pods_ParkinSense_ParkinSenseUITests.framework */; };
@@ -318,6 +318,9 @@
 		A61328B223627A0700C7066C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					"show connection",
+				);
 				LastSwiftUpdateCheck = 1030;
 				LastUpgradeCheck = 1030;
 				ORGANIZATIONNAME = "PDD Inc";

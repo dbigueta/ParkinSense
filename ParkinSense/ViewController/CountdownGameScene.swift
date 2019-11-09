@@ -13,6 +13,8 @@
 //      - Added transition to the TiltGameScene
 //      - Added countdown timer that displays on the screen
 //
+//      -Try to add bubble to countdown
+//
 //  Known Bugs:
 //      - None
 //
@@ -26,6 +28,7 @@ class CountdownGameScene: SKScene {
     var count: Int = 5
     
     var viewController: TiltViewController
+    //var bubbleViewController: BubbleViewController
     
     
     /**
@@ -37,6 +40,7 @@ class CountdownGameScene: SKScene {
         self.viewController = parent
         super.init(size: size)
     }
+    
 
     
     /**
