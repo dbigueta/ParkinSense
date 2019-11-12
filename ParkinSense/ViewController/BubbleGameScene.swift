@@ -54,9 +54,9 @@ class BubbleGameScene: SKScene {
     }
     
     @objc func decrementCounter() {
-//        if (counter % bubbleGenerationRate == 0){
-//            generateBubble()
-//        }
+        if (counter % bubbleGenerationRate == 0){
+            generateBubble()
+        }
         
         if counter == 0 {
             counterTimer.invalidate()
