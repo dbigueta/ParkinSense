@@ -149,4 +149,23 @@ class BubbleGameScene: SKScene {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         lastTouchPosition = nil
     }
+    
+    override func update(_ currentTime: TimeInterval){
+        
+        if let currentTouch = lastTouchPosition{
+            if ((bubble.position.x - bubbleRadius < currentTouch.x) && (currentTouch.x < bubble.position.x + bubbleRadius) && (bubble.position.y - bubbleRadius < currentTouch.y) && (currentTouch.y < bubble.position.y + bubbleRadius)){
+                viewController.currentScore += 1
+                viewController.BubbleScoreLabel.text = String(viewController.currentScore)
+                
+            }
+        }
+//        if bubble.frame.contains(currentTouch){
+//            viewController.currentScore += 1
+//            viewController.BubbleScoreLabel.text = String(viewController.currentScore)
+//        }
+        
+    }
+    
+    
+    
 }
