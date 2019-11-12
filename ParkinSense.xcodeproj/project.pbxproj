@@ -1,0 +1,865 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0333C3CC23656A5700031C26 /* WeeklyCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0333C3CB23656A5700031C26 /* WeeklyCalendar.swift */; };
+		038D56C12362C6AD00FFB3DD /* TiltUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038D56C02362C6AD00FFB3DD /* TiltUIViewController.swift */; };
+		038D56C32362C6BC00FFB3DD /* GameTwoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038D56C22362C6BC00FFB3DD /* GameTwoViewController.swift */; };
+		03AB56A423627D22000A3475 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 03AB56A323627D22000A3475 /* GoogleService-Info.plist */; };
+		060A222E236FD2CA00A9324E /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060A222D236FD2CA00A9324E /* CustomTextField.swift */; };
+		063FC2342370C05200FDFB45 /* ParkinSenseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063FC2332370C05200FDFB45 /* ParkinSenseTests.swift */; };
+		063FC23D2370C06400FDFB45 /* CreateAccountPageUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063FC2372370C06300FDFB45 /* CreateAccountPageUITest.swift */; };
+		063FC23E2370C06400FDFB45 /* HomePageUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063FC2382370C06300FDFB45 /* HomePageUITest.swift */; };
+		063FC23F2370C06400FDFB45 /* GameTiltUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063FC2392370C06300FDFB45 /* GameTiltUITest.swift */; };
+		063FC2402370C06400FDFB45 /* LoginPageUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063FC23A2370C06400FDFB45 /* LoginPageUITest.swift */; };
+		063FC2442370E2DD00FDFB45 /* TiltGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063FC2422370E2DD00FDFB45 /* TiltGameScene.swift */; };
+		063FC2452370E2DD00FDFB45 /* CountdownGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063FC2432370E2DD00FDFB45 /* CountdownGameScene.swift */; };
+		063FC2482370E30500FDFB45 /* TiltScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063FC2462370E30500FDFB45 /* TiltScoreViewController.swift */; };
+		063FC2492370E30500FDFB45 /* TiltViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063FC2472370E30500FDFB45 /* TiltViewController.swift */; };
+		1497BF002378F8BD00C9120C /* BubbleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1497BEFF2378F8BD00C9120C /* BubbleViewController.swift */; };
+		1497BF022379254C00C9120C /* BubbleGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1497BF012379254C00C9120C /* BubbleGameScene.swift */; };
+		1497BF0623793EBC00C9120C /* BCountdownGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1497BF0523793EBC00C9120C /* BCountdownGameScene.swift */; };
+		29A920A408E6F54C2BE6A195 /* Pods_ParkinSense.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B083E52DCEF6DB9DB20CB12 /* Pods_ParkinSense.framework */; };
+		8DF7732C236D16940080B392 /* Roots.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8DF7732B236D16930080B392 /* Roots.mp3 */; };
+		A61328BE23627A0700C7066C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61328BD23627A0700C7066C /* AppDelegate.swift */; };
+		A61328C823627A0800C7066C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A61328C623627A0800C7066C /* LaunchScreen.storyboard */; };
+		A61328F023627A5F00C7066C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61328EC23627A5F00C7066C /* Constants.swift */; };
+		A61328F123627A5F00C7066C /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61328ED23627A5F00C7066C /* Utilities.swift */; };
+		A61328F223627A5F00C7066C /* TimeandExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61328EE23627A5F00C7066C /* TimeandExtension.swift */; };
+		A61328F923627A6A00C7066C /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61328F523627A6900C7066C /* SignupViewController.swift */; };
+		A61328FA23627A6A00C7066C /* MedicationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61328F623627A6900C7066C /* MedicationDetailViewController.swift */; };
+		A61328FB23627A6A00C7066C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61328F723627A6900C7066C /* HomeViewController.swift */; };
+		A61328FC23627A6A00C7066C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61328F823627A6900C7066C /* LoginViewController.swift */; };
+		A61328FE23627A8C00C7066C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A61328FD23627A8C00C7066C /* Main.storyboard */; };
+		A613290023627AAB00C7066C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A61328FF23627AAB00C7066C /* Assets.xcassets */; };
+		B8009D6EE7EC45401DDED022 /* Pods_ParkinSenseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00B5474BFBD87956D8128115 /* Pods_ParkinSenseTests.framework */; };
+		DAB976679075C7AAF7F8397B /* Pods_ParkinSense_ParkinSenseUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1C6B87E30F1E49F0F151584 /* Pods_ParkinSense_ParkinSenseUITests.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A61328CF23627A0800C7066C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A61328B223627A0700C7066C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A61328B923627A0700C7066C;
+			remoteInfo = ParkinSense;
+		};
+		A61328DA23627A0800C7066C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A61328B223627A0700C7066C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A61328B923627A0700C7066C;
+			remoteInfo = ParkinSense;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		00B5474BFBD87956D8128115 /* Pods_ParkinSenseTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ParkinSenseTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0333C3CB23656A5700031C26 /* WeeklyCalendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeeklyCalendar.swift; sourceTree = "<group>"; };
+		038D56C02362C6AD00FFB3DD /* TiltUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TiltUIViewController.swift; sourceTree = "<group>"; };
+		038D56C22362C6BC00FFB3DD /* GameTwoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTwoViewController.swift; sourceTree = "<group>"; };
+		03AB56A323627D22000A3475 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		060A222D236FD2CA00A9324E /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		063FC2322370C05200FDFB45 /* ParkinSenseTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ParkinSenseTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		063FC2332370C05200FDFB45 /* ParkinSenseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkinSenseTests.swift; sourceTree = "<group>"; };
+		063FC2352370C06300FDFB45 /* ParkinSenseUITests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ParkinSenseUITests-Bridging-Header.h"; sourceTree = "<group>"; };
+		063FC2372370C06300FDFB45 /* CreateAccountPageUITest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountPageUITest.swift; sourceTree = "<group>"; };
+		063FC2382370C06300FDFB45 /* HomePageUITest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePageUITest.swift; sourceTree = "<group>"; };
+		063FC2392370C06300FDFB45 /* GameTiltUITest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameTiltUITest.swift; sourceTree = "<group>"; };
+		063FC23A2370C06400FDFB45 /* LoginPageUITest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPageUITest.swift; sourceTree = "<group>"; };
+		063FC2422370E2DD00FDFB45 /* TiltGameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TiltGameScene.swift; sourceTree = "<group>"; };
+		063FC2432370E2DD00FDFB45 /* CountdownGameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountdownGameScene.swift; sourceTree = "<group>"; };
+		063FC2462370E30500FDFB45 /* TiltScoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TiltScoreViewController.swift; sourceTree = "<group>"; };
+		063FC2472370E30500FDFB45 /* TiltViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TiltViewController.swift; sourceTree = "<group>"; };
+		0B083E52DCEF6DB9DB20CB12 /* Pods_ParkinSense.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ParkinSense.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1497BEFF2378F8BD00C9120C /* BubbleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleViewController.swift; sourceTree = "<group>"; };
+		1497BF012379254C00C9120C /* BubbleGameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleGameScene.swift; sourceTree = "<group>"; };
+		1497BF0523793EBC00C9120C /* BCountdownGameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BCountdownGameScene.swift; sourceTree = "<group>"; };
+		1646AE119FC7C3A20EF6D045 /* Pods-ParkinSense-ParkinSenseUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ParkinSense-ParkinSenseUITests.debug.xcconfig"; path = "Target Support Files/Pods-ParkinSense-ParkinSenseUITests/Pods-ParkinSense-ParkinSenseUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		4A37EE9F9EE2DEC48033F828 /* Pods-ParkinSense-ParkinSenseUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ParkinSense-ParkinSenseUITests.release.xcconfig"; path = "Target Support Files/Pods-ParkinSense-ParkinSenseUITests/Pods-ParkinSense-ParkinSenseUITests.release.xcconfig"; sourceTree = "<group>"; };
+		80488E395B128294ECE36291 /* Pods-ParkinSense.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ParkinSense.release.xcconfig"; path = "Target Support Files/Pods-ParkinSense/Pods-ParkinSense.release.xcconfig"; sourceTree = "<group>"; };
+		8DF7732B236D16930080B392 /* Roots.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Roots.mp3; sourceTree = "<group>"; };
+		A61328BA23627A0700C7066C /* ParkinSense.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ParkinSense.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A61328BD23627A0700C7066C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A61328C723627A0800C7066C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A61328C923627A0800C7066C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A61328CE23627A0800C7066C /* ParkinSenseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ParkinSenseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A61328D423627A0800C7066C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A61328D923627A0800C7066C /* ParkinSenseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ParkinSenseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A61328DF23627A0800C7066C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A61328EC23627A5F00C7066C /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		A61328ED23627A5F00C7066C /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		A61328EE23627A5F00C7066C /* TimeandExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeandExtension.swift; sourceTree = "<group>"; };
+		A61328F523627A6900C7066C /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		A61328F623627A6900C7066C /* MedicationDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MedicationDetailViewController.swift; sourceTree = "<group>"; };
+		A61328F723627A6900C7066C /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		A61328F823627A6900C7066C /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		A61328FD23627A8C00C7066C /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		A61328FF23627AAB00C7066C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AAD23FB66C401B7D00ADA381 /* Pods-ParkinSenseTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ParkinSenseTests.release.xcconfig"; path = "Target Support Files/Pods-ParkinSenseTests/Pods-ParkinSenseTests.release.xcconfig"; sourceTree = "<group>"; };
+		B1C6B87E30F1E49F0F151584 /* Pods_ParkinSense_ParkinSenseUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ParkinSense_ParkinSenseUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DAAD47E763797519E6A741B4 /* Pods-ParkinSense.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ParkinSense.debug.xcconfig"; path = "Target Support Files/Pods-ParkinSense/Pods-ParkinSense.debug.xcconfig"; sourceTree = "<group>"; };
+		E3CB4F5B9B1ABDCEDE756677 /* Pods-ParkinSenseTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ParkinSenseTests.debug.xcconfig"; path = "Target Support Files/Pods-ParkinSenseTests/Pods-ParkinSenseTests.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A61328B723627A0700C7066C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				29A920A408E6F54C2BE6A195 /* Pods_ParkinSense.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A61328CB23627A0800C7066C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B8009D6EE7EC45401DDED022 /* Pods_ParkinSenseTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A61328D623627A0800C7066C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DAB976679075C7AAF7F8397B /* Pods_ParkinSense_ParkinSenseUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1EEA2CE5699372B3292EE972 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0B083E52DCEF6DB9DB20CB12 /* Pods_ParkinSense.framework */,
+				B1C6B87E30F1E49F0F151584 /* Pods_ParkinSense_ParkinSenseUITests.framework */,
+				00B5474BFBD87956D8128115 /* Pods_ParkinSenseTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		704CCE7ACC2DA93B9B1E2B00 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DAAD47E763797519E6A741B4 /* Pods-ParkinSense.debug.xcconfig */,
+				80488E395B128294ECE36291 /* Pods-ParkinSense.release.xcconfig */,
+				1646AE119FC7C3A20EF6D045 /* Pods-ParkinSense-ParkinSenseUITests.debug.xcconfig */,
+				4A37EE9F9EE2DEC48033F828 /* Pods-ParkinSense-ParkinSenseUITests.release.xcconfig */,
+				E3CB4F5B9B1ABDCEDE756677 /* Pods-ParkinSenseTests.debug.xcconfig */,
+				AAD23FB66C401B7D00ADA381 /* Pods-ParkinSenseTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		A61328B123627A0700C7066C = {
+			isa = PBXGroup;
+			children = (
+				8DF7732B236D16930080B392 /* Roots.mp3 */,
+				A61328BC23627A0700C7066C /* ParkinSense */,
+				A61328D123627A0800C7066C /* ParkinSenseTests */,
+				A61328DC23627A0800C7066C /* ParkinSenseUITests */,
+				A61328BB23627A0700C7066C /* Products */,
+				704CCE7ACC2DA93B9B1E2B00 /* Pods */,
+				1EEA2CE5699372B3292EE972 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		A61328BB23627A0700C7066C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A61328BA23627A0700C7066C /* ParkinSense.app */,
+				A61328CE23627A0800C7066C /* ParkinSenseTests.xctest */,
+				A61328D923627A0800C7066C /* ParkinSenseUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A61328BC23627A0700C7066C /* ParkinSense */ = {
+			isa = PBXGroup;
+			children = (
+				A61328BD23627A0700C7066C /* AppDelegate.swift */,
+				A61328EB23627A5F00C7066C /* Helper */,
+				A61328F423627A6900C7066C /* ViewController */,
+				A61328FD23627A8C00C7066C /* Main.storyboard */,
+				A61328FF23627AAB00C7066C /* Assets.xcassets */,
+				A61328C623627A0800C7066C /* LaunchScreen.storyboard */,
+				A61328C923627A0800C7066C /* Info.plist */,
+				03AB56A323627D22000A3475 /* GoogleService-Info.plist */,
+			);
+			path = ParkinSense;
+			sourceTree = "<group>";
+		};
+		A61328D123627A0800C7066C /* ParkinSenseTests */ = {
+			isa = PBXGroup;
+			children = (
+				063FC2332370C05200FDFB45 /* ParkinSenseTests.swift */,
+				A61328D423627A0800C7066C /* Info.plist */,
+				063FC2322370C05200FDFB45 /* ParkinSenseTests-Bridging-Header.h */,
+			);
+			path = ParkinSenseTests;
+			sourceTree = "<group>";
+		};
+		A61328DC23627A0800C7066C /* ParkinSenseUITests */ = {
+			isa = PBXGroup;
+			children = (
+				063FC2372370C06300FDFB45 /* CreateAccountPageUITest.swift */,
+				063FC2392370C06300FDFB45 /* GameTiltUITest.swift */,
+				063FC2382370C06300FDFB45 /* HomePageUITest.swift */,
+				063FC23A2370C06400FDFB45 /* LoginPageUITest.swift */,
+				A61328DF23627A0800C7066C /* Info.plist */,
+				063FC2352370C06300FDFB45 /* ParkinSenseUITests-Bridging-Header.h */,
+			);
+			path = ParkinSenseUITests;
+			sourceTree = "<group>";
+		};
+		A61328EB23627A5F00C7066C /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				A61328EC23627A5F00C7066C /* Constants.swift */,
+				A61328ED23627A5F00C7066C /* Utilities.swift */,
+				A61328EE23627A5F00C7066C /* TimeandExtension.swift */,
+				0333C3CB23656A5700031C26 /* WeeklyCalendar.swift */,
+				060A222D236FD2CA00A9324E /* CustomTextField.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		A61328F423627A6900C7066C /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1497BF0523793EBC00C9120C /* BCountdownGameScene.swift */,
+				063FC2432370E2DD00FDFB45 /* CountdownGameScene.swift */,
+				063FC2422370E2DD00FDFB45 /* TiltGameScene.swift */,
+				063FC2462370E30500FDFB45 /* TiltScoreViewController.swift */,
+				063FC2472370E30500FDFB45 /* TiltViewController.swift */,
+				A61328F523627A6900C7066C /* SignupViewController.swift */,
+				A61328F623627A6900C7066C /* MedicationDetailViewController.swift */,
+				A61328F723627A6900C7066C /* HomeViewController.swift */,
+				A61328F823627A6900C7066C /* LoginViewController.swift */,
+				038D56C02362C6AD00FFB3DD /* TiltUIViewController.swift */,
+				038D56C22362C6BC00FFB3DD /* GameTwoViewController.swift */,
+				1497BEFF2378F8BD00C9120C /* BubbleViewController.swift */,
+				1497BF012379254C00C9120C /* BubbleGameScene.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A61328B923627A0700C7066C /* ParkinSense */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A61328E223627A0800C7066C /* Build configuration list for PBXNativeTarget "ParkinSense" */;
+			buildPhases = (
+				A3924B8CE7E5334991BC0E2A /* [CP] Check Pods Manifest.lock */,
+				A61328B623627A0700C7066C /* Sources */,
+				A61328B723627A0700C7066C /* Frameworks */,
+				A61328B823627A0700C7066C /* Resources */,
+				A33689540FC029795E455B89 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ParkinSense;
+			productName = ParkinSense;
+			productReference = A61328BA23627A0700C7066C /* ParkinSense.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A61328CD23627A0800C7066C /* ParkinSenseTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A61328E523627A0800C7066C /* Build configuration list for PBXNativeTarget "ParkinSenseTests" */;
+			buildPhases = (
+				319C7C9E80B8795B7B319D04 /* [CP] Check Pods Manifest.lock */,
+				A61328CA23627A0800C7066C /* Sources */,
+				A61328CB23627A0800C7066C /* Frameworks */,
+				A61328CC23627A0800C7066C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A61328D023627A0800C7066C /* PBXTargetDependency */,
+			);
+			name = ParkinSenseTests;
+			productName = ParkinSenseTests;
+			productReference = A61328CE23627A0800C7066C /* ParkinSenseTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		A61328D823627A0800C7066C /* ParkinSenseUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A61328E823627A0800C7066C /* Build configuration list for PBXNativeTarget "ParkinSenseUITests" */;
+			buildPhases = (
+				B2BC6C0AD46778805F69D794 /* [CP] Check Pods Manifest.lock */,
+				A61328D523627A0800C7066C /* Sources */,
+				A61328D623627A0800C7066C /* Frameworks */,
+				A61328D723627A0800C7066C /* Resources */,
+				993C650572C2C40D7F21EA1F /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A61328DB23627A0800C7066C /* PBXTargetDependency */,
+			);
+			name = ParkinSenseUITests;
+			productName = ParkinSenseUITests;
+			productReference = A61328D923627A0800C7066C /* ParkinSenseUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A61328B223627A0700C7066C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1030;
+				LastUpgradeCheck = 1030;
+				ORGANIZATIONNAME = "PDD Inc";
+				TargetAttributes = {
+					A61328B923627A0700C7066C = {
+						CreatedOnToolsVersion = 10.3;
+					};
+					A61328CD23627A0800C7066C = {
+						CreatedOnToolsVersion = 10.3;
+						LastSwiftMigration = 1110;
+						TestTargetID = A61328B923627A0700C7066C;
+					};
+					A61328D823627A0800C7066C = {
+						CreatedOnToolsVersion = 10.3;
+						LastSwiftMigration = 1110;
+						TestTargetID = A61328B923627A0700C7066C;
+					};
+				};
+			};
+			buildConfigurationList = A61328B523627A0700C7066C /* Build configuration list for PBXProject "ParkinSense" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A61328B123627A0700C7066C;
+			productRefGroup = A61328BB23627A0700C7066C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A61328B923627A0700C7066C /* ParkinSense */,
+				A61328CD23627A0800C7066C /* ParkinSenseTests */,
+				A61328D823627A0800C7066C /* ParkinSenseUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A61328B823627A0700C7066C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A61328FE23627A8C00C7066C /* Main.storyboard in Resources */,
+				03AB56A423627D22000A3475 /* GoogleService-Info.plist in Resources */,
+				A613290023627AAB00C7066C /* Assets.xcassets in Resources */,
+				A61328C823627A0800C7066C /* LaunchScreen.storyboard in Resources */,
+				8DF7732C236D16940080B392 /* Roots.mp3 in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A61328CC23627A0800C7066C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A61328D723627A0800C7066C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		319C7C9E80B8795B7B319D04 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ParkinSenseTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		993C650572C2C40D7F21EA1F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ParkinSense-ParkinSenseUITests/Pods-ParkinSense-ParkinSenseUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ParkinSense-ParkinSenseUITests/Pods-ParkinSense-ParkinSenseUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ParkinSense-ParkinSenseUITests/Pods-ParkinSense-ParkinSenseUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A33689540FC029795E455B89 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ParkinSense/Pods-ParkinSense-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ParkinSense/Pods-ParkinSense-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ParkinSense/Pods-ParkinSense-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A3924B8CE7E5334991BC0E2A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ParkinSense-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B2BC6C0AD46778805F69D794 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ParkinSense-ParkinSenseUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A61328B623627A0700C7066C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				063FC2482370E30500FDFB45 /* TiltScoreViewController.swift in Sources */,
+				A61328F223627A5F00C7066C /* TimeandExtension.swift in Sources */,
+				063FC2442370E2DD00FDFB45 /* TiltGameScene.swift in Sources */,
+				A61328F123627A5F00C7066C /* Utilities.swift in Sources */,
+				0333C3CC23656A5700031C26 /* WeeklyCalendar.swift in Sources */,
+				A61328FA23627A6A00C7066C /* MedicationDetailViewController.swift in Sources */,
+				060A222E236FD2CA00A9324E /* CustomTextField.swift in Sources */,
+				A61328FB23627A6A00C7066C /* HomeViewController.swift in Sources */,
+				A61328BE23627A0700C7066C /* AppDelegate.swift in Sources */,
+				038D56C12362C6AD00FFB3DD /* TiltUIViewController.swift in Sources */,
+				A61328F023627A5F00C7066C /* Constants.swift in Sources */,
+				063FC2452370E2DD00FDFB45 /* CountdownGameScene.swift in Sources */,
+				A61328F923627A6A00C7066C /* SignupViewController.swift in Sources */,
+				A61328FC23627A6A00C7066C /* LoginViewController.swift in Sources */,
+				1497BF002378F8BD00C9120C /* BubbleViewController.swift in Sources */,
+				1497BF0623793EBC00C9120C /* BCountdownGameScene.swift in Sources */,
+				038D56C32362C6BC00FFB3DD /* GameTwoViewController.swift in Sources */,
+				1497BF022379254C00C9120C /* BubbleGameScene.swift in Sources */,
+				063FC2492370E30500FDFB45 /* TiltViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A61328CA23627A0800C7066C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				063FC2342370C05200FDFB45 /* ParkinSenseTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A61328D523627A0800C7066C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				063FC23F2370C06400FDFB45 /* GameTiltUITest.swift in Sources */,
+				063FC23D2370C06400FDFB45 /* CreateAccountPageUITest.swift in Sources */,
+				063FC2402370C06400FDFB45 /* LoginPageUITest.swift in Sources */,
+				063FC23E2370C06400FDFB45 /* HomePageUITest.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A61328D023627A0800C7066C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A61328B923627A0700C7066C /* ParkinSense */;
+			targetProxy = A61328CF23627A0800C7066C /* PBXContainerItemProxy */;
+		};
+		A61328DB23627A0800C7066C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A61328B923627A0700C7066C /* ParkinSense */;
+			targetProxy = A61328DA23627A0800C7066C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		A61328C623627A0800C7066C /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A61328C723627A0800C7066C /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A61328E023627A0800C7066C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A61328E123627A0800C7066C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A61328E323627A0800C7066C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DAAD47E763797519E6A741B4 /* Pods-ParkinSense.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = L7P596HY6P;
+				INFOPLIST_FILE = ParkinSense/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = PDD.ParkinSense;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		A61328E423627A0800C7066C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 80488E395B128294ECE36291 /* Pods-ParkinSense.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = L7P596HY6P;
+				INFOPLIST_FILE = ParkinSense/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = PDD.ParkinSense;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		A61328E623627A0800C7066C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E3CB4F5B9B1ABDCEDE756677 /* Pods-ParkinSenseTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = ParkinSenseTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "PDD-Inc.ParkinSenseTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ParkinSenseTests/ParkinSenseTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ParkinSense.app/ParkinSense";
+			};
+			name = Debug;
+		};
+		A61328E723627A0800C7066C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AAD23FB66C401B7D00ADA381 /* Pods-ParkinSenseTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = ParkinSenseTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "PDD-Inc.ParkinSenseTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ParkinSenseTests/ParkinSenseTests-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ParkinSense.app/ParkinSense";
+			};
+			name = Release;
+		};
+		A61328E923627A0800C7066C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1646AE119FC7C3A20EF6D045 /* Pods-ParkinSense-ParkinSenseUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = ParkinSenseUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "PDD-Inc.ParkinSenseUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "ParkinSenseUITests/ParkinSenseUITests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_TARGET_NAME = ParkinSense;
+			};
+			name = Debug;
+		};
+		A61328EA23627A0800C7066C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4A37EE9F9EE2DEC48033F828 /* Pods-ParkinSense-ParkinSenseUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = ParkinSenseUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "PDD-Inc.ParkinSenseUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "ParkinSenseUITests/ParkinSenseUITests-Bridging-Header.h";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_TARGET_NAME = ParkinSense;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A61328B523627A0700C7066C /* Build configuration list for PBXProject "ParkinSense" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A61328E023627A0800C7066C /* Debug */,
+				A61328E123627A0800C7066C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A61328E223627A0800C7066C /* Build configuration list for PBXNativeTarget "ParkinSense" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A61328E323627A0800C7066C /* Debug */,
+				A61328E423627A0800C7066C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A61328E523627A0800C7066C /* Build configuration list for PBXNativeTarget "ParkinSenseTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A61328E623627A0800C7066C /* Debug */,
+				A61328E723627A0800C7066C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A61328E823627A0800C7066C /* Build configuration list for PBXNativeTarget "ParkinSenseUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A61328E923627A0800C7066C /* Debug */,
+				A61328EA23627A0800C7066C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A61328B223627A0700C7066C /* Project object */;
+}
