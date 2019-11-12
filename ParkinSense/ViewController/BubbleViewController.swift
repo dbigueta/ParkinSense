@@ -11,7 +11,6 @@ import SpriteKit
 
 class BubbleViewController: UIViewController {
 
-    @IBOutlet weak var bb: UIButton!
     @IBOutlet weak var BubbleTimeScoreUI: UIStackView!
     @IBOutlet weak var BubbleTimeLabel: UILabel!
     @IBOutlet weak var BubbleScoreLabel: UILabel!
@@ -64,11 +63,11 @@ class BubbleViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-//        if segue.destination is BubbleScoreViewController
-//        {
-//            let vc = segue.destination as? BubbleScoreViewController
-//            vc?.fScore = currentScore
-//        }
+        if segue.destination is BubbleScoreViewController
+        {
+            let vc = segue.destination as? BubbleScoreViewController
+            vc?.fScore = currentScore
+        }
     }
     
     
@@ -83,6 +82,5 @@ class BubbleViewController: UIViewController {
         }
     }
 
-    @IBAction func gameover(_ sender: Any) {
-    }
+    
 }

@@ -24,6 +24,7 @@
 		1497BF002378F8BD00C9120C /* BubbleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1497BEFF2378F8BD00C9120C /* BubbleViewController.swift */; };
 		1497BF022379254C00C9120C /* BubbleGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1497BF012379254C00C9120C /* BubbleGameScene.swift */; };
 		1497BF0623793EBC00C9120C /* BCountdownGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1497BF0523793EBC00C9120C /* BCountdownGameScene.swift */; };
+		14F06785237A9D4C00484846 /* BubbleScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F06784237A9D4C00484846 /* BubbleScoreViewController.swift */; };
 		29A920A408E6F54C2BE6A195 /* Pods_ParkinSense.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B083E52DCEF6DB9DB20CB12 /* Pods_ParkinSense.framework */; };
 		8DF7732C236D16940080B392 /* Roots.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8DF7732B236D16930080B392 /* Roots.mp3 */; };
 		A61328BE23627A0700C7066C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61328BD23627A0700C7066C /* AppDelegate.swift */; };
@@ -80,6 +81,7 @@
 		1497BEFF2378F8BD00C9120C /* BubbleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleViewController.swift; sourceTree = "<group>"; };
 		1497BF012379254C00C9120C /* BubbleGameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleGameScene.swift; sourceTree = "<group>"; };
 		1497BF0523793EBC00C9120C /* BCountdownGameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BCountdownGameScene.swift; sourceTree = "<group>"; };
+		14F06784237A9D4C00484846 /* BubbleScoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleScoreViewController.swift; sourceTree = "<group>"; };
 		1646AE119FC7C3A20EF6D045 /* Pods-ParkinSense-ParkinSenseUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ParkinSense-ParkinSenseUITests.debug.xcconfig"; path = "Target Support Files/Pods-ParkinSense-ParkinSenseUITests/Pods-ParkinSense-ParkinSenseUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		4A37EE9F9EE2DEC48033F828 /* Pods-ParkinSense-ParkinSenseUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ParkinSense-ParkinSenseUITests.release.xcconfig"; path = "Target Support Files/Pods-ParkinSense-ParkinSenseUITests/Pods-ParkinSense-ParkinSenseUITests.release.xcconfig"; sourceTree = "<group>"; };
 		80488E395B128294ECE36291 /* Pods-ParkinSense.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ParkinSense.release.xcconfig"; path = "Target Support Files/Pods-ParkinSense/Pods-ParkinSense.release.xcconfig"; sourceTree = "<group>"; };
@@ -247,6 +249,7 @@
 				038D56C22362C6BC00FFB3DD /* GameTwoViewController.swift */,
 				1497BEFF2378F8BD00C9120C /* BubbleViewController.swift */,
 				1497BF012379254C00C9120C /* BubbleGameScene.swift */,
+				14F06784237A9D4C00484846 /* BubbleScoreViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -503,6 +506,7 @@
 				060A222E236FD2CA00A9324E /* CustomTextField.swift in Sources */,
 				A61328FB23627A6A00C7066C /* HomeViewController.swift in Sources */,
 				A61328BE23627A0700C7066C /* AppDelegate.swift in Sources */,
+				14F06785237A9D4C00484846 /* BubbleScoreViewController.swift in Sources */,
 				038D56C12362C6AD00FFB3DD /* TiltUIViewController.swift in Sources */,
 				A61328F023627A5F00C7066C /* Constants.swift in Sources */,
 				063FC2452370E2DD00FDFB45 /* CountdownGameScene.swift in Sources */,

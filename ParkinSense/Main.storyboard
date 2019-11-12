@@ -1471,31 +1471,78 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Sy-Ek-edQ">
-                                <rect key="frame" x="184" y="775" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                </state>
-                                <connections>
-                                    <action selector="gameover:" destination="Og0-xX-ZFE" eventType="touchUpInside" id="6UQ-86-iGH"/>
-                                    <segue destination="CtK-FA-4RQ" kind="show" id="6v2-d9-tfO"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Q69-uO-9J6"/>
                     </view>
+                    <navigationItem key="navigationItem" id="2NZ-gW-2sw"/>
                     <connections>
                         <outlet property="BubbleScoreLabel" destination="F0v-bl-Y5R" id="fvn-iK-Ueu"/>
                         <outlet property="BubbleTimeLabel" destination="Iv5-b2-yiv" id="tA9-L3-dM3"/>
                         <outlet property="BubbleTimeScoreUI" destination="oME-vo-9E0" id="eRm-aB-hSv"/>
-                        <outlet property="bb" destination="8Sy-Ek-edQ" id="UwL-vw-2tU"/>
+                        <segue destination="0yS-Xm-sUa" kind="show" id="Lgf-1W-bky"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PTP-2W-rk0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5598.5507246376819" y="-329.46428571428572"/>
+        </scene>
+        <!--Bubble Score View Controller-->
+        <scene sceneID="oAw-zi-QCe">
+            <objects>
+                <viewController id="0yS-Xm-sUa" userLabel="Bubble Score View Controller" customClass="BubbleScoreViewController" customModule="ParkinSense" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pWI-ac-0EO">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tL6-7y-O0f" userLabel="Final Score">
+                                <rect key="frame" x="202" y="298" width="19" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i9L-jV-B3X" userLabel="Replay">
+                                <rect key="frame" x="172" y="431" width="74" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="Replay">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <segue destination="CtK-FA-4RQ" kind="show" id="otO-qp-NOn"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cWZ-oa-2J5" userLabel="Exit">
+                                <rect key="frame" x="187" y="551" width="40" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="Exit">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <segue destination="eVj-ik-Udv" kind="show" id="l2J-rr-nIi"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Score" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Gq-2j-ZpH" userLabel="Score">
+                                <rect key="frame" x="173" y="184" width="75" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="546-se-TIl"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="QpN-Z2-2ov"/>
+                    <connections>
+                        <outlet property="BubbleFinalScore" destination="tL6-7y-O0f" id="6dY-ca-mPe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="INg-Hc-qwc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6371" y="-319"/>
         </scene>
         <!--TiltUI View Controller-->
         <scene sceneID="UHb-kr-Hp6">
@@ -1800,9 +1847,10 @@
         <image name="uncheckbox" width="239" height="246"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="Mwu-fc-wSP"/>
         <segue reference="aqD-d8-3pg"/>
-        <segue reference="6v2-d9-tfO"/>
-        <segue reference="Job-yp-1Ab"/>
+        <segue reference="otO-qp-NOn"/>
+        <segue reference="l2J-rr-nIi"/>
         <segue reference="W1N-RM-9eB"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
