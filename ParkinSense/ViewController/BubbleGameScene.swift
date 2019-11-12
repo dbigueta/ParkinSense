@@ -22,9 +22,9 @@ class BubbleGameScene: SKScene {
     var yBubblePosition: CGFloat = 0.0
     var setMarginX: CGFloat = 20
     var setMarginY: CGFloat = 30
-    var bubbleGenerationRate = 4
+    var bubbleGenerationRate = 3
     
-    var counter = 60
+    var counter = 30
     var counterTimer = Timer()
     
     
@@ -42,7 +42,7 @@ class BubbleGameScene: SKScene {
         
         showGameUI()
         startCounter()
-        generateBubble()
+        //generateBubble()
     }
     
     func showGameUI(){
@@ -86,7 +86,7 @@ class BubbleGameScene: SKScene {
         bubble.removeFromParent()
         
         bubble.position = randomBubblePosition()
-        bubble.strokeColor = SKColor.red
+        bubble.fillColor = SKColor.red
         
         self.addChild(bubble)
         
@@ -112,6 +112,8 @@ class BubbleGameScene: SKScene {
         }
         
         return CGPoint(x: xBubblePosition, y: yBubblePosition)
+        
+        
     }
     
     
