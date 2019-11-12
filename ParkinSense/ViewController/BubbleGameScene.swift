@@ -54,9 +54,9 @@ class BubbleGameScene: SKScene {
     }
     
     @objc func decrementCounter() {
-        if (counter % bubbleGenerationRate == 0){
-            generateBubble()
-        }
+//        if (counter % bubbleGenerationRate == 0){
+//            generateBubble()
+//        }
         
         if counter == 0 {
             counterTimer.invalidate()
@@ -154,8 +154,9 @@ class BubbleGameScene: SKScene {
         
         if let currentTouch = lastTouchPosition{
             if ((bubble.position.x - bubbleRadius < currentTouch.x) && (currentTouch.x < bubble.position.x + bubbleRadius) && (bubble.position.y - bubbleRadius < currentTouch.y) && (currentTouch.y < bubble.position.y + bubbleRadius)){
-                viewController.currentScore += 1
+                viewController.currentScore += 20
                 viewController.BubbleScoreLabel.text = String(viewController.currentScore)
+                generateBubble()
                 
             }
         }
