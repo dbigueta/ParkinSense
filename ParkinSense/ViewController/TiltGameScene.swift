@@ -85,6 +85,7 @@ class TiltGameScene: SKScene {
      - Returns: None.
      */
     override func didMove(to view: SKView) {
+        self.scene!.backgroundColor = UIColor(red:0.22, green:0.26, blue:0.35, alpha:1.0)
         motionManager.startAccelerometerUpdates()
         
         physicsWorld.gravity = .zero
@@ -181,7 +182,8 @@ class TiltGameScene: SKScene {
         ball.constraints = [SKConstraint.positionX(xRange!,y:yRange!)]
         
         ball.position = CGPoint(x: frame.size.width/2, y: frame.size.height/2)
-        ball.fillColor = SKColor.white
+        ball.fillColor = UIColor(red:0.48, green:0.78, blue:0.77, alpha:1.0)
+        ball.strokeColor = UIColor(red:0.48, green:0.78, blue:0.77, alpha:1.0)
         
         self.addChild(ball)
     }
@@ -196,7 +198,8 @@ class TiltGameScene: SKScene {
         hole.removeFromParent()
         
         hole.position = randomHolePosition()
-        hole.strokeColor = SKColor.red
+        hole.strokeColor = UIColor(red:0.97, green:0.22, blue:0.35, alpha:1.0)
+        hole.lineWidth = 5
         
         self.addChild(hole)
     }
