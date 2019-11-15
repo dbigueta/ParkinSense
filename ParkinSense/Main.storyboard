@@ -3,7 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -1480,7 +1480,7 @@
                         <outlet property="BubbleScoreLabel" destination="F0v-bl-Y5R" id="fvn-iK-Ueu"/>
                         <outlet property="BubbleTimeLabel" destination="Iv5-b2-yiv" id="tA9-L3-dM3"/>
                         <outlet property="BubbleTimeScoreUI" destination="oME-vo-9E0" id="eRm-aB-hSv"/>
-                        <segue destination="0yS-Xm-sUa" kind="show" id="Lgf-1W-bky"/>
+                        <segue destination="0yS-Xm-sUa" kind="show" identifier="bubbleScore" id="Lgf-1W-bky"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PTP-2W-rk0" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1847,7 +1847,7 @@
         <image name="uncheckbox" width="239" height="246"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Mwu-fc-wSP"/>
+        <segue reference="Lgf-1W-bky"/>
         <segue reference="aqD-d8-3pg"/>
         <segue reference="otO-qp-NOn"/>
         <segue reference="l2J-rr-nIi"/>
