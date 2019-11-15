@@ -53,7 +53,7 @@ class TiltGameScene: SKScene {
     var holeGenerationRate = 5
     
     /* Variables used to keep track of the timer */
-    var counter = 3
+    var counter = 60
     var counterTimer = Timer()
     
     
