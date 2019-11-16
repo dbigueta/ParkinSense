@@ -8,6 +8,7 @@
 //  Description: Main login view of ParkinSense
 //
 //  Changes:
+//      - Refactored code to programmatically code UI elements
 //      - Added authentication to firebase
 //      - Added IBOutlets to buttons and checkboxes
 //      - Added View Controller
@@ -29,9 +30,9 @@ let passwordTextField =  CustomTextField(frame: CGRect(x: 0, y: 0, width: 300, h
 let errorLabel = UILabel()
 let signInButton = UIButton()
 let createAccountButton = UIButton()
-let textColour = UIColor(red:0.89, green:0.95, blue:1.00, alpha:1.0)
-let buttonTextColour = UIColor(red:0.13, green:0.19, blue:0.25, alpha:1.0)
-let buttonColour = UIColor(red:0.48, green:0.78, blue:0.77, alpha:1.0)
+let textColour = UIColor(red:0.29, green:0.31, blue:0.34, alpha:1.0)
+let buttonTextColour = UIColor(red:0.29, green:0.31, blue:0.34, alpha:1.0)
+let buttonColour = UIColor(red:0.75, green:0.85, blue:0.84, alpha:1.0)
 let font = UIFont.systemFont(ofSize: 20, weight: .light)
     
     override func loadView() {
@@ -175,11 +176,11 @@ let font = UIFont.systemFont(ofSize: 20, weight: .light)
         
         // Error UI Label
         let errorLabelHeight: CGFloat = 20
-        errorLabel.textColor = textColour
+        errorLabel.textColor = UIColor(red:0.97, green:0.22, blue:0.35, alpha:1.0)
         errorLabel.textAlignment = .center
         errorLabel.text = "Error"
         errorLabel.numberOfLines = 1
-        errorLabel.font = UIFont.systemFont(ofSize: errorLabelHeight, weight: .ultraLight)
+        errorLabel.font = UIFont.systemFont(ofSize: errorLabelHeight, weight: .light)
         errorLabel.adjustsFontSizeToFitWidth = true
         errorLabel.minimumScaleFactor = 0.5
         errorLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -231,7 +232,7 @@ let font = UIFont.systemFont(ofSize: 20, weight: .light)
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor(red:0.13, green:0.19, blue:0.25, alpha:1.0)
+        self.view.backgroundColor = UIColor(red:0.96, green:0.95, blue:0.95, alpha:1.0)
         // Do any additional setup after loading the view.
         setUpElements()
     }
