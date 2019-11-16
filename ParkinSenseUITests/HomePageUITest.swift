@@ -43,7 +43,6 @@ class HomePageUITest: XCTestCase {
         let userName = "test@t.com"
         let password = "123456"
         
-        
         let app = XCUIApplication()
         let usernameTextField = app.textFields["Email"]
         XCTAssertTrue(usernameTextField.exists)
@@ -61,9 +60,6 @@ class HomePageUITest: XCTestCase {
         //main UI part
         //let app = XCUIApplication()
         //app.alerts["Reminder"].buttons["OK"].tap()
-        
-        
-    
         let scrollViewsQuery = app.scrollViews
         let WeeklyProgress = scrollViewsQuery.otherElements.containing(.staticText, identifier:"Weekly Progress").element
         
