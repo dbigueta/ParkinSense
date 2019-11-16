@@ -53,7 +53,7 @@ class TiltGameScene: SKScene {
     var holeGenerationRate = 5
     
     /* Variables used to keep track of the timer */
-    var counter = 60
+    var counter = 5
     var counterTimer = Timer()
     
     
@@ -147,9 +147,21 @@ class TiltGameScene: SKScene {
         hole.removeFromParent()
         ball.removeFromParent()
         
-        removeAllChildren()
-        removeAllActions()
-        removeFromParent()
+//        removeAllChildren()
+//        removeAllActions()
+//        removeFromParent()
+        
+//        let theVC = self.viewController.storyboard?.instantiateViewController(withIdentifier: "tiltScore") as! TiltScoreViewController
+//
+//        self.viewController.navigationController?.pushViewController(theVC, animated: true)
+//        self.viewController.removeFromParent()
+//        self.viewController.dismiss(animated: true, completion: nil)
+//        self.view?.presentScene(nil)
+        
+//        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+//
+//        let controllerToBePresented = self.viewController.storyboard?.instantiateViewController(withIdentifier: "tiltScore") as! TiltScoreViewController
+//        appDelegate.switchControllers(viewControllerToBeDismissed: self.viewController, controllerToBePresented: controllerToBePresented)
         
         viewController.performSegue(withIdentifier: "tiltScore", sender: self)
     }
@@ -177,7 +189,6 @@ class TiltGameScene: SKScene {
         
         xRange = SKRange(lowerLimit:CGFloat(ballRadius),upperLimit:size.width - CGFloat(ballRadius))
         yRange = SKRange(lowerLimit:CGFloat(ballRadius),upperLimit:size.height - CGFloat(ballRadius))
-          
         
         ball.constraints = [SKConstraint.positionX(xRange!,y:yRange!)]
         

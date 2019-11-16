@@ -50,6 +50,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    func switchControllers(viewControllerToBeDismissed:UIViewController,controllerToBePresented:UIViewController) {
+        if (viewControllerToBeDismissed.isViewLoaded && (viewControllerToBeDismissed.view.window != nil)) {
+            // viewControllerToBeDismissed is visible
+            //First dismiss and then load your new presented controller
+            viewControllerToBeDismissed.dismiss(animated: false, completion: {
+                self.window?.rootViewController?.present(controllerToBePresented, animated: true, completion: nil)
+            })
+        } else {
+        }
+    }
 
 }
 
