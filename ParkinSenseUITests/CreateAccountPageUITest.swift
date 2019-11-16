@@ -38,6 +38,30 @@ class CreateAccountPageUITest: XCTestCase {
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
+    func testCreateAccountUIDisplay(){
+        let app = XCUIApplication()
+        let createAnAccount = app.buttons["Create an Account"]
+        XCTAssertTrue(createAnAccount.exists)
+        createAnAccount.tap()
+        
+        let ParkinSense = app.staticTexts["ParkinSense"]
+        XCTAssertTrue(ParkinSense.exists)
+        
+        let email = app.textFields["Email"]
+        XCTAssertTrue(email.exists)
+        let password = app.textFields["Password"]
+        XCTAssertTrue(password.exists)
+        
+        let confirm = app.textFields["Confirm Password"]
+        XCTAssertTrue(confirm.exists)
+        let already = app.buttons["Already have an account? Sign in"]
+        XCTAssertTrue(already.exists)
+        let addNewButton = app.buttons["Add New Medication Detail"]
+        XCTAssertTrue(addNewButton.exists)
+        let CreatButton = app.buttons["Create an Account"]
+        XCTAssertTrue(CreatButton.exists)
+        
+    }
 
     func testCreateAccountSuccessWithoutMedication(){
         
@@ -160,7 +184,7 @@ class CreateAccountPageUITest: XCTestCase {
     func testCreateAccountUnvaildPassword(){
         let userName = "guten@s.com"
         let password = "1551"
-        let error = "Password must be at least 6 characters."
+        let error = "Password must be at least 6 characters"
         
         
         let app = XCUIApplication()
@@ -252,7 +276,7 @@ class CreateAccountPageUITest: XCTestCase {
         
         let userName = "guten@s.com"
         let password = "123321"
-        let error = "Error creating user"
+        let error = "User Account should be valid email address"
         
         
         let app = XCUIApplication()
@@ -278,6 +302,8 @@ class CreateAccountPageUITest: XCTestCase {
         sleep(3)
         XCTAssertTrue(app.staticTexts[error].exists)
         
+       
+                
     }
     
     func testCreateAccountErrorMatching(){
@@ -285,7 +311,7 @@ class CreateAccountPageUITest: XCTestCase {
         let userName = "guten@s.com"
         let password = "123321"
         let confirm = "1233"
-        let error =   "Pleace make sure the password is matched"
+        let error =   "Passwords do not match. Please re-enter your password."
         
         
         let app = XCUIApplication()

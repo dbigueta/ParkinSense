@@ -39,8 +39,8 @@ class GameTiltUITest: XCTestCase {
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
         //login part
-        let userName = "sgnb@t.com"
-        let password = "ywwuyi"
+        let userName = "test@t.com"
+        let password = "123456"
         
         
         let app = XCUIApplication()
@@ -59,10 +59,29 @@ class GameTiltUITest: XCTestCase {
         //main UI part
         //let app = XCUIApplication()
         //app.alerts["Reminder"].buttons["OK"].tap()
+        
+        
+//        let app = XCUIApplication()
+//        let scrollViewsQuery = app.scrollViews
+//        let elementsQuery = scrollViewsQuery.otherElements
+//        elementsQuery.staticTexts["11/10 ~ 11/16"]/*@START_MENU_TOKEN@*/.swipeRight()/*[[".swipeUp()",".swipeRight()"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+//        
+//        let weeklyProgressElement = scrollViewsQuery.otherElements.containing(.staticText, identifier:"Weekly Progress").element
+//        weeklyProgressElement.swipeDown()
+//        weeklyProgressElement/*@START_MENU_TOKEN@*/.swipeRight()/*[[".swipeUp()",".swipeRight()"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+//        elementsQuery.staticTexts["Games"].swipeUp()
+//        weeklyProgressElement.swipeDown()
+//        weeklyProgressElement/*@START_MENU_TOKEN@*/.swipeRight()/*[[".swipeUp()",".swipeRight()"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+//        elementsQuery.buttons["TILT"].tap()
+//        app.buttons["Quit"].tap()
+        
+        
+        
+        
         let scrollViewsQuery = app.scrollViews
         let page1Of2Element = scrollViewsQuery.otherElements.containing(.pageIndicator, identifier:"page 1 of 2").element
         
-        page1Of2Element/*@START_MENU_TOKEN@*/.swipeRight()/*[[".swipeUp()",".swipeRight()"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+                page1Of2Element/*@START_MENU_TOKEN@*/.swipeRight()/*[[".swipeUp()",".swipeRight()"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
         page1Of2Element.swipeDown()
         page1Of2Element.swipeUp()
         scrollViewsQuery.otherElements.buttons["GameOne"].tap()
@@ -82,12 +101,12 @@ class GameTiltUITest: XCTestCase {
         
         
         let app = XCUIApplication()
-        let usernameTextField = app.textFields["   User Account"]
+        let usernameTextField = app.textFields["Email"]
         XCTAssertTrue(usernameTextField.exists)
         usernameTextField.tap()
         usernameTextField.typeText(userName)
         
-        let passwordTextField = app.textFields["   Password"]
+        let passwordTextField = app.textFields["Password"]
         XCTAssertTrue(passwordTextField.exists)
         passwordTextField.tap()
         passwordTextField.typeText(password)

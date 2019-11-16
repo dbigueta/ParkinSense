@@ -40,8 +40,8 @@ class HomePageUITest: XCTestCase {
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
         //login part
-        let userName = "sgnb@t.com"
-        let password = "ywwuyi"
+        let userName = "test@t.com"
+        let password = "123456"
         
         
         let app = XCUIApplication()
@@ -61,6 +61,12 @@ class HomePageUITest: XCTestCase {
         //main UI part
         //let app = XCUIApplication()
         //app.alerts["Reminder"].buttons["OK"].tap()
+        XCUIApplication().scrollViews.otherElements.containing(.staticText, identifier:"Weekly Progress").element/*@START_MENU_TOKEN@*/.swipeRight()/*[[".swipeUp()",".swipeRight()"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        
+        
+        
+        
+        
         let scrollViewsQuery = app.scrollViews
         let page1Of2Element = scrollViewsQuery.otherElements.containing(.pageIndicator, identifier:"page 1 of 2").element
         
@@ -78,8 +84,8 @@ class HomePageUITest: XCTestCase {
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
         //login part
-        let userName = "sgnb@t.com"
-        let password = "ywwuyi"
+        let userName = "test@t.com"
+        let password = "123456"
         
         
         let app = XCUIApplication()
@@ -115,8 +121,8 @@ class HomePageUITest: XCTestCase {
     
     func testMainUI_weekButtons(){
         //login part
-        let userName = "sgnb@t.com"
-        let password = "ywwuyi"
+        let userName = "test@t.com"
+        let password = "123456"
         
         let app = XCUIApplication()
         let usernameTextField = app.textFields["   User Account"]
