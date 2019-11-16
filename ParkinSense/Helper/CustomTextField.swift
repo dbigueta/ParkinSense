@@ -28,7 +28,7 @@ class CustomTextField: UITextField {
     **/
     var padding: UIEdgeInsets {
         get {
-            return UIEdgeInsets(top: 0, left: paddingValue, bottom: 0, right: paddingValue)
+            return UIEdgeInsets(top: paddingValue/2, left: paddingValue, bottom: paddingValue/2, right: paddingValue)
         }
     }
     
@@ -64,6 +64,27 @@ class CustomTextField: UITextField {
     override func editingRect(forBounds bounds: CGRect) -> CGRect {
         return bounds.inset(by: padding)
     }
+    
+    var bottomBorder = UIView()
+
+       override func awakeFromNib() {
+
+               // Setup Bottom-Border
+
+               self.translatesAutoresizingMaskIntoConstraints = false
+
+               bottomBorder = UIView.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+        bottomBorder.backgroundColor = UIColor(red:0.89, green:0.86, blue:0.82, alpha:1.0) // Set Border-Color
+               bottomBorder.translatesAutoresizingMaskIntoConstraints = false
+
+               addSubview(bottomBorder)
+
+               bottomBorder.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+               bottomBorder.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
+               bottomBorder.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
+               bottomBorder.heightAnchor.constraint(equalToConstant: 1).isActive = true // Set Border-Strength
+
+       }
     
     @IBInspectable var paddingValue: CGFloat = 0
     

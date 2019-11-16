@@ -22,18 +22,19 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <segue destination="eVj-ik-Udv" kind="presentation" identifier="loginToHomeID" modalPresentationStyle="fullScreen" id="wmF-fg-5df"/>
+                        <segue destination="y9O-MW-t5g" kind="presentation" identifier="signUpID" id="D9J-Jx-Udc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1957.9710144927537" y="115.84821428571428"/>
+            <point key="canvasLocation" x="1745" y="240"/>
         </scene>
         <!--Create an Account-->
         <scene sceneID="ZeU-gp-chd">
             <objects>
-                <viewController id="y9O-MW-t5g" customClass="SignupViewController" customModule="ParkinSense" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="signUp" storyboardIdentifier="signUp" id="y9O-MW-t5g" customClass="SignupViewController" customModule="ParkinSense" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iQh-19-VeB">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="a0O-Jr-zvN" userLabel="Text Fields">
@@ -125,7 +126,7 @@
                                 </variation>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="VVe-N4-TFS" userLabel="Buttons">
-                                <rect key="frame" x="30" y="437" width="315" height="190"/>
+                                <rect key="frame" x="30" y="417" width="315" height="190"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P9u-b2-DvT">
                                         <rect key="frame" x="0.0" y="0.0" width="315" height="50"/>
@@ -1462,10 +1463,10 @@
         <image name="Wcircle" width="175" height="173"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="W1N-RM-9eB"/>
         <segue reference="AIu-3u-Xtl"/>
         <segue reference="otO-qp-NOn"/>
         <segue reference="wmF-fg-5df"/>
+        <segue reference="D9J-Jx-Udc"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>
