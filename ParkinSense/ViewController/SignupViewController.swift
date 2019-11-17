@@ -195,7 +195,7 @@ class SignupViewController: UIViewController {
          alreadyHaveAnAccountButton.layer.cornerRadius = 5
          alreadyHaveAnAccountButton.setTitle("Already have an account? Sign in", for: .normal)
          alreadyHaveAnAccountButton.translatesAutoresizingMaskIntoConstraints = false
-         alreadyHaveAnAccountButton.addTarget(self, action: #selector(addNewMedicationDetailTapped), for: .touchUpInside)
+         alreadyHaveAnAccountButton.addTarget(self, action: #selector(alreadyHaveAnAccountTapped), for: .touchUpInside)
          self.view.addSubview(alreadyHaveAnAccountButton)
 
          NSLayoutConstraint.activate([
@@ -243,6 +243,7 @@ class SignupViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor(red:0.96, green:0.95, blue:0.95, alpha:1.0)
         
         setUpElement()
     }
@@ -352,9 +353,15 @@ class SignupViewController: UIViewController {
      - Parameter sender: Button itself
      - Returns: None
      **/
-    @IBAction func addNewMedicationDetailTapped(_ sender: Any) {
+    @objc func addNewMedicationDetailTapped(_ sender: Any) {
         username = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        let medicationViewController:MedicationDetailViewController = MedicationDetailViewController()
+
+        self.present(medicationViewController, animated: true, completion: nil)
+        
+        //self.performSegue(withIdentifier: "addMedicationID", sender: nil)
     }
     
     
@@ -364,19 +371,8 @@ class SignupViewController: UIViewController {
      - Parameter sender: Self Button
      - Returns: None
      **/
-    @IBAction func alreadyHaveAnAccountTapped(_ sender: Any) {
-        self.performSegue(withIdentifier: "unwindTologin", sender: nil)
-    }
-    
-    
-    /**
-     Function about the Back to the current page Button,
-     
-     - Parameter sender: Button itself
-     - Returns: None
-     **/
-    @IBAction func unwindToSignup(segue: UIStoryboardSegue){
-        
+    @objc func alreadyHaveAnAccountTapped(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
     
     

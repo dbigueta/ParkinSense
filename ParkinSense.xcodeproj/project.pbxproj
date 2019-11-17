@@ -243,15 +243,15 @@
 		A61328F423627A6900C7066C /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				A61328F823627A6900C7066C /* LoginViewController.swift */,
+				A61328F523627A6900C7066C /* SignupViewController.swift */,
+				A61328F623627A6900C7066C /* MedicationDetailViewController.swift */,
+				A61328F723627A6900C7066C /* HomeViewController.swift */,
 				1497BF0523793EBC00C9120C /* BCountdownGameScene.swift */,
 				063FC2432370E2DD00FDFB45 /* CountdownGameScene.swift */,
 				063FC2422370E2DD00FDFB45 /* TiltGameScene.swift */,
 				063FC2462370E30500FDFB45 /* TiltScoreViewController.swift */,
 				063FC2472370E30500FDFB45 /* TiltViewController.swift */,
-				A61328F523627A6900C7066C /* SignupViewController.swift */,
-				A61328F623627A6900C7066C /* MedicationDetailViewController.swift */,
-				A61328F723627A6900C7066C /* HomeViewController.swift */,
-				A61328F823627A6900C7066C /* LoginViewController.swift */,
 				038D56C02362C6AD00FFB3DD /* TiltUIViewController.swift */,
 				038D56C22362C6BC00FFB3DD /* GameTwoViewController.swift */,
 				1497BEFF2378F8BD00C9120C /* BubbleViewController.swift */,

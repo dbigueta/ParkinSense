@@ -285,7 +285,8 @@ let font = UIFont.systemFont(ofSize: 20, weight: .light)
          - Returns: None
     **/
     @objc func createAccountTapped(_ sender: Any) {
-        self.performSegue(withIdentifier: "signUpID", sender: nil)
+        let signUpViewController:SignupViewController = SignupViewController()
+        self.present(signUpViewController, animated: true, completion: nil)
     }
     
 }

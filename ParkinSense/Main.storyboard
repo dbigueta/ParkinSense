@@ -45,307 +45,30 @@
                     <connections>
                         <segue destination="eVj-ik-Udv" kind="presentation" identifier="signUpToHomeID" modalPresentationStyle="fullScreen" id="xa4-L2-QV7"/>
                         <segue destination="lr0-9s-vBc" kind="unwind" identifier="unwindTologin" unwindAction="unwindTologinWithSegue:" id="Vry-7R-fva"/>
+                        <segue destination="9aV-Wv-vxg" kind="presentation" identifier="addMedicationID" id="vn2-59-sOp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kmq-U0-mxv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="lr0-9s-vBc" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2960.8695652173915" y="279.91071428571428"/>
+            <point key="canvasLocation" x="2666" y="394"/>
         </scene>
         <!--Add Medication Detail-->
         <scene sceneID="OWg-XK-NHS">
             <objects>
                 <viewController id="9aV-Wv-vxg" customClass="MedicationDetailViewController" customModule="ParkinSense" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OwO-Rm-emg">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="591"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Upk-7h-p1s" userLabel="Medication Name Field">
-                                <rect key="frame" x="20" y="30" width="335" height="110"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Medication Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ORO-fA-abf">
-                                        <rect key="frame" x="0.0" y="0.0" width="335" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="ove-ii-dpw">
-                                                <variation key="heightClass=regular-widthClass=compact" constant="40"/>
-                                            </constraint>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="26"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Medication Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Eu-lI-qQ0" customClass="CustomTextField" customModule="ParkinSense" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="60" width="335" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="ASg-ki-26c"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="paddingValue">
-                                                <real key="value" value="10"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="ASg-ki-26c"/>
-                                            </mask>
-                                        </variation>
-                                        <variation key="heightClass=regular-widthClass=compact">
-                                            <mask key="constraints">
-                                                <include reference="ASg-ki-26c"/>
-                                            </mask>
-                                        </variation>
-                                    </textField>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="4Eu-lI-qQ0" firstAttribute="height" secondItem="ORO-fA-abf" secondAttribute="height" id="h2v-Ao-Lu9">
-                                        <variation key="heightClass=regular-widthClass=compact" constant="50"/>
-                                    </constraint>
-                                </constraints>
-                                <variation key="heightClass=regular-widthClass=compact">
-                                    <mask key="constraints">
-                                        <exclude reference="h2v-Ao-Lu9"/>
-                                    </mask>
-                                </variation>
-                            </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="MR6-KY-WTq" userLabel="Medication Time Field">
-                                <rect key="frame" x="20" y="211" width="335" height="105"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Medication Time &amp; Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U8v-94-0en">
-                                        <rect key="frame" x="0.0" y="0.0" width="335" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="N0j-fs-sRD">
-                                                <variation key="heightClass=regular-widthClass=compact" constant="40"/>
-                                            </constraint>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="27"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="N0j-fs-sRD"/>
-                                            </mask>
-                                        </variation>
-                                        <variation key="heightClass=regular-widthClass=compact">
-                                            <mask key="constraints">
-                                                <include reference="N0j-fs-sRD"/>
-                                            </mask>
-                                        </variation>
-                                    </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="1c7-Pl-vd4">
-                                        <rect key="frame" x="0.0" y="55" width="335" height="50"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="249" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Ps-1i-olm">
-                                                <rect key="frame" x="0.0" y="0.0" width="43.5" height="50"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <state key="normal" image="Scircle"/>
-                                                <connections>
-                                                    <action selector="dateSelectionTapped:" destination="9aV-Wv-vxg" eventType="touchUpInside" id="J8C-KE-0Xe"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f5x-7t-RHi">
-                                                <rect key="frame" x="48.5" y="0.0" width="43.5" height="50"/>
-                                                <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <state key="normal" image="Mcircle"/>
-                                                <connections>
-                                                    <action selector="dateSelectionTapped:" destination="9aV-Wv-vxg" eventType="touchUpInside" id="qdI-yS-a1T"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ruK-da-F1M">
-                                                <rect key="frame" x="97" y="0.0" width="43.5" height="50"/>
-                                                <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <state key="normal" image="Tcircle"/>
-                                                <connections>
-                                                    <action selector="dateSelectionTapped:" destination="9aV-Wv-vxg" eventType="touchUpInside" id="keH-np-LcH"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MMd-5y-Z9f">
-                                                <rect key="frame" x="145.5" y="0.0" width="44" height="50"/>
-                                                <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <state key="normal" image="Wcircle"/>
-                                                <connections>
-                                                    <action selector="dateSelectionTapped:" destination="9aV-Wv-vxg" eventType="touchUpInside" id="H0l-nn-CmR"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G23-e7-NL7">
-                                                <rect key="frame" x="194.5" y="0.0" width="43.5" height="50"/>
-                                                <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <state key="normal" image="Tcircle"/>
-                                                <connections>
-                                                    <action selector="dateSelectionTapped:" destination="9aV-Wv-vxg" eventType="touchUpInside" id="YL2-ol-tGE"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="56d-5x-jwS">
-                                                <rect key="frame" x="243" y="0.0" width="43.5" height="50"/>
-                                                <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <state key="normal" image="Fcircle"/>
-                                                <connections>
-                                                    <action selector="dateSelectionTapped:" destination="9aV-Wv-vxg" eventType="touchUpInside" id="jw7-rJ-7JT"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7S2-xP-MlT">
-                                                <rect key="frame" x="291.5" y="0.0" width="43.5" height="50"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <state key="normal" image="Scircle"/>
-                                                <connections>
-                                                    <action selector="dateSelectionTapped:" destination="9aV-Wv-vxg" eventType="touchUpInside" id="KJd-Cg-sZS"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="bj6-BF-Wji"/>
-                                        </constraints>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="bj6-BF-Wji"/>
-                                            </mask>
-                                        </variation>
-                                        <variation key="heightClass=regular-widthClass=compact">
-                                            <mask key="constraints">
-                                                <include reference="bj6-BF-Wji"/>
-                                            </mask>
-                                        </variation>
-                                    </stackView>
-                                </subviews>
-                                <variation key="default">
-                                    <mask key="subviews">
-                                        <exclude reference="U8v-94-0en"/>
-                                        <exclude reference="1c7-Pl-vd4"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact" spacing="15">
-                                    <mask key="subviews">
-                                        <include reference="U8v-94-0en"/>
-                                        <include reference="1c7-Pl-vd4"/>
-                                    </mask>
-                                </variation>
-                            </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="UtY-gh-tqf" userLabel="Time Picker Field">
-                                <rect key="frame" x="20" y="348" width="335" height="216"/>
-                                <subviews>
-                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="deT-tB-iEy">
-                                        <rect key="frame" x="0.0" y="0.0" width="335" height="216"/>
-                                    </datePicker>
-                                </subviews>
-                                <variation key="default">
-                                    <mask key="subviews">
-                                        <exclude reference="deT-tB-iEy"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
-                                    <mask key="subviews">
-                                        <include reference="deT-tB-iEy"/>
-                                    </mask>
-                                </variation>
-                            </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="tCS-Og-4As">
-                                <rect key="frame" x="20" y="533" width="335" height="50"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6rH-ES-A2e">
-                                        <rect key="frame" x="0.0" y="0.0" width="335" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="N93-Br-DgZ"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <state key="normal" title="Add New Medication">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="addNewMedicationButton:" destination="9aV-Wv-vxg" eventType="touchUpInside" id="bnV-wy-Tt5"/>
-                                            <segue destination="y9O-MW-t5g" kind="presentation" modalPresentationStyle="fullScreen" id="W1N-RM-9eB"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <variation key="default">
-                                    <mask key="subviews">
-                                        <exclude reference="6rH-ES-A2e"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact" spacing="19">
-                                    <mask key="subviews">
-                                        <include reference="6rH-ES-A2e"/>
-                                    </mask>
-                                </variation>
-                            </stackView>
-                        </subviews>
                         <color key="backgroundColor" red="0.9380127788" green="0.94641774889999997" blue="0.97916191819999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        <constraints>
-                            <constraint firstItem="MR6-KY-WTq" firstAttribute="leading" secondItem="37n-HV-vhR" secondAttribute="leading" constant="20" id="546-ky-XRe"/>
-                            <constraint firstAttribute="trailing" secondItem="MR6-KY-WTq" secondAttribute="trailing" constant="20" id="Acv-Wa-fa8"/>
-                            <constraint firstItem="UtY-gh-tqf" firstAttribute="leading" secondItem="37n-HV-vhR" secondAttribute="leading" constant="20" id="Ckh-yF-z8C"/>
-                            <constraint firstItem="tCS-Og-4As" firstAttribute="leading" secondItem="37n-HV-vhR" secondAttribute="leading" constant="20" id="ECP-07-cxX"/>
-                            <constraint firstItem="Upk-7h-p1s" firstAttribute="top" secondItem="37n-HV-vhR" secondAttribute="top" constant="30" id="LsT-3F-xuO"/>
-                            <constraint firstItem="37n-HV-vhR" firstAttribute="trailing" secondItem="Upk-7h-p1s" secondAttribute="trailing" constant="30" id="R1i-XF-hdf">
-                                <variation key="heightClass=regular-widthClass=compact" constant="20"/>
-                            </constraint>
-                            <constraint firstItem="37n-HV-vhR" firstAttribute="trailing" secondItem="UtY-gh-tqf" secondAttribute="trailing" constant="20" id="TXO-JQ-ITu"/>
-                            <constraint firstItem="Upk-7h-p1s" firstAttribute="leading" secondItem="37n-HV-vhR" secondAttribute="leading" constant="30" id="eEI-d9-eQb">
-                                <variation key="heightClass=regular-widthClass=compact" constant="20"/>
-                            </constraint>
-                            <constraint firstItem="37n-HV-vhR" firstAttribute="trailing" secondItem="tCS-Og-4As" secondAttribute="trailing" constant="20" id="jtn-UA-FEj"/>
-                            <constraint firstItem="UtY-gh-tqf" firstAttribute="top" secondItem="OwO-Rm-emg" secondAttribute="top" constant="348" id="szv-qo-Zxl"/>
-                            <constraint firstItem="37n-HV-vhR" firstAttribute="bottom" secondItem="tCS-Og-4As" secondAttribute="bottom" constant="40" id="uIl-Uv-W6F"/>
-                            <constraint firstItem="UtY-gh-tqf" firstAttribute="top" secondItem="MR6-KY-WTq" secondAttribute="bottom" constant="32" id="xt7-Vw-QIi"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="37n-HV-vhR"/>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="MR6-KY-WTq"/>
-                                <exclude reference="UtY-gh-tqf"/>
-                                <exclude reference="tCS-Og-4As"/>
-                            </mask>
-                            <mask key="constraints">
-                                <exclude reference="546-ky-XRe"/>
-                                <exclude reference="Acv-Wa-fa8"/>
-                                <exclude reference="Ckh-yF-z8C"/>
-                                <exclude reference="szv-qo-Zxl"/>
-                                <exclude reference="xt7-Vw-QIi"/>
-                                <exclude reference="ECP-07-cxX"/>
-                                <exclude reference="TXO-JQ-ITu"/>
-                                <exclude reference="jtn-UA-FEj"/>
-                                <exclude reference="uIl-Uv-W6F"/>
-                            </mask>
-                        </variation>
-                        <variation key="heightClass=regular-widthClass=compact">
-                            <mask key="subviews">
-                                <include reference="MR6-KY-WTq"/>
-                                <include reference="UtY-gh-tqf"/>
-                                <include reference="tCS-Og-4As"/>
-                            </mask>
-                            <mask key="constraints">
-                                <include reference="546-ky-XRe"/>
-                                <include reference="Acv-Wa-fa8"/>
-                                <include reference="Ckh-yF-z8C"/>
-                                <include reference="szv-qo-Zxl"/>
-                                <include reference="xt7-Vw-QIi"/>
-                                <include reference="ECP-07-cxX"/>
-                                <include reference="TXO-JQ-ITu"/>
-                                <include reference="jtn-UA-FEj"/>
-                                <include reference="uIl-Uv-W6F"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Add Medication Detail" id="Go9-08-Mr6"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
-                    <connections>
-                        <outlet property="addNewMedicationButton" destination="6rH-ES-A2e" id="xzo-gF-Gff"/>
-                        <outlet property="medicationTextField" destination="4Eu-lI-qQ0" id="jxX-KG-jvH"/>
-                        <outlet property="timePicker" destination="deT-tB-iEy" id="oTv-fW-87M"/>
-                        <outletCollection property="dateSelectionButtons" destination="8Ps-1i-olm" collectionClass="NSMutableArray" id="U7J-DL-ZW5"/>
-                        <outletCollection property="dateSelectionButtons" destination="f5x-7t-RHi" collectionClass="NSMutableArray" id="BhA-Hl-tJZ"/>
-                        <outletCollection property="dateSelectionButtons" destination="ruK-da-F1M" collectionClass="NSMutableArray" id="NSK-bw-CZF"/>
-                        <outletCollection property="dateSelectionButtons" destination="MMd-5y-Z9f" collectionClass="NSMutableArray" id="K2K-jo-c4M"/>
-                        <outletCollection property="dateSelectionButtons" destination="G23-e7-NL7" collectionClass="NSMutableArray" id="e0D-5I-2NL"/>
-                        <outletCollection property="dateSelectionButtons" destination="56d-5x-jwS" collectionClass="NSMutableArray" id="mw7-Om-Rc2"/>
-                        <outletCollection property="dateSelectionButtons" destination="7S2-xP-MlT" collectionClass="NSMutableArray" id="QPh-HY-yEA"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ae8-Fz-LKx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3869.5652173913045" y="279.91071428571428"/>
+            <point key="canvasLocation" x="3993" y="240"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="Jwi-Ri-jN0">
@@ -1172,18 +895,10 @@
             <point key="canvasLocation" x="6448" y="-1132"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="Fcircle" width="173" height="171"/>
-        <image name="Mcircle" width="171" height="173"/>
-        <image name="Scircle" width="169" height="172"/>
-        <image name="Tcircle" width="171" height="172"/>
-        <image name="Wcircle" width="175" height="173"/>
-    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="AIu-3u-Xtl"/>
         <segue reference="otO-qp-NOn"/>
-        <segue reference="wmF-fg-5df"/>
-        <segue reference="D9J-Jx-Udc"/>
+        <segue reference="xa4-L2-QV7"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>
