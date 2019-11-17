@@ -15,6 +15,8 @@ target 'ParkinSense' do
 	pod 'Firebase/Firestore'
 	pod 'Firebase/Database'
   pod 'BEMCheckBox'
+  pod 'Charts'
+  pod 'Realm'
 
 
   target 'ParkinSenseTests' do

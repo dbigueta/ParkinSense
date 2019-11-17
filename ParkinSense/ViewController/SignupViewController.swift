@@ -332,7 +332,7 @@ class SignupViewController: UIViewController {
                     //User was created successfully, now store the username
                     let db = Firestore.firestore()
                     
-                    db.collection("users").document(result!.user.uid).setData(["Username": username, "uid": result!.user.uid, "MedicationName": medicationName, "login_time":rightNow - 3600*24]) { (error) in
+                    db.collection("users").document(result!.user.uid).setData(["Username": username, "uid": result!.user.uid, "MedicationName": medicationName, "login_time":rightNow - 3600*24, "Game_One_lastMaxScore":0]) { (error) in
                         
                         if error != nil {
                             //Show error message
@@ -341,7 +341,9 @@ class SignupViewController: UIViewController {
                     }
                     
                     //Transition to the home screen
-                    self.performSegue(withIdentifier: "signUpToHomeID", sender: nil)
+                    let homeViewController:HomeViewController = HomeViewController()
+                    self.present(homeViewController, animated: true, completion: nil)
+                    //self.performSegue(withIdentifier: "goToHomeID", sender: nil)
                 }
             }
         }

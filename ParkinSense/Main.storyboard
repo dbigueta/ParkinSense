@@ -43,9 +43,9 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="Twe-4y-g4U"/>
                     </navigationItem>
                     <connections>
-                        <segue destination="eVj-ik-Udv" kind="presentation" identifier="signUpToHomeID" modalPresentationStyle="fullScreen" id="xa4-L2-QV7"/>
                         <segue destination="lr0-9s-vBc" kind="unwind" identifier="unwindTologin" unwindAction="unwindTologinWithSegue:" id="Vry-7R-fva"/>
                         <segue destination="9aV-Wv-vxg" kind="presentation" identifier="addMedicationID" id="vn2-59-sOp"/>
+                        <segue destination="eVj-ik-Udv" kind="presentation" identifier="goToHomeID" id="4Av-bl-Z8Q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kmq-U0-mxv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -75,14 +75,14 @@
             <objects>
                 <viewController id="eVj-ik-Udv" customClass="HomeViewController" customModule="ParkinSense" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" restorationIdentifier="HomeVC" id="b5g-Mf-2hH">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="876"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sYC-SU-eHD">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="876"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VC9-Zp-ttA">
-                                        <rect key="frame" x="0.0" y="-271" width="414" height="1300"/>
+                                        <rect key="frame" x="0.0" y="-281" width="414" height="1300"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kvA-LF-Avm">
                                                 <rect key="frame" x="2" y="763" width="414" height="76"/>
@@ -896,10 +896,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Lgf-1W-bky"/>
         <segue reference="AIu-3u-Xtl"/>
         <segue reference="otO-qp-NOn"/>
-        <segue reference="xa4-L2-QV7"/>
+        <segue reference="4Av-bl-Z8Q"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>
