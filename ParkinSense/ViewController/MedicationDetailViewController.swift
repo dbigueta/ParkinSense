@@ -21,21 +21,11 @@ import BEMCheckBox
 
 class MedicationDetailViewController: UIViewController {
     
-    //@IBOutlet weak var medicationTextField: UITextField!
-    
-//    @IBOutlet var dateSelectionButtons: [UIButton]!
-//
-//    @IBOutlet weak var timePicker: UIDatePicker!
-    
-    //@IBOutlet weak var addNewMedicationButton: UIButton!
-    
-    var isDateSelect: Bool = false;
-    
-    
-    
     let medicationTextField =  CustomTextField(frame: CGRect(x: 0, y: 0, width: 300, height: 60))
     
     let screenSize = UIScreen.main.bounds
+    
+    let timePicker = UIDatePicker()
 
     let medicationTitleLabel = UILabel()
     let medicationLabel = UILabel()
@@ -67,7 +57,6 @@ class MedicationDetailViewController: UIViewController {
         
         let sectionWidth = screenSize.width/7
         let offset = (sectionWidth - CGFloat(checkboxDiameter))/2
-        
         
         // App Logo UI Image
         let appImageName = "AppLogoImage.png"
@@ -393,35 +382,31 @@ class MedicationDetailViewController: UIViewController {
             medicationTimeLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16.0)
         ])
         
-        /////////////////
+        // Time Picker
+        let timePickerHeight: CGFloat = 150
+        timePicker.translatesAutoresizingMaskIntoConstraints = false
+        timePicker.backgroundColor = .clear
+        timePicker.timeZone = NSTimeZone.local
+        timePicker.datePickerMode = .time
+        
+        self.view.addSubview(timePicker)
+        
 
-//
-//        // Error UI Label
-//        let errorLabelHeight: CGFloat = 20
-//        errorLabel.textColor = UIColor(red:0.97, green:0.22, blue:0.35, alpha:1.0)
-//        errorLabel.textAlignment = .center
-//        errorLabel.text = "Error"
-//        errorLabel.numberOfLines = 1
-//        errorLabel.font = UIFont.systemFont(ofSize: errorLabelHeight, weight: .light)
-//        errorLabel.adjustsFontSizeToFitWidth = true
-//        errorLabel.minimumScaleFactor = 0.5
-//        errorLabel.translatesAutoresizingMaskIntoConstraints = false
-//        self.view.addSubview(errorLabel)
-//
-//        NSLayoutConstraint.activate([
-//            errorLabel.topAnchor.constraint(equalTo: medicationLabel.topAnchor, constant: medicationLabelHeight + 16.0),
-//            errorLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16.0),
-//            errorLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16.0)
-//        ])
+        NSLayoutConstraint.activate([
+            timePicker.topAnchor.constraint(equalTo: medicationTimeLabel.topAnchor, constant: medicationTimeLabelHeight + 16.0),
+            timePicker.heightAnchor.constraint(equalToConstant: timePickerHeight),
+            timePicker.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16.0),
+            timePicker.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16.0)
+        ])
 
-        // Cancel Button
+         // Cancel Button
          cancelButton.setTitleColor(buttonTextColour, for: .normal)
          cancelButton.frame = CGRect(x: self.view.frame.size.width - 60, y: 60, width: 50, height: cancelButtonHeight)
          cancelButton.backgroundColor = buttonColour
          cancelButton.layer.cornerRadius = 5
          cancelButton.setTitle("Cancel", for: .normal)
          cancelButton.translatesAutoresizingMaskIntoConstraints = false
-         //cancelButton.addTarget(self, action: #selector(createAnAccountTapped), for: .touchUpInside)
+         cancelButton.addTarget(self, action: #selector(cancelButtonFunc), for: .touchUpInside)
          self.view.addSubview(cancelButton)
 
          NSLayoutConstraint.activate([
@@ -438,7 +423,7 @@ class MedicationDetailViewController: UIViewController {
          addNewMedicationButton.layer.cornerRadius = 5
          addNewMedicationButton.setTitle("Add New Medication", for: .normal)
          addNewMedicationButton.translatesAutoresizingMaskIntoConstraints = false
-         //addNewMedicationButton.addTarget(self, action: #selector(alreadyHaveAnAccountTapped), for: .touchUpInside)
+         addNewMedicationButton.addTarget(self, action: #selector(addNewMedicationButton(_:)), for: .touchUpInside)
          self.view.addSubview(addNewMedicationButton)
 
          NSLayoutConstraint.activate([
@@ -453,9 +438,6 @@ class MedicationDetailViewController: UIViewController {
         super.viewDidLoad()
 
         self.view.backgroundColor = UIColor(red:0.96, green:0.95, blue:0.95, alpha:1.0)
-//        timePicker.datePickerMode = .time
-        
-  //      timePicker.timeZone = NSTimeZone.local
         
         setUpElements()
     }
@@ -470,25 +452,6 @@ class MedicationDetailViewController: UIViewController {
        // Utilities.styleFilledButton(addNewMedicationButton)
     }
     
-    
-    /**
-        Function to change the appearance of the day buttons when tapped
-     
-         - Parameter sender: Button itself
-         - Returns: None
-    **/
-    @IBAction func dateSelectionTapped(_ sender: UIButton) {
-        isDateSelect.toggle()
-        
-        if isDateSelect{
-            sender.tintColor = UIColor.init(red: 0/255, green: 0/255, blue: 0/255, alpha: 1)
-        }
-        else{
-            sender.tintColor = UIColor.init(red: 169/255, green: 170/255, blue: 171/255, alpha: 1)
-        }
-    }
-    
-    
     /**
         Function about the add new medication Button, will direct you back to the sign up page and medication will be displayed on the screen
      
@@ -497,11 +460,10 @@ class MedicationDetailViewController: UIViewController {
          - Returns: No
             
     **/
-    @IBAction func addNewMedicationButton(_ sender: Any) {
+    @objc func addNewMedicationButton(_ sender: Any) {
         medicationName = medicationTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) //read the Medication Name from text field
         
         let dateFormatter = DateFormatter()
-        
         dateFormatter.timeStyle = DateFormatter.Style.short
         
         //timePickerTime = dateFormatter.string(from: timePicker.date) //read the timepicker value for later use
@@ -509,5 +471,19 @@ class MedicationDetailViewController: UIViewController {
         print(timePickerTime)
         
         medicationLabelAlpha = 1 //change the medicationLabel's alpha from 0 to 1 that display the medication information in sign up page
+        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "DoUpdateLabel"), object: nil, userInfo: nil)
+        
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    /**
+     Function that will lead you back to login page if button is pressed
+     
+     - Parameter sender: Self Button
+     - Returns: None
+     **/
+    @objc func cancelButtonFunc(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
 }

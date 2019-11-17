@@ -896,6 +896,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="Lgf-1W-bky"/>
         <segue reference="AIu-3u-Xtl"/>
         <segue reference="otO-qp-NOn"/>
         <segue reference="xa4-L2-QV7"/>

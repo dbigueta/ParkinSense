@@ -243,6 +243,7 @@ class SignupViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(self.setUpElement), name: NSNotification.Name(rawValue: "DoUpdateLabel"), object: nil)
         self.view.backgroundColor = UIColor(red:0.96, green:0.95, blue:0.95, alpha:1.0)
         
         setUpElement()
@@ -254,7 +255,7 @@ class SignupViewController: UIViewController {
      
      - Returns: No
      **/
-    func setUpElement(){
+    @objc func setUpElement(){
         
         //Hide the error label, medication label and save the Username and Password
         errorLabel.alpha = 0
