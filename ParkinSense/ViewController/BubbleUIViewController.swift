@@ -38,7 +38,7 @@ class BubbleUIViewController: UIViewController {
     let instructionsLabelLine1: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Move your ball towards the target"
+        label.text = "Tap on the bubble as it pops up"
         label.textAlignment = .center
         label.textColor = bubbleTextColour
         label.heightAnchor.constraint(equalToConstant: instructionsLabelHeight).isActive = true
@@ -49,7 +49,7 @@ class BubbleUIViewController: UIViewController {
     let instructionsLabelLine2: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Keep your hand as steady as possible"
+        label.text = "Tap as quickly as you can"
         label.textAlignment = .center
         label.textColor = bubbleTextColour
         label.heightAnchor.constraint(equalToConstant: instructionsLabelHeight).isActive = true

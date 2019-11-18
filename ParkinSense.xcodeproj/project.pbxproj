@@ -13,14 +13,17 @@
 		03AB56A423627D22000A3475 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 03AB56A323627D22000A3475 /* GoogleService-Info.plist */; };
 		060A222E236FD2CA00A9324E /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060A222D236FD2CA00A9324E /* CustomTextField.swift */; };
 		063FC2342370C05200FDFB45 /* ParkinSenseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063FC2332370C05200FDFB45 /* ParkinSenseTests.swift */; };
-		063FC23D2370C06400FDFB45 /* CreateAccountPageUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063FC2372370C06300FDFB45 /* CreateAccountPageUITest.swift */; };
-		063FC23E2370C06400FDFB45 /* HomePageUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063FC2382370C06300FDFB45 /* HomePageUITest.swift */; };
-		063FC23F2370C06400FDFB45 /* GameTiltUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063FC2392370C06300FDFB45 /* GameTiltUITest.swift */; };
-		063FC2402370C06400FDFB45 /* LoginPageUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063FC23A2370C06400FDFB45 /* LoginPageUITest.swift */; };
 		063FC2442370E2DD00FDFB45 /* TiltGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063FC2422370E2DD00FDFB45 /* TiltGameScene.swift */; };
 		063FC2452370E2DD00FDFB45 /* CountdownGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063FC2432370E2DD00FDFB45 /* CountdownGameScene.swift */; };
 		063FC2482370E30500FDFB45 /* TiltScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063FC2462370E30500FDFB45 /* TiltScoreViewController.swift */; };
 		063FC2492370E30500FDFB45 /* TiltViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063FC2472370E30500FDFB45 /* TiltViewController.swift */; };
+		0659502523833FE40040377F /* GameTiltUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0659501D23833FE30040377F /* GameTiltUITest.swift */; };
+		0659502623833FE40040377F /* GameTiltScoreUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0659501E23833FE30040377F /* GameTiltScoreUITest.swift */; };
+		0659502723833FE40040377F /* LoginPageUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0659501F23833FE30040377F /* LoginPageUITest.swift */; };
+		0659502923833FE40040377F /* CreateAccountPageUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0659502123833FE30040377F /* CreateAccountPageUITest.swift */; };
+		0659502A23833FE40040377F /* GameBubbleScoreUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0659502223833FE40040377F /* GameBubbleScoreUITest.swift */; };
+		0659502B23833FE40040377F /* GameBubbleUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0659502323833FE40040377F /* GameBubbleUITest.swift */; };
+		0659502C23833FE40040377F /* HomePageUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0659502423833FE40040377F /* HomePageUITest.swift */; };
 		065D2FEA237DF8CD00CE1B02 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 065D2FE9237DF8CD00CE1B02 /* CoreFoundation.framework */; };
 		065D2FEC237FD89900CE1B02 /* Checkbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065D2FEB237FD89800CE1B02 /* Checkbox.swift */; };
 		1497BF002378F8BD00C9120C /* BubbleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1497BEFF2378F8BD00C9120C /* BubbleViewController.swift */; };
@@ -70,15 +73,19 @@
 		060A222D236FD2CA00A9324E /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		063FC2322370C05200FDFB45 /* ParkinSenseTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ParkinSenseTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		063FC2332370C05200FDFB45 /* ParkinSenseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkinSenseTests.swift; sourceTree = "<group>"; };
-		063FC2352370C06300FDFB45 /* ParkinSenseUITests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ParkinSenseUITests-Bridging-Header.h"; sourceTree = "<group>"; };
-		063FC2372370C06300FDFB45 /* CreateAccountPageUITest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountPageUITest.swift; sourceTree = "<group>"; };
-		063FC2382370C06300FDFB45 /* HomePageUITest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePageUITest.swift; sourceTree = "<group>"; };
-		063FC2392370C06300FDFB45 /* GameTiltUITest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameTiltUITest.swift; sourceTree = "<group>"; };
-		063FC23A2370C06400FDFB45 /* LoginPageUITest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPageUITest.swift; sourceTree = "<group>"; };
 		063FC2422370E2DD00FDFB45 /* TiltGameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TiltGameScene.swift; sourceTree = "<group>"; };
 		063FC2432370E2DD00FDFB45 /* CountdownGameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountdownGameScene.swift; sourceTree = "<group>"; };
 		063FC2462370E30500FDFB45 /* TiltScoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TiltScoreViewController.swift; sourceTree = "<group>"; };
 		063FC2472370E30500FDFB45 /* TiltViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TiltViewController.swift; sourceTree = "<group>"; };
+		0659501C23833FE20040377F /* ParkinSenseUITests-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ParkinSenseUITests-Bridging-Header.h"; sourceTree = "<group>"; };
+		0659501D23833FE30040377F /* GameTiltUITest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameTiltUITest.swift; sourceTree = "<group>"; };
+		0659501E23833FE30040377F /* GameTiltScoreUITest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameTiltScoreUITest.swift; sourceTree = "<group>"; };
+		0659501F23833FE30040377F /* LoginPageUITest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPageUITest.swift; sourceTree = "<group>"; };
+		0659502023833FE30040377F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0659502123833FE30040377F /* CreateAccountPageUITest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountPageUITest.swift; sourceTree = "<group>"; };
+		0659502223833FE40040377F /* GameBubbleScoreUITest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameBubbleScoreUITest.swift; sourceTree = "<group>"; };
+		0659502323833FE40040377F /* GameBubbleUITest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameBubbleUITest.swift; sourceTree = "<group>"; };
+		0659502423833FE40040377F /* HomePageUITest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePageUITest.swift; sourceTree = "<group>"; };
 		065D2FE9237DF8CD00CE1B02 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		065D2FEB237FD89800CE1B02 /* Checkbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Checkbox.swift; path = ParkinSense/ViewController/Checkbox.swift; sourceTree = SOURCE_ROOT; };
 		0B083E52DCEF6DB9DB20CB12 /* Pods_ParkinSense.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ParkinSense.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -97,7 +104,6 @@
 		A61328CE23627A0800C7066C /* ParkinSenseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ParkinSenseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A61328D423627A0800C7066C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A61328D923627A0800C7066C /* ParkinSenseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ParkinSenseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A61328DF23627A0800C7066C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A61328EC23627A5F00C7066C /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A61328ED23627A5F00C7066C /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		A61328EE23627A5F00C7066C /* TimeandExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeandExtension.swift; sourceTree = "<group>"; };
@@ -217,12 +223,15 @@
 		A61328DC23627A0800C7066C /* ParkinSenseUITests */ = {
 			isa = PBXGroup;
 			children = (
-				063FC2372370C06300FDFB45 /* CreateAccountPageUITest.swift */,
-				063FC2392370C06300FDFB45 /* GameTiltUITest.swift */,
-				063FC2382370C06300FDFB45 /* HomePageUITest.swift */,
-				063FC23A2370C06400FDFB45 /* LoginPageUITest.swift */,
-				A61328DF23627A0800C7066C /* Info.plist */,
-				063FC2352370C06300FDFB45 /* ParkinSenseUITests-Bridging-Header.h */,
+				0659502123833FE30040377F /* CreateAccountPageUITest.swift */,
+				0659502223833FE40040377F /* GameBubbleScoreUITest.swift */,
+				0659502323833FE40040377F /* GameBubbleUITest.swift */,
+				0659501E23833FE30040377F /* GameTiltScoreUITest.swift */,
+				0659501D23833FE30040377F /* GameTiltUITest.swift */,
+				0659502423833FE40040377F /* HomePageUITest.swift */,
+				0659502023833FE30040377F /* Info.plist */,
+				0659501F23833FE30040377F /* LoginPageUITest.swift */,
+				0659501C23833FE20040377F /* ParkinSenseUITests-Bridging-Header.h */,
 			);
 			path = ParkinSenseUITests;
 			sourceTree = "<group>";
@@ -540,10 +549,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				063FC23F2370C06400FDFB45 /* GameTiltUITest.swift in Sources */,
-				063FC23D2370C06400FDFB45 /* CreateAccountPageUITest.swift in Sources */,
-				063FC2402370C06400FDFB45 /* LoginPageUITest.swift in Sources */,
-				063FC23E2370C06400FDFB45 /* HomePageUITest.swift in Sources */,
+				0659502C23833FE40040377F /* HomePageUITest.swift in Sources */,
+				0659502923833FE40040377F /* CreateAccountPageUITest.swift in Sources */,
+				0659502523833FE40040377F /* GameTiltUITest.swift in Sources */,
+				0659502623833FE40040377F /* GameTiltScoreUITest.swift in Sources */,
+				0659502A23833FE40040377F /* GameBubbleScoreUITest.swift in Sources */,
+				0659502723833FE40040377F /* LoginPageUITest.swift in Sources */,
+				0659502B23833FE40040377F /* GameBubbleUITest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

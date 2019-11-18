@@ -40,9 +40,8 @@ class HomePageUITest: XCTestCase {
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
         //login part
-        let userName = "sgnb@t.com"
-        let password = "ywwuyi"
-        
+        let userName = "test@t.com"
+        let password = "123456"
         
         let app = XCUIApplication()
         let usernameTextField = app.textFields["Email"]
@@ -62,13 +61,13 @@ class HomePageUITest: XCTestCase {
         //let app = XCUIApplication()
         //app.alerts["Reminder"].buttons["OK"].tap()
         let scrollViewsQuery = app.scrollViews
-        let page1Of2Element = scrollViewsQuery.otherElements.containing(.pageIndicator, identifier:"page 1 of 2").element
+        let WeeklyProgress = scrollViewsQuery.otherElements.containing(.staticText, identifier:"Weekly Progress").element
         
-        page1Of2Element/*@START_MENU_TOKEN@*/.swipeRight()/*[[".swipeUp()",".swipeRight()"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
-        page1Of2Element.swipeDown()
-        page1Of2Element.swipeUp()
+        WeeklyProgress/*@START_MENU_TOKEN@*/.swipeRight()/*[[".swipeUp()",".swipeRight()"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        WeeklyProgress.swipeDown()
+        WeeklyProgress.swipeUp()
         
-        page1Of2Element.swipeUp()
+        WeeklyProgress.swipeUp()
         
         
         
@@ -78,17 +77,17 @@ class HomePageUITest: XCTestCase {
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
         //login part
-        let userName = "sgnb@t.com"
-        let password = "ywwuyi"
+        let userName = "test@t.com"
+        let password = "123456"
         
         
         let app = XCUIApplication()
-        let usernameTextField = app.textFields["   User Account"]
+        let usernameTextField = app.textFields["Email"]
         XCTAssertTrue(usernameTextField.exists)
         usernameTextField.tap()
         usernameTextField.typeText(userName)
         
-        let passwordTextField = app.textFields["   Password"]
+        let passwordTextField = app.textFields["Password"]
         XCTAssertTrue(passwordTextField.exists)
         passwordTextField.tap()
         passwordTextField.typeText(password)
@@ -115,16 +114,17 @@ class HomePageUITest: XCTestCase {
     
     func testMainUI_weekButtons(){
         //login part
-        let userName = "sgnb@t.com"
-        let password = "ywwuyi"
+        let userName = "test@t.com"
+        let password = "123456"
+        
         
         let app = XCUIApplication()
-        let usernameTextField = app.textFields["   User Account"]
+        let usernameTextField = app.textFields["Email"]
         XCTAssertTrue(usernameTextField.exists)
         usernameTextField.tap()
         usernameTextField.typeText(userName)
         
-        let passwordTextField = app.textFields["   Password"]
+        let passwordTextField = app.textFields["Password"]
         XCTAssertTrue(passwordTextField.exists)
         passwordTextField.tap()
         passwordTextField.typeText(password)
@@ -155,6 +155,18 @@ class HomePageUITest: XCTestCase {
         //        elementsQuery.buttons["03"].tap()
         //        elementsQuery.buttons["06"].tap()
         
+        
+    }
+    
+    func testMainUI_trendline(){
+        
+    }
+    
+    func testMainUI_mood(){
+        
+    }
+    
+    func testMainUI_dailydata(){
         
     }
 
