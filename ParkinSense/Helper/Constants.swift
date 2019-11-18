@@ -48,26 +48,30 @@ var gamedata7 = 0
 
 var values = [gamedata1, gamedata2, gamedata3, gamedata4, gamedata5, gamedata6, gamedata7]
 
-/* UI Constants*/
-
-var headerHeight:CGFloat = 20
+/* Home UI Constants*/
+var screenWidth = UIScreen.main.bounds.width
+let headerFontSize:CGFloat = 20
 
 var weekButtonHeight: CGFloat = 30
 
-var gameLabelHeight: CGFloat = 30
-
-var screenWidth = UIScreen.main.bounds.width
-
 var homeDayButtonBorderWidth:CGFloat = 2
-
 var homeDayButtonWidth = screenWidth/4 - 5
 
 var homeGameButtonBorderWidth:CGFloat = 2
+var homeGameButtonWidth = screenWidth/2 - 20
 
-var homeGameButtonWidth = screenWidth/2 - 5
+var headerHeight:CGFloat = 50
+var gameLabelHeight: CGFloat = 30
 
-var calendarViewHeight: CGFloat = 350
-var progressViewHeight: CGFloat = 350
+var progressViewHeight: CGFloat = 50
+var dataScrollViewHeight: CGFloat = 250
+var calendarViewHeight: CGFloat = 340
+var gameViewHeight: CGFloat = 250
+
+var offsetTopWeekButtons = (screenWidth - (4*homeDayButtonWidth))/5
+var offsetBottomWeekButtons = (screenWidth - (3*homeDayButtonWidth) - 2*offsetTopWeekButtons)/2
+var offsetGameButtons = (screenWidth - (2*homeGameButtonWidth))/3
+
 
 
 /* TILT Game */

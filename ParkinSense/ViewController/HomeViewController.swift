@@ -25,19 +25,25 @@ import Firebase
 
 class HomeViewController: UIViewController, UIScrollViewDelegate{
     
+    var ref: DatabaseReference?
+
+    var currentYear = Calendar.current.component(.year, from: Date()) //get the current Year
+
+    var currentWeek = Calendar.current.component(.weekOfYear, from: Date()) //get the current week of the year
+
+    var rightNow = Date() //get the current date and time
+
+    let db = Firestore.firestore() //use for data read and write in database for later function
+    
     let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
-
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         return scrollView
     }()
 
     let scrollViewContainer: UIStackView = {
         let view = UIStackView()
-
         view.axis = .vertical
-        view.spacing = 10
-
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -45,7 +51,6 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
     let progressView: UIView = {
         let view = UIView()
         view.heightAnchor.constraint(equalToConstant: progressViewHeight).isActive = true
-        view.backgroundColor = .blue
         return view
     }()
     
@@ -54,13 +59,14 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Weekly Progress"
         label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: headerFontSize, weight: .medium)
         label.heightAnchor.constraint(equalToConstant: headerHeight).isActive = true
         return label
     }()
 
     let dataScrollView: UIScrollView = {
         let scrollView = UIScrollView()
-        scrollView.heightAnchor.constraint(equalToConstant: 250).isActive = true
+        scrollView.heightAnchor.constraint(equalToConstant: dataScrollViewHeight).isActive = true
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         return scrollView
     }()
@@ -82,7 +88,6 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
     let calendarView: UIView = {
         let view = UIView()
         view.heightAnchor.constraint(equalToConstant: calendarViewHeight).isActive = true
-        view.backgroundColor = .blue
         return view
     }()
     
@@ -91,6 +96,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Weekly Calendar"
         label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: headerFontSize, weight: .medium)
         label.heightAnchor.constraint(equalToConstant: headerHeight).isActive = true
         return label
     }()
@@ -135,6 +141,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         button.setTitleColor(buttonTextColour, for: .normal)
         button.layer.borderWidth = homeDayButtonBorderWidth
         button.layer.cornerRadius = 5
+        button.backgroundColor = buttonColour
         button.widthAnchor.constraint(equalToConstant: homeDayButtonWidth).isActive = true
         button.heightAnchor.constraint(equalToConstant: homeDayButtonWidth).isActive = true
         //button.layer.borderColor = UIColor(red:0.75, green:0.85, blue:0.84, alpha:1.0).cgColor
@@ -147,6 +154,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         button.setTitleColor(buttonTextColour, for: .normal)
         button.layer.borderWidth = homeDayButtonBorderWidth
         button.layer.cornerRadius = 5
+        button.backgroundColor = buttonColour
         button.widthAnchor.constraint(equalToConstant: homeDayButtonWidth).isActive = true
         button.heightAnchor.constraint(equalToConstant: homeDayButtonWidth).isActive = true
         return button
@@ -158,6 +166,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         button.setTitleColor(buttonTextColour, for: .normal)
         button.layer.borderWidth = homeDayButtonBorderWidth
         button.layer.cornerRadius = 5
+        button.backgroundColor = buttonColour
         button.widthAnchor.constraint(equalToConstant: homeDayButtonWidth).isActive = true
         button.heightAnchor.constraint(equalToConstant: homeDayButtonWidth).isActive = true
         return button
@@ -169,6 +178,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         button.setTitleColor(buttonTextColour, for: .normal)
         button.layer.borderWidth = homeDayButtonBorderWidth
         button.layer.cornerRadius = 5
+        button.backgroundColor = buttonColour
         button.widthAnchor.constraint(equalToConstant: homeDayButtonWidth).isActive = true
         button.heightAnchor.constraint(equalToConstant: homeDayButtonWidth).isActive = true
         return button
@@ -180,6 +190,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         button.setTitleColor(buttonTextColour, for: .normal)
         button.layer.borderWidth = homeDayButtonBorderWidth
         button.layer.cornerRadius = 5
+        button.backgroundColor = buttonColour
         button.widthAnchor.constraint(equalToConstant: homeDayButtonWidth).isActive = true
         button.heightAnchor.constraint(equalToConstant: homeDayButtonWidth).isActive = true
         return button
@@ -191,6 +202,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         button.setTitleColor(buttonTextColour, for: .normal)
         button.layer.borderWidth = homeDayButtonBorderWidth
         button.layer.cornerRadius = 5
+        button.backgroundColor = buttonColour
         button.widthAnchor.constraint(equalToConstant: homeDayButtonWidth).isActive = true
         button.heightAnchor.constraint(equalToConstant: homeDayButtonWidth).isActive = true
         return button
@@ -202,6 +214,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         button.setTitleColor(buttonTextColour, for: .normal)
         button.layer.borderWidth = homeDayButtonBorderWidth
         button.layer.cornerRadius = 5
+        button.backgroundColor = buttonColour
         button.widthAnchor.constraint(equalToConstant: homeDayButtonWidth).isActive = true
         button.heightAnchor.constraint(equalToConstant: homeDayButtonWidth).isActive = true
         return button
@@ -209,8 +222,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
 
     let gameView: UIView = {
         let view = UIView()
-        view.heightAnchor.constraint(equalToConstant: 1200).isActive = true
-        //view.backgroundColor = .green
+        view.heightAnchor.constraint(equalToConstant: gameViewHeight).isActive = true
         return view
     }()
     
@@ -219,6 +231,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Games"
         label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: headerFontSize, weight: .medium)
         label.heightAnchor.constraint(equalToConstant: headerHeight).isActive = true
         return label
     }()
@@ -229,6 +242,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         button.setTitleColor(buttonTextColour, for: .normal)
         button.layer.borderWidth = homeGameButtonBorderWidth
         button.layer.cornerRadius = 5
+        button.backgroundColor = buttonColour
         button.setTitle("Tilt", for: .normal)
         button.addTarget(self, action: #selector(tiltButtonPressed(_:)), for: .touchUpInside)
         button.widthAnchor.constraint(equalToConstant: homeGameButtonWidth).isActive = true
@@ -242,6 +256,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         button.setTitleColor(buttonTextColour, for: .normal)
         button.layer.borderWidth = homeGameButtonBorderWidth
         button.layer.cornerRadius = 5
+        button.backgroundColor = buttonColour
         button.setTitle("Bubble Pop", for: .normal)
         button.addTarget(self, action: #selector(bubblePopButtonPressed(_:)), for: .touchUpInside)
         button.widthAnchor.constraint(equalToConstant: homeGameButtonWidth).isActive = true
@@ -251,6 +266,8 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
     
     override func viewDidLoad(){
         super.viewDidLoad()
+        
+        progressView.addSubview(progressLabel)
         
         calendarView.addSubview(weekLabel)
         calendarView.addSubview(prevWeek)
@@ -270,13 +287,14 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         
         view.addSubview(scrollView)
         scrollView.addSubview(scrollViewContainer)
+        scrollViewContainer.addArrangedSubview(progressView)
         scrollViewContainer.addArrangedSubview(dataScrollView)
         scrollViewContainer.addArrangedSubview(calendarView)
         scrollViewContainer.addArrangedSubview(gameView)
 
         scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        scrollView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
 
         scrollViewContainer.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor).isActive = true
@@ -287,52 +305,56 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         // this is important for scrolling
         scrollViewContainer.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
         
+        progressLabel.leadingAnchor.constraint(equalTo: progressView.leadingAnchor, constant: 16.0).isActive = true
+        progressLabel.trailingAnchor.constraint(equalTo: progressView.trailingAnchor, constant: -16.0).isActive = true
+        progressLabel.topAnchor.constraint(equalTo: progressView.topAnchor).isActive = true
+        
         weekLabel.leadingAnchor.constraint(equalTo: calendarView.leadingAnchor, constant: 16.0).isActive = true
         weekLabel.trailingAnchor.constraint(equalTo: calendarView.trailingAnchor, constant: -16.0).isActive = true
         weekLabel.topAnchor.constraint(equalTo: calendarView.topAnchor, constant: 16.0).isActive = true
         
         prevWeek.leadingAnchor.constraint(equalTo: calendarView.leadingAnchor, constant: 8.0).isActive = true
-        prevWeek.topAnchor.constraint(equalTo: weekLabel.topAnchor, constant: headerHeight + 16.0).isActive = true
+        prevWeek.topAnchor.constraint(equalTo: weekLabel.topAnchor, constant: headerHeight).isActive = true
         
         weekDateLabel.leadingAnchor.constraint(equalTo: prevWeek.leadingAnchor, constant: screenWidth/3).isActive = true
-        weekDateLabel.topAnchor.constraint(equalTo: weekLabel.topAnchor, constant: headerHeight + 16.0).isActive = true
+        weekDateLabel.topAnchor.constraint(equalTo: weekLabel.topAnchor, constant: headerHeight).isActive = true
         
         nextWeek.trailingAnchor.constraint(equalTo: calendarView.trailingAnchor, constant: -8.0).isActive = true
-        nextWeek.topAnchor.constraint(equalTo: weekLabel.topAnchor, constant: headerHeight + 16.0).isActive = true
+        nextWeek.topAnchor.constraint(equalTo: weekLabel.topAnchor, constant: headerHeight).isActive = true
         
-        sundayButton.leadingAnchor.constraint(equalTo: calendarView.leadingAnchor, constant: 3).isActive = true
-        sundayButton.topAnchor.constraint(equalTo: weekDateLabel.topAnchor, constant: weekButtonHeight + 16.0).isActive = true
+        sundayButton.leadingAnchor.constraint(equalTo: calendarView.leadingAnchor, constant: offsetTopWeekButtons).isActive = true
+        sundayButton.topAnchor.constraint(equalTo: weekDateLabel.topAnchor, constant: weekButtonHeight + 24.0).isActive = true
 
-        mondayButton.leadingAnchor.constraint(equalTo: sundayButton.leadingAnchor, constant: homeDayButtonWidth + 4).isActive = true
-        mondayButton.topAnchor.constraint(equalTo: weekDateLabel.topAnchor, constant: weekButtonHeight + 16.0).isActive = true
+        mondayButton.leadingAnchor.constraint(equalTo: sundayButton.leadingAnchor, constant: homeDayButtonWidth + offsetTopWeekButtons).isActive = true
+        mondayButton.topAnchor.constraint(equalTo: weekDateLabel.topAnchor, constant: weekButtonHeight + 24.0).isActive = true
         
-        tuesdayButton.leadingAnchor.constraint(equalTo: mondayButton.leadingAnchor, constant: homeDayButtonWidth + 4).isActive = true
-        tuesdayButton.topAnchor.constraint(equalTo: weekDateLabel.topAnchor, constant: weekButtonHeight + 16.0).isActive = true
+        tuesdayButton.leadingAnchor.constraint(equalTo: mondayButton.leadingAnchor, constant: homeDayButtonWidth + offsetTopWeekButtons).isActive = true
+        tuesdayButton.topAnchor.constraint(equalTo: weekDateLabel.topAnchor, constant: weekButtonHeight + 24.0).isActive = true
 
-        wednesdayButton.leadingAnchor.constraint(equalTo: tuesdayButton.leadingAnchor, constant: homeDayButtonWidth + 4).isActive = true
-        wednesdayButton.topAnchor.constraint(equalTo: weekDateLabel.topAnchor, constant: weekButtonHeight + 16.0).isActive = true
+        wednesdayButton.leadingAnchor.constraint(equalTo: tuesdayButton.leadingAnchor, constant: homeDayButtonWidth + offsetTopWeekButtons).isActive = true
+        wednesdayButton.topAnchor.constraint(equalTo: weekDateLabel.topAnchor, constant: weekButtonHeight + 24.0).isActive = true
 
-        thursdayButton.leadingAnchor.constraint(equalTo: calendarView.leadingAnchor, constant: 0).isActive = true
+        thursdayButton.leadingAnchor.constraint(equalTo: calendarView.leadingAnchor, constant: offsetBottomWeekButtons).isActive = true
         thursdayButton.topAnchor.constraint(equalTo: sundayButton.topAnchor, constant: homeDayButtonWidth + 16.0).isActive = true
 
-        fridayButton.leadingAnchor.constraint(equalTo: thursdayButton.leadingAnchor, constant: homeDayButtonWidth).isActive = true
+        fridayButton.leadingAnchor.constraint(equalTo: thursdayButton.leadingAnchor, constant: homeDayButtonWidth + offsetTopWeekButtons).isActive = true
         fridayButton.topAnchor.constraint(equalTo: sundayButton.topAnchor, constant: homeDayButtonWidth + 16.0).isActive = true
 
-        saturdayButton.leadingAnchor.constraint(equalTo: fridayButton.leadingAnchor, constant: homeDayButtonWidth).isActive = true
+        saturdayButton.leadingAnchor.constraint(equalTo: fridayButton.leadingAnchor, constant: homeDayButtonWidth + offsetTopWeekButtons).isActive = true
         saturdayButton.topAnchor.constraint(equalTo: sundayButton.topAnchor, constant: homeDayButtonWidth + 16.0).isActive = true
         
         gameLabel.leadingAnchor.constraint(equalTo: gameView.leadingAnchor, constant: 16.0).isActive = true
         gameLabel.trailingAnchor.constraint(equalTo: gameView.trailingAnchor, constant: -16.0).isActive = true
-        gameLabel.topAnchor.constraint(equalTo: gameView.topAnchor, constant: 16.0).isActive = true
+        gameLabel.topAnchor.constraint(equalTo: gameView.topAnchor).isActive = true
         
-        tiltButton.leadingAnchor.constraint(equalTo: gameView.leadingAnchor, constant: 0).isActive = true
+        tiltButton.leadingAnchor.constraint(equalTo: gameView.leadingAnchor, constant: offsetGameButtons).isActive = true
         tiltButton.topAnchor.constraint(equalTo: gameLabel.topAnchor, constant: headerHeight + 16.0).isActive = true
 
-        bubblePopButton.leadingAnchor.constraint(equalTo: tiltButton.leadingAnchor, constant: homeGameButtonWidth).isActive = true
+        bubblePopButton.leadingAnchor.constraint(equalTo: tiltButton.leadingAnchor, constant: homeGameButtonWidth + offsetGameButtons).isActive = true
         bubblePopButton.topAnchor.constraint(equalTo: gameLabel.topAnchor, constant: headerHeight + 16.0).isActive = true
         
         self.view.backgroundColor = UIColor(red:0.96, green:0.95, blue:0.95, alpha:1.0)
-        setupRest()
+        setupUserData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -340,44 +362,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-//
-//    /////////////////////////////////////////////////////////////////////////////
-
-//
-
-
-    var ref: DatabaseReference?
-
-    var currentYear = Calendar.current.component(.year, from: Date()) //get the current Year
-
-    var currentWeek = Calendar.current.component(.weekOfYear, from: Date()) //get the current week of the year
-
-    var rightNow = Date() //get the current date and time
-
-    let db = Firestore.firestore() //use for data read and write in database for later function
-    
-    func setupRest() {
+    func setupUserData() {
 
         // Do the main page setup for buttons and label appearance after loading the view.
         setUp(newformattedtartcurrentweek: formattedStartCurrentWeek, newformattedendcurrentweek: formattedEndCurrentWeek) // call setUp function to setup the button view
@@ -436,7 +421,6 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
      - TODO: Set the mood, not display for medicine
 
      **/
-
     func popover(){
         let alert = UIAlertController(title: "Reminder", message: "Did you take your medicine today?", preferredStyle: .alert) //set up the alert information
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil)) //set up the OK button to exist
@@ -444,6 +428,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         self.present(alert,animated: true) //active the present of pop up
     }
 
+    
     /**
      Function for displaying next week date by clicking the next week button
 
@@ -451,7 +436,6 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
      - Returns: No
 
      **/
-
     @objc func nextWeekButtonPressed(_ sender: Any) {
         let nextweek = rightNow + 3600*24*7 // get one of the date in next week
         rightNow = nextweek
@@ -469,6 +453,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         //hightlightselectedDate()
     }
 
+    
     /**
      Function for displaying prev week date by clicking the next week button
 
@@ -476,7 +461,6 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
      - Returns: No
 
      **/
-
     @objc func prevWeekButtonPressed(_ sender: Any) {
         let nextweek = rightNow - 3600*24*7 // get one of the date in next week
         rightNow = nextweek
@@ -495,6 +479,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         //hightlightselectedDate()
     }
 
+    
     /**
      Function to  set up the calendar appearance
 
@@ -503,14 +488,12 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
      - Returns: No
 
      **/
-
-
     func setUp(newformattedtartcurrentweek: String, newformattedendcurrentweek: String)
     {
         weekDateLabel.text = "\(newformattedtartcurrentweek)" + " ~ " + "\(newformattedendcurrentweek)"
-
     }
 
+    
     /**
      Function to  update  date in calender in constant
 
@@ -518,7 +501,6 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
      - Returns: No
 
      **/
-
     func sevendaydate(currentdate: Date){
 
         //get the corresponding date of the days
@@ -570,7 +552,6 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         for i in 0..<7 {
             let dataEntry = ChartDataEntry(x: Double(i), y: Double(values[6-i]))
             dataEntries.append(dataEntry)
-            //print("dataEntry: \(dataEntry)")
         }
         print("dataEntries: \(dataEntries)")
         print("values: \(values)")
@@ -921,13 +902,12 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
      - Returns: No
 
      **/
-
     @objc func tiltButtonPressed(_ sender: Any) {
         let tiltUIViewController:TiltUIViewController = TiltUIViewController()
-
         self.present(tiltUIViewController, animated: true, completion: nil)
     }
 
+    
     /**
      Function about the Game Two Button, will direct you to the Game Two page
 
@@ -936,13 +916,12 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
      - Returns: No
 
      **/
-
     @objc func bubblePopButtonPressed(_ sender: Any) {
         let bubblePopViewController:BubbleViewController = BubbleViewController()
-
         self.present(bubblePopViewController, animated: true, completion: nil)
     }
 
+    
     /**
      Function to  change the scroll view to page control view
 
@@ -950,7 +929,6 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
      - Returns: No
 
      **/
-
     func scrollViewDidEndDecelerating(_ DataScrollView: UIScrollView) {
         let page = DataScrollView.contentOffset.x/DataScrollView.frame.width
         pageControl.currentPage = Int(page)
