@@ -73,27 +73,27 @@ class TiltViewController: UIViewController {
      */
     override func viewDidLoad() {
         super.viewDidLoad()
-         
-         self.view.backgroundColor = UIColor(red:0.96, green:0.95, blue:0.95, alpha:1.0)
-         
+        
+        self.view.backgroundColor = UIColor(red:0.96, green:0.95, blue:0.95, alpha:1.0)
+        
         view.addSubview(HUDView)
-         HUDView.addSubview(timeStaticLabel)
-         HUDView.addSubview(scoreStaticLabel)
-         HUDView.addSubview(timeLabel)
-         HUDView.addSubview(scoreLabel)
-
-         
-         timeStaticLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-         timeStaticLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-         timeStaticLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
+        HUDView.addSubview(timeStaticLabel)
+        HUDView.addSubview(scoreStaticLabel)
+        HUDView.addSubview(timeLabel)
+        HUDView.addSubview(scoreLabel)
+        
+        
+        timeStaticLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        timeStaticLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        timeStaticLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
         
         scoreStaticLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         scoreStaticLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         scoreStaticLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
-
-         timeLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-         timeLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-         timeLabel.topAnchor.constraint(equalTo: timeStaticLabel.topAnchor, constant: timeStaticLabelHeight + 16).isActive = true
+        
+        timeLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        timeLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        timeLabel.topAnchor.constraint(equalTo: timeStaticLabel.topAnchor, constant: timeStaticLabelHeight + 16).isActive = true
         
         scoreLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         scoreLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
@@ -120,15 +120,15 @@ class TiltViewController: UIViewController {
     
     
     override func loadView() {
-      self.view = SKView()
+        self.view = SKView()
     }
     
     
     /**
      Initializes the first scene and displays it on the screen.
-
+     
      - Returns: None.
-    */
+     */
     func startInitialCountdown() {
         let skView = view as! SKView
         
@@ -139,7 +139,7 @@ class TiltViewController: UIViewController {
         countdownScene = CountdownGameScene(size: skView.bounds.size, parent: self)
         countdownScene.scaleMode = .aspectFill
         countdownScene.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-
+        
         tiltGameScene = TiltGameScene(size: skView.bounds.size, parent: self)
         tiltGameScene.scaleMode = .aspectFill
         
@@ -147,13 +147,13 @@ class TiltViewController: UIViewController {
         
         skView.presentScene(countdownScene)
     }
-
+    
     
     /**
      Hides the main UI of the game containing the time and score during the countdown
-
+     
      - Returns: None.
-    */
+     */
     func setupCountdownScene() {
         HUDView.isHidden = true
         //timeScoreUI.isHidden = true
@@ -187,6 +187,6 @@ class TiltViewController: UIViewController {
             self.tiltGameScene = nil
         }
     }
-
+    
 }
 

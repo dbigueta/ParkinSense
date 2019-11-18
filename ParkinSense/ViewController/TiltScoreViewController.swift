@@ -25,8 +25,53 @@ import Firebase
 
 class TiltScoreViewController: UIViewController {
     
+    let finalScoreStaticLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Score"
+        label.textAlignment = .center
+        label.heightAnchor.constraint(equalToConstant: finalScoreStaticLabelHeight).isActive = true
+        return label
+    }()
+    
+    let finalScoreLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Score"
+        label.textAlignment = .center
+        label.heightAnchor.constraint(equalToConstant: finalScoreLabelHeight).isActive = true
+        return label
+    }()
+    
+    let replayButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Replay", for: .normal)
+        button.contentHorizontalAlignment = .left
+        button.setTitleColor(buttonTextColour, for: .normal)
+        button.layer.cornerRadius = 25
+        button.addTarget(self, action: #selector(replayButtonPressed(_:)), for: .touchUpInside)
+        button.widthAnchor.constraint(equalToConstant: replayButtonWidth).isActive = true
+        button.heightAnchor.constraint(equalToConstant: replayButtonHeight).isActive = true
+        return button
+    }()
+    
+    let finalQuitButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Quit", for: .normal)
+        button.contentHorizontalAlignment = .left
+        button.setTitleColor(buttonTextColour, for: .normal)
+        button.layer.cornerRadius = 25
+        button.addTarget(self, action: #selector(quitButtonPressed(_:)), for: .touchUpInside)
+        button.widthAnchor.constraint(equalToConstant: finalQuitButtonWidth).isActive = true
+        button.heightAnchor.constraint(equalToConstant: finalQuitButtonHeight).isActive = true
+        return button
+    }()
+    
+    
     var fScore: Int = 0
-    @IBOutlet weak var finalScore: UILabel!
+    //@IBOutlet weak var finalScore: UILabel!
     
     /**
      Function runs when this current view has been loaded. Updates the score based on the score of the previous game.
@@ -36,9 +81,36 @@ class TiltScoreViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        view.addSubview(finalScoreStaticLabel)
+        view.addSubview(finalScoreLabel)
+        view.addSubview(replayButton)
+        view.addSubview(finalQuitButton)
+        
+        
+        finalScoreStaticLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        finalScoreStaticLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        finalScoreStaticLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
+        
+        finalScoreLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        finalScoreLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        finalScoreLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
+        
+        replayButton.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        replayButton.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        replayButton.topAnchor.constraint(equalTo: finalScoreLabel.topAnchor, constant: finalScoreLabelHeight + 16).isActive = true
+        
+        finalQuitButton.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        finalQuitButton.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        finalQuitButton.topAnchor.constraint(equalTo: replayButton.topAnchor, constant: replayButtonHeight + 16).isActive = true
+        
+        
+        
+        
+        
+        
         view.backgroundColor = UIColor(red:0.77, green:0.93, blue:0.87, alpha:1.0)
         
-        finalScore.text = String(fScore)
+        finalScoreLabel.text = String(fScore)
         let db = Firestore.firestore()
         //db.collection("users").document(userid).setData(["login_time": rightNow, "Username": username, "MedicationName": medicationName, "uid":userid, "gaming_score": fScore])
         
@@ -57,6 +129,14 @@ class TiltScoreViewController: UIViewController {
         
             
         }
+    }
+    
+    @objc func replayButtonPressed(_ sender: Any){
+        
+    }
+    
+    @objc func quitButtonPressed(_ sender: Any){
+        
     }
     
 }

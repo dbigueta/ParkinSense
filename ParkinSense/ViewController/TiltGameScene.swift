@@ -163,7 +163,9 @@ class TiltGameScene: SKScene {
 //        let controllerToBePresented = self.viewController.storyboard?.instantiateViewController(withIdentifier: "tiltScore") as! TiltScoreViewController
 //        appDelegate.switchControllers(viewControllerToBeDismissed: self.viewController, controllerToBePresented: controllerToBePresented)
         
-        viewController.performSegue(withIdentifier: "tiltScore", sender: self)
+        //viewController.performSegue(withIdentifier: "tiltScore", sender: self)
+        let tiltScoreViewController:TiltScoreViewController = TiltScoreViewController()
+        viewController.present(tiltScoreViewController, animated: true, completion: nil)
     }
     
     

@@ -42,9 +42,19 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         return view
     }()
     
+    let progressView: UIView = {
+        let view = UIView()
+        view.heightAnchor.constraint(equalToConstant: progressViewHeight).isActive = true
+        view.backgroundColor = .blue
+        return view
+    }()
+    
     let progressLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Weekly Progress"
+        label.textAlignment = .center
+        label.heightAnchor.constraint(equalToConstant: headerHeight).isActive = true
         return label
     }()
 

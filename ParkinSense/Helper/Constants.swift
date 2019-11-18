@@ -56,8 +56,6 @@ var weekButtonHeight: CGFloat = 30
 
 var gameLabelHeight: CGFloat = 30
 
-let buttonTextColour = UIColor(red:0.29, green:0.31, blue:0.34, alpha:1.0)
-
 var screenWidth = UIScreen.main.bounds.width
 
 var homeDayButtonBorderWidth:CGFloat = 2
@@ -69,6 +67,8 @@ var homeGameButtonBorderWidth:CGFloat = 2
 var homeGameButtonWidth = screenWidth/2 - 5
 
 var calendarViewHeight: CGFloat = 350
+var progressViewHeight: CGFloat = 350
+
 
 /* TILT Game */
 var tiltLabelHeight:CGFloat = 25
@@ -82,4 +82,16 @@ var quitButtonWidth:CGFloat = 2*screenWidth/3
 var timeStaticLabelHeight:CGFloat = 25
 var scoreStaticLabelHeight:CGFloat = 25
 
+var finalScoreStaticLabelHeight:CGFloat = 25
+var finalScoreLabelHeight:CGFloat = 25
+var replayButtonHeight:CGFloat = 25
+var finalQuitButtonHeight:CGFloat = 25
+var replayButtonWidth:CGFloat = 25
+var finalQuitButtonWidth:CGFloat = 25
+
+/* Other */
+let textColour = UIColor(red:0.29, green:0.31, blue:0.34, alpha:1.0)
+let buttonTextColour = UIColor(red:0.29, green:0.31, blue:0.34, alpha:1.0)
+let buttonColour = UIColor(red:0.75, green:0.85, blue:0.84, alpha:1.0)
+let font = UIFont.systemFont(ofSize: 20, weight: .light)
 

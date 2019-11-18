@@ -30,10 +30,7 @@ let passwordTextField =  CustomTextField(frame: CGRect(x: 0, y: 0, width: 300, h
 let errorLabel = UILabel()
 let signInButton = UIButton()
 let createAccountButton = UIButton()
-let textColour = UIColor(red:0.29, green:0.31, blue:0.34, alpha:1.0)
-let buttonTextColour = UIColor(red:0.29, green:0.31, blue:0.34, alpha:1.0)
-let buttonColour = UIColor(red:0.75, green:0.85, blue:0.84, alpha:1.0)
-let font = UIFont.systemFont(ofSize: 20, weight: .light)
+
     
     override func loadView() {
         super.loadView()
