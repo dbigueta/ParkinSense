@@ -180,6 +180,7 @@ class TiltUIViewController: UIViewController {
         soundEffect.play()
     }
     
+    
     /**
         Sets sound to be on/off based on the toggle
      
@@ -215,6 +216,7 @@ class TiltUIViewController: UIViewController {
         let tiltViewController:TiltViewController = TiltViewController()
         self.present(tiltViewController, animated: true, completion: nil)
     }
+    
     
     /**
         Quits the game Tilt

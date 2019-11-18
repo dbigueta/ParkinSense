@@ -111,11 +111,11 @@ class BubbleScoreViewController: UIViewController {
     }
     
     @objc func replayButtonPressed(_ sender: Any){
-        
+        self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
     }
     
     @objc func quitButtonPressed(_ sender: Any){
-        
+        self.presentingViewController?.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
     }
     
 }

@@ -32,15 +32,11 @@ class TiltViewController: UIViewController {
     
     let HUDView: UIView = {
         let view = UIView()
-        //view.heightAnchor.constraint(equalToConstant: 1200).isActive = true
-        //view.backgroundColor = .green
         return view
     }()
 
     let countdownView: UIView = {
         let view = UIView()
-        //view.heightAnchor.constraint(equalToConstant: 1200).isActive = true
-        //view.backgroundColor = .green
         return view
     }()
     
@@ -129,6 +125,7 @@ class TiltViewController: UIViewController {
         startInitialCountdown()
     }
     
+    
     /**
      Hides the status bar from view when this view is presented
      
@@ -165,6 +162,7 @@ class TiltViewController: UIViewController {
         scoreLabel.topAnchor.constraint(equalTo: scoreStaticLabel.topAnchor, constant: scoreStaticLabelHeight + 8.0).isActive = true
     }
     
+    
     /**
      Initializes the first scene and displays it on the screen.
      
@@ -191,24 +189,9 @@ class TiltViewController: UIViewController {
      */
     func setupCountdownScene() {
         HUDView.isHidden = true
-        //timeScoreUI.isHidden = true
         timeLabel.text = String(gameCountdown)
         scoreLabel.text = String(currentScore)
     }
-    
-    /**
-     Prepares the new view and passes over the score variable to the new view
-     
-     - Returns: None.
-     */
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-//    {
-//        if segue.destination is TiltScoreViewController
-//        {
-//            let vc = segue.destination as? TiltScoreViewController
-//            vc?.fScore = currentScore
-//        }
-//    }
     
     
     /**
@@ -221,6 +204,5 @@ class TiltViewController: UIViewController {
             self.tiltGameScene = nil
         }
     }
-    
 }
 
