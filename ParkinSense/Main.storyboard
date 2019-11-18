@@ -382,7 +382,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="35T-K8-xAo" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4923" y="-1065"/>
+            <point key="canvasLocation" x="4889" y="-1219"/>
         </scene>
         <!--Tilt Score View Controller-->
         <scene sceneID="Xmu-GZ-0wl">
@@ -450,12 +450,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ND8-3Y-URK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6448" y="-1132"/>
+            <point key="canvasLocation" x="6420" y="-1219"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="otO-qp-NOn"/>
-        <segue reference="Job-yp-1Ab"/>
+        <segue reference="LTK-XG-TjM"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>

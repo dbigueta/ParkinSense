@@ -142,6 +142,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         button.layer.borderWidth = homeDayButtonBorderWidth
         button.layer.cornerRadius = 5
         button.backgroundColor = buttonColour
+        button.addTarget(self, action: #selector(sundayDateSelected(_:)), for: .touchUpInside)
         button.widthAnchor.constraint(equalToConstant: homeDayButtonWidth).isActive = true
         button.heightAnchor.constraint(equalToConstant: homeDayButtonWidth).isActive = true
         //button.layer.borderColor = UIColor(red:0.75, green:0.85, blue:0.84, alpha:1.0).cgColor
@@ -155,6 +156,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         button.layer.borderWidth = homeDayButtonBorderWidth
         button.layer.cornerRadius = 5
         button.backgroundColor = buttonColour
+        button.addTarget(self, action: #selector(mondayDateSelected(_:)), for: .touchUpInside)
         button.widthAnchor.constraint(equalToConstant: homeDayButtonWidth).isActive = true
         button.heightAnchor.constraint(equalToConstant: homeDayButtonWidth).isActive = true
         return button
@@ -167,6 +169,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         button.layer.borderWidth = homeDayButtonBorderWidth
         button.layer.cornerRadius = 5
         button.backgroundColor = buttonColour
+        button.addTarget(self, action: #selector(tuesdayDateSelected(_:)), for: .touchUpInside)
         button.widthAnchor.constraint(equalToConstant: homeDayButtonWidth).isActive = true
         button.heightAnchor.constraint(equalToConstant: homeDayButtonWidth).isActive = true
         return button
@@ -179,6 +182,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         button.layer.borderWidth = homeDayButtonBorderWidth
         button.layer.cornerRadius = 5
         button.backgroundColor = buttonColour
+        button.addTarget(self, action: #selector(wednesdayDateSelected(_:)), for: .touchUpInside)
         button.widthAnchor.constraint(equalToConstant: homeDayButtonWidth).isActive = true
         button.heightAnchor.constraint(equalToConstant: homeDayButtonWidth).isActive = true
         return button
@@ -191,6 +195,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         button.layer.borderWidth = homeDayButtonBorderWidth
         button.layer.cornerRadius = 5
         button.backgroundColor = buttonColour
+        button.addTarget(self, action: #selector(thursdayDateSelected(_:)), for: .touchUpInside)
         button.widthAnchor.constraint(equalToConstant: homeDayButtonWidth).isActive = true
         button.heightAnchor.constraint(equalToConstant: homeDayButtonWidth).isActive = true
         return button
@@ -203,6 +208,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         button.layer.borderWidth = homeDayButtonBorderWidth
         button.layer.cornerRadius = 5
         button.backgroundColor = buttonColour
+        button.addTarget(self, action: #selector(fridayDateSelected(_:)), for: .touchUpInside)
         button.widthAnchor.constraint(equalToConstant: homeDayButtonWidth).isActive = true
         button.heightAnchor.constraint(equalToConstant: homeDayButtonWidth).isActive = true
         return button
@@ -215,6 +221,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         button.layer.borderWidth = homeDayButtonBorderWidth
         button.layer.cornerRadius = 5
         button.backgroundColor = buttonColour
+        button.addTarget(self, action: #selector(saturdayDateSelected(_:)), for: .touchUpInside)
         button.widthAnchor.constraint(equalToConstant: homeDayButtonWidth).isActive = true
         button.heightAnchor.constraint(equalToConstant: homeDayButtonWidth).isActive = true
         return button
@@ -366,7 +373,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
 
         // Do the main page setup for buttons and label appearance after loading the view.
         setUp(newformattedtartcurrentweek: formattedStartCurrentWeek, newformattedendcurrentweek: formattedEndCurrentWeek) // call setUp function to setup the button view
-        sevendaydate(currentdate: rightNow) // call sevendaydate function to get the Sunday to Saturday date, and set up the button title for every date button
+        sevenDayDate(currentdate: rightNow) // call sevendaydate function to get the Sunday to Saturday date, and set up the button title for every date button
         //hightlightselectedDate()
 
         //=============================================================
@@ -439,7 +446,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
     @objc func nextWeekButtonPressed(_ sender: Any) {
         let nextweek = rightNow + 3600*24*7 // get one of the date in next week
         rightNow = nextweek
-        sevendaydate(currentdate: rightNow) //update the new seven days' date
+        sevenDayDate(currentdate: rightNow) //update the new seven days' date
 
         let newformattedtartcurrentweek = newStartCurrentWeek(updateNow: rightNow) //get the first date of the choosen week
         let newformattedendcurrentweek = newEndCurrentWeek(updateNow: rightNow) //get the end date of the choosen week
@@ -450,7 +457,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         }
         setUp(newformattedtartcurrentweek: newformattedtartcurrentweek, newformattedendcurrentweek: newformattedendcurrentweek) // redraw the current week's appearance buttons
 
-        //hightlightselectedDate()
+        highlightSelectedDate()
     }
 
     
@@ -464,7 +471,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
     @objc func prevWeekButtonPressed(_ sender: Any) {
         let nextweek = rightNow - 3600*24*7 // get one of the date in next week
         rightNow = nextweek
-        sevendaydate(currentdate: rightNow) //update the new seven days' date
+        sevenDayDate(currentdate: rightNow) //update the new seven days' date
 
         let newformattedtartcurrentweek = newStartCurrentWeek(updateNow: rightNow) //get the first date of the choosen week
         let newformattedendcurrentweek = newEndCurrentWeek(updateNow: rightNow) //get the end date of the choosen week
@@ -476,7 +483,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         }
         setUp(newformattedtartcurrentweek: newformattedtartcurrentweek, newformattedendcurrentweek: newformattedendcurrentweek) // redraw the current week's appearance buttons
 
-        //hightlightselectedDate()
+        highlightSelectedDate()
     }
 
     
@@ -501,7 +508,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
      - Returns: No
 
      **/
-    func sevendaydate(currentdate: Date){
+    func sevenDayDate(currentdate: Date){
 
         //get the corresponding date of the days
         let SundayDate = sundayDate(startCurrentWeek: currentdate)
@@ -511,6 +518,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         let ThursdayDate = thursdayDate(startCurrentWeek: currentdate)
         let FridayDate = fridayDate(startCurrentWeek: currentdate)
         let SaturdayDate = saturdayDate(startCurrentWeek: currentdate)
+        
         //set title of the buttons text
         sundayButton.setTitle(SundayDate, for: .normal)
         mondayButton.setTitle(MondayDate, for: .normal)
@@ -522,15 +530,73 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
     }
 
 
-//    func hightlightselectedDate(){
-//        if selectedDate == sundayDatewithMY{Utilities.styleFilledDateButton(SundayButton)}
-//        if selectedDate == mondayDatewithMY{Utilities.styleFilledDateButton(MondayButton)}
-//        if selectedDate == tuesdayDatewithMY{Utilities.styleFilledDateButton(TuesdayButton)}
-//        if selectedDate == wednesdayDatewithMY{Utilities.styleFilledDateButton(WednesdayButton)}
-//        if selectedDate == thursdayDatewithMY{Utilities.styleFilledDateButton(ThursdayButton)}
-//        if selectedDate == fridayDatewithMY{Utilities.styleFilledDateButton(FridayButton)}
-//        if selectedDate == saturdayDatewithMY{Utilities.styleFilledDateButton(SaturdayButton)}
-//    }
+    func highlightSelectedDate(){
+        if selectedDate == sundayDatewithMY{
+            sundayButton.backgroundColor = selectedDayBackgroundColour
+            mondayButton.backgroundColor = buttonColour
+            tuesdayButton.backgroundColor = buttonColour
+            wednesdayButton.backgroundColor = buttonColour
+            thursdayButton.backgroundColor = buttonColour
+            fridayButton.backgroundColor = buttonColour
+            saturdayButton.backgroundColor = buttonColour
+        }
+        if selectedDate == mondayDatewithMY{
+            mondayButton.backgroundColor = selectedDayBackgroundColour
+            sundayButton.backgroundColor = buttonColour
+            tuesdayButton.backgroundColor = buttonColour
+            wednesdayButton.backgroundColor = buttonColour
+            thursdayButton.backgroundColor = buttonColour
+            fridayButton.backgroundColor = buttonColour
+            saturdayButton.backgroundColor = buttonColour
+        }
+        if selectedDate == tuesdayDatewithMY{
+            tuesdayButton.backgroundColor = selectedDayBackgroundColour
+            sundayButton.backgroundColor = buttonColour
+            mondayButton.backgroundColor = buttonColour
+            wednesdayButton.backgroundColor = buttonColour
+            thursdayButton.backgroundColor = buttonColour
+            fridayButton.backgroundColor = buttonColour
+            saturdayButton.backgroundColor = buttonColour
+        }
+        if selectedDate == wednesdayDatewithMY{
+            wednesdayButton.backgroundColor = selectedDayBackgroundColour
+            sundayButton.backgroundColor = buttonColour
+            mondayButton.backgroundColor = buttonColour
+            tuesdayButton.backgroundColor = buttonColour
+            thursdayButton.backgroundColor = buttonColour
+            fridayButton.backgroundColor = buttonColour
+            saturdayButton.backgroundColor = buttonColour
+        }
+        if selectedDate == thursdayDatewithMY{
+            thursdayButton.backgroundColor = selectedDayBackgroundColour
+            sundayButton.backgroundColor = buttonColour
+            mondayButton.backgroundColor = buttonColour
+            tuesdayButton.backgroundColor = buttonColour
+            wednesdayButton.backgroundColor = buttonColour
+            fridayButton.backgroundColor = buttonColour
+            saturdayButton.backgroundColor = buttonColour
+            
+        }
+        if selectedDate == fridayDatewithMY{
+            fridayButton.backgroundColor = selectedDayBackgroundColour
+            sundayButton.backgroundColor = buttonColour
+            mondayButton.backgroundColor = buttonColour
+            tuesdayButton.backgroundColor = buttonColour
+            wednesdayButton.backgroundColor = buttonColour
+            thursdayButton.backgroundColor = buttonColour
+            saturdayButton.backgroundColor = buttonColour
+            
+        }
+        if selectedDate == saturdayDatewithMY{
+            saturdayButton.backgroundColor = selectedDayBackgroundColour
+            sundayButton.backgroundColor = buttonColour
+            mondayButton.backgroundColor = buttonColour
+            tuesdayButton.backgroundColor = buttonColour
+            wednesdayButton.backgroundColor = buttonColour
+            thursdayButton.backgroundColor = buttonColour
+            fridayButton.backgroundColor = buttonColour
+        }
+    }
 
     func setUpDailyDatainit(currentDate: String){
         //============================================================
@@ -588,7 +654,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
     }
 
 
-    @IBAction func SundayDateSelected(_ sender: Any) {
+    @objc func sundayDateSelected(_ sender: Any) {
         print(sundayDatewithMY)
         selectedDate = sundayDatewithMY
 
@@ -625,32 +691,25 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
                 }
             }
         }
-        Utilities.styleFilledDateButton(sundayButton)
+        
+        highlightSelectedDate()
     }
 
-    @IBAction func MondayDateSelected(_ sender: Any) {
-        print(values)
-        print(mondayDatewithMY)
+    @objc func mondayDateSelected(_ sender: Any) {
         selectedDate = mondayDatewithMY
-        //========================================================================
         updategamescore()
         var dataEntries: [ChartDataEntry] = []
         for i in 0..<7 {
             let dataEntry = ChartDataEntry(x: Double(i), y: Double(values[6-i]))
             dataEntries.append(dataEntry)
         }
-        print("values: \(values)")
-        print(dataEntries)
         let lineChartDataSet = LineChartDataSet(entries: dataEntries, label: "Click the date twice to see last seven days data")
         let lineChartData = LineChartData(dataSet: lineChartDataSet)
         lineChartView.data = lineChartData
 
-        //=========================================================================
-
         let newformattedtartcurrentweek = newStartCurrentWeek(updateNow: rightNow) //get the first date of the choosen week
         let newformattedendcurrentweek = newEndCurrentWeek(updateNow: rightNow) //get the end date of the choosen week
         setUp(newformattedtartcurrentweek: newformattedtartcurrentweek, newformattedendcurrentweek: newformattedendcurrentweek)
-        //setUpDailyData(currentDate: selectedDate)
         Datalabeltext2.text = "Date:  \(selectedDate)"
 
         db.collection("users").document(userid).collection("gaming_score").document(selectedDate).getDocument { (document, error) in
@@ -667,11 +726,11 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
                 }
             }
         }
-
-        Utilities.styleFilledDateButton(mondayButton)
+        
+        highlightSelectedDate()
     }
 
-    @IBAction func TuesdayDateSelected(_ sender: Any) {
+    @objc func tuesdayDateSelected(_ sender: Any) {
         print(values)
         print(tuesdayDatewithMY)
         selectedDate = tuesdayDatewithMY
@@ -714,10 +773,10 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
             }
         }
 
-        Utilities.styleFilledDateButton(tuesdayButton)
+        highlightSelectedDate()
     }
 
-    @IBAction func WednesdayDateSelected(_ sender: Any) {
+    @objc func wednesdayDateSelected(_ sender: Any) {
         print(values)
         print(wednesdayDatewithMY)
         selectedDate = wednesdayDatewithMY
@@ -758,10 +817,10 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
             }
         }
 
-        Utilities.styleFilledDateButton(wednesdayButton)
+        highlightSelectedDate()
     }
 
-    @IBAction func ThursdayDateSelected(_ sender: Any) {
+    @objc func thursdayDateSelected(_ sender: Any) {
         print(values)
         print(thursdayDatewithMY)
         selectedDate = thursdayDatewithMY
@@ -803,10 +862,10 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
             }
 
         }
-        Utilities.styleFilledDateButton(thursdayButton)
+        highlightSelectedDate()
     }
 
-    @IBAction func FridayDateSelected(_ sender: Any) {
+    @objc func fridayDateSelected(_ sender: Any) {
         print(values)
         print(fridayDatewithMY)
         selectedDate = fridayDatewithMY
@@ -846,10 +905,10 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
                 }
             }
         }
-        Utilities.styleFilledDateButton(fridayButton)
+        highlightSelectedDate()
     }
 
-    @IBAction func SaturadyDateSelected(_ sender: Any) {
+    @objc func saturdayDateSelected(_ sender: Any) {
         print(values)
         print(saturdayDatewithMY)
         selectedDate = saturdayDatewithMY
@@ -890,7 +949,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
             }
         }
 
-        Utilities.styleFilledDateButton(saturdayButton)
+        highlightSelectedDate()
     }
 
 

@@ -132,7 +132,7 @@ class TiltViewController: UIViewController {
     func startInitialCountdown() {
         let skView = view as! SKView
         
-        skView.showsFPS = true
+        //skView.showsFPS = true
         
         print("Set up Countdown")
         
@@ -140,8 +140,8 @@ class TiltViewController: UIViewController {
         countdownScene.scaleMode = .aspectFill
         countdownScene.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         
-        tiltGameScene = TiltGameScene(size: skView.bounds.size, parent: self)
-        tiltGameScene.scaleMode = .aspectFill
+//        tiltGameScene = TiltGameScene(size: skView.bounds.size, parent: self)
+//        tiltGameScene.scaleMode = .aspectFill
         
         setupCountdownScene()
         
@@ -155,7 +155,7 @@ class TiltViewController: UIViewController {
      - Returns: None.
      */
     func setupCountdownScene() {
-        HUDView.isHidden = true
+        //HUDView.isHidden = true
         //timeScoreUI.isHidden = true
         timeLabel.text = String(gameCountdown)
         scoreLabel.text = String(currentScore)

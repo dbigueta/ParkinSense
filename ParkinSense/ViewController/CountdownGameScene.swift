@@ -65,6 +65,8 @@ class CountdownGameScene: SKScene {
      - Returns: None.
     */
     func countdown() {
+        countdownLabel.zPosition = 1
+        countdownLabel.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
         countdownLabel.fontColor = SKColor.white
         countdownLabel.fontSize = 90
         countdownLabel.text = String(count)
@@ -96,8 +98,8 @@ class CountdownGameScene: SKScene {
      - Returns: None.
     */
     func endCountdown() {
-        countdownLabel.removeFromParent()
-        transitionToGame()
+        //countdownLabel.removeFromParent()
+        //transitionToGame()
     }
     
     
