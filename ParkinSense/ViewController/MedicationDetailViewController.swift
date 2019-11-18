@@ -44,7 +44,6 @@ class MedicationDetailViewController: UIViewController {
     let cancelButton = UIButton()
     
     let textColour = UIColor(red:0.29, green:0.31, blue:0.34, alpha:1.0)
-    let buttonTextColour = UIColor(red:0.29, green:0.31, blue:0.34, alpha:1.0)
     let buttonColour = UIColor(red:0.75, green:0.85, blue:0.84, alpha:1.0)
     let font = UIFont.systemFont(ofSize: 20, weight: .light)
     let checkboxDiameter = 35

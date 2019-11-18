@@ -272,7 +272,9 @@ let font = UIFont.systemFont(ofSize: 20, weight: .light)
                 self.errorLabel.alpha = 1
             }
             else{
-                self.performSegue(withIdentifier: "loginToHomeID", sender: nil)
+                let homeViewController:HomeViewController = HomeViewController()
+                self.present(homeViewController, animated: true, completion: nil)
+                //self.performSegue(withIdentifier: "loginToHomeID", sender: nil)
             }
         }
     }

@@ -102,7 +102,7 @@ class TiltGameScene: SKScene {
      - Returns: None.
      */
     func showGameUI() {
-        viewController.timeScoreUI.isHidden = false
+        viewController.HUDView.isHidden = false
     }
     
     

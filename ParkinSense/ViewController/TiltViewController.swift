@@ -23,18 +23,91 @@ import SpriteKit
 
 class TiltViewController: UIViewController {
     
+    let HUDView: UIView = {
+        let view = UIView()
+        //view.heightAnchor.constraint(equalToConstant: 1200).isActive = true
+        //view.backgroundColor = .green
+        return view
+    }()
+    
+    let timeStaticLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Time"
+        label.textAlignment = .center
+        label.heightAnchor.constraint(equalToConstant: timeStaticLabelHeight).isActive = true
+        return label
+    }()
+    
+    let scoreStaticLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Score"
+        label.textAlignment = .center
+        label.heightAnchor.constraint(equalToConstant: scoreStaticLabelHeight).isActive = true
+        return label
+    }()
+    
+    let timeLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Time"
+        label.textAlignment = .center
+        label.heightAnchor.constraint(equalToConstant: tiltLabelHeight).isActive = true
+        return label
+    }()
+    
+    let scoreLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Score"
+        label.textAlignment = .center
+        label.heightAnchor.constraint(equalToConstant: instructionsLabelHeight).isActive = true
+        return label
+    }()
+    
+    /**
+     Function runs when this current view has been loaded. Creates countdown scene and transitions to it
+     
+     - Returns: None.
+     */
+    override func viewDidLoad() {
+        super.viewDidLoad()
+         
+         self.view.backgroundColor = UIColor(red:0.96, green:0.95, blue:0.95, alpha:1.0)
+         
+        view.addSubview(HUDView)
+         HUDView.addSubview(timeStaticLabel)
+         HUDView.addSubview(scoreStaticLabel)
+         HUDView.addSubview(timeLabel)
+         HUDView.addSubview(scoreLabel)
+
+         
+         timeStaticLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+         timeStaticLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+         timeStaticLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
+        
+        scoreStaticLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        scoreStaticLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        scoreStaticLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
+
+         timeLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+         timeLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+         timeLabel.topAnchor.constraint(equalTo: timeStaticLabel.topAnchor, constant: timeStaticLabelHeight + 16).isActive = true
+        
+        scoreLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        scoreLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        scoreLabel.topAnchor.constraint(equalTo: scoreStaticLabel.topAnchor, constant: scoreStaticLabelHeight + 16).isActive = true
+        
+        startInitialCountdown()
+    }
+    
     var countdownScene: CountdownGameScene!
     var tiltGameScene: TiltGameScene!
     
     /* Variables related to game UI */
     var gameCountdown: Int = 60
     var currentScore: Int = 0
-    
-    //MARK: Properties
-    @IBOutlet weak var timeLabel: UILabel!
-    @IBOutlet weak var scoreLabel: UILabel!
-    @IBOutlet weak var timeScoreUI: UIStackView!
-    
     
     /**
      Hides the status bar from view when this view is presented
@@ -46,15 +119,8 @@ class TiltViewController: UIViewController {
     }
     
     
-    /**
-     Function runs when this current view has been loaded. Creates countdown scene and transitions to it
-     
-     - Returns: None.
-     */
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        startInitialCountdown()
+    override func loadView() {
+      self.view = SKView()
     }
     
     
@@ -89,7 +155,8 @@ class TiltViewController: UIViewController {
      - Returns: None.
     */
     func setupCountdownScene() {
-        timeScoreUI.isHidden = true
+        HUDView.isHidden = true
+        //timeScoreUI.isHidden = true
         timeLabel.text = String(gameCountdown)
         scoreLabel.text = String(currentScore)
     }

@@ -48,6 +48,38 @@ var gamedata7 = 0
 
 var values = [gamedata1, gamedata2, gamedata3, gamedata4, gamedata5, gamedata6, gamedata7]
 
-//var dataEntries: [ChartDataEntry] = []
-//
-//var dataEntry = ChartDataEntry(x: 0, y: 0)
+/* UI Constants*/
+
+var headerHeight:CGFloat = 20
+
+var weekButtonHeight: CGFloat = 30
+
+var gameLabelHeight: CGFloat = 30
+
+let buttonTextColour = UIColor(red:0.29, green:0.31, blue:0.34, alpha:1.0)
+
+var screenWidth = UIScreen.main.bounds.width
+
+var homeDayButtonBorderWidth:CGFloat = 2
+
+var homeDayButtonWidth = screenWidth/4 - 5
+
+var homeGameButtonBorderWidth:CGFloat = 2
+
+var homeGameButtonWidth = screenWidth/2 - 5
+
+var calendarViewHeight: CGFloat = 350
+
+/* TILT Game */
+var tiltLabelHeight:CGFloat = 25
+var instructionsLabelHeight:CGFloat = 25
+var startButtonHeight:CGFloat = 25
+var soundLabelHeight:CGFloat = 25
+var quitButtonHeight:CGFloat = 25
+var startButtonWidth:CGFloat = 2*screenWidth/3
+var quitButtonWidth:CGFloat = 2*screenWidth/3
+
+var timeStaticLabelHeight:CGFloat = 25
+var scoreStaticLabelHeight:CGFloat = 25
+
+
