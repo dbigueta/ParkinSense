@@ -49,6 +49,7 @@ var gamedata7 = 0
 var values = [gamedata1, gamedata2, gamedata3, gamedata4, gamedata5, gamedata6, gamedata7]
 
 /* Home UI Constants*/
+var screenHeight = UIScreen.main.bounds.height
 var screenWidth = UIScreen.main.bounds.width
 let headerFontSize:CGFloat = 20
 
@@ -92,6 +93,10 @@ var tiltQuitButtonOffset:CGFloat = (1/3*screenWidth)/2
 
 var timeStaticLabelHeight:CGFloat = 25
 var scoreStaticLabelHeight:CGFloat = 25
+
+var countdownLabelHeight:CGFloat = screenWidth
+var countdownLabelWidth:CGFloat = screenHeight
+var countdownFont = UIFont.systemFont(ofSize: 90, weight: .light)
 
 var finalScoreStaticLabelHeight:CGFloat = 25
 var finalScoreLabelHeight:CGFloat = 25

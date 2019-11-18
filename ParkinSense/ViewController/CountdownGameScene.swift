@@ -22,7 +22,6 @@ import SpriteKit
 
 class CountdownGameScene: SKScene {
     
-    var countdownLabel: SKLabelNode = SKLabelNode()
     var count: Int = 5
     
     var viewController: TiltViewController
@@ -65,13 +64,7 @@ class CountdownGameScene: SKScene {
      - Returns: None.
     */
     func countdown() {
-        countdownLabel.zPosition = 1
-        countdownLabel.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
-        countdownLabel.fontColor = SKColor.white
-        countdownLabel.fontSize = 90
-        countdownLabel.text = String(count)
-        
-        addChild(countdownLabel)
+        viewController.countdownLabel.text = String(count)
         
         let counterDecrement = SKAction.sequence([SKAction.wait(forDuration: 1.0),
                                                   SKAction.run(countdownAction)])
@@ -88,7 +81,7 @@ class CountdownGameScene: SKScene {
     */
     func countdownAction(){
         count -= 1
-        countdownLabel.text = String(count)
+        viewController.countdownLabel.text = String(count)
     }
     
     
@@ -98,8 +91,9 @@ class CountdownGameScene: SKScene {
      - Returns: None.
     */
     func endCountdown() {
-        //countdownLabel.removeFromParent()
-        //transitionToGame()
+        viewController.countdownView.isHidden = true
+        viewController.setupGameUI()
+        transitionToGame()
     }
     
     
