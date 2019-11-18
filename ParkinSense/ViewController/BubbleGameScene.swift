@@ -51,7 +51,7 @@ class BubbleGameScene: SKScene {
     
     
     override func didMove(to view: SKView) {
-        
+        self.scene!.backgroundColor = bubbleGameBackgroundColour
         showGameUI()
         startCounter()
         generateBubble()
@@ -59,7 +59,6 @@ class BubbleGameScene: SKScene {
     
     func showGameUI(){
         viewController.HUDView.isHidden = false
-        //viewController.BubbleTimeScoreUI.isHidden = false
     }
     
     func startCounter(){
@@ -100,7 +99,8 @@ class BubbleGameScene: SKScene {
         bubble.removeFromParent()
         
         bubble.position = randomBubblePosition()
-        bubble.fillColor = SKColor.red
+        bubble.strokeColor = bubbleBallColour
+        bubble.fillColor = bubbleBallColour
         
         self.addChild(bubble)
         
