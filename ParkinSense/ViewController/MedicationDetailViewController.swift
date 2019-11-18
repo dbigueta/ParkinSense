@@ -20,7 +20,7 @@
 import UIKit
 import BEMCheckBox
 
-class MedicationDetailViewController: UIViewController {
+class MedicationDetailViewController: UIViewController, UITextFieldDelegate {
     
     let medicationTextField =  CustomTextField(frame: CGRect(x: 0, y: 0, width: 300, height: 60))
     
@@ -121,9 +121,9 @@ class MedicationDetailViewController: UIViewController {
         medicationTextField.font = UIFont.systemFont(ofSize: textFieldFontSize, weight: .light)
         medicationTextField.backgroundColor = .clear
         medicationTextField.autocorrectionType = UITextAutocorrectionType.no
-        medicationTextField.keyboardType = UIKeyboardType.emailAddress
+        medicationTextField.keyboardType = UIKeyboardType.default
         medicationTextField.autocapitalizationType = UITextAutocapitalizationType.none
-        medicationTextField.returnKeyType = UIReturnKeyType.continue
+        medicationTextField.returnKeyType = UIReturnKeyType.done
         medicationTextField.clearButtonMode = UITextField.ViewMode.whileEditing
         medicationTextField.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
         medicationTextField.translatesAutoresizingMaskIntoConstraints = false
@@ -439,8 +439,24 @@ class MedicationDetailViewController: UIViewController {
 
         //Sets background of view controller
         self.view.backgroundColor = UIColor(red:0.96, green:0.95, blue:0.95, alpha:1.0)
+        
+        medicationTextField.delegate = self
+        
+        //Looks for single or multiple taps.
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
     }
     
+    @objc func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool
+     {
+         textField.resignFirstResponder()
+         return true
+     }
     
     /**
         Function about the add new medication Button, will direct you back to the sign up page and medication will be displayed on the screen

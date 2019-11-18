@@ -19,8 +19,9 @@
 import UIKit
 import FirebaseAuth
 import Firebase
+import FirebaseFirestore
 
-class SignupViewController: UIViewController {
+class SignupViewController: UIViewController, UITextFieldDelegate {
     
     let emailTextField =  CustomTextField(frame: CGRect(x: 0, y: 0, width: 300, height: 60))
     let passwordTextField =  CustomTextField(frame: CGRect(x: 0, y: 0, width: 300, height: 60))
@@ -93,7 +94,7 @@ class SignupViewController: UIViewController {
         emailTextField.autocorrectionType = UITextAutocorrectionType.no
         emailTextField.keyboardType = UIKeyboardType.emailAddress
         emailTextField.autocapitalizationType = UITextAutocapitalizationType.none
-        emailTextField.returnKeyType = UIReturnKeyType.continue
+        emailTextField.returnKeyType = UIReturnKeyType.done
         emailTextField.clearButtonMode = UITextField.ViewMode.whileEditing
         emailTextField.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
         emailTextField.translatesAutoresizingMaskIntoConstraints = false
@@ -251,8 +252,27 @@ class SignupViewController: UIViewController {
         //Set background colour of view controller
         self.view.backgroundColor = UIColor(red:0.96, green:0.95, blue:0.95, alpha:1.0)
         
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
+        confirmPasswordTextField.delegate = self
+        
+        //Looks for single or multiple taps.
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+        
         setUpElement()
     }
+    
+    @objc func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool
+     {
+         textField.resignFirstResponder()
+         return true
+     }
     
     
     /**

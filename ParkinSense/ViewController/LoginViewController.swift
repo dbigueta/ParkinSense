@@ -23,7 +23,7 @@ import FirebaseAuth
 import FirebaseDatabase
 import BEMCheckBox
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController,UITextFieldDelegate {
 
     let emailTextField =  CustomTextField(frame: CGRect(x: 0, y: 0, width: 300, height: 60))
     let passwordTextField =  CustomTextField(frame: CGRect(x: 0, y: 0, width: 300, height: 60))
@@ -103,7 +103,7 @@ class LoginViewController: UIViewController {
         emailTextField.autocorrectionType = UITextAutocorrectionType.no
         emailTextField.keyboardType = UIKeyboardType.emailAddress
         emailTextField.autocapitalizationType = UITextAutocapitalizationType.none
-        emailTextField.returnKeyType = UIReturnKeyType.continue
+        emailTextField.returnKeyType = UIReturnKeyType.done
         emailTextField.clearButtonMode = UITextField.ViewMode.whileEditing
         emailTextField.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
         emailTextField.translatesAutoresizingMaskIntoConstraints = false
@@ -232,7 +232,25 @@ class LoginViewController: UIViewController {
         
         //Hide the error label
         errorLabel.alpha = 0
+        
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
+        
+        //Looks for single or multiple taps.
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
     }
+    
+    @objc func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
+    
+     func textFieldShouldReturn(_ textField: UITextField) -> Bool
+     {
+         textField.resignFirstResponder()
+         return true
+     }
     
     /**
         Function about the Sign in Button, will direct you to the home page if success. If not, the error will be displayed
