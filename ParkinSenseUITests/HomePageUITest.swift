@@ -49,7 +49,7 @@ class HomePageUITest: XCTestCase {
         usernameTextField.tap()
         usernameTextField.typeText(userName)
         
-        let passwordTextField = app.textFields["Password"]
+        let passwordTextField = app.secureTextFields["Password"]
         XCTAssertTrue(passwordTextField.exists)
         passwordTextField.tap()
         passwordTextField.typeText(password)
@@ -87,7 +87,7 @@ class HomePageUITest: XCTestCase {
         usernameTextField.tap()
         usernameTextField.typeText(userName)
         
-        let passwordTextField = app.textFields["Password"]
+        let passwordTextField = app.secureTextFields["Password"]
         XCTAssertTrue(passwordTextField.exists)
         passwordTextField.tap()
         passwordTextField.typeText(password)
@@ -124,7 +124,7 @@ class HomePageUITest: XCTestCase {
         usernameTextField.tap()
         usernameTextField.typeText(userName)
         
-        let passwordTextField = app.textFields["Password"]
+        let passwordTextField = app.secureTextFields["Password"]
         XCTAssertTrue(passwordTextField.exists)
         passwordTextField.tap()
         passwordTextField.typeText(password)
@@ -134,7 +134,7 @@ class HomePageUITest: XCTestCase {
         
         //main UI part
         let elementsQuery = app.scrollViews.otherElements
-        let prevButton = elementsQuery.buttons["< Prev."]
+        let prevButton = elementsQuery.buttons["< Prev"]
         let nextButton = elementsQuery.buttons["Next >"]
         
         //        let week9 = elementsQuery.staticTexts["10/27 ~ 11/02"]

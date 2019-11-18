@@ -49,10 +49,10 @@ class CreateAccountPageUITest: XCTestCase {
         
         let email = app.textFields["Email"]
         XCTAssertTrue(email.exists)
-        let password = app.textFields["Password"]
+        let password = app.secureTextFields["Password"]
         XCTAssertTrue(password.exists)
         
-        let confirm = app.textFields["Confirm Password"]
+        let confirm = app.secureTextFields["Confirm Password"]
         XCTAssertTrue(confirm.exists)
         let already = app.buttons["Already have an account? Sign in"]
         XCTAssertTrue(already.exists)
@@ -78,13 +78,13 @@ class CreateAccountPageUITest: XCTestCase {
         usernameTextField.tap()
         usernameTextField.typeText(userName)
         
-        let passowrdTextField = app.textFields["Password"]
+        let passowrdTextField = app.secureTextFields["Password"]
         XCTAssertTrue(passowrdTextField.exists)
         passowrdTextField.tap()
         passowrdTextField.typeText(password)
         
         
-        let confrimPasswordTextField = app.textFields["Confirm Password"]
+        let confrimPasswordTextField = app.secureTextFields["Confirm Password"]
         XCTAssertTrue(confrimPasswordTextField.exists)
         confrimPasswordTextField.tap()
         confrimPasswordTextField.typeText(password)
@@ -108,13 +108,13 @@ class CreateAccountPageUITest: XCTestCase {
         usernameTextField.tap()
         usernameTextField.typeText(userName)
         
-        let passowrdTextField = app.textFields["Password"]
+        let passowrdTextField = app.secureTextFields["Password"]
         XCTAssertTrue(passowrdTextField.exists)
         passowrdTextField.tap()
         passowrdTextField.typeText(password)
         
         
-        let confrimPasswordTextField = app.textFields["Confirm Password"]
+        let confrimPasswordTextField = app.secureTextFields["Confirm Password"]
         XCTAssertTrue(confrimPasswordTextField.exists)
         confrimPasswordTextField.tap()
         confrimPasswordTextField.typeText(password)
@@ -126,8 +126,9 @@ class CreateAccountPageUITest: XCTestCase {
         
         let addNewMedicationButton = app.buttons["Add New Medication"]
         XCTAssertTrue(addNewMedicationButton.exists)
-        XCTAssertTrue(app.staticTexts["Medication Name"].exists)
-        XCTAssertTrue(app.staticTexts["Medication Time & Date"].exists)
+        XCTAssertTrue(app.staticTexts["Medication Name/ID"].exists)
+        XCTAssertTrue(app.staticTexts["Medication Dates"].exists)
+        XCTAssertTrue(app.staticTexts["Medication Times"].exists)
         
         
         let mcircleButton = app.buttons["Mcircle"]
@@ -196,13 +197,13 @@ class CreateAccountPageUITest: XCTestCase {
         usernameTextField.tap()
         usernameTextField.typeText(userName)
         
-        let passowrdTextField = app.textFields["Password"]
+        let passowrdTextField = app.secureTextFields["Password"]
         XCTAssertTrue(passowrdTextField.exists)
         passowrdTextField.tap()
         passowrdTextField.typeText(password)
         
         
-        let confrimPasswordTextField = app.textFields["Confirm Password"]
+        let confrimPasswordTextField = app.secureTextFields["Confirm Password"]
         XCTAssertTrue(confrimPasswordTextField.exists)
         confrimPasswordTextField.tap()
         confrimPasswordTextField.typeText(password)
@@ -288,13 +289,13 @@ class CreateAccountPageUITest: XCTestCase {
         usernameTextField.tap()
         usernameTextField.typeText(userName)
         
-        let passowrdTextField = app.textFields["Password"]
+        let passowrdTextField = app.secureTextFields["Password"]
         XCTAssertTrue(passowrdTextField.exists)
         passowrdTextField.tap()
         passowrdTextField.typeText(password)
         
         
-        let confrimPasswordTextField = app.textFields["Confirm Password"]
+        let confrimPasswordTextField = app.secureTextFields["Confirm Password"]
         XCTAssertTrue(confrimPasswordTextField.exists)
         confrimPasswordTextField.tap()
         confrimPasswordTextField.typeText(password)
@@ -323,13 +324,13 @@ class CreateAccountPageUITest: XCTestCase {
         usernameTextField.tap()
         usernameTextField.typeText(userName)
         
-        let passowrdTextField = app.textFields["Password"]
+        let passowrdTextField = app.secureTextFields["Password"]
         XCTAssertTrue(passowrdTextField.exists)
         passowrdTextField.tap()
         passowrdTextField.typeText(password)
         
         
-        let confrimPasswordTextField = app.textFields["Confirm Password"]
+        let confrimPasswordTextField = app.secureTextFields["Confirm Password"]
         XCTAssertTrue(confrimPasswordTextField.exists)
         confrimPasswordTextField.tap()
         confrimPasswordTextField.typeText(confirm)

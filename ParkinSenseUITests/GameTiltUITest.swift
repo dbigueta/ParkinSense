@@ -49,7 +49,7 @@ class GameTiltUITest: XCTestCase {
         usernameTextField.tap()
         usernameTextField.typeText(userName)
         
-        let passwordTextField = app.textFields["Password"]
+        let passwordTextField = app.secureTextFields["Password"]
         XCTAssertTrue(passwordTextField.exists)
         passwordTextField.tap()
         passwordTextField.typeText(password)
@@ -88,7 +88,7 @@ class GameTiltUITest: XCTestCase {
         usernameTextField.tap()
         usernameTextField.typeText(userName)
         
-        let passwordTextField = app.textFields["Password"]
+        let passwordTextField = app.secureTextFields["Password"]
         XCTAssertTrue(passwordTextField.exists)
         passwordTextField.tap()
         passwordTextField.typeText(password)

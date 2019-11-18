@@ -44,28 +44,28 @@ class LoginPageUITest: XCTestCase {
         XCTAssertTrue(createAnAccount.exists)
         
         
-        let ParkinSense = app.staticTexts["ParkinSense"]
+        let ParkinSense = app.staticTexts["PARKINSENSE"]
         XCTAssertTrue(ParkinSense.exists)
         
         let email = app.textFields["Email"]
         XCTAssertTrue(email.exists)
-        let password = app.textFields["Password"]
+        let password = app.secureTextFields["Password"]
         XCTAssertTrue(password.exists)
         
         
        
-        let SparkYourSense = app.staticTexts["Spark Your Senses"]
+        let SparkYourSense = app.staticTexts["SPARK YOUR SENSES"]
         XCTAssertTrue(SparkYourSense.exists)
         
         let remeberPassword = app.staticTexts["Remember Password"]
         XCTAssertTrue(remeberPassword.exists)
         
-        let uncheckboxButton = app.buttons["uncheckbox"]
-        XCTAssertTrue(uncheckboxButton.exists)
+       // let uncheckboxButton = app.buttons["uncheckbox"]
+        //XCTAssertTrue(uncheckboxButton.exists)
         
-        let orButton = app.staticTexts["OR"]
-        XCTAssertTrue(orButton.exists)
-        let signinButton = app.buttons["Sign in"]
+        //let orButton = app.staticTexts["OR"]
+        //XCTAssertTrue(orButton.exists)
+        let signinButton = app.buttons["Sign In"]
         XCTAssertTrue(signinButton.exists)
         
         
@@ -84,7 +84,7 @@ class LoginPageUITest: XCTestCase {
         usernameTextField.tap()
         usernameTextField.typeText(userName)
         
-        let passwordTextField = app.textFields["Password"]
+        let passwordTextField = app.secureTextFields["Password"]
         XCTAssertTrue(passwordTextField.exists)
         passwordTextField.tap()
         passwordTextField.typeText(password)
@@ -106,7 +106,7 @@ class LoginPageUITest: XCTestCase {
         
         
         
-        let passwordTextField = app.textFields["Password"]
+        let passwordTextField = app.secureTextFields["Password"]
         XCTAssertTrue(passwordTextField.exists)
         passwordTextField.tap()
         passwordTextField.typeText(password)
@@ -142,7 +142,7 @@ class LoginPageUITest: XCTestCase {
         //        passwordTextField.tap()
         
         
-        let signIn = app.buttons["Sign in"]
+        let signIn = app.buttons["Sign In"]
         XCTAssertTrue(signIn.exists)
         signIn.tap()
         
@@ -167,10 +167,10 @@ class LoginPageUITest: XCTestCase {
         //usertext.typeText("sfgdfr")
         
         
-        let passwordTextField = app.textFields["Password"]
+        let passwordTextField = app.secureTextFields["Password"]
         XCTAssertTrue(passwordTextField.exists)
         passwordTextField.tap()
-        let signIn = app.buttons["Sign in"]
+        let signIn = app.buttons["Sign In"]
         XCTAssertTrue(signIn.exists)
         signIn.tap()
         
@@ -197,7 +197,7 @@ class LoginPageUITest: XCTestCase {
         usernameTextField.tap()
         usernameTextField.typeText(userName)
         
-        let passwordTextField = app.textFields["Password"]
+        let passwordTextField = app.secureTextFields["Password"]
         XCTAssertTrue(passwordTextField.exists)
         passwordTextField.tap()
         passwordTextField.typeText(password)
@@ -227,13 +227,13 @@ class LoginPageUITest: XCTestCase {
         usernameTextField.tap()
         usernameTextField.typeText(userName)
         
-        let passwordTextField = app.textFields["Password"]
+        let passwordTextField = app.secureTextFields["Password"]
         XCTAssertTrue(passwordTextField.exists)
         passwordTextField.tap()
         passwordTextField.typeText(password)
         
-        app.buttons["uncheckbox"].tap()
-        let signIn = app.buttons["Sign in"]
+        //app.buttons["uncheckbox"].tap()
+        let signIn = app.buttons["Sign In"]
         XCTAssertTrue(signIn.exists)
         signIn.tap()
         sleep(3)
