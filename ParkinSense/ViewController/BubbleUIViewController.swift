@@ -3,16 +3,17 @@
 //
 //  Team: ParkinSense - PDD Inc.
 //
-//  Programmer(s): Higgins Weng, Dexter Bigueta, Hamlet Jiang Su
+//  Programmer(s): Jerry Bao, Hamlet Jiang Su
 //
 //  Description: Main menu of bubble - controls sounds, start and exit of game
 //
 //  Changes:
+//      - Refactored code to programmatically code UI elements
 //      - Added IBOutlets to buttons
 //      - Added View Controller
 //
 //  Known Bugs:
-//      - Sound only works in iPhoneXR and does not stop after the bubble Game
+//      - None
 //
 //-----------------------------------------------------------------
 
@@ -21,10 +22,11 @@ import AVFoundation
 
 class BubbleUIViewController: UIViewController {
 
+    //Bubble Pop title label
     let bubbleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "BUBBLE POP"
+        label.text = "BUBBLE"
         label.textAlignment = .center
         label.font = bubbleTitleFont
         label.textColor = bubbleTextColour
@@ -32,6 +34,7 @@ class BubbleUIViewController: UIViewController {
         return label
     }()
     
+    //First line of instructions
     let instructionsLabelLine1: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -42,6 +45,7 @@ class BubbleUIViewController: UIViewController {
         return label
     }()
     
+    //Second line of instructions
     let instructionsLabelLine2: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -52,6 +56,7 @@ class BubbleUIViewController: UIViewController {
         return label
     }()
     
+    //Third line of instructions
     let instructionsLabelLine3: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -62,6 +67,7 @@ class BubbleUIViewController: UIViewController {
         return label
     }()
     
+    //Start button
     let startButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -75,6 +81,7 @@ class BubbleUIViewController: UIViewController {
         return button
     }()
     
+    //Sound UI label
     let soundLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -86,6 +93,7 @@ class BubbleUIViewController: UIViewController {
         return label
     }()
     
+    //Sound toggle
     let soundToggle: UISwitch = {
         let toggle = UISwitch()
         toggle.translatesAutoresizingMaskIntoConstraints = false
@@ -95,6 +103,7 @@ class BubbleUIViewController: UIViewController {
         return toggle
     }()
     
+    //Quit button
     let quitButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -120,8 +129,10 @@ class BubbleUIViewController: UIViewController {
         
         super.viewDidLoad()
         
+        //Sets the background colour of the view
         self.view.backgroundColor = bubbleBackgroundColour
         
+        //Adds the respective labels, buttons, toggles to the view
         view.addSubview(bubbleLabel)
         view.addSubview(instructionsLabelLine1)
         view.addSubview(instructionsLabelLine2)
@@ -131,6 +142,7 @@ class BubbleUIViewController: UIViewController {
         view.addSubview(soundToggle)
         view.addSubview(quitButton)
         
+        //Sets up the constraints for all labels, toggles, and buttons
         bubbleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         bubbleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         bubbleLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 224.0).isActive = true

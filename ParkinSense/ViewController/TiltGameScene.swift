@@ -8,6 +8,7 @@
 //  Description: Main TILT class that handles generation of ball/hole, timer, score, and movement of game items
 //
 //  Changes:
+//      - Refactored code to programmatically code UI elements
 //      - Added comments to clarify code
 //      - Added transition to Score Scene when count reaches 0
 //      - Added movement of ball using the accelerometer
@@ -16,7 +17,7 @@
 //      - Added the game scene
 //
 //  Known Bugs:
-//      - Scene does not immediately generate ball/hole when replaying the game
+//      - Scene does not immediately generate ball/hole when replaying the game (lags for 5 seconds)
 //      - Score counts up when half the ball is within the hole - whole ball should be in the hole
 //          to have score count up
 //
@@ -148,6 +149,7 @@ class TiltGameScene: SKScene {
         ball.removeFromParent()
         
         tiltFinalScore = viewController.currentScore
+        viewController.HUDView.isHidden = true
         
         let tiltScoreViewController:TiltScoreViewController = TiltScoreViewController()
         viewController.present(tiltScoreViewController, animated: true, completion: nil)

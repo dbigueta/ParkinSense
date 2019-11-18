@@ -3,11 +3,12 @@
 //
 //  Team: ParkinSense - PDD Inc.
 //
-//  Programmer(s): Higgins Weng
+//  Programmer(s): Higgins Weng, Hamlet Jiang Su
 //
 //  Description: Main view of the signup page - allows registration of new users
 //
 //  Changes:
+//      - Refactored code to programmatically code UI elements
 //      - Save and update the login time in Firebase
 //
 //  Known Bugs:
@@ -243,7 +244,11 @@ class SignupViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Notifies view controller to perform an update
         NotificationCenter.default.addObserver(self, selector: #selector(self.setUpElement), name: NSNotification.Name(rawValue: "DoUpdateLabel"), object: nil)
+        
+        //Set background colour of view controller
         self.view.backgroundColor = UIColor(red:0.96, green:0.95, blue:0.95, alpha:1.0)
         
         setUpElement()
@@ -251,7 +256,7 @@ class SignupViewController: UIViewController {
     
     
     /**
-     Function to set up the default ErrorLabel invisible and set up the button and text appearance
+     Function to set up the default ErrorLabel to be invisible and set up medication, email, and password labels
      
      - Returns: No
      **/
@@ -339,11 +344,10 @@ class SignupViewController: UIViewController {
                             self.showError("Error saving user data")
                         }
                     }
-                    
+        
                     //Transition to the home screen
                     let homeViewController:HomeViewController = HomeViewController()
                     self.present(homeViewController, animated: true, completion: nil)
-                    //self.performSegue(withIdentifier: "goToHomeID", sender: nil)
                 }
             }
         }
@@ -361,10 +365,7 @@ class SignupViewController: UIViewController {
         password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         
         let medicationViewController:MedicationDetailViewController = MedicationDetailViewController()
-
         self.present(medicationViewController, animated: true, completion: nil)
-        
-        //self.performSegue(withIdentifier: "addMedicationID", sender: nil)
     }
     
     

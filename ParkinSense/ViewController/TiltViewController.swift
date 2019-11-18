@@ -8,6 +8,7 @@
 //  Description: Main TILT view controller that presents the countdown and tilt game scenes
 //
 //  Changes:
+//      - Refactored code to programmatically code UI elements
 //      - Added comments to clarify code
 //      - Added viewDidDisappear() and prepare() to transtition over to the Tilt Score View
 //      - Added functions that help set up the countdown scene and transition to it
@@ -30,16 +31,19 @@ class TiltViewController: UIViewController {
     var gameCountdown: Int = 60
     var currentScore: Int = 0
     
+    //HUD view controls the time and score labels
     let HUDView: UIView = {
         let view = UIView()
         return view
     }()
 
+    //Countdown view holds the countdown timer
     let countdownView: UIView = {
         let view = UIView()
         return view
     }()
     
+    //Time header HUD label
     let timeStaticLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -52,6 +56,7 @@ class TiltViewController: UIViewController {
         return label
     }()
     
+    //Score header HUD label
     let scoreStaticLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -64,6 +69,7 @@ class TiltViewController: UIViewController {
         return label
     }()
     
+    //Current time UI label
     let timeLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -76,6 +82,7 @@ class TiltViewController: UIViewController {
         return label
     }()
     
+    //Current score UI label
     let scoreLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -88,15 +95,13 @@ class TiltViewController: UIViewController {
         return label
     }()
     
+    //Countdown UI lable
     let countdownLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
         label.textColor = countdownTextColour
         label.font = countdownFont
-        //label.heightAnchor.constraint(equalToConstant: countdownLabelHeight).isActive = true
-        //label.widthAnchor.constraint(equalToConstant: countdownLabelWidth).isActive = true
-        
         return label
     }()
     
@@ -109,11 +114,14 @@ class TiltViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Sets background colour of view
         self.view.backgroundColor = UIColor(red:0.96, green:0.95, blue:0.95, alpha:1.0)
         
+        //Adds the labels for countdown view only
         view.addSubview(countdownView)
         countdownView.addSubview(countdownLabel)
         
+        //Set up constraints for countdown view
         countdownView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         countdownView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         countdownView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
@@ -141,14 +149,17 @@ class TiltViewController: UIViewController {
     }
     
     func setupGameUI(){
+        //Removes countdown and displays HUD view
         countdownView.removeFromSuperview()
         view.addSubview(HUDView)
         
+        //Add labels to HUD view
         HUDView.addSubview(timeStaticLabel)
         HUDView.addSubview(scoreStaticLabel)
         HUDView.addSubview(timeLabel)
         HUDView.addSubview(scoreLabel)
         
+        //Sets up constraints for all labels in HUD view
         timeStaticLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8.0).isActive = true
         timeStaticLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 16.0).isActive = true
         

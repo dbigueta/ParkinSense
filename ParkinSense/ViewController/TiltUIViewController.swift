@@ -8,11 +8,12 @@
 //  Description: Main menu of Tilt - controls sounds, start and exit of game
 //
 //  Changes:
+//      - Refactored code to programmatically code UI elements
 //      - Added IBOutlets to buttons
 //      - Added View Controller
 //
 //  Known Bugs:
-//      - Sound only works in iPhoneXR and does not stop after the Tilt Game
+//      - None
 //
 //-----------------------------------------------------------------
 
@@ -21,6 +22,7 @@ import AVFoundation
 
 class TiltUIViewController: UIViewController {
 
+    // Tilt Title UI label
     let tiltLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -32,6 +34,7 @@ class TiltUIViewController: UIViewController {
         return label
     }()
     
+    //First line of instructions
     let instructionsLabelLine1: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -42,6 +45,7 @@ class TiltUIViewController: UIViewController {
         return label
     }()
     
+    //Second line of instructions
     let instructionsLabelLine2: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -52,6 +56,7 @@ class TiltUIViewController: UIViewController {
         return label
     }()
     
+    //Third line of instructions
     let instructionsLabelLine3: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -62,6 +67,7 @@ class TiltUIViewController: UIViewController {
         return label
     }()
     
+    //Start game button
     let startButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -75,6 +81,7 @@ class TiltUIViewController: UIViewController {
         return button
     }()
     
+    //Sound UI label
     let soundLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -86,6 +93,7 @@ class TiltUIViewController: UIViewController {
         return label
     }()
     
+    //Sound Toggle
     let soundToggle: UISwitch = {
         let toggle = UISwitch()
         toggle.translatesAutoresizingMaskIntoConstraints = false
@@ -95,6 +103,7 @@ class TiltUIViewController: UIViewController {
         return toggle
     }()
     
+    //Quit game button
     let quitButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -120,8 +129,10 @@ class TiltUIViewController: UIViewController {
         
         super.viewDidLoad()
         
+        //Sets background colour of view
         self.view.backgroundColor = tiltBackgroundColour
         
+        //Add all labels, buttons, toggles into the view
         view.addSubview(tiltLabel)
         view.addSubview(instructionsLabelLine1)
         view.addSubview(instructionsLabelLine2)
@@ -131,6 +142,7 @@ class TiltUIViewController: UIViewController {
         view.addSubview(soundToggle)
         view.addSubview(quitButton)
         
+        //Sets up all the constraints needed for the labels, buttons, toggles
         tiltLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         tiltLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         tiltLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 224.0).isActive = true
@@ -179,7 +191,6 @@ class TiltUIViewController: UIViewController {
         
         soundEffect.play()
     }
-    
     
     /**
         Sets sound to be on/off based on the toggle

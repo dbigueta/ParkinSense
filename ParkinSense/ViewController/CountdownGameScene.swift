@@ -8,6 +8,7 @@
 //  Description: Creates the countdown that happens before a game begins (TILT/Bubble Pop)
 //
 //  Changes:
+//      - Refactored code to programmatically code UI elements
 //      - Added more comments to make the code more clear
 //      - Added deinit() function to check whether or not the scene has been deinitialized
 //      - Added transition to the TiltGameScene
@@ -110,8 +111,6 @@ class CountdownGameScene: SKScene {
     
     /**
      Performs transition to a new scene for the main game.
-     
-     - TODO: Check to see which game we want to transition to - Tilt/Bubble Pop
      
      - Returns: None.
     */

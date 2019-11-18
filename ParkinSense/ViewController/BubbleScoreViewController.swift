@@ -3,12 +3,13 @@
 //
 //  Team: ParkinSense - PDD Inc.
 //
-//  Programmer(s): Hamlet Jiang Su
+//  Programmer(s): Jerry Bao, Hamlet Jiang Su
 //
-//  Description: View controller that displays once TILT has reached a count of 0. Shows the score and options to
-//                  quit or replay.
+//  Description: View controller that displays once Bubble Pop has reached a count of 0. Shows
+// the score and options to quit or replay.
 //
 //  Changes:
+//      - Refactored code to programmatically code UI elements
 //      - Added comments to clarify code
 //      - Added scene to main storyboard
 //
@@ -25,6 +26,7 @@ import Firebase
 
 class BubbleScoreViewController: UIViewController {
     
+    //Final score Title label
     let finalScoreStaticLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -36,6 +38,7 @@ class BubbleScoreViewController: UIViewController {
         return label
     }()
     
+    //Final score label
     let finalScoreLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -47,6 +50,7 @@ class BubbleScoreViewController: UIViewController {
         return label
     }()
     
+    //Replay button
     let replayButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -60,6 +64,7 @@ class BubbleScoreViewController: UIViewController {
         return button
     }()
     
+    //Quit button
     let finalQuitButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -72,9 +77,7 @@ class BubbleScoreViewController: UIViewController {
         button.heightAnchor.constraint(equalToConstant: finalQuitButtonHeight).isActive = true
         return button
     }()
-    
-    
-    //@IBOutlet weak var finalScore: UILabel!
+
     
     /**
      Function runs when this current view has been loaded. Updates the score based on the score of the previous game.
@@ -84,11 +87,13 @@ class BubbleScoreViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        //Add labels and buttons to view
         view.addSubview(finalScoreStaticLabel)
         view.addSubview(finalScoreLabel)
         view.addSubview(replayButton)
         view.addSubview(finalQuitButton)
         
+        //Set up constraints for all buttons and labels
         finalScoreStaticLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         finalScoreStaticLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         finalScoreStaticLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 128.0).isActive = true
@@ -98,22 +103,33 @@ class BubbleScoreViewController: UIViewController {
         finalScoreLabel.topAnchor.constraint(equalTo: finalScoreStaticLabel.topAnchor, constant: finalScoreStaticLabelHeight + 16.0).isActive = true
         
         replayButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: bubbleReplayButtonButtonOffset).isActive = true
-        //replayButton.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         replayButton.topAnchor.constraint(equalTo: finalScoreLabel.topAnchor, constant: finalScoreLabelHeight + 64.0).isActive = true
         
         finalQuitButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: bubbleFinalQuitButtonOffset).isActive = true
-        //finalQuitButton.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         finalQuitButton.topAnchor.constraint(equalTo: replayButton.topAnchor, constant: replayButtonHeight + 24.0).isActive = true
         
+        //Set background colour of view
         view.backgroundColor = bubbleBackgroundColour
         
         finalScoreLabel.text = String(bubbleFinalScore)
     }
     
+
+    /**
+          Returns to Bubble Pop main menu
+       
+           - Returns: None
+      **/
     @objc func replayButtonPressed(_ sender: Any){
         self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
     }
     
+    
+    /**
+          Quits the game Bubble Pop
+       
+           - Returns: None
+      **/
     @objc func quitButtonPressed(_ sender: Any){
         self.presentingViewController?.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
     }

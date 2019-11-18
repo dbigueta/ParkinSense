@@ -3,17 +3,17 @@
 //
 //  Team: ParkinSense - PDD Inc.
 //
-//  Programmer(s): Higgins Weng
+//  Programmer(s): Higgins Weng, Hamlet Jiang Su
 //
-//  Description:
+//  Description: Displays the home view of Parkinsense, including trendline, calendar, and game buttons
 //
 //  Changes:
+//      - Refactored code to programmatically code UI elements
 //      - Added the swipe and page control
 //      - Modified the gaming icon
 //
 //  Known Bugs:
-//      - need to put the trendline and data text label
-//      - constraints need to fix to flexiable
+//      - Does not highlight todays date when homeview is first presented
 //
 //-----------------------------------------------------------------
 
@@ -26,21 +26,19 @@ import Firebase
 class HomeViewController: UIViewController, UIScrollViewDelegate{
     
     var ref: DatabaseReference?
-
     var currentYear = Calendar.current.component(.year, from: Date()) //get the current Year
-
     var currentWeek = Calendar.current.component(.weekOfYear, from: Date()) //get the current week of the year
-
     var rightNow = Date() //get the current date and time
-
     let db = Firestore.firestore() //use for data read and write in database for later function
     
+    //Scroll view to allow scrolling of content
     let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         return scrollView
     }()
 
+    //Container that keeps all the scrollable content
     let scrollViewContainer: UIStackView = {
         let view = UIStackView()
         view.axis = .vertical
@@ -48,12 +46,14 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         return view
     }()
     
+    //Progress view that contains the progress label
     let progressView: UIView = {
         let view = UIView()
         view.heightAnchor.constraint(equalToConstant: progressViewHeight).isActive = true
         return view
     }()
     
+    //Progress UI label
     let progressLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -64,6 +64,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         return label
     }()
 
+    //Data scroll view that contains the trendline and the day information
     let dataScrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.heightAnchor.constraint(equalToConstant: dataScrollViewHeight).isActive = true
@@ -71,26 +72,27 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         return scrollView
     }()
     
+    //variables related to the day information in the trendline
     var Datalabeltext1: UILabel!
-
     var Datalabeltext2: UILabel!
-
     var Datalabeltext3: UILabel!
-
     var lineChartView: LineChartView!
     
+    //Allows for a consistent switch between trendline and day information
     let pageControl: UIPageControl = {
         let page = UIPageControl()
         page.translatesAutoresizingMaskIntoConstraints = false
         return page
     }()
 
+    // Calendar view that displays the days of the week, and the next/prev buttons
     let calendarView: UIView = {
         let view = UIView()
         view.heightAnchor.constraint(equalToConstant: calendarViewHeight).isActive = true
         return view
     }()
     
+    //Week header UI label
     let weekLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -101,6 +103,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         return label
     }()
     
+    //Prev week button
     let prevWeek: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -113,6 +116,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         return button
     }()
     
+    //Date range UI Label
     let weekDateLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -123,6 +127,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         return label
     }()
 
+    //next week button
     let nextWeek: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -135,6 +140,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         return button
     }()
     
+    //Sunday button
     let sundayButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -149,6 +155,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         return button
     }()
 
+    //Monday button
     let mondayButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -162,6 +169,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         return button
     }()
     
+    //Tuesday button
     let tuesdayButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -175,6 +183,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         return button
     }()
     
+    //Wednesday button
     let wednesdayButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -188,6 +197,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         return button
     }()
     
+    //Thursday button
     let thursdayButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -201,6 +211,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         return button
     }()
     
+    //Friday button
     let fridayButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -214,6 +225,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         return button
     }()
     
+    //Saturday button
     let saturdayButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -227,12 +239,14 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         return button
     }()
 
+    //Game view that contains the two buttons to initiate the games
     let gameView: UIView = {
         let view = UIView()
         view.heightAnchor.constraint(equalToConstant: gameViewHeight).isActive = true
         return view
     }()
     
+    //Game header UI label
     let gameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -243,6 +257,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         return label
     }()
     
+    //Tilt button
     let tiltButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -257,6 +272,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         return button
     }()
     
+    //Bubble Pop button
     let bubblePopButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -274,8 +290,9 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
     override func viewDidLoad(){
         super.viewDidLoad()
         
+        //Add labels, buttons, and views to its respective locations
         progressView.addSubview(progressLabel)
-        
+    
         calendarView.addSubview(weekLabel)
         calendarView.addSubview(prevWeek)
         calendarView.addSubview(weekDateLabel)
@@ -299,6 +316,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         scrollViewContainer.addArrangedSubview(calendarView)
         scrollViewContainer.addArrangedSubview(gameView)
 
+        //Setup constraints for all views, labels, and buttons
         scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
@@ -360,6 +378,8 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         bubblePopButton.leadingAnchor.constraint(equalTo: tiltButton.leadingAnchor, constant: homeGameButtonWidth + offsetGameButtons).isActive = true
         bubblePopButton.topAnchor.constraint(equalTo: gameLabel.topAnchor, constant: headerHeight + 16.0).isActive = true
         
+        
+        //Set background colour of the view
         self.view.backgroundColor = UIColor(red:0.96, green:0.95, blue:0.95, alpha:1.0)
         setupUserData()
     }
@@ -411,7 +431,6 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
                         dateFormatter.dateFormat = "yyyy-MM-dd"
                         let currentTimeDate = dateFormatter.string(from: Date())
                         self.db.collection("users").document(userid).collection("gaming_score").document(currentTimeDate).setData(["date":thisTimeLoginDateStr, "Game_One_lastMaxScore":maxScoreToday])
-
                     }
                 }
             }
@@ -954,10 +973,9 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
 
 
     /**
-     Function about the Game One Button, will direct you to the Game One page
+     Function about the Tilt Button, will direct you to the Tilt page
 
      - Parameter sender: Button itself
-
      - Returns: No
 
      **/
@@ -968,10 +986,9 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
 
     
     /**
-     Function about the Game Two Button, will direct you to the Game Two page
+     Function about the Bubble Pop Button, will direct you to the Bubble Pop  page
 
      - Parameter sender: Button itself
-
      - Returns: No
 
      **/

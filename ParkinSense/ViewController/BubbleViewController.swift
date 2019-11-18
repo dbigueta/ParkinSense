@@ -3,11 +3,12 @@
 //
 //  Team: ParkinSense - PDD Inc.
 //
-//  Programmer(s): Hamlet Jiang Su
+//  Programmer(s): Jerry Bao, Hamlet Jiang Su
 //
-//  Description: Main TILT view controller that presents the countdown and bubble game scenes
+//  Description: Main Bubble Pop view controller that presents the countdown and bubble game scenes
 //
 //  Changes:
+//      - Refactored code to programmatically code UI elements
 //      - Added comments to clarify code
 //      - Added viewDidDisappear() and prepare() to transtition over to the Bubble Score View
 //      - Added functions that help set up the countdown scene and transition to it
@@ -30,20 +31,19 @@ class BubbleViewController: UIViewController {
     var gameCountdown: Int = 60
     var currentScore: Int = 0
     
+    //HUD view controls the time and score labels
     let HUDView: UIView = {
         let view = UIView()
-        //view.heightAnchor.constraint(equalToConstant: 1200).isActive = true
-        //view.backgroundColor = .green
         return view
     }()
 
+    //Countdown view controls the countdown labels
     let countdownView: UIView = {
         let view = UIView()
-        //view.heightAnchor.constraint(equalToConstant: 1200).isActive = true
-        //view.backgroundColor = .green
         return view
     }()
     
+    //Time header HUD label
     let timeStaticLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -56,6 +56,7 @@ class BubbleViewController: UIViewController {
         return label
     }()
     
+    //Score header HUD label
     let scoreStaticLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -68,6 +69,7 @@ class BubbleViewController: UIViewController {
         return label
     }()
     
+    //Time label
     let timeLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -80,6 +82,7 @@ class BubbleViewController: UIViewController {
         return label
     }()
     
+    //Score label
     let scoreLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -92,15 +95,13 @@ class BubbleViewController: UIViewController {
         return label
     }()
     
+    //Countdown label
     let countdownLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
         label.textColor = countdownTextColour
         label.font = countdownFont
-        //label.heightAnchor.constraint(equalToConstant: countdownLabelHeight).isActive = true
-        //label.widthAnchor.constraint(equalToConstant: countdownLabelWidth).isActive = true
-        
         return label
     }()
     
@@ -113,11 +114,14 @@ class BubbleViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Sets background colour of view
         self.view.backgroundColor = UIColor(red:0.96, green:0.95, blue:0.95, alpha:1.0)
         
+        //Adds the countdown labels to the countdown view
         view.addSubview(countdownView)
         countdownView.addSubview(countdownLabel)
         
+        //Sets constraints only for the countdown views
         countdownView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         countdownView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         countdownView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
@@ -144,14 +148,19 @@ class BubbleViewController: UIViewController {
     }
     
     func setupGameUI(){
+        //removes the countdown from view
         countdownView.removeFromSuperview()
+        
+        //Adds the HUD containint time and score
         view.addSubview(HUDView)
         
+        //Add time and score labels to the view
         HUDView.addSubview(timeStaticLabel)
         HUDView.addSubview(scoreStaticLabel)
         HUDView.addSubview(timeLabel)
         HUDView.addSubview(scoreLabel)
         
+        //Set up constraints for the time and score
         timeStaticLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8.0).isActive = true
         timeStaticLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 16.0).isActive = true
         
@@ -164,6 +173,7 @@ class BubbleViewController: UIViewController {
         scoreLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8.0).isActive = true
         scoreLabel.topAnchor.constraint(equalTo: scoreStaticLabel.topAnchor, constant: scoreStaticLabelHeight + 8.0).isActive = true
     }
+    
     
     /**
      Initializes the first scene and displays it on the screen.
@@ -195,6 +205,7 @@ class BubbleViewController: UIViewController {
         timeLabel.text = String(gameCountdown)
         scoreLabel.text = String(currentScore)
     }
+    
     
     /**
      Sets the Bubble Game Scene to nil to allow ARC to remove it and deinitialize the scene

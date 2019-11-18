@@ -1,13 +1,14 @@
 //-----------------------------------------------------------------
-//  File: CountdownGameScene.swift
+//  File: BCountdownGameScene.swift
 //
 //  Team: ParkinSense - PDD Inc.
 //
-//  Programmer(s): Hamlet Jiang Su
+//  Programmer(s): Jerry Bao, Hamlet Jiang Su
 //
-//  Description: Creates the countdown that happens before a game begins (TILT/Bubble Pop)
+//  Description: Creates the countdown that happens before a game begins (Bubble Pop)
 //
 //  Changes:
+//      - Refactored code to programmatically code UI elements
 //      - Added more comments to make the code more clear
 //      - Added deinit() function to check whether or not the scene has been deinitialized
 //      - Added transition to the BubbleGameScene
@@ -110,9 +111,7 @@ class BCountdownGameScene: SKScene {
     
     /**
      Performs transition to a new scene for the main game.
-     
-     - TODO: Check to see which game we want to transition to - Bubble/Bubble Pop
-     
+    
      - Returns: None.
     */
     func transitionToGame() {

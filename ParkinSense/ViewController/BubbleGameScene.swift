@@ -1,10 +1,22 @@
+//-----------------------------------------------------------------
+//  File: BubbleGameScene.swift
 //
-//  BubbleGameScene.swift
-//  ParkinSense
+//  Team: ParkinSense - PDD Inc.
 //
-//  Created by 包立诚 on 2019/11/10.
-//  Copyright © 2019 PDD Inc. All rights reserved.
+//  Programmer(s): Jerry Bao, Hamlet Jiang Su
 //
+//  Description: Main Bubble class that handles generation of target, timer, score, and movement of game items
+//
+//  Changes:
+//      - Refactored code to programmatically code UI elements
+//      - Added comments to clarify code
+//      - Added transition to Score Scene when count reaches 0
+//      - Added the game scene
+//
+//  Known Bugs:
+//      - Scene sometimes generates bubbles too fast
+//
+//-----------------------------------------------------------------
 
 import SpriteKit
 
@@ -55,10 +67,6 @@ class BubbleGameScene: SKScene {
     }
     
     @objc func decrementCounter() {
-//        if (counter % bubbleGenerationRate == 0){
-//            generateBubble()
-//        }
-        
         if counter == 0 {
             counterTimer.invalidate()
             endGame()
@@ -78,9 +86,10 @@ class BubbleGameScene: SKScene {
         
         bubbleFinalScore = viewController.currentScore
         
+        viewController.HUDView.isHidden = true
+        
         let bubbleScoreViewController:BubbleScoreViewController = BubbleScoreViewController()
         viewController.present(bubbleScoreViewController, animated: true, completion: nil)
-        //viewController.performSegue(withIdentifier: "bubbleScore", sender: self)
     }
     
     deinit {
@@ -156,7 +165,6 @@ class BubbleGameScene: SKScene {
     }
     
     override func update(_ currentTime: TimeInterval){
-        
         if let currentTouch = lastTouchPosition{
             if ((bubble.position.x - bubbleRadius < currentTouch.x) && (currentTouch.x < bubble.position.x + bubbleRadius) && (bubble.position.y - bubbleRadius < currentTouch.y) && (currentTouch.y < bubble.position.y + bubbleRadius)){
                 viewController.currentScore += 20
@@ -165,11 +173,6 @@ class BubbleGameScene: SKScene {
                 
             }
         }
-//        if bubble.frame.contains(currentTouch){
-//            viewController.currentScore += 1
-//            viewController.BubbleScoreLabel.text = String(viewController.currentScore)
-//        }
-        
     }
     
     

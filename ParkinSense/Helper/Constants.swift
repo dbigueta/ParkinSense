@@ -73,6 +73,12 @@ var offsetTopWeekButtons = (screenWidth - (4*homeDayButtonWidth))/5
 var offsetBottomWeekButtons = (screenWidth - (3*homeDayButtonWidth) - 2*offsetTopWeekButtons)/2
 var offsetGameButtons = (screenWidth - (2*homeGameButtonWidth))/3
 
+/* Main UI & Login Colours */
+let textColour = UIColor(red:0.29, green:0.31, blue:0.34, alpha:1.0)
+let buttonTextColour = UIColor(red:0.29, green:0.31, blue:0.34, alpha:1.0)
+let buttonColour = UIColor(red:0.75, green:0.85, blue:0.84, alpha:1.0)
+let font = UIFont.systemFont(ofSize: 20, weight: .light)
+let selectedDayBackgroundColour = UIColor(red:0.69, green:0.75, blue:0.84, alpha:1.0)
 
 
 /* TILT Game */
@@ -124,13 +130,6 @@ let tiltFont = UIFont.systemFont(ofSize: 22, weight: .regular)
 var tiltFinalScore = 0
 
 
-/* Main UI & Login Colours */
-let textColour = UIColor(red:0.29, green:0.31, blue:0.34, alpha:1.0)
-let buttonTextColour = UIColor(red:0.29, green:0.31, blue:0.34, alpha:1.0)
-let buttonColour = UIColor(red:0.75, green:0.85, blue:0.84, alpha:1.0)
-let font = UIFont.systemFont(ofSize: 20, weight: .light)
-let selectedDayBackgroundColour = UIColor(red:0.69, green:0.75, blue:0.84, alpha:1.0)
-
 /*Tilt Colours*/
 let tiltBackgroundColour = UIColor(red:0.92, green:0.91, blue:0.88, alpha:1.0)
 let tiltTextColour = UIColor(red:0.27, green:0.45, blue:0.62, alpha:1.0)
@@ -145,6 +144,7 @@ let tiltHoleColour = UIColor(red:0.74, green:0.72, blue:0.68, alpha:1.0)
 let countdownBackgroundColour = UIColor(red:0.27, green:0.45, blue:0.62, alpha:1.0)
 let countdownTextColour = UIColor(red:0.74, green:0.72, blue:0.68, alpha:1.0)
 
+
 /* Bubble Game */
 var bubbleLabelHeight:CGFloat = 50
 var bubbleStartButtonOffset:CGFloat = (1/3*screenWidth)/2
@@ -157,16 +157,16 @@ var bubbleFinalQuitButtonOffset:CGFloat = (1/3*screenWidth)/2
 
 let bubbleStaticFont = UIFont.systemFont(ofSize: 25, weight: .bold)
 let bubbleFont = UIFont.systemFont(ofSize: 22, weight: .regular)
+let bubbleTitleFont = UIFont.systemFont(ofSize: 50, weight: .regular)
+let bubbleFinalScoreFont = UIFont.systemFont(ofSize: 40, weight: .regular)
 
 var bubbleFinalScore = 0
 
 
-/*bubble Colours*/
+/* Bubble Colours */
 let bubbleBackgroundColour = UIColor(red:0.92, green:0.91, blue:0.88, alpha:1.0)
 let bubbleTextColour = UIColor(red:0.27, green:0.45, blue:0.62, alpha:1.0)
 let bubbleButtonColour = UIColor(red:0.78, green:0.83, blue:0.88, alpha:1.0)
-let bubbleTitleFont = UIFont.systemFont(ofSize: 50, weight: .regular)
-let bubbleFinalScoreFont = UIFont.systemFont(ofSize: 40, weight: .regular)
 
 let bubbleGameBackgroundColour = UIColor(red:0.92, green:0.91, blue:0.88, alpha:1.0)
 let bubbleBallColour = UIColor(red:0.27, green:0.45, blue:0.62, alpha:1.0)

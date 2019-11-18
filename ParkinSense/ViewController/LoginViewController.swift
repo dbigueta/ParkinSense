@@ -3,7 +3,7 @@
 //
 //  Team: ParkinSense - PDD Inc.
 //
-//  Programmer(s): Higgins Weng
+//  Programmer(s): Higgins Weng, Hamlet Jiang Su
 //
 //  Description: Main login view of ParkinSense
 //
@@ -25,13 +25,12 @@ import BEMCheckBox
 
 class LoginViewController: UIViewController {
 
-let emailTextField =  CustomTextField(frame: CGRect(x: 0, y: 0, width: 300, height: 60))
-let passwordTextField =  CustomTextField(frame: CGRect(x: 0, y: 0, width: 300, height: 60))
-let errorLabel = UILabel()
-let signInButton = UIButton()
-let createAccountButton = UIButton()
+    let emailTextField =  CustomTextField(frame: CGRect(x: 0, y: 0, width: 300, height: 60))
+    let passwordTextField =  CustomTextField(frame: CGRect(x: 0, y: 0, width: 300, height: 60))
+    let errorLabel = UILabel()
+    let signInButton = UIButton()
+    let createAccountButton = UIButton()
 
-    
     override func loadView() {
         super.loadView()
         
@@ -118,7 +117,6 @@ let createAccountButton = UIButton()
         
         // Password UI Textfield
         let passwordTextFieldHeight: CGFloat = textFieldFontSize + paddingVal
-        //let passwordTextFieldHeight: CGFloat = 25
         passwordTextField.textColor = textColour
         passwordTextField.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.foregroundColor: textColour])
         passwordTextField.paddingValue = 10
@@ -229,22 +227,12 @@ let createAccountButton = UIButton()
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Set background of view controller
         self.view.backgroundColor = UIColor(red:0.96, green:0.95, blue:0.95, alpha:1.0)
-        // Do any additional setup after loading the view.
-        setUpElements()
-    }
-    
-    
-    /**
-        Function to set up the default ErrorLabel invisiable and set up the button and text appearance
-     
-         - Returns: None
-    **/
-    func setUpElements(){
+        
         //Hide the error label
         errorLabel.alpha = 0
     }
-    
     
     /**
         Function about the Sign in Button, will direct you to the home page if success. If not, the error will be displayed
@@ -253,32 +241,29 @@ let createAccountButton = UIButton()
          - Returns: None
     **/
     @objc func signInTapped(_ sender: Any) {
-        
-        //validate Text Fields
-        
         //Create cleaned versions of the text field
         username = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         
-        
+        //Validate text fields
         Auth.auth().signIn(withEmail: username, password: password) { (result, error) in
 
             if error != nil {
-                //could not sign in
+                //Could not sign in
                 self.errorLabel.text = error!.localizedDescription
                 self.errorLabel.alpha = 1
             }
             else{
+                //Transition to Home view
                 let homeViewController:HomeViewController = HomeViewController()
                 self.present(homeViewController, animated: true, completion: nil)
-                //self.performSegue(withIdentifier: "loginToHomeID", sender: nil)
             }
         }
     }
     
     
     /**
-        Function that directs you to Create an Account
+        Function that directs you to Create an Account - presents SignUpViewController
 
          - Parameter sender: Button itself
          - Returns: None

@@ -3,11 +3,12 @@
 //
 //  Team: ParkinSense - PDD Inc.
 //
-//  Programmer(s): Higgins Weng
+//  Programmer(s): Higgins Weng, Hamlet Jiang Su
 //
 //  Description: Main view of the medication page - allows registration of new medication
 //
 //  Changes:
+//      - Refactored code to programmatically code UI elements
 //      - Check the time picker time zone
 //      - Add the Medicaiton name to Firebase
 //
@@ -436,20 +437,10 @@ class MedicationDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        //Sets background of view controller
         self.view.backgroundColor = UIColor(red:0.96, green:0.95, blue:0.95, alpha:1.0)
-        
-        setUpElements()
     }
     
-
-    /**
-        Function for set up the appearance of the medication detail page
-     
-         - Returns: None
-    **/
-    func setUpElements(){
-       // Utilities.styleFilledButton(addNewMedicationButton)
-    }
     
     /**
         Function about the add new medication Button, will direct you back to the sign up page and medication will be displayed on the screen
