@@ -1,34 +1,34 @@
 //-----------------------------------------------------------------
-//  File: TiltUIViewController.swift
+//  File: BubbleUIViewController.swift
 //
 //  Team: ParkinSense - PDD Inc.
 //
 //  Programmer(s): Higgins Weng, Dexter Bigueta, Hamlet Jiang Su
 //
-//  Description: Main menu of Tilt - controls sounds, start and exit of game
+//  Description: Main menu of bubble - controls sounds, start and exit of game
 //
 //  Changes:
 //      - Added IBOutlets to buttons
 //      - Added View Controller
 //
 //  Known Bugs:
-//      - Sound only works in iPhoneXR and does not stop after the Tilt Game
+//      - Sound only works in iPhoneXR and does not stop after the bubble Game
 //
 //-----------------------------------------------------------------
 
 import UIKit
 import AVFoundation
 
-class TiltUIViewController: UIViewController {
+class BubbleUIViewController: UIViewController {
 
-    let tiltLabel: UILabel = {
+    let bubbleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "TILT"
+        label.text = "BUBBLE POP"
         label.textAlignment = .center
-        label.font = tiltTitleFont
-        label.textColor = tiltTextColour
-        label.heightAnchor.constraint(equalToConstant: tiltLabelHeight).isActive = true
+        label.font = bubbleTitleFont
+        label.textColor = bubbleTextColour
+        label.heightAnchor.constraint(equalToConstant: bubbleLabelHeight).isActive = true
         return label
     }()
     
@@ -37,7 +37,7 @@ class TiltUIViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Move your ball towards the target"
         label.textAlignment = .center
-        label.textColor = tiltTextColour
+        label.textColor = bubbleTextColour
         label.heightAnchor.constraint(equalToConstant: instructionsLabelHeight).isActive = true
         return label
     }()
@@ -47,7 +47,7 @@ class TiltUIViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Keep your hand as steady as possible"
         label.textAlignment = .center
-        label.textColor = tiltTextColour
+        label.textColor = bubbleTextColour
         label.heightAnchor.constraint(equalToConstant: instructionsLabelHeight).isActive = true
         return label
     }()
@@ -57,7 +57,7 @@ class TiltUIViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Good Luck!"
         label.textAlignment = .center
-        label.textColor = tiltTextColour
+        label.textColor = bubbleTextColour
         label.heightAnchor.constraint(equalToConstant: instructionsLabelHeight).isActive = true
         return label
     }()
@@ -66,9 +66,9 @@ class TiltUIViewController: UIViewController {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Start", for: .normal)
-        button.setTitleColor(tiltTextColour, for: .normal)
+        button.setTitleColor(bubbleTextColour, for: .normal)
         button.layer.cornerRadius = 25
-        button.backgroundColor = tiltButtonColour
+        button.backgroundColor = bubbleButtonColour
         button.addTarget(self, action: #selector(startGame(_:)), for: .touchUpInside)
         button.widthAnchor.constraint(equalToConstant: startButtonWidth).isActive = true
         button.heightAnchor.constraint(equalToConstant: startButtonHeight).isActive = true
@@ -80,7 +80,7 @@ class TiltUIViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Sound Effects"
         label.textAlignment = .right
-        label.textColor = tiltTextColour
+        label.textColor = bubbleTextColour
         label.heightAnchor.constraint(equalToConstant: soundLabelHeight).isActive = true
         label.widthAnchor.constraint(equalToConstant: soundLabelWidth).isActive = true
         return label
@@ -99,9 +99,9 @@ class TiltUIViewController: UIViewController {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Quit", for: .normal)
-        button.setTitleColor(tiltTextColour, for: .normal)
+        button.setTitleColor(bubbleTextColour, for: .normal)
         button.layer.cornerRadius = 25
-        button.backgroundColor = tiltButtonColour
+        button.backgroundColor = bubbleButtonColour
         button.addTarget(self, action: #selector(quitGame(_:)), for: .touchUpInside)
         button.widthAnchor.constraint(equalToConstant: quitButtonWidth).isActive = true
         button.heightAnchor.constraint(equalToConstant: quitButtonHeight).isActive = true
@@ -120,9 +120,9 @@ class TiltUIViewController: UIViewController {
         
         super.viewDidLoad()
         
-        self.view.backgroundColor = tiltBackgroundColour
+        self.view.backgroundColor = bubbleBackgroundColour
         
-        view.addSubview(tiltLabel)
+        view.addSubview(bubbleLabel)
         view.addSubview(instructionsLabelLine1)
         view.addSubview(instructionsLabelLine2)
         view.addSubview(instructionsLabelLine3)
@@ -131,13 +131,13 @@ class TiltUIViewController: UIViewController {
         view.addSubview(soundToggle)
         view.addSubview(quitButton)
         
-        tiltLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        tiltLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        tiltLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 224.0).isActive = true
+        bubbleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        bubbleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        bubbleLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 224.0).isActive = true
 
         instructionsLabelLine1.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         instructionsLabelLine1.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        instructionsLabelLine1.topAnchor.constraint(equalTo: tiltLabel.topAnchor, constant: tiltLabelHeight + 32.0).isActive = true
+        instructionsLabelLine1.topAnchor.constraint(equalTo: bubbleLabel.topAnchor, constant: bubbleLabelHeight + 32.0).isActive = true
         
         instructionsLabelLine2.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         instructionsLabelLine2.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
@@ -147,7 +147,7 @@ class TiltUIViewController: UIViewController {
         instructionsLabelLine3.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         instructionsLabelLine3.topAnchor.constraint(equalTo: instructionsLabelLine2.topAnchor, constant: instructionsLabelHeight + 4.0).isActive = true
         
-        startButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: tiltStartButtonOffset).isActive = true
+        startButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: bubbleStartButtonOffset).isActive = true
         startButton.topAnchor.constraint(equalTo: instructionsLabelLine3.topAnchor, constant: instructionsLabelHeight + 40.0).isActive = true
         
         soundLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
@@ -156,12 +156,12 @@ class TiltUIViewController: UIViewController {
         soundToggle.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: soundLabelWidth + 56.0).isActive = true
         soundToggle.topAnchor.constraint(equalTo: startButton.topAnchor, constant: startButtonHeight + 24.0).isActive = true
 
-        quitButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: tiltQuitButtonOffset).isActive = true
+        quitButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: bubbleQuitButtonOffset).isActive = true
         quitButton.topAnchor.constraint(equalTo: soundLabel.topAnchor, constant: soundLabelHeight + 24.0).isActive = true
         
         setupSound()
     }
-    
+
     
     func setupSound() {
         guard let musicFile = Bundle.main.path(forResource: "Roots", ofType: ".mp3") else {
@@ -207,17 +207,17 @@ class TiltUIViewController: UIViewController {
     
     
     /**
-        Starts the game Tilt
+        Starts the game bubble
      
          - Returns: None
     **/
     @objc func startGame(_ sender: Any) {
-        let tiltViewController:TiltViewController = TiltViewController()
-        self.present(tiltViewController, animated: true, completion: nil)
+        let bubbleViewController:BubbleViewController = BubbleViewController()
+        self.present(bubbleViewController, animated: true, completion: nil)
     }
     
     /**
-        Quits the game Tilt
+        Quits the game bubble
      
          - Returns: None
     **/

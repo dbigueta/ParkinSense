@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		0333C3CC23656A5700031C26 /* WeeklyCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0333C3CB23656A5700031C26 /* WeeklyCalendar.swift */; };
 		038D56C12362C6AD00FFB3DD /* TiltUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038D56C02362C6AD00FFB3DD /* TiltUIViewController.swift */; };
-		038D56C32362C6BC00FFB3DD /* GameTwoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038D56C22362C6BC00FFB3DD /* GameTwoViewController.swift */; };
+		038D56C32362C6BC00FFB3DD /* BubbleUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038D56C22362C6BC00FFB3DD /* BubbleUIViewController.swift */; };
 		03AB56A423627D22000A3475 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 03AB56A323627D22000A3475 /* GoogleService-Info.plist */; };
 		060A222E236FD2CA00A9324E /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060A222D236FD2CA00A9324E /* CustomTextField.swift */; };
 		063FC2342370C05200FDFB45 /* ParkinSenseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063FC2332370C05200FDFB45 /* ParkinSenseTests.swift */; };
@@ -65,7 +65,7 @@
 		00B5474BFBD87956D8128115 /* Pods_ParkinSenseTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ParkinSenseTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0333C3CB23656A5700031C26 /* WeeklyCalendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeeklyCalendar.swift; sourceTree = "<group>"; };
 		038D56C02362C6AD00FFB3DD /* TiltUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TiltUIViewController.swift; sourceTree = "<group>"; };
-		038D56C22362C6BC00FFB3DD /* GameTwoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTwoViewController.swift; sourceTree = "<group>"; };
+		038D56C22362C6BC00FFB3DD /* BubbleUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleUIViewController.swift; sourceTree = "<group>"; };
 		03AB56A323627D22000A3475 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		060A222D236FD2CA00A9324E /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		063FC2322370C05200FDFB45 /* ParkinSenseTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ParkinSenseTests-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -252,7 +252,7 @@
 				063FC2432370E2DD00FDFB45 /* CountdownGameScene.swift */,
 				063FC2422370E2DD00FDFB45 /* TiltGameScene.swift */,
 				063FC2462370E30500FDFB45 /* TiltScoreViewController.swift */,
-				038D56C22362C6BC00FFB3DD /* GameTwoViewController.swift */,
+				038D56C22362C6BC00FFB3DD /* BubbleUIViewController.swift */,
 				1497BEFF2378F8BD00C9120C /* BubbleViewController.swift */,
 				1497BF0523793EBC00C9120C /* BCountdownGameScene.swift */,
 				1497BF012379254C00C9120C /* BubbleGameScene.swift */,
@@ -522,7 +522,7 @@
 				A61328FC23627A6A00C7066C /* LoginViewController.swift in Sources */,
 				1497BF002378F8BD00C9120C /* BubbleViewController.swift in Sources */,
 				1497BF0623793EBC00C9120C /* BCountdownGameScene.swift in Sources */,
-				038D56C32362C6BC00FFB3DD /* GameTwoViewController.swift in Sources */,
+				038D56C32362C6BC00FFB3DD /* BubbleUIViewController.swift in Sources */,
 				1497BF022379254C00C9120C /* BubbleGameScene.swift in Sources */,
 				063FC2492370E30500FDFB45 /* TiltViewController.swift in Sources */,
 			);

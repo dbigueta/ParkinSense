@@ -976,8 +976,8 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
 
      **/
     @objc func bubblePopButtonPressed(_ sender: Any) {
-        let bubblePopViewController:BubbleViewController = BubbleViewController()
-        self.present(bubblePopViewController, animated: true, completion: nil)
+        let bubblePopUIViewController:BubbleUIViewController = BubbleUIViewController()
+        self.present(bubblePopUIViewController, animated: true, completion: nil)
     }
 
     

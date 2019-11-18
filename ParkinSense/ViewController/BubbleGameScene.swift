@@ -46,7 +46,8 @@ class BubbleGameScene: SKScene {
     }
     
     func showGameUI(){
-        viewController.BubbleTimeScoreUI.isHidden = false
+        viewController.HUDView.isHidden = false
+        //viewController.BubbleTimeScoreUI.isHidden = false
     }
     
     func startCounter(){
@@ -64,7 +65,7 @@ class BubbleGameScene: SKScene {
         }
         else {
             counter -= 1
-            viewController.BubbleTimeLabel.text = String(counter)
+            viewController.timeLabel.text = String(counter)
         }
     }
     
@@ -75,7 +76,11 @@ class BubbleGameScene: SKScene {
         removeAllActions()
         removeFromParent()
         
-        viewController.performSegue(withIdentifier: "bubbleScore", sender: self)
+        bubbleFinalScore = viewController.currentScore
+        
+        let bubbleScoreViewController:BubbleScoreViewController = BubbleScoreViewController()
+        viewController.present(bubbleScoreViewController, animated: true, completion: nil)
+        //viewController.performSegue(withIdentifier: "bubbleScore", sender: self)
     }
     
     deinit {
@@ -155,7 +160,7 @@ class BubbleGameScene: SKScene {
         if let currentTouch = lastTouchPosition{
             if ((bubble.position.x - bubbleRadius < currentTouch.x) && (currentTouch.x < bubble.position.x + bubbleRadius) && (bubble.position.y - bubbleRadius < currentTouch.y) && (currentTouch.y < bubble.position.y + bubbleRadius)){
                 viewController.currentScore += 20
-                viewController.BubbleScoreLabel.text = String(viewController.currentScore)
+                viewController.scoreLabel.text = String(viewController.currentScore)
                 generateBubble()
                 
             }

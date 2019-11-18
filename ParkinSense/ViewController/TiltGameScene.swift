@@ -85,7 +85,7 @@ class TiltGameScene: SKScene {
      - Returns: None.
      */
     override func didMove(to view: SKView) {
-        self.scene!.backgroundColor = UIColor(red:0.22, green:0.26, blue:0.35, alpha:1.0)
+        self.scene!.backgroundColor = tiltGameBackgroundColour
         motionManager.startAccelerometerUpdates()
         
         physicsWorld.gravity = .zero
@@ -147,23 +147,8 @@ class TiltGameScene: SKScene {
         hole.removeFromParent()
         ball.removeFromParent()
         
-//        removeAllChildren()
-//        removeAllActions()
-//        removeFromParent()
+        tiltFinalScore = viewController.currentScore
         
-//        let theVC = self.viewController.storyboard?.instantiateViewController(withIdentifier: "tiltScore") as! TiltScoreViewController
-//
-//        self.viewController.navigationController?.pushViewController(theVC, animated: true)
-//        self.viewController.removeFromParent()
-//        self.viewController.dismiss(animated: true, completion: nil)
-//        self.view?.presentScene(nil)
-        
-//        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-//
-//        let controllerToBePresented = self.viewController.storyboard?.instantiateViewController(withIdentifier: "tiltScore") as! TiltScoreViewController
-//        appDelegate.switchControllers(viewControllerToBeDismissed: self.viewController, controllerToBePresented: controllerToBePresented)
-        
-        //viewController.performSegue(withIdentifier: "tiltScore", sender: self)
         let tiltScoreViewController:TiltScoreViewController = TiltScoreViewController()
         viewController.present(tiltScoreViewController, animated: true, completion: nil)
     }
@@ -195,8 +180,8 @@ class TiltGameScene: SKScene {
         ball.constraints = [SKConstraint.positionX(xRange!,y:yRange!)]
         
         ball.position = CGPoint(x: frame.size.width/2, y: frame.size.height/2)
-        ball.fillColor = UIColor(red:0.48, green:0.78, blue:0.77, alpha:1.0)
-        ball.strokeColor = UIColor(red:0.48, green:0.78, blue:0.77, alpha:1.0)
+        ball.fillColor = tiltBallColour
+        ball.strokeColor = tiltBallColour
         
         self.addChild(ball)
     }
@@ -211,7 +196,7 @@ class TiltGameScene: SKScene {
         hole.removeFromParent()
         
         hole.position = randomHolePosition()
-        hole.strokeColor = UIColor(red:0.97, green:0.22, blue:0.35, alpha:1.0)
+        hole.strokeColor = tiltHoleColour
         hole.lineWidth = 5
         
         self.addChild(hole)

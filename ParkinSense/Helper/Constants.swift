@@ -76,7 +76,7 @@ var offsetGameButtons = (screenWidth - (2*homeGameButtonWidth))/3
 
 
 /* TILT Game */
-var tiltLabelHeight:CGFloat = 25
+var tiltLabelHeight:CGFloat = 50
 var instructionsLabelHeight:CGFloat = 25
 
 var soundLabelHeight:CGFloat = 25
@@ -91,19 +91,38 @@ var quitButtonHeight:CGFloat = 50
 var quitButtonWidth:CGFloat = 2*screenWidth/3
 var tiltQuitButtonOffset:CGFloat = (1/3*screenWidth)/2
 
+var replayButtonHeight:CGFloat = 50
+var replayButtonWidth:CGFloat = 2*screenWidth/3
+var tiltReplayButtonButtonOffset:CGFloat = (1/3*screenWidth)/2
+
+var finalQuitButtonHeight:CGFloat = 50
+var finalQuitButtonWidth:CGFloat = 2*screenWidth/3
+var tiltFinalQuitButtonOffset:CGFloat = (1/3*screenWidth)/2
+
 var timeStaticLabelHeight:CGFloat = 25
+var timeStaticLabelWidth:CGFloat = screenWidth/5
+
 var scoreStaticLabelHeight:CGFloat = 25
+var scoreStaticLabelWidth:CGFloat = screenWidth/5
+
+var timeLabelHeight:CGFloat = 25
+var timeLabelWidth:CGFloat = screenWidth/5
+
+var scoreLabelHeight:CGFloat = 25
+var scoreLabelWidth:CGFloat = screenWidth/5
 
 var countdownLabelHeight:CGFloat = screenWidth
 var countdownLabelWidth:CGFloat = screenHeight
 var countdownFont = UIFont.systemFont(ofSize: 90, weight: .light)
 
-var finalScoreStaticLabelHeight:CGFloat = 25
-var finalScoreLabelHeight:CGFloat = 25
-var replayButtonHeight:CGFloat = 25
-var finalQuitButtonHeight:CGFloat = 25
-var replayButtonWidth:CGFloat = 25
-var finalQuitButtonWidth:CGFloat = 25
+var finalScoreStaticLabelHeight:CGFloat = 50
+var finalScoreLabelHeight:CGFloat = 50
+
+let tiltStaticFont = UIFont.systemFont(ofSize: 25, weight: .bold)
+let tiltFont = UIFont.systemFont(ofSize: 22, weight: .regular)
+
+var tiltFinalScore = 0
+
 
 /* Main UI & Login Colours */
 let textColour = UIColor(red:0.29, green:0.31, blue:0.34, alpha:1.0)
@@ -113,7 +132,42 @@ let font = UIFont.systemFont(ofSize: 20, weight: .light)
 let selectedDayBackgroundColour = UIColor(red:0.69, green:0.75, blue:0.84, alpha:1.0)
 
 /*Tilt Colours*/
-let tiltBackgroundColour = UIColor(red:1.00, green:0.97, blue:0.83, alpha:1.0)
-let tiltTextColour = UIColor(red:0.18, green:0.26, blue:0.28, alpha:1.0)
-let tiltButtonColour = UIColor(red:1.00, green:0.72, blue:0.52, alpha:1.0)
-let tiltTitleFont = UIFont.systemFont(ofSize: 35, weight: .regular)
+let tiltBackgroundColour = UIColor(red:0.92, green:0.91, blue:0.88, alpha:1.0)
+let tiltTextColour = UIColor(red:0.27, green:0.45, blue:0.62, alpha:1.0)
+let tiltButtonColour = UIColor(red:0.78, green:0.83, blue:0.88, alpha:1.0)
+let tiltTitleFont = UIFont.systemFont(ofSize: 50, weight: .regular)
+let tiltFinalScoreFont = UIFont.systemFont(ofSize: 40, weight: .regular)
+
+let tiltGameBackgroundColour = UIColor(red:0.92, green:0.91, blue:0.88, alpha:1.0)
+let tiltBallColour = UIColor(red:0.27, green:0.45, blue:0.62, alpha:1.0)
+let tiltHoleColour = UIColor(red:0.74, green:0.72, blue:0.68, alpha:1.0)
+
+let countdownBackgroundColour = UIColor(red:0.27, green:0.45, blue:0.62, alpha:1.0)
+let countdownTextColour = UIColor(red:0.74, green:0.72, blue:0.68, alpha:1.0)
+
+/* Bubble Game */
+var bubbleLabelHeight:CGFloat = 50
+var bubbleStartButtonOffset:CGFloat = (1/3*screenWidth)/2
+
+var bubbleQuitButtonOffset:CGFloat = (1/3*screenWidth)/2
+
+var bubbleReplayButtonButtonOffset:CGFloat = (1/3*screenWidth)/2
+
+var bubbleFinalQuitButtonOffset:CGFloat = (1/3*screenWidth)/2
+
+let bubbleStaticFont = UIFont.systemFont(ofSize: 25, weight: .bold)
+let bubbleFont = UIFont.systemFont(ofSize: 22, weight: .regular)
+
+var bubbleFinalScore = 0
+
+
+/*bubble Colours*/
+let bubbleBackgroundColour = UIColor(red:0.92, green:0.91, blue:0.88, alpha:1.0)
+let bubbleTextColour = UIColor(red:0.27, green:0.45, blue:0.62, alpha:1.0)
+let bubbleButtonColour = UIColor(red:0.78, green:0.83, blue:0.88, alpha:1.0)
+let bubbleTitleFont = UIFont.systemFont(ofSize: 50, weight: .regular)
+let bubbleFinalScoreFont = UIFont.systemFont(ofSize: 40, weight: .regular)
+
+let bubbleGameBackgroundColour = UIColor(red:0.92, green:0.91, blue:0.88, alpha:1.0)
+let bubbleBallColour = UIColor(red:0.27, green:0.45, blue:0.62, alpha:1.0)
+let bubbleHoleColour = UIColor(red:0.74, green:0.72, blue:0.68, alpha:1.0)

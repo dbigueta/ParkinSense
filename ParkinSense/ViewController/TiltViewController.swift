@@ -49,7 +49,10 @@ class TiltViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Time"
         label.textAlignment = .center
+        label.textColor = tiltTextColour
+        label.font = tiltStaticFont
         label.heightAnchor.constraint(equalToConstant: timeStaticLabelHeight).isActive = true
+        label.widthAnchor.constraint(equalToConstant: timeStaticLabelWidth).isActive = true
         return label
     }()
     
@@ -58,7 +61,10 @@ class TiltViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Score"
         label.textAlignment = .center
+        label.textColor = tiltTextColour
+        label.font = tiltStaticFont
         label.heightAnchor.constraint(equalToConstant: scoreStaticLabelHeight).isActive = true
+        label.widthAnchor.constraint(equalToConstant: scoreStaticLabelWidth).isActive = true
         return label
     }()
     
@@ -67,7 +73,10 @@ class TiltViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Time"
         label.textAlignment = .center
-        label.heightAnchor.constraint(equalToConstant: tiltLabelHeight).isActive = true
+        label.font = tiltFont
+        label.textColor = tiltTextColour
+        label.heightAnchor.constraint(equalToConstant: timeLabelHeight).isActive = true
+        label.widthAnchor.constraint(equalToConstant: timeLabelWidth).isActive = true
         return label
     }()
     
@@ -76,7 +85,10 @@ class TiltViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Score"
         label.textAlignment = .center
-        label.heightAnchor.constraint(equalToConstant: instructionsLabelHeight).isActive = true
+        label.font = tiltFont
+        label.textColor = tiltTextColour
+        label.heightAnchor.constraint(equalToConstant: scoreLabelHeight).isActive = true
+        label.widthAnchor.constraint(equalToConstant: scoreLabelWidth).isActive = true
         return label
     }()
     
@@ -84,7 +96,7 @@ class TiltViewController: UIViewController {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
-        label.textColor = .white
+        label.textColor = countdownTextColour
         label.font = countdownFont
         //label.heightAnchor.constraint(equalToConstant: countdownLabelHeight).isActive = true
         //label.widthAnchor.constraint(equalToConstant: countdownLabelWidth).isActive = true
@@ -140,21 +152,17 @@ class TiltViewController: UIViewController {
         HUDView.addSubview(timeLabel)
         HUDView.addSubview(scoreLabel)
         
-        timeStaticLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        timeStaticLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        timeStaticLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
+        timeStaticLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8.0).isActive = true
+        timeStaticLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 16.0).isActive = true
         
-        scoreStaticLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        scoreStaticLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        scoreStaticLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
+        scoreStaticLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8.0).isActive = true
+        scoreStaticLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 16.0).isActive = true
         
-        timeLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        timeLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        timeLabel.topAnchor.constraint(equalTo: timeStaticLabel.topAnchor, constant: timeStaticLabelHeight + 16).isActive = true
+        timeLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8.0).isActive = true
+        timeLabel.topAnchor.constraint(equalTo: timeStaticLabel.topAnchor, constant: timeStaticLabelHeight + 8.0).isActive = true
         
-        scoreLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        scoreLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        scoreLabel.topAnchor.constraint(equalTo: scoreStaticLabel.topAnchor, constant: scoreStaticLabelHeight + 16).isActive = true
+        scoreLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8.0).isActive = true
+        scoreLabel.topAnchor.constraint(equalTo: scoreStaticLabel.topAnchor, constant: scoreStaticLabelHeight + 8.0).isActive = true
     }
     
     /**

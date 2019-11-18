@@ -54,6 +54,7 @@ class CountdownGameScene: SKScene {
      - Returns: None.
      */
     override func didMove(to view: SKView) {
+        self.scene?.backgroundColor = countdownBackgroundColour
         countdown()
     }
     
