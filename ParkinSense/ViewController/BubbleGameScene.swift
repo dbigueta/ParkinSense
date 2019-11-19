@@ -167,7 +167,7 @@ class BubbleGameScene: SKScene {
     override func update(_ currentTime: TimeInterval){
         if let currentTouch = lastTouchPosition{
             if ((bubble.position.x - bubbleRadius < currentTouch.x) && (currentTouch.x < bubble.position.x + bubbleRadius) && (bubble.position.y - bubbleRadius < currentTouch.y) && (currentTouch.y < bubble.position.y + bubbleRadius)){
-                viewController.currentScore += 20
+                viewController.currentScore += 1
                 viewController.scoreLabel.text = String(viewController.currentScore)
                 generateBubble()
                 
