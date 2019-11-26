@@ -19,34 +19,67 @@ import Foundation
 import Charts
 
 var medicationName = "None"
-
 var medicationLabelAlpha = 0
-
 var username = ""
-
 var password = ""
-
 var timePickerTime = ""
-
 var userid = ""
-
 var maxScoreToday = 0
-
 var gamedata1 = 0
-
 var gamedata2 = 0
-
 var gamedata3 = 0
-
 var gamedata4 = 0
-
 var gamedata5 = 0
-
 var gamedata6 = 0
-
 var gamedata7 = 0
-
 var values = [gamedata1, gamedata2, gamedata3, gamedata4, gamedata5, gamedata6, gamedata7]
+
+/* Shared Constants */
+let paddingVal: CGFloat = 10
+let textFieldFontSize: CGFloat = 20
+
+let appImageName = "AppLogoImage.png"
+let appImage = UIImage(named: appImageName)
+
+let headerLabelHeight: CGFloat = 17
+let UIButtonHeight: CGFloat = 45
+let textFieldHeight: CGFloat = textFieldFontSize + paddingVal
+
+
+/* Login View Controller Constants & Colours */
+let appImageHeight: CGFloat = 130
+let appLabelHeight: CGFloat = 32
+let sloganLabelHeight: CGFloat = 17
+
+let rememberPassLabelHeight: CGFloat = 15
+let rememberPassLabelTopPadding = textFieldHeight + rememberPassLabelHeight/3
+
+let errorLabelHeight: CGFloat = 20
+
+/* Sign Up View Controller Constants & Colours */
+let medicationLabelHeight: CGFloat = 20
+
+/* Medication Detail View Controller Constants & Colours */
+let medicationDayLabelHeight: CGFloat = 20
+let dayLabelHeight: CGFloat = 17
+let medicationTimeLabelHeight: CGFloat = 20
+let timePickerHeight: CGFloat = 150
+let screenSize = UIScreen.main.bounds
+let checkboxDiameter = 35
+let sectionWidth = screenSize.width/7
+let offset = (sectionWidth - CGFloat(checkboxDiameter))/2
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* Home UI Constants*/
 var screenHeight = UIScreen.main.bounds.height

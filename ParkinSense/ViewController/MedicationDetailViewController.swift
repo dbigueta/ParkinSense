@@ -22,421 +22,328 @@ import BEMCheckBox
 
 class MedicationDetailViewController: UIViewController, UITextFieldDelegate {
     
-    let medicationTextField =  CustomTextField(frame: CGRect(x: 0, y: 0, width: 300, height: 60))
+    // App Logo UI Image
+    let appImageView: UIImageView = {
+        let imageView = UIImageView(image: appImage!)
+        Utilities.styleImageView(imageView)
+        return imageView
+    }()
     
-    let screenSize = UIScreen.main.bounds
+    // Medication Label UI Label Header
+    let medicationTitleLabel: UILabel = {
+        let label = UILabel()
+        Utilities.styleUILabel(label, error: false)
+        label.text = "ADD MEDICATION DETAIL"
+        label.font = UIFont.systemFont(ofSize: headerLabelHeight, weight: .medium)
+        return label
+    }()
     
-    let timePicker = UIDatePicker()
+    // Medication Label UI Label
+    let medicationLabel: UILabel = {
+        let label = UILabel()
+        Utilities.styleUILabel(label, error: false)
+        label.text = "Medication"
+        label.font = UIFont.systemFont(ofSize: medicationLabelHeight, weight: .regular)
+        return label
+    }()
+    
+    // Medication UI Textfield to input medication
+    let medicationTextField: CustomTextField = {
+        let textField = CustomTextField()
+        Utilities.styleTextField(textField, password: false)
+        textField.attributedPlaceholder = NSAttributedString(string: "Medication", attributes: [NSAttributedString.Key.foregroundColor: textColour])
+        textField.paddingValue = paddingVal
+        textField.awakeFromNib()
+        textField.font = UIFont.systemFont(ofSize: textFieldFontSize, weight: .light)
+        textField.keyboardType = UIKeyboardType.emailAddress
+        return textField
+    }()
+    
+    // Medication Day Label UI Label
+    let medicationDayLabel: UILabel = {
+        let label = UILabel()
+        Utilities.styleUILabel(label, error: false)
+        label.text = "Medication Dates"
+        label.font = UIFont.systemFont(ofSize: medicationDayLabelHeight, weight: .regular)
+        return label
+    }()
+    
+    // Sunday UI Label
+    let sundayLabel: UILabel = {
+        let label = UILabel()
+        Utilities.styleUILabel(label, error: false)
+        label.text = "S"
+        label.font = UIFont.systemFont(ofSize: dayLabelHeight, weight: .light)
+        return label
+    }()
+    
+    // Monday UI Label
+    let mondayLabel: UILabel = {
+        let label = UILabel()
+        Utilities.styleUILabel(label, error: false)
+        label.text = "M"
+        label.font = UIFont.systemFont(ofSize: dayLabelHeight, weight: .light)
+        return label
+    }()
+    
+    // Tuesday UI Label
+    let tuesdayLabel: UILabel = {
+        let label = UILabel()
+        Utilities.styleUILabel(label, error: false)
+        label.text = "T"
+        label.font = UIFont.systemFont(ofSize: dayLabelHeight, weight: .light)
+        return label
+    }()
+    
+    // Wednesday UI Label
+    let wednesdayLabel: UILabel = {
+        let label = UILabel()
+        Utilities.styleUILabel(label, error: false)
+        label.text = "W"
+        label.font = UIFont.systemFont(ofSize: dayLabelHeight, weight: .light)
+        return label
+    }()
+    
+    // Thursday UI Label
+    let thursdayLabel: UILabel = {
+        let label = UILabel()
+        Utilities.styleUILabel(label, error: false)
+        label.text = "T"
+        label.font = UIFont.systemFont(ofSize: dayLabelHeight, weight: .light)
+        return label
+    }()
+    
+    // Friday UI Label
+    let fridayLabel: UILabel = {
+        let label = UILabel()
+        Utilities.styleUILabel(label, error: false)
+        label.text = "F"
+        label.font = UIFont.systemFont(ofSize: dayLabelHeight, weight: .light)
+        return label
+    }()
+    
+    // Saturday UI Label
+    let saturdayLabel: UILabel = {
+        let label = UILabel()
+        Utilities.styleUILabel(label, error: false)
+        label.text = "S"
+        label.font = UIFont.systemFont(ofSize: dayLabelHeight, weight: .light)
+        return label
+    }()
+    
+    // Sunday Checkbox
+    let sundayButton: BEMCheckBox = {
+        let button = BEMCheckBox()
+        Utilities.styleBEMCheckBox(button)
+        return button
+    }()
+    
+    // Monday Checkbox
+    let mondayButton: BEMCheckBox = {
+        let button = BEMCheckBox()
+        Utilities.styleBEMCheckBox(button)
+        return button
+    }()
+    
+    // Tuesday Checkbox
+    let tuesdayButton: BEMCheckBox = {
+        let button = BEMCheckBox()
+        Utilities.styleBEMCheckBox(button)
+        return button
+    }()
+    
+    // Wednesday Checkbox
+    let wednesdayButton: BEMCheckBox = {
+        let button = BEMCheckBox()
+        Utilities.styleBEMCheckBox(button)
+        return button
+    }()
+    
+    // Thursday Checkbox
+    let thursdayButton: BEMCheckBox = {
+        let button = BEMCheckBox()
+        Utilities.styleBEMCheckBox(button)
+        return button
+    }()
+    
+    // Friday Checkbox
+    let fridayButton: BEMCheckBox = {
+        let button = BEMCheckBox()
+        Utilities.styleBEMCheckBox(button)
+        return button
+    }()
+    
+    // Saturday Checkbox
+    let saturdayButton: BEMCheckBox = {
+        let button = BEMCheckBox()
+        Utilities.styleBEMCheckBox(button)
+        return button
+    }()
+    
+    // Medication Time Label UI Label
+    let medicationTimeLabel: UILabel = {
+        let label = UILabel()
+        Utilities.styleUILabel(label, error: false)
+        label.text = "Medication Times"
+        label.font = UIFont.systemFont(ofSize: medicationTimeLabelHeight, weight: .regular)
+        return label
+    }()
+    
+    // Medication Time Picker
+    let timePicker: UIDatePicker = {
+        let timePicker = UIDatePicker()
+        Utilities.styleTimePicker(timePicker)
+        return timePicker
+    }()
+    
+    // Cancel Button
+    let cancelButton: UIButton = {
+        let button = UIButton()
+        Utilities.styleUIButton(button)
+        button.setTitle("Cancel", for: .normal)
+        button.addTarget(self, action: #selector(cancelButtonFunc), for: .touchUpInside)
+        return button
+    }()
+    
+    // Add new medication Button
+    let addNewMedicationButton: UIButton = {
+        let button = UIButton()
+        Utilities.styleUIButton(button)
+        button.setTitle("Add New Medication", for: .normal)
+        button.addTarget(self, action: #selector(addNewMedicationButton(_:)), for: .touchUpInside)
+        return button
+    }()
 
-    let medicationTitleLabel = UILabel()
-    let medicationLabel = UILabel()
-    let medicationDayLabel = UILabel()
-    let medicationTimeLabel = UILabel()
-    
-    let sundayLabel = UILabel()
-    let mondayLabel = UILabel()
-    let tuesdayLabel = UILabel()
-    let wednesdayLabel = UILabel()
-    let thursdayLabel = UILabel()
-    let fridayLabel = UILabel()
-    let saturdayLabel = UILabel()
-    
-    let addNewMedicationButton = UIButton()
-    let cancelButton = UIButton()
-    
-    let textColour = UIColor(red:0.29, green:0.31, blue:0.34, alpha:1.0)
-    let buttonColour = UIColor(red:0.75, green:0.85, blue:0.84, alpha:1.0)
-    let font = UIFont.systemFont(ofSize: 20, weight: .light)
-    let checkboxDiameter = 35
-    
-    let cancelButtonHeight: CGFloat = 45
-    let addNewMedicationButtonHeight: CGFloat = 45
-    
     override func loadView() {
         super.loadView()
         
-        let sectionWidth = screenSize.width/7
-        let offset = (sectionWidth - CGFloat(checkboxDiameter))/2
-        
-        // App Logo UI Image
-        let appImageName = "AppLogoImage.png"
-        let appImageHeight:CGFloat = 50
-        let appImage = UIImage(named: appImageName)
-        let appImageView = UIImageView(image: appImage!)
-        appImageView.frame = CGRect(x: 0, y: 0, width: appImageHeight, height: appImageHeight)
-        appImageView.translatesAutoresizingMaskIntoConstraints = false
-        appImageView.contentMode = .scaleAspectFit
         self.view.addSubview(appImageView)
-        
-        NSLayoutConstraint.activate([
-            appImageView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 16.0),
-            appImageView.heightAnchor.constraint(equalToConstant: appImageHeight),
-            appImageView.widthAnchor.constraint(equalToConstant: appImageHeight),
-            appImageView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16.0),
-        ])
-        
-        // Add Medication Detail UI Label
-        let medicationTitleLabelHeight: CGFloat = 17
-        medicationTitleLabel.textColor = textColour
-        medicationTitleLabel.textAlignment = .center
-        medicationTitleLabel.text = "ADD MEDICATION DETAIL"
-        medicationTitleLabel.numberOfLines = 1
-        medicationTitleLabel.font = UIFont.systemFont(ofSize: medicationTitleLabelHeight, weight: .medium)
-        medicationTitleLabel.adjustsFontSizeToFitWidth = true
-        medicationTitleLabel.minimumScaleFactor = 0.5
-        medicationTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(medicationTitleLabel)
-
-        NSLayoutConstraint.activate([
-            medicationTitleLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 32.0),
-            medicationTitleLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: appImageHeight + 32.0),
-        ])
-        
-        // Medication UI Label
-        let medicationLabelHeight: CGFloat = 20
-        medicationLabel.textColor = textColour
-        medicationLabel.textAlignment = .left
-        medicationLabel.text = "Medication Name/ID"
-        medicationLabel.numberOfLines = 1
-        medicationLabel.font = UIFont.systemFont(ofSize: medicationLabelHeight, weight: .regular)
-        medicationLabel.adjustsFontSizeToFitWidth = true
-        medicationLabel.minimumScaleFactor = 0.5
-        medicationLabel.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(medicationLabel)
-
-        NSLayoutConstraint.activate([
-            medicationLabel.topAnchor.constraint(equalTo: medicationTitleLabel.topAnchor, constant: medicationTitleLabelHeight + 32.0),
-            medicationLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16.0),
-            medicationLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16.0)
-        ])
-
-        // Medication Detail UI Textfield
-        let paddingVal:CGFloat = 10
-        let textFieldFontSize:CGFloat = 20
-        let medicationTextFieldHeight: CGFloat = textFieldFontSize + paddingVal
-        medicationTextField.textColor = textColour
-        medicationTextField.attributedPlaceholder = NSAttributedString(string: "Medication", attributes: [NSAttributedString.Key.foregroundColor: textColour])
-        medicationTextField.paddingValue = paddingVal
-        medicationTextField.awakeFromNib()
-        medicationTextField.font = UIFont.systemFont(ofSize: textFieldFontSize, weight: .light)
-        medicationTextField.backgroundColor = .clear
-        medicationTextField.autocorrectionType = UITextAutocorrectionType.no
-        medicationTextField.keyboardType = UIKeyboardType.default
-        medicationTextField.autocapitalizationType = UITextAutocapitalizationType.none
-        medicationTextField.returnKeyType = UIReturnKeyType.done
-        medicationTextField.clearButtonMode = UITextField.ViewMode.whileEditing
-        medicationTextField.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
-        medicationTextField.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(medicationTextField)
-
-        NSLayoutConstraint.activate([
-            medicationTextField.topAnchor.constraint(equalTo: medicationLabel.topAnchor, constant: medicationLabelHeight + 16.0),
-            medicationTextField.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 32.0),
-            medicationTextField.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -32.0)
-        ])
-        
-        // Medication Day UI Label
-        let medicationDayLabelHeight: CGFloat = 20
-        medicationDayLabel.textColor = textColour
-        medicationDayLabel.textAlignment = .left
-        medicationDayLabel.text = "Medication Dates"
-        medicationDayLabel.numberOfLines = 1
-        medicationDayLabel.font = UIFont.systemFont(ofSize: medicationDayLabelHeight, weight: .regular)
-        medicationDayLabel.adjustsFontSizeToFitWidth = true
-        medicationDayLabel.minimumScaleFactor = 0.5
-        medicationDayLabel.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(medicationDayLabel)
-
-        NSLayoutConstraint.activate([
-            medicationDayLabel.topAnchor.constraint(equalTo: medicationTextField.topAnchor, constant: medicationTextFieldHeight + 32.0),
-            medicationDayLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16.0),
-            medicationDayLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16.0)
-        ])
         
-        // Sunday UI Label
-        let sundayLabelHeight: CGFloat = 17
-        sundayLabel.textColor = textColour
-        sundayLabel.textAlignment = .center
-        sundayLabel.text = "S"
-        sundayLabel.numberOfLines = 1
-        sundayLabel.font = UIFont.systemFont(ofSize: sundayLabelHeight, weight: .light)
-        sundayLabel.adjustsFontSizeToFitWidth = true
-        sundayLabel.minimumScaleFactor = 0.5
-        sundayLabel.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(sundayLabel)
-
-        NSLayoutConstraint.activate([
-            sundayLabel.topAnchor.constraint(equalTo: medicationDayLabel.topAnchor, constant: 32.0),
-            sundayLabel.widthAnchor.constraint(equalToConstant: sectionWidth),
-            sundayLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor)
-        ])
-        
-        // Monday UI Label
-        let mondayLabelHeight: CGFloat = 17
-        mondayLabel.textColor = textColour
-        mondayLabel.textAlignment = .center
-        mondayLabel.text = "M"
-        mondayLabel.numberOfLines = 1
-        mondayLabel.font = UIFont.systemFont(ofSize: mondayLabelHeight, weight: .light)
-        mondayLabel.adjustsFontSizeToFitWidth = true
-        mondayLabel.minimumScaleFactor = 0.5
-        mondayLabel.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(mondayLabel)
-
-        NSLayoutConstraint.activate([
-            mondayLabel.topAnchor.constraint(equalTo: medicationDayLabel.topAnchor, constant: 32.0),
-            mondayLabel.widthAnchor.constraint(equalToConstant: sectionWidth),
-            mondayLabel.leadingAnchor.constraint(equalTo: sundayLabel.leadingAnchor, constant: sectionWidth)
-        ])
-        
-        // Tuesday UI Label
-        let tuesdayLabelHeight: CGFloat = 17
-        tuesdayLabel.textColor = textColour
-        tuesdayLabel.textAlignment = .center
-        tuesdayLabel.text = "T"
-        tuesdayLabel.numberOfLines = 1
-        tuesdayLabel.font = UIFont.systemFont(ofSize: tuesdayLabelHeight, weight: .light)
-        tuesdayLabel.adjustsFontSizeToFitWidth = true
-        tuesdayLabel.minimumScaleFactor = 0.5
-        tuesdayLabel.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(tuesdayLabel)
-
-        NSLayoutConstraint.activate([
-            tuesdayLabel.topAnchor.constraint(equalTo: medicationDayLabel.topAnchor, constant: 32.0),
-            tuesdayLabel.widthAnchor.constraint(equalToConstant: sectionWidth),
-            tuesdayLabel.leadingAnchor.constraint(equalTo: mondayLabel.leadingAnchor, constant: sectionWidth)
-        ])
-        
-        // Wednesday UI Label
-        let wednesdayLabelHeight: CGFloat = 17
-        wednesdayLabel.textColor = textColour
-        wednesdayLabel.textAlignment = .center
-        wednesdayLabel.text = "W"
-        wednesdayLabel.numberOfLines = 1
-        wednesdayLabel.font = UIFont.systemFont(ofSize: wednesdayLabelHeight, weight: .light)
-        wednesdayLabel.adjustsFontSizeToFitWidth = true
-        wednesdayLabel.minimumScaleFactor = 0.5
-        wednesdayLabel.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(wednesdayLabel)
-
-        NSLayoutConstraint.activate([
-            wednesdayLabel.topAnchor.constraint(equalTo: medicationDayLabel.topAnchor, constant: 32.0),
-            wednesdayLabel.widthAnchor.constraint(equalToConstant: sectionWidth),
-            wednesdayLabel.leadingAnchor.constraint(equalTo: tuesdayLabel.leadingAnchor, constant: sectionWidth)
-        ])
-        
-        // Thursday UI Label
-        let thursdayLabelHeight: CGFloat = 17
-        thursdayLabel.textColor = textColour
-        thursdayLabel.textAlignment = .center
-        thursdayLabel.text = "T"
-        thursdayLabel.numberOfLines = 1
-        thursdayLabel.font = UIFont.systemFont(ofSize: thursdayLabelHeight, weight: .light)
-        thursdayLabel.adjustsFontSizeToFitWidth = true
-        thursdayLabel.minimumScaleFactor = 0.5
-        thursdayLabel.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(thursdayLabel)
-
-        NSLayoutConstraint.activate([
-            thursdayLabel.topAnchor.constraint(equalTo: medicationDayLabel.topAnchor, constant: 32.0),
-            thursdayLabel.widthAnchor.constraint(equalToConstant: sectionWidth),
-            thursdayLabel.leadingAnchor.constraint(equalTo: wednesdayLabel.leadingAnchor, constant: sectionWidth)
-        ])
-        
-        // Friday UI Label
-        let fridayLabelHeight: CGFloat = 17
-        fridayLabel.textColor = textColour
-        fridayLabel.textAlignment = .center
-        fridayLabel.text = "F"
-        fridayLabel.numberOfLines = 1
-        fridayLabel.font = UIFont.systemFont(ofSize: fridayLabelHeight, weight: .light)
-        fridayLabel.adjustsFontSizeToFitWidth = true
-        fridayLabel.minimumScaleFactor = 0.5
-        fridayLabel.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(fridayLabel)
-
-        NSLayoutConstraint.activate([
-            fridayLabel.topAnchor.constraint(equalTo: medicationDayLabel.topAnchor, constant: 32.0),
-            fridayLabel.widthAnchor.constraint(equalToConstant: sectionWidth),
-            fridayLabel.leadingAnchor.constraint(equalTo: thursdayLabel.leadingAnchor, constant: sectionWidth)
-        ])
-        
-        
-        // Saturday UI Label
-        let saturdayLabelHeight: CGFloat = 17
-        saturdayLabel.textColor = textColour
-        saturdayLabel.textAlignment = .center
-        saturdayLabel.text = "S"
-        saturdayLabel.numberOfLines = 1
-        saturdayLabel.font = UIFont.systemFont(ofSize: saturdayLabelHeight, weight: .light)
-        saturdayLabel.adjustsFontSizeToFitWidth = true
-        saturdayLabel.minimumScaleFactor = 0.5
-        saturdayLabel.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(saturdayLabel)
-
-        NSLayoutConstraint.activate([
-            saturdayLabel.topAnchor.constraint(equalTo: medicationDayLabel.topAnchor, constant: 32.0),
-            saturdayLabel.widthAnchor.constraint(equalToConstant: sectionWidth),
-            saturdayLabel.leadingAnchor.constraint(equalTo: fridayLabel.leadingAnchor, constant: sectionWidth)
-        ])
         
-        // Sunday Button
-        let sundayButton = BEMCheckBox(frame:CGRect(x: 0, y: 0, width: checkboxDiameter, height: checkboxDiameter))
-        sundayButton.onFillColor = .blue
-        sundayButton.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(sundayButton)
-        
-        NSLayoutConstraint.activate([
-            sundayButton.topAnchor.constraint(equalTo: sundayLabel.topAnchor, constant: sundayLabelHeight + 16.0),
-            sundayButton.widthAnchor.constraint(equalToConstant: sectionWidth),
-            sundayButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: offset),
-        ])
-        
-        // Monday Button
-        let mondayButton = BEMCheckBox(frame:CGRect(x: 0, y: 0, width: checkboxDiameter, height: checkboxDiameter))
-        mondayButton.onFillColor = .blue
-        mondayButton.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(mondayButton)
-        
-        NSLayoutConstraint.activate([
-            mondayButton.topAnchor.constraint(equalTo: mondayLabel.topAnchor, constant: mondayLabelHeight + 16.0),
-            mondayButton.widthAnchor.constraint(equalToConstant: sectionWidth),
-            mondayButton.leadingAnchor.constraint(equalTo: sundayButton.leadingAnchor, constant: sectionWidth),
-        ])
-        
-        // Tuesday Button
-        let tuesdayButton = BEMCheckBox(frame:CGRect(x: 0, y: 0, width: checkboxDiameter, height: checkboxDiameter))
-        tuesdayButton.onFillColor = .blue
-        tuesdayButton.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(tuesdayButton)
-        
-        NSLayoutConstraint.activate([
-            tuesdayButton.topAnchor.constraint(equalTo: tuesdayLabel.topAnchor, constant: tuesdayLabelHeight + 16.0),
-            tuesdayButton.widthAnchor.constraint(equalToConstant: sectionWidth),
-            tuesdayButton.leadingAnchor.constraint(equalTo: mondayButton.leadingAnchor, constant: sectionWidth),
-        ])
-        
-        // Wednesday Button
-        let wednesdayButton = BEMCheckBox(frame:CGRect(x: 0, y: 0, width: checkboxDiameter, height: checkboxDiameter))
-        wednesdayButton.onFillColor = .blue
-        wednesdayButton.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(wednesdayButton)
-        
-        NSLayoutConstraint.activate([
-            wednesdayButton.topAnchor.constraint(equalTo: wednesdayLabel.topAnchor, constant: wednesdayLabelHeight + 16.0),
-            wednesdayButton.widthAnchor.constraint(equalToConstant: sectionWidth),
-            wednesdayButton.leadingAnchor.constraint(equalTo: tuesdayButton.leadingAnchor, constant: sectionWidth),
-        ])
-        
-        // Thursday Button
-        let thursdayButton = BEMCheckBox(frame:CGRect(x: 0, y: 0, width: checkboxDiameter, height: checkboxDiameter))
-        thursdayButton.onFillColor = .blue
-        thursdayButton.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(thursdayButton)
-        
-        NSLayoutConstraint.activate([
-            thursdayButton.topAnchor.constraint(equalTo: thursdayLabel.topAnchor, constant: thursdayLabelHeight + 16.0),
-            thursdayButton.widthAnchor.constraint(equalToConstant: sectionWidth),
-            thursdayButton.leadingAnchor.constraint(equalTo: wednesdayButton.leadingAnchor, constant: sectionWidth),
-        ])
-        
-        // Friday Button
-        let fridayButton = BEMCheckBox(frame:CGRect(x: 0, y: 0, width: checkboxDiameter, height: checkboxDiameter))
-        fridayButton.onFillColor = .blue
-        fridayButton.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(fridayButton)
-        
-        NSLayoutConstraint.activate([
-            fridayButton.topAnchor.constraint(equalTo: fridayLabel.topAnchor, constant: fridayLabelHeight + 16.0),
-            fridayButton.widthAnchor.constraint(equalToConstant: sectionWidth),
-            fridayButton.leadingAnchor.constraint(equalTo: thursdayButton.leadingAnchor, constant: sectionWidth),
-        ])
-        
-        // Saturday Button
-        let saturdayButton = BEMCheckBox(frame:CGRect(x: 0, y: 0, width: checkboxDiameter, height: checkboxDiameter))
-        saturdayButton.onFillColor = .blue
-        saturdayButton.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(saturdayButton)
         
-        NSLayoutConstraint.activate([
-            saturdayButton.topAnchor.constraint(equalTo: saturdayLabel.topAnchor, constant: saturdayLabelHeight + 16.0),
-            saturdayButton.widthAnchor.constraint(equalToConstant: sectionWidth),
-            saturdayButton.leadingAnchor.constraint(equalTo: fridayButton.leadingAnchor, constant: sectionWidth),
-        ])
-        
-        // Medication Time UI Label
-        let medicationTimeLabelHeight: CGFloat = 20
-        medicationTimeLabel.textColor = textColour
-        medicationTimeLabel.textAlignment = .left
-        medicationTimeLabel.text = "Medication Times"
-        medicationTimeLabel.numberOfLines = 1
-        medicationTimeLabel.font = UIFont.systemFont(ofSize: medicationTimeLabelHeight, weight: .regular)
-        medicationTimeLabel.adjustsFontSizeToFitWidth = true
-        medicationTimeLabel.minimumScaleFactor = 0.5
-        medicationTimeLabel.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(medicationTimeLabel)
-
-        NSLayoutConstraint.activate([
-            medicationTimeLabel.topAnchor.constraint(equalTo: sundayLabel.topAnchor, constant: sundayLabelHeight + CGFloat(checkboxDiameter) + 32.0),
-            medicationTimeLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16.0),
-            medicationTimeLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16.0)
-        ])
-        
-        // Time Picker
-        let timePickerHeight: CGFloat = 150
-        timePicker.translatesAutoresizingMaskIntoConstraints = false
-        timePicker.backgroundColor = .clear
-        timePicker.timeZone = NSTimeZone.local
-        timePicker.datePickerMode = .time
-        
         self.view.addSubview(timePicker)
         
-
-        NSLayoutConstraint.activate([
-            timePicker.topAnchor.constraint(equalTo: medicationTimeLabel.topAnchor, constant: medicationTimeLabelHeight + 16.0),
-            timePicker.heightAnchor.constraint(equalToConstant: timePickerHeight),
-            timePicker.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16.0),
-            timePicker.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16.0)
-        ])
-
-         // Cancel Button
-         cancelButton.setTitleColor(buttonTextColour, for: .normal)
-         cancelButton.frame = CGRect(x: self.view.frame.size.width - 60, y: 60, width: 50, height: cancelButtonHeight)
-         cancelButton.backgroundColor = buttonColour
-         cancelButton.layer.cornerRadius = 5
-         cancelButton.setTitle("Cancel", for: .normal)
-         cancelButton.translatesAutoresizingMaskIntoConstraints = false
-         cancelButton.addTarget(self, action: #selector(cancelButtonFunc), for: .touchUpInside)
-         self.view.addSubview(cancelButton)
-
-         NSLayoutConstraint.activate([
-             cancelButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -32.0),
-             cancelButton.heightAnchor.constraint(equalToConstant: cancelButtonHeight),
-             cancelButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 32.0),
-             cancelButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -32.0)
-         ])
+        self.view.addSubview(cancelButton)
+        self.view.addSubview(addNewMedicationButton)
         
-         // Add Medication Button
-         addNewMedicationButton.setTitleColor(buttonTextColour, for: .normal)
-         addNewMedicationButton.frame = CGRect(x: self.view.frame.size.width - 60, y: 60, width: 50, height: addNewMedicationButtonHeight)
-         addNewMedicationButton.backgroundColor = buttonColour
-         addNewMedicationButton.layer.cornerRadius = 5
-         addNewMedicationButton.setTitle("Add New Medication", for: .normal)
-         addNewMedicationButton.translatesAutoresizingMaskIntoConstraints = false
-         addNewMedicationButton.addTarget(self, action: #selector(addNewMedicationButton(_:)), for: .touchUpInside)
-         self.view.addSubview(addNewMedicationButton)
-
-         NSLayoutConstraint.activate([
-             addNewMedicationButton.bottomAnchor.constraint(equalTo: cancelButton.bottomAnchor, constant: 0 - cancelButtonHeight - 16.0),
-             addNewMedicationButton.heightAnchor.constraint(equalToConstant: addNewMedicationButtonHeight),
-             addNewMedicationButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 32.0),
-             addNewMedicationButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -32.0)
-         ])
+        appImageView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 16.0).isActive = true
+        appImageView.heightAnchor.constraint(equalToConstant: appImageHeight).isActive = true
+        appImageView.widthAnchor.constraint(equalToConstant: appImageHeight).isActive = true
+        appImageView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16.0).isActive = true
+        
+        medicationTitleLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 32.0).isActive = true
+        medicationTitleLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: appImageHeight + 32.0).isActive = true
+        
+        medicationLabel.topAnchor.constraint(equalTo: medicationTitleLabel.topAnchor, constant: headerLabelHeight + 32.0).isActive = true
+        medicationLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16.0).isActive = true
+        medicationLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16.0).isActive = true
+        
+        medicationTextField.topAnchor.constraint(equalTo: medicationLabel.topAnchor, constant: medicationLabelHeight + 16.0).isActive = true
+        medicationTextField.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 32.0).isActive = true
+        medicationTextField.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -32.0).isActive = true
+        
+        medicationDayLabel.topAnchor.constraint(equalTo: medicationTextField.topAnchor, constant: textFieldHeight + 32.0).isActive = true
+        medicationDayLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16.0).isActive = true
+        medicationDayLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16.0).isActive = true
+        
+        sundayLabel.topAnchor.constraint(equalTo: medicationDayLabel.topAnchor, constant: 32.0).isActive = true
+        sundayLabel.widthAnchor.constraint(equalToConstant: sectionWidth).isActive = true
+        sundayLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+        
+        mondayLabel.topAnchor.constraint(equalTo: medicationDayLabel.topAnchor, constant: 32.0).isActive = true
+        mondayLabel.widthAnchor.constraint(equalToConstant: sectionWidth).isActive = true
+        mondayLabel.leadingAnchor.constraint(equalTo: sundayLabel.leadingAnchor, constant: sectionWidth).isActive = true
+        
+        tuesdayLabel.topAnchor.constraint(equalTo: medicationDayLabel.topAnchor, constant: 32.0).isActive = true
+        tuesdayLabel.widthAnchor.constraint(equalToConstant: sectionWidth).isActive = true
+        tuesdayLabel.leadingAnchor.constraint(equalTo: mondayLabel.leadingAnchor, constant: sectionWidth).isActive = true
+        
+        wednesdayLabel.topAnchor.constraint(equalTo: medicationDayLabel.topAnchor, constant: 32.0).isActive = true
+        wednesdayLabel.widthAnchor.constraint(equalToConstant: sectionWidth).isActive = true
+        wednesdayLabel.leadingAnchor.constraint(equalTo: tuesdayLabel.leadingAnchor, constant: sectionWidth).isActive = true
+        
+        thursdayLabel.topAnchor.constraint(equalTo: medicationDayLabel.topAnchor, constant: 32.0).isActive = true
+        thursdayLabel.widthAnchor.constraint(equalToConstant: sectionWidth).isActive = true
+        thursdayLabel.leadingAnchor.constraint(equalTo: wednesdayLabel.leadingAnchor, constant: sectionWidth).isActive = true
+        
+        fridayLabel.topAnchor.constraint(equalTo: medicationDayLabel.topAnchor, constant: 32.0).isActive = true
+        fridayLabel.widthAnchor.constraint(equalToConstant: sectionWidth).isActive = true
+        fridayLabel.leadingAnchor.constraint(equalTo: thursdayLabel.leadingAnchor, constant: sectionWidth).isActive = true
+        
+        saturdayLabel.topAnchor.constraint(equalTo: medicationDayLabel.topAnchor, constant: 32.0).isActive = true
+        saturdayLabel.widthAnchor.constraint(equalToConstant: sectionWidth).isActive = true
+        saturdayLabel.leadingAnchor.constraint(equalTo: fridayLabel.leadingAnchor, constant: sectionWidth).isActive = true
+        
+        sundayButton.topAnchor.constraint(equalTo: sundayLabel.topAnchor, constant: dayLabelHeight + 16.0).isActive = true
+        sundayButton.widthAnchor.constraint(equalToConstant: sectionWidth).isActive = true
+        sundayButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: offset).isActive = true
+        
+        mondayButton.topAnchor.constraint(equalTo: mondayLabel.topAnchor, constant: dayLabelHeight + 16.0).isActive = true
+        mondayButton.widthAnchor.constraint(equalToConstant: sectionWidth).isActive = true
+        mondayButton.leadingAnchor.constraint(equalTo: sundayButton.leadingAnchor, constant: sectionWidth).isActive = true
+        
+        tuesdayButton.topAnchor.constraint(equalTo: tuesdayLabel.topAnchor, constant: dayLabelHeight + 16.0).isActive = true
+        tuesdayButton.widthAnchor.constraint(equalToConstant: sectionWidth).isActive = true
+        tuesdayButton.leadingAnchor.constraint(equalTo: mondayButton.leadingAnchor, constant: sectionWidth).isActive = true
+        
+        wednesdayButton.topAnchor.constraint(equalTo: wednesdayLabel.topAnchor, constant: dayLabelHeight + 16.0).isActive = true
+        wednesdayButton.widthAnchor.constraint(equalToConstant: sectionWidth).isActive = true
+        wednesdayButton.leadingAnchor.constraint(equalTo: tuesdayButton.leadingAnchor, constant: sectionWidth).isActive = true
+        
+        thursdayButton.topAnchor.constraint(equalTo: thursdayLabel.topAnchor, constant: dayLabelHeight + 16.0).isActive = true
+        thursdayButton.widthAnchor.constraint(equalToConstant: sectionWidth).isActive = true
+        thursdayButton.leadingAnchor.constraint(equalTo: wednesdayButton.leadingAnchor, constant: sectionWidth).isActive = true
+        
+        fridayButton.topAnchor.constraint(equalTo: fridayLabel.topAnchor, constant: dayLabelHeight + 16.0).isActive = true
+        fridayButton.widthAnchor.constraint(equalToConstant: sectionWidth).isActive = true
+        fridayButton.leadingAnchor.constraint(equalTo: thursdayButton.leadingAnchor, constant: sectionWidth).isActive = true
+        
+        saturdayButton.topAnchor.constraint(equalTo: saturdayLabel.topAnchor, constant: dayLabelHeight + 16.0).isActive = true
+        saturdayButton.widthAnchor.constraint(equalToConstant: sectionWidth).isActive = true
+        saturdayButton.leadingAnchor.constraint(equalTo: fridayButton.leadingAnchor, constant: sectionWidth).isActive = true
+        
+        medicationTimeLabel.topAnchor.constraint(equalTo: sundayLabel.topAnchor, constant: dayLabelHeight + CGFloat(checkboxDiameter) + 32.0).isActive = true
+        medicationTimeLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16.0).isActive = true
+        medicationTimeLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16.0).isActive = true
+        
+        timePicker.topAnchor.constraint(equalTo: medicationTimeLabel.topAnchor, constant: medicationTimeLabelHeight + 16.0).isActive = true
+        timePicker.heightAnchor.constraint(equalToConstant: timePickerHeight).isActive = true
+        timePicker.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16.0).isActive = true
+        timePicker.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16.0).isActive = true
+        
+        cancelButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -32.0).isActive = true
+        cancelButton.heightAnchor.constraint(equalToConstant: UIButtonHeight).isActive = true
+        cancelButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 32.0).isActive = true
+        cancelButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -32.0).isActive = true
+        
+        addNewMedicationButton.bottomAnchor.constraint(equalTo: cancelButton.bottomAnchor, constant: 0 - UIButtonHeight - 16.0).isActive = true
+        addNewMedicationButton.heightAnchor.constraint(equalToConstant: UIButtonHeight).isActive = true
+        addNewMedicationButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 32.0).isActive = true
+        addNewMedicationButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -32.0).isActive = true
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         //Sets background of view controller
         self.view.backgroundColor = UIColor(red:0.96, green:0.95, blue:0.95, alpha:1.0)
         
@@ -453,19 +360,19 @@ class MedicationDetailViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool
-     {
-         textField.resignFirstResponder()
-         return true
-     }
+    {
+        textField.resignFirstResponder()
+        return true
+    }
     
     /**
-        Function about the add new medication Button, will direct you back to the sign up page and medication will be displayed on the screen
+     Function about the add new medication Button, will direct you back to the sign up page and medication will be displayed on the screen
      
-         - Parameter sender: Button itself
+     - Parameter sender: Button itself
      
-         - Returns: No
-            
-    **/
+     - Returns: No
+     
+     **/
     @objc func addNewMedicationButton(_ sender: Any) {
         medicationName = medicationTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) //read the Medication Name from text field
         

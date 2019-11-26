@@ -76,7 +76,10 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
     var Datalabeltext1: UILabel!
     var Datalabeltext2: UILabel!
     var Datalabeltext3: UILabel!
+    
     var lineChartView: LineChartView!
+    
+    
     
     //Allows for a consistent switch between trendline and day information
     let pageControl: UIPageControl = {
@@ -630,7 +633,23 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
 
         //First page modified by create imageView
         let x1Pos = CGFloat(0)*self.view.bounds.size.width //get the x position of the view that for the first page content
-        lineChartView = LineChartView(frame: CGRect(x: x1Pos, y: 0, width: self.view.frame.size.width, height: (self.dataScrollView.frame.size.height)))
+        
+        /**/
+        
+        lineChartView = LineChartView(frame: CGRect(x: x1Pos+8, y: 0, width: self.view.frame.size.width-16, height: (self.dataScrollView.frame.size.height)))
+        
+        lineChartView.doubleTapToZoomEnabled = false
+        lineChartView.leftAxis.axisMinimum = 0
+        lineChartView.rightAxis.enabled = false
+        lineChartView.xAxis.spaceMin = 0.5
+        lineChartView.xAxis.spaceMax = 0.5
+        lineChartView.xAxis.drawGridLinesEnabled = false
+        
+        //let days = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"]
+        //let formattedToDays = BarChartFormatter(values: days)
+        //lineChartView.xAxis.valueFormatter = formattedToDays as IAxisValueFormatter
+        
+        /**/
 
         updategamescore()
         var dataEntries: [ChartDataEntry] = []
@@ -1008,5 +1027,18 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
     func scrollViewDidEndDecelerating(_ DataScrollView: UIScrollView) {
         let page = DataScrollView.contentOffset.x/DataScrollView.frame.width
         pageControl.currentPage = Int(page)
+    }
+}
+
+class BarChartFormatter: NSObject, IAxisValueFormatter {
+    
+    var values : [String]
+    required init (values : [String]) {
+        self.values = values
+        super.init()
+    }
+
+    func stringForValue(_ value: Double, axis: AxisBase?) -> String {
+        return values[Int(value)]
     }
 }
