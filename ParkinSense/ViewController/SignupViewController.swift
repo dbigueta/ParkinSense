@@ -84,6 +84,42 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         return label
     }()
     
+    // Medication UI Label
+    let medicationLabel1: UILabel = {
+        let label = UILabel()
+        Utilities.styleUILabel(label, error: false)
+        label.text = "Medication"
+        label.font = UIFont.systemFont(ofSize: medicationLabelHeight, weight: .light)
+        return label
+    }()
+    
+    // Medication UI Label
+    let medicationLabel2: UILabel = {
+        let label = UILabel()
+        Utilities.styleUILabel(label, error: false)
+        label.text = "Medication"
+        label.font = UIFont.systemFont(ofSize: medicationLabelHeight, weight: .light)
+        return label
+    }()
+    
+    // Medication UI Label
+    let medicationLabel3: UILabel = {
+        let label = UILabel()
+        Utilities.styleUILabel(label, error: false)
+        label.text = "Medication"
+        label.font = UIFont.systemFont(ofSize: medicationLabelHeight, weight: .light)
+        return label
+    }()
+    
+    // Medication UI Label
+    let medicationLabel4: UILabel = {
+        let label = UILabel()
+        Utilities.styleUILabel(label, error: false)
+        label.text = "Medication"
+        label.font = UIFont.systemFont(ofSize: medicationLabelHeight, weight: .light)
+        return label
+    }()
+    
     // Error UI Label for error messages
     let errorLabel: UILabel = {
         let label = UILabel()
@@ -129,14 +165,18 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         self.view.addSubview(passwordTextField)
         self.view.addSubview(confirmPasswordTextField)
         self.view.addSubview(medicationLabel)
+        self.view.addSubview(medicationLabel1)
+        self.view.addSubview(medicationLabel2)
+        self.view.addSubview(medicationLabel3)
+        self.view.addSubview(medicationLabel4)
         self.view.addSubview(errorLabel)
         self.view.addSubview(alreadyHaveAnAccountButton)
         self.view.addSubview(createAnAccountButton)
         self.view.addSubview(addNewMedicationDetailButton)
         
         appImageView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 16.0).isActive = true
-        appImageView.heightAnchor.constraint(equalToConstant: appImageHeight).isActive = true
-        appImageView.widthAnchor.constraint(equalToConstant: appImageHeight).isActive = true
+        appImageView.heightAnchor.constraint(equalToConstant: appImageHeaderHeight).isActive = true
+        appImageView.widthAnchor.constraint(equalToConstant: appImageHeaderHeight).isActive = true
         appImageView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16.0).isActive = true
         
         createAccountLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 32.0).isActive = true
@@ -158,7 +198,23 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         medicationLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16.0).isActive = true
         medicationLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16.0).isActive = true
         
-        errorLabel.topAnchor.constraint(equalTo: medicationLabel.topAnchor, constant: medicationLabelHeight + 16.0).isActive = true
+        medicationLabel1.topAnchor.constraint(equalTo: medicationLabel.topAnchor, constant: medicationLabelHeight + 16.0).isActive = true
+        medicationLabel1.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16.0).isActive = true
+        medicationLabel1.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16.0).isActive = true
+        
+        medicationLabel2.topAnchor.constraint(equalTo: medicationLabel1.topAnchor, constant: medicationLabelHeight + 16.0).isActive = true
+        medicationLabel2.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16.0).isActive = true
+        medicationLabel2.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16.0).isActive = true
+        
+        medicationLabel3.topAnchor.constraint(equalTo: medicationLabel2.topAnchor, constant: medicationLabelHeight + 16.0).isActive = true
+        medicationLabel3.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16.0).isActive = true
+        medicationLabel3.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16.0).isActive = true
+        
+        medicationLabel4.topAnchor.constraint(equalTo: medicationLabel3.topAnchor, constant: medicationLabelHeight + 16.0).isActive = true
+        medicationLabel4.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16.0).isActive = true
+        medicationLabel4.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16.0).isActive = true
+        
+        errorLabel.topAnchor.constraint(equalTo: medicationLabel4.topAnchor, constant: medicationLabelHeight + 16.0).isActive = true
         errorLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16.0).isActive = true
         errorLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16.0).isActive = true
         
@@ -224,6 +280,18 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         medicationLabel.alpha = CGFloat(medicationLabelAlpha)
         medicationLabel.text = medicationName
         
+        medicationLabel1.alpha = CGFloat(medicationLabel1Alpha)
+        medicationLabel1.text = medicationName1
+
+        medicationLabel2.alpha = CGFloat(medicationLabel2Alpha)
+        medicationLabel2.text = medicationName2
+
+        medicationLabel3.alpha = CGFloat(medicationLabel3Alpha)
+        medicationLabel3.text = medicationName3
+
+        medicationLabel4.alpha = CGFloat(medicationLabel4Alpha)
+        medicationLabel4.text = medicationName4
+        
         emailTextField.text = username
         passwordTextField.text = password
         
@@ -275,6 +343,8 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
             username = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             
+            print(medicationName1)
+            
             //Create the user
             Auth.auth().createUser(withEmail: username, password: password) { (result, err) in
                 
@@ -293,7 +363,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
                     //User was created successfully, now store the username
                     let db = Firestore.firestore()
                     
-                    db.collection("users").document(result!.user.uid).setData(["Username": username, "uid": result!.user.uid, "MedicationName": medicationName, "login_time":rightNow - 3600*24, "Game_One_lastMaxScore":0]) { (error) in
+db.collection("users").document(result!.user.uid).setData(["Username": username, "uid": result!.user.uid, "MedicationName": medicationName, "MedicationName1": medicationName1, "MedicationName2": medicationName2, "MedicationName3": medicationName3, "MedicationName4": medicationName4, "login_time":rightNow - 3600*24, "Game_One_lastMaxScore":0, "Game_Two_lastMaxScore":0]) { (error) in
                         
                         if error != nil {
                             //Show error message

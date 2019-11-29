@@ -133,5 +133,4 @@ class BubbleScoreViewController: UIViewController {
     @objc func quitButtonPressed(_ sender: Any){
         self.presentingViewController?.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
     }
-    
 }

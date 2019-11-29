@@ -246,8 +246,8 @@ class MedicationDetailViewController: UIViewController, UITextFieldDelegate {
         self.view.addSubview(addNewMedicationButton)
         
         appImageView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 16.0).isActive = true
-        appImageView.heightAnchor.constraint(equalToConstant: appImageHeight).isActive = true
-        appImageView.widthAnchor.constraint(equalToConstant: appImageHeight).isActive = true
+        appImageView.heightAnchor.constraint(equalToConstant: appImageHeaderHeight).isActive = true
+        appImageView.widthAnchor.constraint(equalToConstant: appImageHeaderHeight).isActive = true
         appImageView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16.0).isActive = true
         
         medicationTitleLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 32.0).isActive = true
@@ -374,16 +374,41 @@ class MedicationDetailViewController: UIViewController, UITextFieldDelegate {
      
      **/
     @objc func addNewMedicationButton(_ sender: Any) {
-        medicationName = medicationTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) //read the Medication Name from text field
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.timeStyle = DateFormatter.Style.short
-        
+
+        if medicationTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) != "" {
+
+            if medicationcount == 0{
         //timePickerTime = dateFormatter.string(from: timePicker.date) //read the timepicker value for later use
-        
-        print(timePickerTime)
-        
+                medicationName = medicationTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) //read the Medication Name from text field
+                            medicationLabelAlpha = 1 //change the medicationLabel's alpha from 0 to 1 that display the medication information in sign up page
+        print(timePickerTime)                }
+            if medicationcount == 1 {
+                medicationName1 = medicationTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) //read the Medication Name from text field
+                medicationLabel1Alpha = 1 //change the medicationLabel's alpha from 0 to 1 that display the medication information in sign up page
+            }
+            if medicationcount == 2 {
+                medicationName2 = medicationTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) //read the Medication Name from text field
+                medicationLabel2Alpha = 1 //change the medicationLabel's alpha from 0 to 1 that display the medication information in sign up page
+            }
+            if medicationcount == 3 {
+                medicationName3 = medicationTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) //read the Medication Name from text field
+                medicationLabel3Alpha = 1 //change the medicationLabel's alpha from 0 to 1 that display the medication information in sign up page
+            }
+            if medicationcount > 3 {
+                medicationName4 = medicationTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) //read the Medication Name from text field
+                medicationLabel4Alpha = 1 //change the medicationLabel's alpha from 0 to 1 that display the medication information in sign up page
+            }
+            let dateFormatter = DateFormatter()
+            dateFormatter.timeStyle = DateFormatter.Style.short
+
+            //timePickerTime = dateFormatter.string(from: timePicker.date) //read the timepicker value for later use
+            
+            print(timePickerTime)
+
+
         medicationLabelAlpha = 1 //change the medicationLabel's alpha from 0 to 1 that display the medication information in sign up page
+            medicationcount+=1
+        }
         
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "DoUpdateLabel"), object: nil, userInfo: nil)
         

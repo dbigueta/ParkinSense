@@ -19,7 +19,21 @@ import Foundation
 import Charts
 
 var medicationName = "None"
+
 var medicationLabelAlpha = 0
+var medicationName1 = "None"
+
+var medicationLabel1Alpha = 0
+var medicationName2 = "None"
+
+var medicationLabel2Alpha = 0
+var medicationName3 = "None"
+
+var medicationLabel3Alpha = 0
+var medicationName4 = "None"
+var medicationLabel4Alpha = 0
+
+var medicationcount = 0
 var username = ""
 var password = ""
 var timePickerTime = ""
@@ -40,6 +54,7 @@ let textFieldFontSize: CGFloat = 20
 
 let appImageName = "AppLogoImage.png"
 let appImage = UIImage(named: appImageName)
+let appImageHeaderHeight: CGFloat = 40
 
 let headerLabelHeight: CGFloat = 17
 let UIButtonHeight: CGFloat = 45

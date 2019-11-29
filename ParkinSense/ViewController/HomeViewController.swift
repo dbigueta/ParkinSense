@@ -453,7 +453,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
     func popover(){
         let alert = UIAlertController(title: "Reminder", message: "Did you take your medicine today?", preferredStyle: .alert) //set up the alert information
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil)) //set up the OK button to exist
-        db.collection("users").document(userid).setData(["login_time": rightNow, "Username": username, "MedicationName": medicationName, "uid":userid, "Game_One_lastMaxScore":0]) //Update the user last login time in Firebase for next time login checking
+                db.collection("users").document(userid).setData(["login_time": rightNow, "Username": username, "MedicationName": medicationName, "MedicationName1": medicationName1, "MedicationName2": medicationName2, "MedicationName3": medicationName3, "MedicationName4": medicationName4, "uid":userid, "Game_One_lastMaxScore":0, "Game_Two_lastMaxScore":0]) //Update the user last login time in Firebase for next time login checking
         self.present(alert,animated: true) //active the present of pop up
     }
 
