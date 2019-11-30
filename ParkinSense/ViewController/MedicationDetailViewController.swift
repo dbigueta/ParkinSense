@@ -294,31 +294,38 @@ class MedicationDetailViewController: UIViewController, UITextFieldDelegate {
         saturdayLabel.leadingAnchor.constraint(equalTo: fridayLabel.leadingAnchor, constant: sectionWidth).isActive = true
         
         sundayButton.topAnchor.constraint(equalTo: sundayLabel.topAnchor, constant: dayLabelHeight + 16.0).isActive = true
-        sundayButton.widthAnchor.constraint(equalToConstant: sectionWidth).isActive = true
+        sundayButton.widthAnchor.constraint(equalToConstant: checkboxHeightDays).isActive = true
+        sundayButton.heightAnchor.constraint(equalToConstant: checkboxHeightDays).isActive = true
         sundayButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: offset).isActive = true
         
         mondayButton.topAnchor.constraint(equalTo: mondayLabel.topAnchor, constant: dayLabelHeight + 16.0).isActive = true
-        mondayButton.widthAnchor.constraint(equalToConstant: sectionWidth).isActive = true
+        mondayButton.widthAnchor.constraint(equalToConstant: checkboxHeightDays).isActive = true
+        mondayButton.heightAnchor.constraint(equalToConstant: checkboxHeightDays).isActive = true
         mondayButton.leadingAnchor.constraint(equalTo: sundayButton.leadingAnchor, constant: sectionWidth).isActive = true
         
         tuesdayButton.topAnchor.constraint(equalTo: tuesdayLabel.topAnchor, constant: dayLabelHeight + 16.0).isActive = true
-        tuesdayButton.widthAnchor.constraint(equalToConstant: sectionWidth).isActive = true
+        tuesdayButton.widthAnchor.constraint(equalToConstant: checkboxHeightDays).isActive = true
+        tuesdayButton.heightAnchor.constraint(equalToConstant: checkboxHeightDays).isActive = true
         tuesdayButton.leadingAnchor.constraint(equalTo: mondayButton.leadingAnchor, constant: sectionWidth).isActive = true
         
         wednesdayButton.topAnchor.constraint(equalTo: wednesdayLabel.topAnchor, constant: dayLabelHeight + 16.0).isActive = true
-        wednesdayButton.widthAnchor.constraint(equalToConstant: sectionWidth).isActive = true
+        wednesdayButton.widthAnchor.constraint(equalToConstant: checkboxHeightDays).isActive = true
+        wednesdayButton.heightAnchor.constraint(equalToConstant: checkboxHeightDays).isActive = true
         wednesdayButton.leadingAnchor.constraint(equalTo: tuesdayButton.leadingAnchor, constant: sectionWidth).isActive = true
         
         thursdayButton.topAnchor.constraint(equalTo: thursdayLabel.topAnchor, constant: dayLabelHeight + 16.0).isActive = true
-        thursdayButton.widthAnchor.constraint(equalToConstant: sectionWidth).isActive = true
+        thursdayButton.widthAnchor.constraint(equalToConstant: checkboxHeightDays).isActive = true
+        thursdayButton.heightAnchor.constraint(equalToConstant: checkboxHeightDays).isActive = true
         thursdayButton.leadingAnchor.constraint(equalTo: wednesdayButton.leadingAnchor, constant: sectionWidth).isActive = true
         
         fridayButton.topAnchor.constraint(equalTo: fridayLabel.topAnchor, constant: dayLabelHeight + 16.0).isActive = true
-        fridayButton.widthAnchor.constraint(equalToConstant: sectionWidth).isActive = true
+        fridayButton.widthAnchor.constraint(equalToConstant: checkboxHeightDays).isActive = true
+        fridayButton.heightAnchor.constraint(equalToConstant: checkboxHeightDays).isActive = true
         fridayButton.leadingAnchor.constraint(equalTo: thursdayButton.leadingAnchor, constant: sectionWidth).isActive = true
         
         saturdayButton.topAnchor.constraint(equalTo: saturdayLabel.topAnchor, constant: dayLabelHeight + 16.0).isActive = true
-        saturdayButton.widthAnchor.constraint(equalToConstant: sectionWidth).isActive = true
+        saturdayButton.widthAnchor.constraint(equalToConstant: checkboxHeightDays).isActive = true
+        saturdayButton.heightAnchor.constraint(equalToConstant: checkboxHeightDays).isActive = true
         saturdayButton.leadingAnchor.constraint(equalTo: fridayButton.leadingAnchor, constant: sectionWidth).isActive = true
         
         medicationTimeLabel.topAnchor.constraint(equalTo: sundayLabel.topAnchor, constant: dayLabelHeight + CGFloat(checkboxDiameter) + 32.0).isActive = true
@@ -383,7 +390,7 @@ class MedicationDetailViewController: UIViewController, UITextFieldDelegate {
         if fridayButton.on {daysSelected = daysSelected + "Fr "}
         if saturdayButton.on {daysSelected = daysSelected + "Sa "}
         
-        if medicationTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) != ""
+        if medicationTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) != "" && daysSelected != ""
         {
             let dateFormatter = DateFormatter()
             dateFormatter.timeStyle = DateFormatter.Style.short

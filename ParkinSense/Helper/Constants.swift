@@ -125,7 +125,8 @@ let timePickerHeight: CGFloat = 150
 let screenSize = UIScreen.main.bounds
 let checkboxDiameter: CGFloat = 25
 let sectionWidth = screenSize.width/7
-let offset = (sectionWidth - CGFloat(checkboxDiameter))/2
+let checkboxHeightDays = sectionWidth - 20
+let offset = (sectionWidth - CGFloat(checkboxHeightDays))/2
 let medicationLabelWidth = (screenWidth - 64)/3
 
 
