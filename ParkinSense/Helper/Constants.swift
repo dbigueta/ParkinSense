@@ -34,11 +34,16 @@ var medicationName4 = "None"
 var medicationLabel4Alpha = 0
 
 var medicationcount = 0
+
+var feeling = ""
+
 var username = ""
 var password = ""
 var timePickerTime = ""
 var userid = ""
-var maxScoreToday = 0
+var maxScoreTodayOne = 0
+var maxScoreTodayTwo = 0
+
 var gamedata1 = 0
 var gamedata2 = 0
 var gamedata3 = 0
@@ -47,6 +52,16 @@ var gamedata5 = 0
 var gamedata6 = 0
 var gamedata7 = 0
 var values = [gamedata1, gamedata2, gamedata3, gamedata4, gamedata5, gamedata6, gamedata7]
+
+var gamedata12 = 0
+var gamedata22 = 0
+var gamedata32 = 0
+var gamedata42 = 0
+var gamedata52 = 0
+var gamedata62 = 0
+var gamedata72 = 0
+var values1 = [gamedata12, gamedata22, gamedata32, gamedata42, gamedata52, gamedata62, gamedata72]
+
 
 /* Shared Constants */
 let paddingVal: CGFloat = 10
@@ -83,8 +98,6 @@ let screenSize = UIScreen.main.bounds
 let checkboxDiameter = 35
 let sectionWidth = screenSize.width/7
 let offset = (sectionWidth - CGFloat(checkboxDiameter))/2
-
-
 
 
 

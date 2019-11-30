@@ -41,6 +41,7 @@ var wednesdayDatewithMY = ""
 var thursdayDatewithMY = ""
 var fridayDatewithMY = ""
 var saturdayDatewithMY = ""
+var pastSevenDate = [""]
 
 var weekInterval = dateRange
 let startCurrentWeek = weekInterval.start
@@ -241,6 +242,36 @@ func saturdayDate (startCurrentWeek: Date) -> String{
     return formattedSaturdayDate
 }
 
+func pastSevenDatefunc(currentSelectedDate: Date){
+    dayFormatter.dateFormat = "MM/dd"
+    let oneDayBefore = currentSelectedDate - 3600*24
+    let twoDayBefore = oneDayBefore - 3600*24
+    let threeDayBefore = twoDayBefore - 3600*24
+    let fourDayBefore = threeDayBefore - 3600*24
+    let fiveDayBefore = fourDayBefore - 3600*24
+    let sixDayBefore = fiveDayBefore - 3600*24
+    let formattedrightNow = dayFormatter.string(from: currentSelectedDate)
+    let formattedoneDayBefore = dayFormatter.string(from: oneDayBefore)
+    let formattedtwoDayBefore = dayFormatter.string(from: twoDayBefore)
+    let formattedthreeDayBefore = dayFormatter.string(from: threeDayBefore)
+    let formattedfourDayBefore = dayFormatter.string(from: fourDayBefore)
+    let formattedfiveDayBefore = dayFormatter.string(from: fiveDayBefore)
+    let formattedsixDayBefore = dayFormatter.string(from: sixDayBefore)
+    pastSevenDate = [formattedsixDayBefore,formattedfiveDayBefore,formattedfourDayBefore,formattedthreeDayBefore,formattedtwoDayBefore,formattedoneDayBefore,formattedrightNow]
+//    let doubleformattedrightNow = Int(formattedrightNow)!
+//    let doubleformattedoneDayBefore = Int(formattedoneDayBefore)!
+//    let doubleformattedtwoDayBefore = Int(formattedtwoDayBefore)!
+//    let doubleformattedthreeDayBefore = Int(formattedthreeDayBefore)!
+//    let doubleformattedfourDayBefore = Int(formattedfourDayBefore)!
+//    let doubleformattedfiveDayBefore = Int(formattedfiveDayBefore)!
+//    let doubleformattedsixDayBefore = Int(formattedsixDayBefore)!
+//
+//    pastSevenDate = [doubleformattedsixDayBefore,doubleformattedfiveDayBefore,doubleformattedfourDayBefore,doubleformattedthreeDayBefore,doubleformattedtwoDayBefore,doubleformattedoneDayBefore,doubleformattedrightNow]
+}
+
+
+
+
 
 func updategamescore() {
     
@@ -254,15 +285,19 @@ func updategamescore() {
                      if error == nil{
                          if document != nil && document!.exists{
                              var maxScoreinSelected = 0
+                            var maxScoreinSelectedTwo = 0
                              let DocumentData = document!.data()
                              maxScoreinSelected = DocumentData!["Game_One_lastMaxScore"] as! Int
+                            maxScoreinSelectedTwo = DocumentData!["Game_Two_lastMaxScore"] as! Int
                              //print("Max Score for today:  \(maxScoreinSelected)")
                              values[dayi] = maxScoreinSelected
+                            values1[dayi] = maxScoreinSelectedTwo
                              //print(tempselecteddate,values[dayi])
                          }
                          else{
                              //print("Max Score for today:  0")
                              values[dayi] = 0
+                            values1[dayi] = 0
                              //print(tempselecteddate,values[dayi])
                          }
                      }
