@@ -22,6 +22,7 @@ import Firebase
 import FirebaseFirestore
 
 class SignupViewController: UIViewController, UITextFieldDelegate {
+    // MARK: Class Variables
     
     // App Logo UI Image
     let appImageView: UIImageView = {
@@ -125,7 +126,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         return label
     }()
     
-    // Medication UI Label
+    // Medication Days UI Label
     let medicationLabelDate: UILabel = {
         let label = UILabel()
         Utilities.styleUILabel(label, error: false)
@@ -135,7 +136,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         return label
     }()
     
-    // Medication UI Label
+    // Medication Days UI Label
     let medicationLabelDate1: UILabel = {
         let label = UILabel()
         Utilities.styleUILabel(label, error: false)
@@ -145,7 +146,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         return label
     }()
     
-    // Medication UI Label
+    // Medication Days UI Label
     let medicationLabelDate2: UILabel = {
         let label = UILabel()
         Utilities.styleUILabel(label, error: false)
@@ -155,7 +156,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         return label
     }()
     
-    // Medication UI Label
+    // Medication Days UI Label
     let medicationLabelDate3: UILabel = {
         let label = UILabel()
         Utilities.styleUILabel(label, error: false)
@@ -165,7 +166,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         return label
     }()
     
-    // Medication UI Label
+    // Medication Days UI Label
     let medicationLabelDate4: UILabel = {
         let label = UILabel()
         Utilities.styleUILabel(label, error: false)
@@ -174,8 +175,8 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         label.textAlignment = .left
         return label
     }()
-
-    // Medication UI Label
+    
+    // Medication Time UI Label
     let medicationLabelTime: UILabel = {
         let label = UILabel()
         Utilities.styleUILabel(label, error: false)
@@ -185,7 +186,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         return label
     }()
     
-    // Medication UI Label
+    // Medication Time UI Label
     let medicationLabelTime1: UILabel = {
         let label = UILabel()
         Utilities.styleUILabel(label, error: false)
@@ -195,7 +196,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         return label
     }()
     
-    // Medication UI Label
+    // Medication Time UI Label
     let medicationLabelTime2: UILabel = {
         let label = UILabel()
         Utilities.styleUILabel(label, error: false)
@@ -205,7 +206,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         return label
     }()
     
-    // Medication UI Label
+    // Medication Time UI Label
     let medicationLabelTime3: UILabel = {
         let label = UILabel()
         Utilities.styleUILabel(label, error: false)
@@ -215,7 +216,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         return label
     }()
     
-    // Medication UI Label
+    // Medication Time UI Label
     let medicationLabelTime4: UILabel = {
         let label = UILabel()
         Utilities.styleUILabel(label, error: false)
@@ -262,6 +263,14 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         return button
     }()
     
+    // MARK: Class Functions
+    
+    
+    /**
+     Function that adds all UI elements to the view and sets up all constraints for each UI element
+     
+     - Returns: None
+     **/
     override func loadView() {
         super.loadView()
         
@@ -337,7 +346,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         medicationLabel2.topAnchor.constraint(equalTo: medicationLabel1.topAnchor, constant: medicationLabelHeight + 16.0).isActive = true
         medicationLabel2.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 32.0).isActive = true
         medicationLabel2.widthAnchor.constraint(equalToConstant: medicationLabelWidth).isActive = true
-
+        
         medicationLabelDate2.topAnchor.constraint(equalTo: medicationLabel1.topAnchor, constant: medicationLabelHeight + 16.0).isActive = true
         medicationLabelDate2.leadingAnchor.constraint(equalTo: medicationLabel2.leadingAnchor, constant: medicationLabelWidth).isActive = true
         medicationLabelDate2.widthAnchor.constraint(equalToConstant: medicationLabelWidth).isActive = true
@@ -357,11 +366,11 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         medicationLabelTime3.topAnchor.constraint(equalTo: medicationLabel2.topAnchor, constant: medicationLabelHeight + 16.0).isActive = true
         medicationLabelTime3.leadingAnchor.constraint(equalTo: medicationLabelDate3.leadingAnchor, constant: medicationLabelWidth).isActive = true
         medicationLabelTime3.widthAnchor.constraint(equalToConstant: medicationLabelWidth).isActive = true
-
+        
         medicationLabel4.topAnchor.constraint(equalTo: medicationLabel3.topAnchor, constant: medicationLabelHeight + 16.0).isActive = true
         medicationLabel4.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 32.0).isActive = true
         medicationLabel4.widthAnchor.constraint(equalToConstant: medicationLabelWidth).isActive = true
-
+        
         medicationLabelDate4.topAnchor.constraint(equalTo: medicationLabel3.topAnchor, constant: medicationLabelHeight + 16.0).isActive = true
         medicationLabelDate4.leadingAnchor.constraint(equalTo: medicationLabel4.leadingAnchor, constant: medicationLabelWidth).isActive = true
         medicationLabelDate4.widthAnchor.constraint(equalToConstant: medicationLabelWidth).isActive = true
@@ -390,31 +399,50 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         addNewMedicationDetailButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -32.0).isActive = true
     }
     
+    
+    /**
+     Function that sets up controls for on screen keyboard dismissal
+     
+     - Returns: None
+     **/
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //Notifies view controller to perform an update
+        // Notifies view controller to perform an update to update medication labels
         NotificationCenter.default.addObserver(self, selector: #selector(self.setUpElement), name: NSNotification.Name(rawValue: "DoUpdateLabel"), object: nil)
         
-        //Set background colour of view controller
+        // Set background colour of view controller
         self.view.backgroundColor = UIColor(red:0.96, green:0.95, blue:0.95, alpha:1.0)
         
+        // Adds delegates to allow the removal of the onscreen keyboard
         emailTextField.delegate = self
         passwordTextField.delegate = self
         confirmPasswordTextField.delegate = self
         
-        //Looks for single or multiple taps.
+        // Looks for single or multiple taps for removal of onscreen keyboard
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
         
         setUpElement()
     }
     
+    
+    /**
+     Function that dismisses the onscreen keyboard
+     
+     - Returns: None
+     **/
     @objc func dismissKeyboard() {
-        //Causes the view (or one of its embedded text fields) to resign the first responder status.
         view.endEditing(true)
     }
     
+    
+    /**
+     Function that dismisses the on screen keyboard after pressing the confirmation button
+     
+     - Parameter textField: Text Field of current cursor location
+     - Returns: Bool
+     **/
     func textFieldShouldReturn(_ textField: UITextField) -> Bool
     {
         textField.resignFirstResponder()
@@ -423,138 +451,172 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
     
     
     /**
-     Function to set up the default ErrorLabel to be invisible and set up medication, email, and password labels
+     Function that sets up the alpha labels for error and medication details to be hidden unless there is some actual information
      
-     - Returns: No
+     - Returns: None
      **/
     @objc func setUpElement(){
-        //Hide the error label, medication label and save the Username and Password
+        // Hide the error label
         errorLabel.alpha = 0
         
+        // Hides UI elements of the first medication
         medicationLabel.alpha = CGFloat(medicationLabelAlpha)
         medicationLabelTime.alpha = CGFloat(medicationLabelAlpha)
         medicationLabelDate.alpha = CGFloat(medicationLabelAlpha)
         
+        // Sets text for the first medication
         medicationLabel.text = medicationName
         medicationLabelTime.text = medicationTime
         medicationLabelDate.text = medicationDate
         
+        // Hides UI elements of the second medication
         medicationLabel1.alpha = CGFloat(medicationLabel1Alpha)
         medicationLabelTime1.alpha = CGFloat(medicationLabel1Alpha)
         medicationLabelDate1.alpha = CGFloat(medicationLabel1Alpha)
         
+        // Sets text for the second medication
         medicationLabel1.text = medicationName1
         medicationLabelTime1.text = medicationTime1
         medicationLabelDate1.text = medicationDate1
         
+        // Hides UI elements of the third medication
         medicationLabel2.alpha = CGFloat(medicationLabel2Alpha)
         medicationLabelTime2.alpha = CGFloat(medicationLabel2Alpha)
         medicationLabelDate2.alpha = CGFloat(medicationLabel2Alpha)
         
+        // Sets text for the third medication
         medicationLabel2.text = medicationName2
         medicationLabelTime2.text = medicationTime2
         medicationLabelDate2.text = medicationDate2
         
+        // Hides UI elements of the fourth medication
         medicationLabel3.alpha = CGFloat(medicationLabel3Alpha)
         medicationLabelTime3.alpha = CGFloat(medicationLabel3Alpha)
         medicationLabelDate3.alpha = CGFloat(medicationLabel3Alpha)
         
+        // Sets text for the fourth medication
         medicationLabel3.text = medicationName3
         medicationLabelTime3.text = medicationTime3
         medicationLabelDate3.text = medicationDate3
         
+        // Hides UI elements of the fifth medication
         medicationLabel4.alpha = CGFloat(medicationLabel4Alpha)
         medicationLabelTime4.alpha = CGFloat(medicationLabel4Alpha)
         medicationLabelDate4.alpha = CGFloat(medicationLabel4Alpha)
         
+        // Sets text for the fifth medication
         medicationLabel4.text = medicationName4
         medicationLabelTime4.text = medicationTime4
         medicationLabelDate4.text = medicationDate4
         
+        // Sets text for the username and password
         emailTextField.text = username
         passwordTextField.text = password
     }
     
     
     /**
-     Function to get the error message from text field for username and password
+     Function that validates text fields
      
      - Returns: String
      **/
     func validateFields() -> String? {
-        //Check that all fields are filled in
-        if emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == ""  || passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || confirmPasswordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == ""{
-            
+        
+        username = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        let confirmPassword = confirmPasswordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        // Check that all fields are filled in
+        if username.count == 0  || password.count == 0 || confirmPassword!.count == 0 {
             return "Please fill in all fields"
-            
         }
         
-        //check the password match the confirm password
-        if passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) != confirmPasswordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines){
+        // Check that the password matches the confirm password textfield
+        if password != confirmPassword {
             
-            //passwordTextField.text = ""
+            // Clear confirm password textfield
             confirmPasswordTextField.text = ""
             
             return "Passwords do not match. Re-enter your password."
         }
         
         return nil
-        
     }
     
     
     /**
-     Function to create a new account. Will log in and move to home page if signup was successful
+     Function to create a new account. Will validate,  log in and move to home page if signup was successful
      
-     - Parameter sender: Button itself
      - Returns: None
      **/
-    @IBAction func createAnAccountTapped(_ sender: Any) {
+    @objc func createAnAccountTapped() {
         
-        //Validate the fields
+        // Validate the fields
         let error = validateFields()
         
         if error != nil{
-            
-            //There's something wrong with the fields, show error message
+            // If there is something wrong with the fields, show error message
             showError(error!)
         }
         else{
-            //Create cleaned versions of the data
+            // Obtain username and password from text fields
             username = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             
-            print(medicationName1)
             //Create the user
             Auth.auth().createUser(withEmail: username, password: password) { (result, err) in
-                
                 if err != nil {
-                        
+                    // Retrieve error description
                     let errorDesc = AuthErrorCode(rawValue: err!._code)
-                        
-                    if password.count < 6{
-                            self.showError("Password must be at least 6 characters")
+                    
+                    // Check that the password is at least 6 characters long
+                    if password.count < 6 {
+                        self.showError("Password must be at least 6 characters")
+                    }
+                    else {
+                        switch errorDesc {
+                        // Invalid email format
+                        case .invalidEmail:
+                            self.errorLabel.text = "Invalid email format. Enter a valid email."
+                        // User alreasy exists with that email address
+                        case .emailAlreadyInUse:
+                            self.errorLabel.text = "User already exists. Enter a different email address."
+                        default:
+                            self.errorLabel.text = "Unknown error"
                         }
-                        else {
-                            switch errorDesc {
-                            case .invalidEmail:
-                                self.errorLabel.text = "Invalid email format. Enter a valid email."
-                            case .emailAlreadyInUse:
-                                self.errorLabel.text = "User already exists. Enter a different email address."
-                            default:
-                                self.errorLabel.text = "Unknown error"
-                            }
-                        }
-
-                        self.errorLabel.alpha = 1
+                    }
+                    
+                    // Display error on screen
+                    self.errorLabel.alpha = 1
                 }
                 else
                 {
                     //User was created successfully, now store the username
                     let db = Firestore.firestore()
                     
-                    db.collection("users").document(result!.user.uid).setData(["Username": username, "uid": result!.user.uid, "MedicationName": medicationName, "MedicationName1": medicationName1, "MedicationName2": medicationName2, "MedicationName3": medicationName3, "MedicationName4": medicationName4, "login_time":rightNow - 3600*24, "Game_One_lastMaxScore":0, "Game_Two_lastMaxScore":0, "feeling": feeling]) { (error) in
-                        
+                    db.collection("users").document(result!.user.uid).setData([
+                        "Username": username,
+                        "uid": result!.user.uid,
+                        "MedicationName": medicationName,
+                        "MedicationDate": medicationDate,
+                        "MedicationTime": medicationTime,
+                        "MedicationName1": medicationName1,
+                        "MedicationDate1": medicationDate1,
+                        "MedicationTime1": medicationTime1,
+                        "MedicationName2": medicationName2,
+                        "MedicationDate2": medicationDate2,
+                        "MedicationTime2": medicationTime2,
+                        "MedicationName3": medicationName3,
+                        "MedicationDate3": medicationDate3,
+                        "MedicationTime3": medicationTime3,
+                        "MedicationName4": medicationName4,
+                        "MedicationDate4": medicationDate4,
+                        "MedicationTime4": medicationTime4,
+                        "login_time": rightNow - 3600*24,
+                        "Game_One_lastMaxScore": 0,
+                        "Game_Two_lastMaxScore": 0,
+                        "feeling": feeling
+                    ]) { (error) in
                         if error != nil {
                             //Show error message
                             self.showError("Error saving user data")
@@ -573,13 +635,14 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
     /**
      Function to Add New Medication, will direct you to Medication Detail Page, and save the username and password into constant which later on when you go back to the page, the username and password will still remain in the sign up page
      
-     - Parameter sender: Button itself
      - Returns: None
      **/
-    @objc func addNewMedicationDetailTapped(_ sender: Any) {
+    @objc func addNewMedicationDetailTapped() {
+        // Save username and password typed into text fields
         username = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         
+        // Transitions to the medication view controller
         let medicationViewController:MedicationDetailViewController = MedicationDetailViewController()
         self.present(medicationViewController, animated: true, completion: nil)
     }
@@ -588,18 +651,18 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
     /**
      Function that will lead you back to login page if button is pressed
      
-     - Parameter sender: Self Button
      - Returns: None
      **/
-    @objc func alreadyHaveAnAccountTapped(_ sender: Any) {
+    @objc func alreadyHaveAnAccountTapped() {
+        // Transitions to the login view controller
         self.dismiss(animated: true, completion: nil)
     }
     
     
     /**
-     Function will show any errors that may have occurred
+     Function that displays any error messages
      
-     - Parameter sender: Button itself
+     - Parameter message: String containing error message
      - Returns: None
      **/
     func showError(_ message:String){

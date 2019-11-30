@@ -21,6 +21,7 @@ import UIKit
 import BEMCheckBox
 
 class MedicationDetailViewController: UIViewController, UITextFieldDelegate {
+    // MARK: Class Variables
     
     // App Logo UI Image
     let appImageView: UIImageView = {
@@ -210,10 +211,18 @@ class MedicationDetailViewController: UIViewController, UITextFieldDelegate {
         let button = UIButton()
         Utilities.styleUIButton(button)
         button.setTitle("Add New Medication", for: .normal)
-        button.addTarget(self, action: #selector(addNewMedicationButton(_:)), for: .touchUpInside)
+        button.addTarget(self, action: #selector(addNewMedicationButtonPressed), for: .touchUpInside)
         return button
     }()
     
+    // MARK: Class Functions
+    
+    
+    /**
+     Function that adds all UI elements to the view and sets up all constraints for each UI element
+     
+     - Returns: None
+     **/
     override func loadView() {
         super.loadView()
         
@@ -347,41 +356,62 @@ class MedicationDetailViewController: UIViewController, UITextFieldDelegate {
         addNewMedicationButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 32.0).isActive = true
         addNewMedicationButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -32.0).isActive = true
     }
+    
+    
+    /**
+     Function that sets up controls for on screen keyboard dismissal
+     
+     - Returns: None
+     **/
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //Sets background of view controller
         self.view.backgroundColor = UIColor(red:0.96, green:0.95, blue:0.95, alpha:1.0)
         
+        // Adds delegates to allow the removal of the onscreen keyboard
         medicationTextField.delegate = self
         
-        //Looks for single or multiple taps.
+        // Looks for single or multiple taps for removal of onscreen keyboard
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
     }
     
+    
+    /**
+     Function that dismisses the onscreen keyboard
+     
+     - Returns: None
+     **/
     @objc func dismissKeyboard() {
-        //Causes the view (or one of its embedded text fields) to resign the first responder status.
         view.endEditing(true)
     }
     
+    
+    /**
+     Function that dismisses the on screen keyboard after pressing the confirmation button
+     
+     - Parameter textField: Text Field of current cursor location
+     - Returns: Bool
+     **/
     func textFieldShouldReturn(_ textField: UITextField) -> Bool
     {
         textField.resignFirstResponder()
         return true
     }
     
+    
     /**
-     Function about the add new medication Button, will direct you back to the sign up page and medication will be displayed on the screen
+     Function to add new medication details and set its display on the sign up view controller
      
-     - Parameter sender: Button itself
-     
-     - Returns: No
-     
+     - Returns: None
      **/
-    @objc func addNewMedicationButton(_ sender: Any) {
+    @objc func addNewMedicationButtonPressed() {
         
+        // Holds the days selected in the medication time section
         var daysSelected = ""
+        
+        // Add the corresponding dates of each checkbox if it was checked
         if sundayButton.on {daysSelected = daysSelected + "Su "}
         if mondayButton.on {daysSelected = daysSelected + "Mo "}
         if tuesdayButton.on {daysSelected = daysSelected + "Tu "}
@@ -390,64 +420,65 @@ class MedicationDetailViewController: UIViewController, UITextFieldDelegate {
         if fridayButton.on {daysSelected = daysSelected + "Fr "}
         if saturdayButton.on {daysSelected = daysSelected + "Sa "}
         
-        if medicationTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) != "" && daysSelected != ""
+        // Retrieves medication name details
+        let medicationText = medicationTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        if medicationText.count != 0 && daysSelected != ""
         {
+            // Sets up date formatting that will grab values from timePicker
             let dateFormatter = DateFormatter()
             dateFormatter.timeStyle = DateFormatter.Style.short
             
-            if medicationcount == 0{
-                medicationName = medicationTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) //read the Medication Name from text field
+            // Sets medication name, dates, time and displays it on the sign up view controller
+            if medicationcount == 0 {
+                medicationName = medicationText
                 medicationTime = dateFormatter.string(from: timePicker.date)
                 medicationDate = daysSelected
-                medicationLabelAlpha = 1 //change the medicationLabel's alpha from 0 to 1 that display the medication information in sign up page
+                medicationLabelAlpha = 1
             }
             if medicationcount == 1 {
-                medicationName1 = medicationTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) //read the Medication Name from text field
+                medicationName1 = medicationText
                 medicationTime1 = dateFormatter.string(from: timePicker.date)
                 medicationDate1 = daysSelected
-                medicationLabel1Alpha = 1 //change the medicationLabel's alpha from 0 to 1 that display the medication information in sign up page
+                medicationLabel1Alpha = 1
             }
             if medicationcount == 2 {
-                medicationName2 = medicationTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) //read the Medication Name from text field
+                medicationName2 = medicationText
                 medicationTime2 = dateFormatter.string(from: timePicker.date)
                 medicationDate2 = daysSelected
-                medicationLabel2Alpha = 1 //change the medicationLabel's alpha from 0 to 1 that display the medication information in sign up page
+                medicationLabel2Alpha = 1
             }
             if medicationcount == 3 {
-                medicationName3 = medicationTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) //read the Medication Name from text field
+                medicationName3 = medicationText
                 medicationTime3 = dateFormatter.string(from: timePicker.date)
                 medicationDate3 = daysSelected
-                medicationLabel3Alpha = 1 //change the medicationLabel's alpha from 0 to 1 that display the medication information in sign up page
+                medicationLabel3Alpha = 1
             }
             if medicationcount > 3 {
-                medicationName4 = medicationTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) //read the Medication Name from text field
+                medicationName4 = medicationText
                 medicationTime4 = dateFormatter.string(from: timePicker.date)
                 medicationDate4 = daysSelected
-                medicationLabel4Alpha = 1 //change the medicationLabel's alpha from 0 to 1 that display the medication information in sign up page
+                medicationLabel4Alpha = 1
             }
-
             
-            timePickerTime = dateFormatter.string(from: timePicker.date) //read the timepicker value for later use
+            // Add medication count to keep track of total medication inputted
+            medicationcount += 1
             
-            print(timePickerTime)
+            // Notifies sign up view controller to update its labels
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "DoUpdateLabel"), object: nil, userInfo: nil)
             
-            
-            medicationcount+=1
-            //medicationLabelHeaderAlpha = 1
         }
-        
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "DoUpdateLabel"), object: nil, userInfo: nil)
         
         self.dismiss(animated: true, completion: nil)
     }
     
+    
     /**
      Function that will lead you back to login page if button is pressed
      
-     - Parameter sender: Self Button
      - Returns: None
      **/
-    @objc func cancelButtonFunc(_ sender: Any) {
+    @objc func cancelButtonFunc() {
         self.dismiss(animated: true, completion: nil)
     }
 }

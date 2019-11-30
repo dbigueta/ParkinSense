@@ -24,6 +24,7 @@ import FirebaseDatabase
 import BEMCheckBox
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
+    // MARK: Class Variables
     
     // App Logo UI Image
     let appImageView: UIImageView = {
@@ -118,6 +119,15 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return button
     }()
     
+    
+    // MARK: Class Functions
+    
+    
+    /**
+     Function that adds all UI elements to the view and sets up all constraints for each UI element
+     
+     - Returns: None
+     **/
     override func loadView() {
         super.loadView()
         
@@ -162,8 +172,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         rememberPassButton.heightAnchor.constraint(equalToConstant: checkboxDiameter).isActive = true
         rememberPassButton.widthAnchor.constraint(equalToConstant: checkboxDiameter).isActive = true
         
-        //checkboxDiameter
-        
         errorLabel.topAnchor.constraint(equalTo: rememberPassLabel.topAnchor, constant: rememberPassLabelTopPadding + 16.0).isActive = true
         errorLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16.0).isActive = true
         errorLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16.0).isActive = true
@@ -177,30 +185,49 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         createAccountButton.heightAnchor.constraint(equalToConstant: UIButtonHeight).isActive = true
         createAccountButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 32.0).isActive = true
         createAccountButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -32.0).isActive = true
+        
+        // Set background of view controller
+        self.view.backgroundColor = UIColor(red:0.96, green:0.95, blue:0.95, alpha:1.0)
     }
     
+    
+    /**
+     Function that sets up controls for on screen keyboard dismissal
+
+     - Returns: None
+     **/
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //Set background of view controller
-        self.view.backgroundColor = UIColor(red:0.96, green:0.95, blue:0.95, alpha:1.0)
-        
-        //Hide the error label
+        // Hides the error label
         errorLabel.alpha = 0
         
+        // Adds delegates to allow the removal of the onscreen keyboard
         emailTextField.delegate = self
         passwordTextField.delegate = self
         
-        //Looks for single or multiple taps.
+        // Looks for single or multiple taps for removal of onscreen keyboard
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
     }
     
+    
+    /**
+     Function that dismisses the onscreen keyboard
+     
+     - Returns: None
+     **/
     @objc func dismissKeyboard() {
-        //Causes the view (or one of its embedded text fields) to resign the first responder status.
         view.endEditing(true)
     }
     
+    
+    /**
+     Function that dismisses the on screen keyboard after pressing the confirmation button
+     
+     - Parameter textField: Text Field of current cursor location
+     - Returns: Bool
+     **/
     func textFieldShouldReturn(_ textField: UITextField) -> Bool
     {
         textField.resignFirstResponder()
@@ -209,23 +236,22 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     
     /**
-     Function about the Sign in Button, will direct you to the home page if success. If not, the error will be displayed
+     Function that triggers when the Sign In button is pressed. Checks credentials and transitions to home
      
-     - Parameter sender: Button itself
      - Returns: None
      **/
-    @objc func signInTapped(_ sender: Any) {
+    @objc func signInTapped() {
         // Remove extraneous space characters from the textfields
         username = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         
-        //Validate text fields
+        // Validate text fields
         Auth.auth().signIn(withEmail: username, password: password) { (result, error) in
             
             if error != nil {
-                
                 let errorDesc = AuthErrorCode(rawValue: error!._code)
                 
+                // Checks if there is text within the login fields - sets errors otherwise
                 if username.count == 0 || password.count == 0 {
                     self.errorLabel.text = "Please fill in all fields"
                 }
@@ -241,11 +267,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                         self.errorLabel.text = "Unknown error"
                     }
                 }
-
+                
+                // Make error label visible
                 self.errorLabel.alpha = 1
             }
             else{
-                //Transition to Home view
+                // Transition to home view
                 let homeViewController:HomeViewController = HomeViewController()
                 self.present(homeViewController, animated: true, completion: nil)
             }
@@ -256,10 +283,15 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     /**
      Function that directs you to Create an Account - presents SignUpViewController
      
-     - Parameter sender: Button itself
      - Returns: None
      **/
-    @objc func createAccountTapped(_ sender: Any) {
+    @objc func createAccountTapped() {
+        // Clear some variables related to the medication view
+         medicationcount = 0
+         username = ""
+         password = ""
+        
+        // Transition to create an account view
         let signUpViewController:SignupViewController = SignupViewController()
         self.present(signUpViewController, animated: true, completion: nil)
     }
