@@ -441,18 +441,22 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
                         self.db.collection("users").document(userid).collection("gaming_score").document(currentTimeDate).setData(["date":thisTimeLoginDateStr, "Game_One_lastMaxScore":0,"Game_Two_lastMaxScore":0, "feeling": feeling])
                         
                         //print("in popover")
-                        if medicationName != "None"
+                        if medicationName != "N/A"
                         {
-                            self.popover()
+                            self.popoverMedication(haveMedication: true)
                         }
-                        self.popover2()
-                        
-                        
+                        else {
+                            self.popoverMedication(haveMedication: false)
+                        }
                     }
                 }
             }
         }
     }
+    
+    
+    
+    
     
     
     /**
@@ -463,22 +467,68 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
      
      
      **/
-    func popover(){
-        
-        //initialize the game score for first login in everyday
+    func popoverMedication(haveMedication: Bool){
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let currentTimeDate = dateFormatter.string(from: Date())
-        let alert = UIAlertController(title: "Reminder", message: "Did you take your medicine today?\n\n How do you feel today?", preferredStyle: .alert) //set up the alert information
-        alert.addAction(UIAlertAction(title: "Happy", style: .default, handler:{(action:UIAlertAction!) in         self.db.collection("users").document(userid).collection("gaming_score").document(currentTimeDate).setData(["date":thisTimeLoginDateStr, "Game_One_lastMaxScore":0,"Game_Two_lastMaxScore":0, "feeling": "Happy"]); self.db.collection("users").document(userid).setData(["login_time": self.rightNow, "Username": username, "MedicationName": medicationName, "MedicationName1": medicationName1, "MedicationName2": medicationName2, "MedicationName3": medicationName3, "MedicationName4": medicationName4, "uid":userid, "Game_One_lastMaxScore":0, "Game_Two_lastMaxScore":0, "feeling": "Happy"])} )) //set up the OK button to exist
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {(action:UIAlertAction!) in self.db.collection("users").document(userid).collection("gaming_score").document(currentTimeDate).setData(["date":thisTimeLoginDateStr, "Game_One_lastMaxScore":0,"Game_Two_lastMaxScore":0, "feeling": "OK"]); self.db.collection("users").document(userid).setData(["login_time": self.rightNow, "Username": username, "MedicationName": medicationName, "MedicationName1": medicationName1, "MedicationName2": medicationName2, "MedicationName3": medicationName3, "MedicationName4": medicationName4, "uid":userid, "Game_One_lastMaxScore":0, "Game_Two_lastMaxScore":0, "feeling": "OK"])})) //set up the OK button to exist
-        alert.addAction(UIAlertAction(title: "Sad", style: .default, handler: {(action:UIAlertAction!) in self.db.collection("users").document(userid).collection("gaming_score").document(currentTimeDate).setData(["date":thisTimeLoginDateStr, "Game_One_lastMaxScore":0,"Game_Two_lastMaxScore":0, "feeling": "Sad"]);         self.db.collection("users").document(userid).setData(["login_time": self.rightNow, "Username": username, "MedicationName": medicationName, "MedicationName1": medicationName1, "MedicationName2": medicationName2, "MedicationName3": medicationName3, "MedicationName4": medicationName4, "uid":userid, "Game_One_lastMaxScore":0, "Game_Two_lastMaxScore":0, "feeling": "Sad"])})) //set up the OK button to exist
-        //Update the user last login time in Firebase for next time login checking
-        self.present(alert,animated: true) //active the present of pop up
         
+        var medicineTaken = false
+        var mood = ""
         
+        if haveMedication == true {
+            let alert = UIAlertController(title: "Medicine Reminder", message: "Did you take your medicine today?", preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "Yes", style: .default) {Void in
+                medicineTaken = true
+                mood = self.popoverFeeling()
+            })
+            
+            alert.addAction(UIAlertAction(title: "No", style: .default) {Void in
+                medicineTaken = false
+                mood = self.popoverFeeling()
+            })
+            
+            self.present(alert,animated: true)
+        }
+        else {
+            mood = popoverFeeling()
+        }
+        
+    self.db.collection("users").document(userid).collection("gaming_score").document(currentTimeDate).setData(["date":thisTimeLoginDateStr, "Game_One_lastMaxScore":0,"Game_Two_lastMaxScore":0, "feeling": mood]);
+        
+        self.db.collection("users").document(userid).setData(["login_time": self.rightNow, "Username": username, "MedicationName": medicationName, "MedicationName1": medicationName1, "MedicationName2": medicationName2, "MedicationName3": medicationName3, "MedicationName4": medicationName4, "uid":userid, "Game_One_lastMaxScore":0, "Game_Two_lastMaxScore":0, "feeling": mood])
+        
+    }
+        
+    
+    
+    /**
+     Function to set up the pops up
+     
+     - Parameters: No
+     - Returns: No
+     
+     
+     **/
+    func popoverFeeling() -> String{
+        var mood = ""
+    
+        let alert = UIAlertController(title: "Daily Mood", message: "What is your current mood?", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Happy", style: .default) {Void in mood = "Happy" })
+        alert.addAction(UIAlertAction(title: "Excited", style: .default) {Void in mood = "Excited" })
+        alert.addAction(UIAlertAction(title: "Calm", style: .default) {Void in mood = "Calm" })
+        alert.addAction(UIAlertAction(title: "Anxious", style: .default) {Void in mood = "Anxious" })
+        alert.addAction(UIAlertAction(title: "Sad", style: .default) {Void in mood = "Sad" })
+        alert.addAction(UIAlertAction(title: "Angry", style: .default) {Void in mood = "Angry" })
+        
+        self.present(alert,animated: true)
+    
+        return mood
     }
     
     
+    
+
     func popover2(){
         //initialize the game score for first login in everyday
         dateFormatter.dateFormat = "yyyy-MM-dd"
@@ -489,10 +539,10 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         alert.addAction(UIAlertAction(title: "Sad", style: .default, handler: {(action:UIAlertAction!) in self.db.collection("users").document(userid).collection("gaming_score").document(currentTimeDate).setData(["date":thisTimeLoginDateStr, "Game_One_lastMaxScore":0,"Game_Two_lastMaxScore":0, "feeling": "Sad"]);         self.db.collection("users").document(userid).setData(["login_time": self.rightNow, "Username": username, "MedicationName": medicationName, "MedicationName1": medicationName1, "MedicationName2": medicationName2, "MedicationName3": medicationName3, "MedicationName4": medicationName4, "uid":userid, "Game_One_lastMaxScore":0, "Game_Two_lastMaxScore":0, "feeling": "Sad"])})) //set up the OK button to exist
         //        print("feeling is: \(feeling)")
         //        db.collection("users").document(userid).setData(["login_time": rightNow, "Username": username, "MedicationName": medicationName, "MedicationName1": medicationName1, "MedicationName2": medicationName2, "MedicationName3": medicationName3, "MedicationName4": medicationName4, "uid":userid, "Game_One_lastMaxScore":0, "Game_Two_lastMaxScore":0, "feeling": "Happy"])
-        
+
         //Update the user last login time in Firebase for next time login checking
         self.present(alert,animated: true) //active the present of pop up
-        
+
     }
     
     /**
