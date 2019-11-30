@@ -282,33 +282,25 @@ func updategamescore() {
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let tempselecteddate = dateFormatter.string(from: selectedDateinDatetype!)
         db.collection("users").document(userid).collection("gaming_score").document(tempselecteddate).getDocument { (document, error) in
-            if error == nil{
+            if error == nil {
                 if document != nil && document!.exists{
                     var maxScoreinSelected = 0
                     var maxScoreinSelectedTwo = 0
                     let DocumentData = document!.data()
                     maxScoreinSelected = DocumentData!["Game_One_lastMaxScore"] as! Int
                     maxScoreinSelectedTwo = DocumentData!["Game_Two_lastMaxScore"] as! Int
-                    //print("Max Score for today:  \(maxScoreinSelected)")
+                    print(maxScoreinSelected)
+                    print(maxScoreinSelectedTwo)
                     values[dayi] = maxScoreinSelected
                     values1[dayi] = maxScoreinSelectedTwo
-                    //print(tempselecteddate,values[dayi])
                 }
                 else{
-                    //print("Max Score for today:  0")
                     values[dayi] = 0
                     values1[dayi] = 0
-                    //print(tempselecteddate,values[dayi])
                 }
             }
         }
         
         selectedDateinDatetype = selectedDateinDatetype! - 3600*24
     }
-    //print("Helloooooooooo: \(values)")
-    //             for i in 0..<7 {
-    //                 dataEntry = ChartDataEntry(x: Double(i), y: Double(values[i]))
-    //                 dataEntries.append(dataEntry)
-    //                //print("dataEntry: \(dataEntry)")
-    //             }
 }

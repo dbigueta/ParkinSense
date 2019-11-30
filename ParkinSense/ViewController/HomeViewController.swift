@@ -85,6 +85,9 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
     //Allows for a consistent switch between trendline and day information
     let pageControl: UIPageControl = {
         let page = UIPageControl()
+        page.pageIndicatorTintColor = .gray
+        page.currentPageIndicatorTintColor = .black
+        page.numberOfPages = 3
         page.translatesAutoresizingMaskIntoConstraints = false
         return page
     }()
@@ -305,6 +308,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         //Add labels, buttons, and views to its respective locations
         progressView.addSubview(progressLabel)
         
+        calendarView.addSubview(pageControl)
         calendarView.addSubview(weekLabel)
         calendarView.addSubview(prevWeek)
         calendarView.addSubview(weekDateLabel)
@@ -346,9 +350,13 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         progressLabel.trailingAnchor.constraint(equalTo: progressView.trailingAnchor, constant: -16.0).isActive = true
         progressLabel.topAnchor.constraint(equalTo: progressView.topAnchor).isActive = true
         
+        pageControl.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 16.0).isActive = true
+        pageControl.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -16.0).isActive = true
+        pageControl.topAnchor.constraint(equalTo: dataScrollView.topAnchor, constant: dataScrollViewHeight - 4.0).isActive = true
+        
         weekLabel.leadingAnchor.constraint(equalTo: calendarView.leadingAnchor, constant: 16.0).isActive = true
         weekLabel.trailingAnchor.constraint(equalTo: calendarView.trailingAnchor, constant: -16.0).isActive = true
-        weekLabel.topAnchor.constraint(equalTo: calendarView.topAnchor, constant: 16.0).isActive = true
+        weekLabel.topAnchor.constraint(equalTo: calendarView.topAnchor, constant: 24.0).isActive = true
         
         prevWeek.leadingAnchor.constraint(equalTo: calendarView.leadingAnchor, constant: 8.0).isActive = true
         prevWeek.topAnchor.constraint(equalTo: weekLabel.topAnchor, constant: headerHeight).isActive = true
@@ -479,17 +487,6 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
                     
                     // Check if the user is the first time login, if so, the pops up will be activated
                     if lastTimeLoginDateStr != thisTimeLoginDateStr {
-                        
-                        //initialize the game score for first login everyday
-                        dateFormatter.dateFormat = "yyyy-MM-dd"
-                        let currentTimeDate = dateFormatter.string(from: Date())
-                    self.db.collection("users").document(userid).collection("gaming_score").document(currentTimeDate).setData([
-                            "date":thisTimeLoginDateStr,
-                            "Game_One_lastMaxScore":0,
-                            "Game_Two_lastMaxScore":0,
-                            "feeling": feeling
-                        ])
-                        
                         if medicationName != "N/A" { self.popoverMedication(haveMedication: true) }
                         else { self.popoverMedication(haveMedication: false) }
                     }
@@ -538,7 +535,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
             mood = popoverFeeling()
         }
         
-        // Updates
+        // Updates the Firebase database
         self.db.collection("users").document(userid).collection("gaming_score").document(currentTimeDate).setData([
             "date":thisTimeLoginDateStr,
             "Game_One_lastMaxScore":0,
@@ -546,6 +543,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
             "feeling": mood
         ]);
         
+        // Updates the Firebase database
         self.db.collection("users").document(userid).setData([
             "login_time": self.rightNow,
             "Username": username,
@@ -569,21 +567,21 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
             "Game_Two_lastMaxScore": 0,
             "feeling": mood
         ])
-        
     }
     
     
     /**
-     Function to set up the pops up
+     Function that sets up the daily pop up notification for mood
      
-     - Parameters: No
-     - Returns: No
+     - Returns: String containing selected mood
      **/
     func popoverFeeling() -> String{
         var mood = ""
         
+        // Create a new alert controller to display alerts
         let alert = UIAlertController(title: "Daily Mood", message: "What is your current mood?", preferredStyle: .alert)
         
+        // Add alert options for each mood option
         alert.addAction(UIAlertAction(title: "Happy", style: .default) {Void in mood = "Happy" })
         alert.addAction(UIAlertAction(title: "Excited", style: .default) {Void in mood = "Excited" })
         alert.addAction(UIAlertAction(title: "Calm", style: .default) {Void in mood = "Calm" })
@@ -595,46 +593,40 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         
         return mood
     }
-    
-    
-    
-    
-    func popover2(){
-        //initialize the game score for first login in everyday
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        let currentTimeDate = dateFormatter.string(from: Date())
-        let alert = UIAlertController(title: "Reminder", message: "How do you feel today?", preferredStyle: .alert) //set up the alert information
-        alert.addAction(UIAlertAction(title: "Happy", style: .default, handler:{(action:UIAlertAction!) in         self.db.collection("users").document(userid).collection("gaming_score").document(currentTimeDate).setData(["date":thisTimeLoginDateStr, "Game_One_lastMaxScore":0,"Game_Two_lastMaxScore":0, "feeling": "Happy"]); self.db.collection("users").document(userid).setData(["login_time": self.rightNow, "Username": username, "MedicationName": medicationName, "MedicationName1": medicationName1, "MedicationName2": medicationName2, "MedicationName3": medicationName3, "MedicationName4": medicationName4, "uid":userid, "Game_One_lastMaxScore":0, "Game_Two_lastMaxScore":0, "feeling": "Happy"])} )) //set up the OK button to exist
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {(action:UIAlertAction!) in self.db.collection("users").document(userid).collection("gaming_score").document(currentTimeDate).setData(["date":thisTimeLoginDateStr, "Game_One_lastMaxScore":0,"Game_Two_lastMaxScore":0, "feeling": "OK"]); self.db.collection("users").document(userid).setData(["login_time": self.rightNow, "Username": username, "MedicationName": medicationName, "MedicationName1": medicationName1, "MedicationName2": medicationName2, "MedicationName3": medicationName3, "MedicationName4": medicationName4, "uid":userid, "Game_One_lastMaxScore":0, "Game_Two_lastMaxScore":0, "feeling": "OK"])})) //set up the OK button to exist
-        alert.addAction(UIAlertAction(title: "Sad", style: .default, handler: {(action:UIAlertAction!) in self.db.collection("users").document(userid).collection("gaming_score").document(currentTimeDate).setData(["date":thisTimeLoginDateStr, "Game_One_lastMaxScore":0,"Game_Two_lastMaxScore":0, "feeling": "Sad"]);         self.db.collection("users").document(userid).setData(["login_time": self.rightNow, "Username": username, "MedicationName": medicationName, "MedicationName1": medicationName1, "MedicationName2": medicationName2, "MedicationName3": medicationName3, "MedicationName4": medicationName4, "uid":userid, "Game_One_lastMaxScore":0, "Game_Two_lastMaxScore":0, "feeling": "Sad"])})) //set up the OK button to exist
-        //        print("feeling is: \(feeling)")
-        //        db.collection("users").document(userid).setData(["login_time": rightNow, "Username": username, "MedicationName": medicationName, "MedicationName1": medicationName1, "MedicationName2": medicationName2, "MedicationName3": medicationName3, "MedicationName4": medicationName4, "uid":userid, "Game_One_lastMaxScore":0, "Game_Two_lastMaxScore":0, "feeling": "Happy"])
-        
-        //Update the user last login time in Firebase for next time login checking
-        self.present(alert,animated: true) //active the present of pop up
-        
-    }
+
     
     /**
      Function for displaying next week date by clicking the next week button
      
      - Parameters: Button itself
-     - Returns: No
-     
+     - Returns: None
      **/
     @objc func nextWeekButtonPressed(_ sender: Any) {
-        let nextweek = rightNow + 3600*24*7 // get one of the date in next week
+        // Obtain next week's date
+        let nextweek = rightNow + 3600*24*7
         rightNow = nextweek
-        sevenDayDate(currentdate: rightNow) //update the new seven days' date
         
-        let newformattedtartcurrentweek = newStartCurrentWeek(updateNow: rightNow) //get the first date of the choosen week
-        let newformattedendcurrentweek = newEndCurrentWeek(updateNow: rightNow) //get the end date of the choosen week
-        currentWeek += 1 //record the current week of the year
+        // Retrieve the days for the next week
+        sevenDayDate(currentdate: rightNow)
+        
+        // Get the first date of the choosen week
+        let newformattedtartcurrentweek = newStartCurrentWeek(updateNow: rightNow)
+        
+        // Get the end date of the choosen week
+        let newformattedendcurrentweek = newEndCurrentWeek(updateNow: rightNow)
+        
+        // Record the current week of the year
+        currentWeek += 1
+        
+        // Only 52 weeks/year, reset to first week
         if currentWeek == 53 {
             currentWeek = 1
             currentYear += 1
         }
-        setUp(newformattedtartcurrentweek: newformattedtartcurrentweek, newformattedendcurrentweek: newformattedendcurrentweek) // redraw the current week's appearance buttons
+        
+        // Redraw the current week's appearance buttons
+        setUp(newformattedtartcurrentweek: newformattedtartcurrentweek, newformattedendcurrentweek: newformattedendcurrentweek)
+        
         highlightSelectedDate()
     }
     
@@ -643,35 +635,44 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
      Function for displaying prev week date by clicking the next week button
      
      - Parameters: Button itself
-     - Returns: No
-     
+     - Returns: None
      **/
     @objc func prevWeekButtonPressed(_ sender: Any) {
-        let nextweek = rightNow - 3600*24*7 // get one of the date in next week
+        // Obtain next week's date
+        let nextweek = rightNow - 3600*24*7
         rightNow = nextweek
-        sevenDayDate(currentdate: rightNow) //update the new seven days' date
         
-        let newformattedtartcurrentweek = newStartCurrentWeek(updateNow: rightNow) //get the first date of the choosen week
-        let newformattedendcurrentweek = newEndCurrentWeek(updateNow: rightNow) //get the end date of the choosen week
+        // Retrieve the days for the next week
+        sevenDayDate(currentdate: rightNow)
         
-        currentWeek -= 1 //record the current week of the year
+        // Get the first date of the choosen week
+        let newformattedtartcurrentweek = newStartCurrentWeek(updateNow: rightNow)
+        
+        // Get the end date of the choosen week
+        let newformattedendcurrentweek = newEndCurrentWeek(updateNow: rightNow)
+        
+        // Record the current week of the year
+        currentWeek -= 1
+        
+        // Only 52 weeks/year, reset to last week
         if currentWeek == 0 {
             currentWeek = 52
             currentYear -= 1
         }
-        setUp(newformattedtartcurrentweek: newformattedtartcurrentweek, newformattedendcurrentweek: newformattedendcurrentweek) // redraw the current week's appearance buttons
+        
+        // Redraw the current week's appearance buttons
+        setUp(newformattedtartcurrentweek: newformattedtartcurrentweek, newformattedendcurrentweek: newformattedendcurrentweek)
         
         highlightSelectedDate()
     }
     
     
     /**
-     Function to  set up the calendar appearance
+     Function to det week range on calendar
      
      - Parameter newformattedtartcurrentweek: String
      - Parameter newformattedendcurrentweek: String
-     - Returns: No
-     
+     - Returns: None
      **/
     func setUp(newformattedtartcurrentweek: String, newformattedendcurrentweek: String)
     {
@@ -680,15 +681,13 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
     
     
     /**
-     Function to  update  date in calender in constant
+     Function to update the dates of the weekly calendar
      
      - Parameter currentdate: Date
-     - Returns: No
-     
+     - Returns: None
      **/
     func sevenDayDate(currentdate: Date){
-        
-        //get the corresponding date of the days
+        // Get the corresponding date of the days
         let SundayDate = sundayDate(startCurrentWeek: currentdate)
         let MondayDate = mondayDate(startCurrentWeek: currentdate)
         let TuesdayDate = tuesdayDate(startCurrentWeek: currentdate)
@@ -697,7 +696,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         let FridayDate = fridayDate(startCurrentWeek: currentdate)
         let SaturdayDate = saturdayDate(startCurrentWeek: currentdate)
         
-        //set title of the buttons text
+        // Set title of the buttons text
         sundayButton.setTitle(SundayDate, for: .normal)
         mondayButton.setTitle(MondayDate, for: .normal)
         tuesdayButton.setTitle(TuesdayDate, for: .normal)
@@ -708,6 +707,11 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
     }
     
     
+    /**
+     Function that highlights the current selected date
+     
+     - Returns: None
+     **/
     func highlightSelectedDate(){
         // Resets all button colours
         sundayButton.backgroundColor = buttonColour
@@ -742,6 +746,13 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         }
     }
     
+    
+    /**
+     Function that sets up the trendline and daily data information
+     
+     - Parameter currentdate: String
+     - Returns: None
+     **/
     func setUpDailyDatainit(currentDate: String){
         //============================================================
         //Create the scroll view of the user's daily data
@@ -750,34 +761,54 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         
         //============================================================================================
         
-        // create the page for the page control
-        self.pageControl.numberOfPages = 3
-        
         //First page modified by create imageView
-        let x1Pos = CGFloat(0)*self.view.bounds.size.width //get the x position of the view that for the first page content
+        // Get the x position of the view that for the first page content
+        let x1Pos = CGFloat(0) * screenWidth
         lineChartView = LineChartView(frame: CGRect(x: x1Pos, y: 0, width: self.view.frame.size.width, height: (self.dataScrollView.frame.size.height)))
         
+        
+        
         updategamescore()
+        
         var dataEntries: [ChartDataEntry] = []
         
         pastSevenDatefunc(currentSelectedDate: rightNow)
+        
         for i in 0..<7 {
             let dataEntry = ChartDataEntry(x: Double(i), y: Double(values[6-i]))
             dataEntries.append(dataEntry)
         }
-        print("dataEntries: \(dataEntries)")
-        print("values: \(values)")
         
-        self.dataScrollView.addSubview(lineChartView)
         
-        //        let lineChartDataSet = LineChartDataSet(entries: dataEntries, label: "\(pastSevenDate[0]) \(pastSevenDate[1]) \(pastSevenDate[2]) \(pastSevenDate[3]) \(pastSevenDate[4]) \(pastSevenDate[5]) \(pastSevenDate[6])")
-        //print("\(pastSevenDate[0]) \(pastSevenDate[1]) \(pastSevenDate[2])")
         let lineChartDataSet = LineChartDataSet(entries: dataEntries, label: "Click the date twice to see last seven days data")
+        
+        
         self.lineChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values:pastSevenDate)
         lineChartView.xAxis.labelPosition = XAxis.LabelPosition.bottom
+        
         let lineChartData = LineChartData(dataSet: lineChartDataSet)
         lineChartView.data = lineChartData
-        //====================================================================================
+        
+        lineChartView.notifyDataSetChanged()
+        lineChartData.notifyDataChanged()
+        lineChartDataSet.notifyDataSetChanged()
+
+        
+        lineChartView.animate(xAxisDuration: 0.05)
+        self.dataScrollView.addSubview(lineChartView)
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         //First page modified by create imageView
@@ -792,21 +823,15 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
             let dataEntry = ChartDataEntry(x: Double(i), y: Double(values1[6-i]))
             dataEntries1.append(dataEntry)
         }
-        print("dataEntries: \(dataEntries1)")
-        print("values: \(values1)")
         
         self.dataScrollView.addSubview(lineChartView1)
         
-        //        let lineChartDataSet = LineChartDataSet(entries: dataEntries, label: "\(pastSevenDate[0]) \(pastSevenDate[1]) \(pastSevenDate[2]) \(pastSevenDate[3]) \(pastSevenDate[4]) \(pastSevenDate[5]) \(pastSevenDate[6])")
-        //print("\(pastSevenDate[0]) \(pastSevenDate[1]) \(pastSevenDate[2])")
         let lineChartDataSet1 = LineChartDataSet(entries: dataEntries1, label: "Click the date twice to see last seven days data")
         self.lineChartView1.xAxis.valueFormatter = IndexAxisValueFormatter(values:pastSevenDate)
         lineChartView1.xAxis.labelPosition = XAxis.LabelPosition.bottom
         let lineChartData1 = LineChartData(dataSet: lineChartDataSet1)
         lineChartView1.data = lineChartData1
-        //====================================================================================
-        
-        
+
         //Daily date page scroll view
         let x2Pos = CGFloat(2)*self.view.bounds.size.width //get the x position of the view that for the second page content
         Datalabeltext1 = UILabel(frame: CGRect(x: x2Pos, y: 40, width: self.view.frame.size.width, height: self.dataScrollView.frame.size.height/4)) //set up the label frame
@@ -834,8 +859,6 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         self.dataScrollView.contentSize.width = self.view.frame.size.width*CGFloat(1+2) //set up the Scroll view content size
         self.dataScrollView.addSubview(Datalabeltext4)
         self.dataScrollView.delegate = self
-        
-        //===========================================================
     }
     
     
