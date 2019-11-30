@@ -20,7 +20,7 @@ import Charts
 
 var medicationName = "None"
 
-var medicationLabelHeaderAlpha = 0
+//var medicationLabelHeaderAlpha = 0
 
 var medicationLabelAlpha = 0
 var medicationName1 = "None"
@@ -66,6 +66,9 @@ var values1 = [gamedata12, gamedata22, gamedata32, gamedata42, gamedata52, gamed
 
 
 /* Shared Constants */
+var screenHeight = UIScreen.main.bounds.height
+var screenWidth = UIScreen.main.bounds.width
+
 let paddingVal: CGFloat = 10
 let textFieldFontSize: CGFloat = 20
 
@@ -100,6 +103,7 @@ let screenSize = UIScreen.main.bounds
 let checkboxDiameter: CGFloat = 25
 let sectionWidth = screenSize.width/7
 let offset = (sectionWidth - CGFloat(checkboxDiameter))/2
+let medicationLabelWidth = (screenWidth - 64)/4
 
 
 
@@ -112,8 +116,7 @@ let offset = (sectionWidth - CGFloat(checkboxDiameter))/2
 
 
 /* Home UI Constants*/
-var screenHeight = UIScreen.main.bounds.height
-var screenWidth = UIScreen.main.bounds.width
+
 let headerFontSize:CGFloat = 20
 
 var weekButtonHeight: CGFloat = 30

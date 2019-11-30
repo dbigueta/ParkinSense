@@ -75,22 +75,13 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         return textField
     }()
     
-    // Medication Label Header
-    let medicationLabelHeader: UILabel = {
-        let label = UILabel()
-        Utilities.styleUILabel(label, error: false)
-        label.text = "Medication Details"
-        label.font = UIFont.systemFont(ofSize: medicationLabelHeight, weight: .medium)
-        label.textAlignment = .left
-        return label
-    }()
-    
     // Medication UI Label
     let medicationLabel: UILabel = {
         let label = UILabel()
         Utilities.styleUILabel(label, error: false)
         label.text = "Medication"
         label.font = UIFont.systemFont(ofSize: medicationLabelHeight, weight: .light)
+        label.textAlignment = .left
         return label
     }()
     
@@ -100,6 +91,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         Utilities.styleUILabel(label, error: false)
         label.text = "Medication"
         label.font = UIFont.systemFont(ofSize: medicationLabelHeight, weight: .light)
+        label.textAlignment = .left
         return label
     }()
     
@@ -109,6 +101,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         Utilities.styleUILabel(label, error: false)
         label.text = "Medication"
         label.font = UIFont.systemFont(ofSize: medicationLabelHeight, weight: .light)
+        label.textAlignment = .left
         return label
     }()
     
@@ -118,6 +111,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         Utilities.styleUILabel(label, error: false)
         label.text = "Medication"
         label.font = UIFont.systemFont(ofSize: medicationLabelHeight, weight: .light)
+        label.textAlignment = .left
         return label
     }()
     
@@ -126,6 +120,52 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         let label = UILabel()
         Utilities.styleUILabel(label, error: false)
         label.text = "Medication"
+        label.font = UIFont.systemFont(ofSize: medicationLabelHeight, weight: .light)
+        label.textAlignment = .left
+        return label
+    }()
+
+    // Medication UI Label
+    let medicationLabelTime: UILabel = {
+        let label = UILabel()
+        Utilities.styleUILabel(label, error: false)
+        label.text = "Medication Time"
+        label.font = UIFont.systemFont(ofSize: medicationLabelHeight, weight: .light)
+        return label
+    }()
+    
+    // Medication UI Label
+    let medicationLabelTime1: UILabel = {
+        let label = UILabel()
+        Utilities.styleUILabel(label, error: false)
+        label.text = "Medication Time"
+        label.font = UIFont.systemFont(ofSize: medicationLabelHeight, weight: .light)
+        return label
+    }()
+    
+    // Medication UI Label
+    let medicationLabelTime2: UILabel = {
+        let label = UILabel()
+        Utilities.styleUILabel(label, error: false)
+        label.text = "Medication Time"
+        label.font = UIFont.systemFont(ofSize: medicationLabelHeight, weight: .light)
+        return label
+    }()
+    
+    // Medication UI Label
+    let medicationLabelTime3: UILabel = {
+        let label = UILabel()
+        Utilities.styleUILabel(label, error: false)
+        label.text = "Medication Time"
+        label.font = UIFont.systemFont(ofSize: medicationLabelHeight, weight: .light)
+        return label
+    }()
+    
+    // Medication UI Label
+    let medicationLabelTime4: UILabel = {
+        let label = UILabel()
+        Utilities.styleUILabel(label, error: false)
+        label.text = "Medication Time"
         label.font = UIFont.systemFont(ofSize: medicationLabelHeight, weight: .light)
         return label
     }()
@@ -174,7 +214,6 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         self.view.addSubview(emailTextField)
         self.view.addSubview(passwordTextField)
         self.view.addSubview(confirmPasswordTextField)
-        self.view.addSubview(medicationLabelHeader)
         self.view.addSubview(medicationLabel)
         self.view.addSubview(medicationLabel1)
         self.view.addSubview(medicationLabel2)
@@ -193,7 +232,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         createAccountLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 32.0).isActive = true
         createAccountLabel.leadingAnchor.constraint(equalTo: appImageView.leadingAnchor, constant: appImageHeaderHeight + 32.0).isActive = true
         
-        emailTextField.topAnchor.constraint(equalTo: createAccountLabel.topAnchor, constant: headerLabelHeight + 48.0).isActive = true
+        emailTextField.topAnchor.constraint(equalTo: createAccountLabel.topAnchor, constant: headerLabelHeight + 32.0).isActive = true
         emailTextField.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 32.0).isActive = true
         emailTextField.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -32.0).isActive = true
         
@@ -205,31 +244,27 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         confirmPasswordTextField.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 32.0).isActive = true
         confirmPasswordTextField.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -32.0).isActive = true
         
-        medicationLabelHeader.topAnchor.constraint(equalTo: confirmPasswordTextField.topAnchor, constant: textFieldHeight + 16.0).isActive = true
-        medicationLabelHeader.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 32.0).isActive = true
-        medicationLabelHeader.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -32.0).isActive = true
-        
-        medicationLabel.topAnchor.constraint(equalTo: medicationLabelHeader.topAnchor, constant: medicationLabelHeight + 16.0).isActive = true
-        medicationLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16.0).isActive = true
-        medicationLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16.0).isActive = true
+        medicationLabel.topAnchor.constraint(equalTo: confirmPasswordTextField.topAnchor, constant: textFieldHeight + 24.0).isActive = true
+        medicationLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 32.0).isActive = true
+        medicationLabel.widthAnchor.constraint(equalToConstant: 2*medicationLabelWidth).isActive = true
         
         medicationLabel1.topAnchor.constraint(equalTo: medicationLabel.topAnchor, constant: medicationLabelHeight + 16.0).isActive = true
-        medicationLabel1.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16.0).isActive = true
-        medicationLabel1.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16.0).isActive = true
+        medicationLabel1.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 32.0).isActive = true
+        medicationLabel1.widthAnchor.constraint(equalToConstant: 2*medicationLabelWidth).isActive = true
         
         medicationLabel2.topAnchor.constraint(equalTo: medicationLabel1.topAnchor, constant: medicationLabelHeight + 16.0).isActive = true
-        medicationLabel2.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16.0).isActive = true
-        medicationLabel2.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16.0).isActive = true
-        
+        medicationLabel2.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 32.0).isActive = true
+        medicationLabel2.widthAnchor.constraint(equalToConstant: 2*medicationLabelWidth).isActive = true
+
         medicationLabel3.topAnchor.constraint(equalTo: medicationLabel2.topAnchor, constant: medicationLabelHeight + 16.0).isActive = true
-        medicationLabel3.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16.0).isActive = true
-        medicationLabel3.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16.0).isActive = true
-        
+        medicationLabel3.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 32.0).isActive = true
+        medicationLabel3.widthAnchor.constraint(equalToConstant: 2*medicationLabelWidth).isActive = true
+
         medicationLabel4.topAnchor.constraint(equalTo: medicationLabel3.topAnchor, constant: medicationLabelHeight + 16.0).isActive = true
-        medicationLabel4.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16.0).isActive = true
-        medicationLabel4.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16.0).isActive = true
-        
-        errorLabel.topAnchor.constraint(equalTo: medicationLabel4.topAnchor, constant: medicationLabelHeight + 16.0).isActive = true
+        medicationLabel4.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 32.0).isActive = true
+        medicationLabel4.widthAnchor.constraint(equalToConstant: 2*medicationLabelWidth).isActive = true
+
+        errorLabel.topAnchor.constraint(equalTo: medicationLabel4.topAnchor, constant: medicationLabelHeight + 24.0).isActive = true
         errorLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16.0).isActive = true
         errorLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16.0).isActive = true
         
@@ -291,7 +326,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         //Hide the error label, medication label and save the Username and Password
         errorLabel.alpha = 0
         
-        medicationLabelHeader.alpha = CGFloat(medicationLabelHeaderAlpha)
+        //medicationLabelHeader.alpha = CGFloat(medicationLabelHeaderAlpha)
         
         medicationLabel.alpha = CGFloat(medicationLabelAlpha)
         medicationLabel.text = medicationName

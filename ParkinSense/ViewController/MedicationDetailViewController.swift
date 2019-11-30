@@ -405,7 +405,7 @@ class MedicationDetailViewController: UIViewController, UITextFieldDelegate {
             
             
             medicationcount+=1
-            medicationLabelHeaderAlpha = 1
+            //medicationLabelHeaderAlpha = 1
         }
         
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "DoUpdateLabel"), object: nil, userInfo: nil)
