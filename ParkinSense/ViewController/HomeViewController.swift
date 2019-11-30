@@ -291,8 +291,16 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         return button
     }()
     
-    override func viewDidLoad(){
-        super.viewDidLoad()
+    // MARK: Class Functions
+    
+    
+    /**
+     Function that adds all UI elements to the view and sets up all constraints for each UI element
+     
+     - Returns: None
+     **/
+    override func loadView(){
+        super.loadView()
         
         //Add labels, buttons, and views to its respective locations
         progressView.addSubview(progressLabel)
@@ -381,91 +389,124 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         
         bubblePopButton.leadingAnchor.constraint(equalTo: tiltButton.leadingAnchor, constant: homeGameButtonWidth + offsetGameButtons).isActive = true
         bubblePopButton.topAnchor.constraint(equalTo: gameLabel.topAnchor, constant: headerHeight + 16.0).isActive = true
-        
+    }
+    
+    /**
+     Function that sets up navigation bar properties and sets up user data
+     
+     - Returns: None
+     **/
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        navigationController?.setNavigationBarHidden(true, animated: false)
         
         //Set background colour of the view
         self.view.backgroundColor = UIColor(red:0.96, green:0.95, blue:0.95, alpha:1.0)
+        
         setupUserData()
     }
     
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: false)
-    }
-    
+    /**
+     Function that sets up user data for buttons and labels
+     
+     - Returns: None
+     **/
     func setupUserData() {
         
-        // Do the main page setup for buttons and label appearance after loading the view.
-        setUp(newformattedtartcurrentweek: formattedStartCurrentWeek, newformattedendcurrentweek: formattedEndCurrentWeek) // call setUp function to setup the button view
-        sevenDayDate(currentdate: rightNow) // call sevendaydate function to get the Sunday to Saturday date, and set up the button title for every date button
+        // Sets up date range for the weekly calendar section
+        setUp(newformattedtartcurrentweek: formattedStartCurrentWeek, newformattedendcurrentweek: formattedEndCurrentWeek)
+        
+        // Retrieves week dates and updates buttons with those dates
+        sevenDayDate(currentdate: rightNow)
+        
         dateFormatter.dateFormat = "yyyy-MM-dd"
         selectedDate = dateFormatter.string(from: rightNow)
+        
+        // Highlights the current selected date
         highlightSelectedDate()
         
-        //=============================================================
-        //Get the current user information from Firebase and check the condition to update the login time and the popup
+        // Retrieves uid of the current user from Firebase
+        userid = Auth.auth().currentUser!.uid
         
-        //ref = Database.database().reference()
-        userid = Auth.auth().currentUser!.uid //get the current user id from Firebase
-        //Update the login time for the current user
-        //need to check the user account exist before access the data
+        // Retrieves user data from Firebase
         db.collection("users").document(userid).getDocument { (document, error) in
             if error == nil{
-                if document != nil && document!.exists{
-                    let DocumentData = document!.data() //get all the corresponding data in Firebase and store it in DocumentData
-                    //print (DocumentData!)
+                if document != nil && document!.exists {
+                    
+                    // Contains the user data
+                    let DocumentData = document!.data()
+                    
+                    // Retrieve username
                     username = DocumentData!["Username"] as! String
+                    
+                    // Retrieve medication names
                     medicationName = DocumentData!["MedicationName"] as! String
-                    //medicationName1 = DocumentData!["MedicationName1"] as! String
+                    medicationName1 = DocumentData!["MedicationName1"] as! String
+                    medicationName2 = DocumentData!["MedicationName2"] as! String
+                    medicationName3 = DocumentData!["MedicationName3"] as! String
+                    medicationName4 = DocumentData!["MedicationName4"] as! String
+                    
+                    // Retreives medication times
+                    medicationTime = DocumentData!["MedicationTime"] as! String
+                    medicationTime1 = DocumentData!["MedicationTime1"] as! String
+                    medicationTime2 = DocumentData!["MedicationTime2"] as! String
+                    medicationTime3 = DocumentData!["MedicationTime3"] as! String
+                    medicationTime4 = DocumentData!["MedicationTime4"] as! String
+                    
+                    // Retrieves medication dates
+                    medicationDate = DocumentData!["MedicationDate"] as! String
+                    medicationDate1 = DocumentData!["MedicationDate1"] as! String
+                    medicationDate2 = DocumentData!["MedicationDate2"] as! String
+                    medicationDate3 = DocumentData!["MedicationDate3"] as! String
+                    medicationDate4 = DocumentData!["MedicationDate4"] as! String
+                    
+                    // Retrieves game scores
                     maxScoreTodayOne = DocumentData!["Game_One_lastMaxScore"] as! Int
                     maxScoreTodayTwo = DocumentData!["Game_Two_lastMaxScore"] as! Int
+                    
+                    // Retrieves mood
                     feeling = DocumentData!["feeling"] as! String
                     
-                    let lasttimeLogin = DocumentData!["login_time"] as! Timestamp // get the last time login time for temp in Timestamp type
-                    //print(lasttimeLogin.dateValue())
-                    let lasttimeLogindate = lasttimeLogin.dateValue() // get the current login time
-                    dateFormatter.dateFormat = "yyyy-MM-dd"
-                    lastTimeLoginDateStr = dateFormatter.string(from: lasttimeLogindate) // format the timestamp type to string
-                    //print(lasttimeLogindatestr)
-                    thisTimeLoginDateStr = dateFormatter.string(from: Date()) // format the timestamp type to string
-                    //====================================================================
-                    self.setUpDailyDatainit(currentDate: thisTimeLoginDateStr) //set up the page controll view
+                    // Obtain last login date
+                    let lastTimeLogin = DocumentData!["login_time"] as! Timestamp
+                    let lastTimeLoginDate = lastTimeLogin.dateValue()
                     
-                    //Check if the user is the first time login, if so, the pops up will be activated
-                    if lastTimeLoginDateStr != thisTimeLoginDateStr{
+                    // Set up correct date format
+                    dateFormatter.dateFormat = "yyyy-MM-dd"
+                    lastTimeLoginDateStr = dateFormatter.string(from: lastTimeLoginDate)
+                    thisTimeLoginDateStr = dateFormatter.string(from: Date())
+                    
+                    // Check if the user is the first time login, if so, the pops up will be activated
+                    if lastTimeLoginDateStr != thisTimeLoginDateStr {
                         
-                        //initialize the game score for first login in everyday
+                        //initialize the game score for first login everyday
                         dateFormatter.dateFormat = "yyyy-MM-dd"
                         let currentTimeDate = dateFormatter.string(from: Date())
-                        self.db.collection("users").document(userid).collection("gaming_score").document(currentTimeDate).setData(["date":thisTimeLoginDateStr, "Game_One_lastMaxScore":0,"Game_Two_lastMaxScore":0, "feeling": feeling])
+                    self.db.collection("users").document(userid).collection("gaming_score").document(currentTimeDate).setData([
+                            "date":thisTimeLoginDateStr,
+                            "Game_One_lastMaxScore":0,
+                            "Game_Two_lastMaxScore":0,
+                            "feeling": feeling
+                        ])
                         
-                        //print("in popover")
-                        if medicationName != "N/A"
-                        {
-                            self.popoverMedication(haveMedication: true)
-                        }
-                        else {
-                            self.popoverMedication(haveMedication: false)
-                        }
+                        if medicationName != "N/A" { self.popoverMedication(haveMedication: true) }
+                        else { self.popoverMedication(haveMedication: false) }
                     }
+                    
+                    // Set up the page control view
+                    self.setUpDailyDatainit(currentDate: thisTimeLoginDateStr)
                 }
             }
         }
     }
     
     
-    
-    
-    
-    
     /**
-     Function to set up the pops up
+     Function that sets up the daily pop up notification for medication
      
-     - Parameters: No
-     - Returns: No
-     
-     
+     - Parameters: haveMedication Bool
+     - Returns: None
      **/
     func popoverMedication(haveMedication: Bool){
         dateFormatter.dateFormat = "yyyy-MM-dd"
@@ -474,14 +515,18 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         var medicineTaken = false
         var mood = ""
         
+        // Performs medication alert only if there was medication inputted
         if haveMedication == true {
+            // Create a new alert controller to display alerts
             let alert = UIAlertController(title: "Medicine Reminder", message: "Did you take your medicine today?", preferredStyle: .alert)
             
+            // Add alert option
             alert.addAction(UIAlertAction(title: "Yes", style: .default) {Void in
                 medicineTaken = true
                 mood = self.popoverFeeling()
             })
             
+            // Add alert option
             alert.addAction(UIAlertAction(title: "No", style: .default) {Void in
                 medicineTaken = false
                 mood = self.popoverFeeling()
@@ -493,12 +538,39 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
             mood = popoverFeeling()
         }
         
-    self.db.collection("users").document(userid).collection("gaming_score").document(currentTimeDate).setData(["date":thisTimeLoginDateStr, "Game_One_lastMaxScore":0,"Game_Two_lastMaxScore":0, "feeling": mood]);
+        // Updates
+        self.db.collection("users").document(userid).collection("gaming_score").document(currentTimeDate).setData([
+            "date":thisTimeLoginDateStr,
+            "Game_One_lastMaxScore":0,
+            "Game_Two_lastMaxScore":0,
+            "feeling": mood
+        ]);
         
-        self.db.collection("users").document(userid).setData(["login_time": self.rightNow, "Username": username, "MedicationName": medicationName, "MedicationName1": medicationName1, "MedicationName2": medicationName2, "MedicationName3": medicationName3, "MedicationName4": medicationName4, "uid":userid, "Game_One_lastMaxScore":0, "Game_Two_lastMaxScore":0, "feeling": mood])
+        self.db.collection("users").document(userid).setData([
+            "login_time": self.rightNow,
+            "Username": username,
+            "uid": userid,
+            "MedicationName": medicationName,
+            "MedicationDate": medicationDate,
+            "MedicationTime": medicationTime,
+            "MedicationName1": medicationName1,
+            "MedicationDate1": medicationDate1,
+            "MedicationTime1": medicationTime1,
+            "MedicationName2": medicationName2,
+            "MedicationDate2": medicationDate2,
+            "MedicationTime2": medicationTime2,
+            "MedicationName3": medicationName3,
+            "MedicationDate3": medicationDate3,
+            "MedicationTime3": medicationTime3,
+            "MedicationName4": medicationName4,
+            "MedicationDate4": medicationDate4,
+            "MedicationTime4": medicationTime4,
+            "Game_One_lastMaxScore": 0,
+            "Game_Two_lastMaxScore": 0,
+            "feeling": mood
+        ])
         
     }
-        
     
     
     /**
@@ -506,12 +578,10 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
      
      - Parameters: No
      - Returns: No
-     
-     
      **/
     func popoverFeeling() -> String{
         var mood = ""
-    
+        
         let alert = UIAlertController(title: "Daily Mood", message: "What is your current mood?", preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: "Happy", style: .default) {Void in mood = "Happy" })
@@ -522,13 +592,13 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         alert.addAction(UIAlertAction(title: "Angry", style: .default) {Void in mood = "Angry" })
         
         self.present(alert,animated: true)
-    
+        
         return mood
     }
     
     
     
-
+    
     func popover2(){
         //initialize the game score for first login in everyday
         dateFormatter.dateFormat = "yyyy-MM-dd"
@@ -539,10 +609,10 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         alert.addAction(UIAlertAction(title: "Sad", style: .default, handler: {(action:UIAlertAction!) in self.db.collection("users").document(userid).collection("gaming_score").document(currentTimeDate).setData(["date":thisTimeLoginDateStr, "Game_One_lastMaxScore":0,"Game_Two_lastMaxScore":0, "feeling": "Sad"]);         self.db.collection("users").document(userid).setData(["login_time": self.rightNow, "Username": username, "MedicationName": medicationName, "MedicationName1": medicationName1, "MedicationName2": medicationName2, "MedicationName3": medicationName3, "MedicationName4": medicationName4, "uid":userid, "Game_One_lastMaxScore":0, "Game_Two_lastMaxScore":0, "feeling": "Sad"])})) //set up the OK button to exist
         //        print("feeling is: \(feeling)")
         //        db.collection("users").document(userid).setData(["login_time": rightNow, "Username": username, "MedicationName": medicationName, "MedicationName1": medicationName1, "MedicationName2": medicationName2, "MedicationName3": medicationName3, "MedicationName4": medicationName4, "uid":userid, "Game_One_lastMaxScore":0, "Game_Two_lastMaxScore":0, "feeling": "Happy"])
-
+        
         //Update the user last login time in Firebase for next time login checking
         self.present(alert,animated: true) //active the present of pop up
-
+        
     }
     
     /**
@@ -639,6 +709,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
     
     
     func highlightSelectedDate(){
+        // Resets all button colours
         sundayButton.backgroundColor = buttonColour
         mondayButton.backgroundColor = buttonColour
         tuesdayButton.backgroundColor = buttonColour
@@ -646,70 +717,28 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         thursdayButton.backgroundColor = buttonColour
         fridayButton.backgroundColor = buttonColour
         saturdayButton.backgroundColor = buttonColour
+        
+        // Sets the background of the current selected date
         if selectedDate == sundayDatewithMY{
             sundayButton.backgroundColor = selectedDayBackgroundColour
-            mondayButton.backgroundColor = buttonColour
-            tuesdayButton.backgroundColor = buttonColour
-            wednesdayButton.backgroundColor = buttonColour
-            thursdayButton.backgroundColor = buttonColour
-            fridayButton.backgroundColor = buttonColour
-            saturdayButton.backgroundColor = buttonColour
         }
         if selectedDate == mondayDatewithMY{
             mondayButton.backgroundColor = selectedDayBackgroundColour
-            sundayButton.backgroundColor = buttonColour
-            tuesdayButton.backgroundColor = buttonColour
-            wednesdayButton.backgroundColor = buttonColour
-            thursdayButton.backgroundColor = buttonColour
-            fridayButton.backgroundColor = buttonColour
-            saturdayButton.backgroundColor = buttonColour
         }
         if selectedDate == tuesdayDatewithMY{
             tuesdayButton.backgroundColor = selectedDayBackgroundColour
-            sundayButton.backgroundColor = buttonColour
-            mondayButton.backgroundColor = buttonColour
-            wednesdayButton.backgroundColor = buttonColour
-            thursdayButton.backgroundColor = buttonColour
-            fridayButton.backgroundColor = buttonColour
-            saturdayButton.backgroundColor = buttonColour
         }
         if selectedDate == wednesdayDatewithMY{
             wednesdayButton.backgroundColor = selectedDayBackgroundColour
-            sundayButton.backgroundColor = buttonColour
-            mondayButton.backgroundColor = buttonColour
-            tuesdayButton.backgroundColor = buttonColour
-            thursdayButton.backgroundColor = buttonColour
-            fridayButton.backgroundColor = buttonColour
-            saturdayButton.backgroundColor = buttonColour
         }
         if selectedDate == thursdayDatewithMY{
             thursdayButton.backgroundColor = selectedDayBackgroundColour
-            sundayButton.backgroundColor = buttonColour
-            mondayButton.backgroundColor = buttonColour
-            tuesdayButton.backgroundColor = buttonColour
-            wednesdayButton.backgroundColor = buttonColour
-            fridayButton.backgroundColor = buttonColour
-            saturdayButton.backgroundColor = buttonColour
-            
         }
         if selectedDate == fridayDatewithMY{
             fridayButton.backgroundColor = selectedDayBackgroundColour
-            sundayButton.backgroundColor = buttonColour
-            mondayButton.backgroundColor = buttonColour
-            tuesdayButton.backgroundColor = buttonColour
-            wednesdayButton.backgroundColor = buttonColour
-            thursdayButton.backgroundColor = buttonColour
-            saturdayButton.backgroundColor = buttonColour
-            
         }
         if selectedDate == saturdayDatewithMY{
             saturdayButton.backgroundColor = selectedDayBackgroundColour
-            sundayButton.backgroundColor = buttonColour
-            mondayButton.backgroundColor = buttonColour
-            tuesdayButton.backgroundColor = buttonColour
-            wednesdayButton.backgroundColor = buttonColour
-            thursdayButton.backgroundColor = buttonColour
-            fridayButton.backgroundColor = buttonColour
         }
     }
     
