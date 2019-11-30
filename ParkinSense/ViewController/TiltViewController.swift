@@ -36,7 +36,7 @@ class TiltViewController: UIViewController {
         let view = UIView()
         return view
     }()
-
+    
     //Countdown view holds the countdown timer
     let countdownView: UIView = {
         let view = UIView()
@@ -189,7 +189,7 @@ class TiltViewController: UIViewController {
         let transition:SKTransition = SKTransition.fade(withDuration: 0.5)
         let scene:SKScene = CountdownGameScene(size: (self.view?.bounds.size)!, parent: self)
         skView.presentScene(scene, transition: transition)
-
+        
     }
     
     

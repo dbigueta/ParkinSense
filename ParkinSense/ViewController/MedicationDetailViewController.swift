@@ -213,7 +213,7 @@ class MedicationDetailViewController: UIViewController, UITextFieldDelegate {
         button.addTarget(self, action: #selector(addNewMedicationButton(_:)), for: .touchUpInside)
         return button
     }()
-
+    
     override func loadView() {
         super.loadView()
         
@@ -340,85 +340,85 @@ class MedicationDetailViewController: UIViewController, UITextFieldDelegate {
         addNewMedicationButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 32.0).isActive = true
         addNewMedicationButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -32.0).isActive = true
     }
-     override func viewDidLoad() {
-            super.viewDidLoad()
-
-            //Sets background of view controller
-            self.view.backgroundColor = UIColor(red:0.96, green:0.95, blue:0.95, alpha:1.0)
-            
-            medicationTextField.delegate = self
-            
-            //Looks for single or multiple taps.
-            let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
-            view.addGestureRecognizer(tap)
-        }
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
-        @objc func dismissKeyboard() {
-            //Causes the view (or one of its embedded text fields) to resign the first responder status.
-            view.endEditing(true)
-        }
+        //Sets background of view controller
+        self.view.backgroundColor = UIColor(red:0.96, green:0.95, blue:0.95, alpha:1.0)
         
-        func textFieldShouldReturn(_ textField: UITextField) -> Bool
-         {
-             textField.resignFirstResponder()
-             return true
-         }
+        medicationTextField.delegate = self
         
-        /**
-            Function about the add new medication Button, will direct you back to the sign up page and medication will be displayed on the screen
-         
-             - Parameter sender: Button itself
-         
-             - Returns: No
-                
-        **/
-        @objc func addNewMedicationButton(_ sender: Any) {
-            
-            if medicationTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) != ""
-            {
-                if medicationcount == 0{
-                    medicationName = medicationTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) //read the Medication Name from text field
-                    medicationLabelAlpha = 1 //change the medicationLabel's alpha from 0 to 1 that display the medication information in sign up page
-                }
-                if medicationcount == 1 {
-                    medicationName1 = medicationTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) //read the Medication Name from text field
-                    medicationLabel1Alpha = 1 //change the medicationLabel's alpha from 0 to 1 that display the medication information in sign up page
-                }
-                if medicationcount == 2 {
-                    medicationName2 = medicationTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) //read the Medication Name from text field
-                    medicationLabel2Alpha = 1 //change the medicationLabel's alpha from 0 to 1 that display the medication information in sign up page
-                }
-                if medicationcount == 3 {
-                    medicationName3 = medicationTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) //read the Medication Name from text field
-                    medicationLabel3Alpha = 1 //change the medicationLabel's alpha from 0 to 1 that display the medication information in sign up page
-                }
-                if medicationcount > 3 {
-                    medicationName4 = medicationTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) //read the Medication Name from text field
-                    medicationLabel4Alpha = 1 //change the medicationLabel's alpha from 0 to 1 that display the medication information in sign up page
-                }
-                let dateFormatter = DateFormatter()
-                dateFormatter.timeStyle = DateFormatter.Style.short
-                
-                //timePickerTime = dateFormatter.string(from: timePicker.date) //read the timepicker value for later use
-                
-                print(timePickerTime)
-            
-
-                medicationcount+=1
-            }
-            
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "DoUpdateLabel"), object: nil, userInfo: nil)
-            
-            self.dismiss(animated: true, completion: nil)
-        }
-        
-        /**
-         Function that will lead you back to login page if button is pressed
-         
-         - Parameter sender: Self Button
-         - Returns: None
-         **/
-        @objc func cancelButtonFunc(_ sender: Any) {
-            self.dismiss(animated: true, completion: nil)
-        }
+        //Looks for single or multiple taps.
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
     }
+    
+    @objc func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool
+    {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    /**
+     Function about the add new medication Button, will direct you back to the sign up page and medication will be displayed on the screen
+     
+     - Parameter sender: Button itself
+     
+     - Returns: No
+     
+     **/
+    @objc func addNewMedicationButton(_ sender: Any) {
+        
+        if medicationTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) != ""
+        {
+            if medicationcount == 0{
+                medicationName = medicationTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) //read the Medication Name from text field
+                medicationLabelAlpha = 1 //change the medicationLabel's alpha from 0 to 1 that display the medication information in sign up page
+            }
+            if medicationcount == 1 {
+                medicationName1 = medicationTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) //read the Medication Name from text field
+                medicationLabel1Alpha = 1 //change the medicationLabel's alpha from 0 to 1 that display the medication information in sign up page
+            }
+            if medicationcount == 2 {
+                medicationName2 = medicationTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) //read the Medication Name from text field
+                medicationLabel2Alpha = 1 //change the medicationLabel's alpha from 0 to 1 that display the medication information in sign up page
+            }
+            if medicationcount == 3 {
+                medicationName3 = medicationTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) //read the Medication Name from text field
+                medicationLabel3Alpha = 1 //change the medicationLabel's alpha from 0 to 1 that display the medication information in sign up page
+            }
+            if medicationcount > 3 {
+                medicationName4 = medicationTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) //read the Medication Name from text field
+                medicationLabel4Alpha = 1 //change the medicationLabel's alpha from 0 to 1 that display the medication information in sign up page
+            }
+            let dateFormatter = DateFormatter()
+            dateFormatter.timeStyle = DateFormatter.Style.short
+            
+            //timePickerTime = dateFormatter.string(from: timePicker.date) //read the timepicker value for later use
+            
+            print(timePickerTime)
+            
+            
+            medicationcount+=1
+        }
+        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "DoUpdateLabel"), object: nil, userInfo: nil)
+        
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    /**
+     Function that will lead you back to login page if button is pressed
+     
+     - Parameter sender: Self Button
+     - Returns: None
+     **/
+    @objc func cancelButtonFunc(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+}

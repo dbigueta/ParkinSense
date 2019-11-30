@@ -21,7 +21,7 @@ import UIKit
 import AVFoundation
 
 class TiltUIViewController: UIViewController {
-
+    
     // Tilt Title UI label
     let tiltLabel: UILabel = {
         let label = UILabel()
@@ -121,10 +121,10 @@ class TiltUIViewController: UIViewController {
     
     
     /**
-        Loads the view on the screen - adds buttons and sound toggle
+     Loads the view on the screen - adds buttons and sound toggle
      
-         - Returns: None
-    **/
+     - Returns: None
+     **/
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -146,7 +146,7 @@ class TiltUIViewController: UIViewController {
         tiltLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         tiltLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         tiltLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 224.0).isActive = true
-
+        
         instructionsLabelLine1.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         instructionsLabelLine1.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         instructionsLabelLine1.topAnchor.constraint(equalTo: tiltLabel.topAnchor, constant: tiltLabelHeight + 32.0).isActive = true
@@ -167,7 +167,7 @@ class TiltUIViewController: UIViewController {
         
         soundToggle.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: soundLabelWidth + 56.0).isActive = true
         soundToggle.topAnchor.constraint(equalTo: startButton.topAnchor, constant: startButtonHeight + 24.0).isActive = true
-
+        
         quitButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: tiltQuitButtonOffset).isActive = true
         quitButton.topAnchor.constraint(equalTo: soundLabel.topAnchor, constant: soundLabelHeight + 24.0).isActive = true
         
@@ -193,10 +193,10 @@ class TiltUIViewController: UIViewController {
     }
     
     /**
-        Sets sound to be on/off based on the toggle
+     Sets sound to be on/off based on the toggle
      
-         - Returns: None
-    **/
+     - Returns: None
+     **/
     @objc func soundTogglePressed(_ sender: UISwitch) {
         if (sender.isOn == false)
         {
@@ -209,20 +209,20 @@ class TiltUIViewController: UIViewController {
     
     
     /**
-        Stops the sound from playing
+     Stops the sound from playing
      
-         - Returns: None
-    **/
+     - Returns: None
+     **/
     @objc func stopSound(_ sender: Any) {
         soundEffect.stop()
     }
     
     
     /**
-        Starts the game Tilt
+     Starts the game Tilt
      
-         - Returns: None
-    **/
+     - Returns: None
+     **/
     @objc func startGame(_ sender: Any) {
         let tiltViewController:TiltViewController = TiltViewController()
         self.present(tiltViewController, animated: true, completion: nil)
@@ -230,10 +230,10 @@ class TiltUIViewController: UIViewController {
     
     
     /**
-        Quits the game Tilt
+     Quits the game Tilt
      
-         - Returns: None
-    **/
+     - Returns: None
+     **/
     @objc func quitGame(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }

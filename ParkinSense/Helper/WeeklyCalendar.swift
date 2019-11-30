@@ -51,12 +51,12 @@ let formattedStartCurrentWeek = formatter.string(from: startCurrentWeek)
 
 
 /**
-     Obtains the current week date range from Sunday to Saturday
-  
-      - Parameter sender: None
-  
-      - Returns: weekInterval
-         
+ Obtains the current week date range from Sunday to Saturday
+ 
+ - Parameter sender: None
+ 
+ - Returns: weekInterval
+ 
  **/
 var dateRange: DateInterval{
     formatter.dateFormat = "MM/dd"
@@ -73,12 +73,12 @@ var defaultselecteddate: String{
 
 
 /**
-     Obtains the end date of a given week
-  
-      - Parameter updateNow: Date
-  
-      - Returns: formattedEndCurrentWeek
-         
+ Obtains the end date of a given week
+ 
+ - Parameter updateNow: Date
+ 
+ - Returns: formattedEndCurrentWeek
+ 
  **/
 func newEndCurrentWeek (updateNow: Date) -> String{
     formatter.dateFormat = "MM/dd"
@@ -91,13 +91,13 @@ func newEndCurrentWeek (updateNow: Date) -> String{
 
 
 /**
-    Obtains the start date of a given week
+ Obtains the start date of a given week
  
-     - Parameter updateNow: Date
+ - Parameter updateNow: Date
  
-     - Returns: formattedStartCurrentWeek
-        
-**/
+ - Returns: formattedStartCurrentWeek
+ 
+ **/
 func newStartCurrentWeek (updateNow: Date) -> String{
     formatter.dateFormat = "MM/dd"
     let weekInterval = newCalendar.dateInterval(of: .weekOfYear, for: updateNow)
@@ -109,13 +109,13 @@ func newStartCurrentWeek (updateNow: Date) -> String{
 
 
 /**
-    Obtains the Sunday date of a given week
+ Obtains the Sunday date of a given week
  
-     - Parameter startCurrentWeek: Date
+ - Parameter startCurrentWeek: Date
  
-     - Returns: formattedSundayDate
-        
-**/
+ - Returns: formattedSundayDate
+ 
+ **/
 func sundayDate (startCurrentWeek: Date) -> String{
     dayFormatter.dateFormat = "dd"
     let weekInterval = newCalendar.dateInterval(of: .weekOfYear, for: startCurrentWeek)
@@ -128,13 +128,13 @@ func sundayDate (startCurrentWeek: Date) -> String{
 
 
 /**
-    Obtains the Monday date of a given week
-    
-     - Parameter startCurrentWeek: Date
+ Obtains the Monday date of a given week
  
-     - Returns: formattedMondayDate
-        
-**/
+ - Parameter startCurrentWeek: Date
+ 
+ - Returns: formattedMondayDate
+ 
+ **/
 func mondayDate (startCurrentWeek: Date) -> String{
     dayFormatter.dateFormat = "dd"
     let weekInterval = newCalendar.dateInterval(of: .weekOfYear, for: startCurrentWeek)
@@ -147,13 +147,13 @@ func mondayDate (startCurrentWeek: Date) -> String{
 
 
 /**
-    Obtains the Tuesday date of a given week
-    
-     - Parameter startCurrentWeek: Date
+ Obtains the Tuesday date of a given week
  
-     - Returns: formattedTuesdayDate
-        
-**/
+ - Parameter startCurrentWeek: Date
+ 
+ - Returns: formattedTuesdayDate
+ 
+ **/
 
 
 func tuesdayDate (startCurrentWeek: Date) -> String{
@@ -168,13 +168,13 @@ func tuesdayDate (startCurrentWeek: Date) -> String{
 
 
 /**
-    Obtains the Wednesday date of a given week
-    
-     - Parameter startCurrentWeek: Date
+ Obtains the Wednesday date of a given week
  
-     - Returns: formattedWednesdayDate
-        
-**/
+ - Parameter startCurrentWeek: Date
+ 
+ - Returns: formattedWednesdayDate
+ 
+ **/
 func wednesdayDate (startCurrentWeek: Date) -> String{
     dayFormatter.dateFormat = "dd"
     let weekInterval = newCalendar.dateInterval(of: .weekOfYear, for: startCurrentWeek)
@@ -187,13 +187,13 @@ func wednesdayDate (startCurrentWeek: Date) -> String{
 
 
 /**
-    Obtains the Thursday date of a given week
-    
-     - Parameter startCurrentWeek: Date
+ Obtains the Thursday date of a given week
  
-     - Returns: formattedThursdayDate
-        
-**/
+ - Parameter startCurrentWeek: Date
+ 
+ - Returns: formattedThursdayDate
+ 
+ **/
 func thursdayDate (startCurrentWeek: Date) -> String{
     dayFormatter.dateFormat = "dd"
     let weekInterval = newCalendar.dateInterval(of: .weekOfYear, for: startCurrentWeek)
@@ -206,13 +206,13 @@ func thursdayDate (startCurrentWeek: Date) -> String{
 
 
 /**
-    Obtains the Friday date of a given week
-    
-     - Parameter startCurrentWeek: Date
+ Obtains the Friday date of a given week
  
-     - Returns: formattedFridayDate
-        
-**/
+ - Parameter startCurrentWeek: Date
+ 
+ - Returns: formattedFridayDate
+ 
+ **/
 func fridayDate (startCurrentWeek: Date) -> String{
     dayFormatter.dateFormat = "dd"
     let weekInterval = newCalendar.dateInterval(of: .weekOfYear, for: startCurrentWeek)
@@ -225,13 +225,13 @@ func fridayDate (startCurrentWeek: Date) -> String{
 
 
 /**
-    Obtains the Saturday date of a given week
-    
-     - Parameter startCurrentWeek: Date
+ Obtains the Saturday date of a given week
  
-     - Returns: formattedSaturdayDate
-        
-**/
+ - Parameter startCurrentWeek: Date
+ 
+ - Returns: formattedSaturdayDate
+ 
+ **/
 func saturdayDate (startCurrentWeek: Date) -> String{
     dayFormatter.dateFormat = "dd"
     let weekInterval = newCalendar.dateInterval(of: .weekOfYear, for: startCurrentWeek)
@@ -258,15 +258,15 @@ func pastSevenDatefunc(currentSelectedDate: Date){
     let formattedfiveDayBefore = dayFormatter.string(from: fiveDayBefore)
     let formattedsixDayBefore = dayFormatter.string(from: sixDayBefore)
     pastSevenDate = [formattedsixDayBefore,formattedfiveDayBefore,formattedfourDayBefore,formattedthreeDayBefore,formattedtwoDayBefore,formattedoneDayBefore,formattedrightNow]
-//    let doubleformattedrightNow = Int(formattedrightNow)!
-//    let doubleformattedoneDayBefore = Int(formattedoneDayBefore)!
-//    let doubleformattedtwoDayBefore = Int(formattedtwoDayBefore)!
-//    let doubleformattedthreeDayBefore = Int(formattedthreeDayBefore)!
-//    let doubleformattedfourDayBefore = Int(formattedfourDayBefore)!
-//    let doubleformattedfiveDayBefore = Int(formattedfiveDayBefore)!
-//    let doubleformattedsixDayBefore = Int(formattedsixDayBefore)!
-//
-//    pastSevenDate = [doubleformattedsixDayBefore,doubleformattedfiveDayBefore,doubleformattedfourDayBefore,doubleformattedthreeDayBefore,doubleformattedtwoDayBefore,doubleformattedoneDayBefore,doubleformattedrightNow]
+    //    let doubleformattedrightNow = Int(formattedrightNow)!
+    //    let doubleformattedoneDayBefore = Int(formattedoneDayBefore)!
+    //    let doubleformattedtwoDayBefore = Int(formattedtwoDayBefore)!
+    //    let doubleformattedthreeDayBefore = Int(formattedthreeDayBefore)!
+    //    let doubleformattedfourDayBefore = Int(formattedfourDayBefore)!
+    //    let doubleformattedfiveDayBefore = Int(formattedfiveDayBefore)!
+    //    let doubleformattedsixDayBefore = Int(formattedsixDayBefore)!
+    //
+    //    pastSevenDate = [doubleformattedsixDayBefore,doubleformattedfiveDayBefore,doubleformattedfourDayBefore,doubleformattedthreeDayBefore,doubleformattedtwoDayBefore,doubleformattedoneDayBefore,doubleformattedrightNow]
 }
 
 
@@ -276,39 +276,39 @@ func pastSevenDatefunc(currentSelectedDate: Date){
 func updategamescore() {
     
     let db = Firestore.firestore()
-             var selectedDateinDatetype = dateFormatter.date(from: selectedDate)
-     
-             for dayi in 0..<7{
-                 dateFormatter.dateFormat = "yyyy-MM-dd"
-                 let tempselecteddate = dateFormatter.string(from: selectedDateinDatetype!)
-                 db.collection("users").document(userid).collection("gaming_score").document(tempselecteddate).getDocument { (document, error) in
-                     if error == nil{
-                         if document != nil && document!.exists{
-                             var maxScoreinSelected = 0
-                            var maxScoreinSelectedTwo = 0
-                             let DocumentData = document!.data()
-                             maxScoreinSelected = DocumentData!["Game_One_lastMaxScore"] as! Int
-                            maxScoreinSelectedTwo = DocumentData!["Game_Two_lastMaxScore"] as! Int
-                             //print("Max Score for today:  \(maxScoreinSelected)")
-                             values[dayi] = maxScoreinSelected
-                            values1[dayi] = maxScoreinSelectedTwo
-                             //print(tempselecteddate,values[dayi])
-                         }
-                         else{
-                             //print("Max Score for today:  0")
-                             values[dayi] = 0
-                            values1[dayi] = 0
-                             //print(tempselecteddate,values[dayi])
-                         }
-                     }
-                 }
-     
-                 selectedDateinDatetype = selectedDateinDatetype! - 3600*24
-             }
-             //print("Helloooooooooo: \(values)")
-//             for i in 0..<7 {
-//                 dataEntry = ChartDataEntry(x: Double(i), y: Double(values[i]))
-//                 dataEntries.append(dataEntry)
-//                //print("dataEntry: \(dataEntry)")
-//             }
+    var selectedDateinDatetype = dateFormatter.date(from: selectedDate)
+    
+    for dayi in 0..<7{
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let tempselecteddate = dateFormatter.string(from: selectedDateinDatetype!)
+        db.collection("users").document(userid).collection("gaming_score").document(tempselecteddate).getDocument { (document, error) in
+            if error == nil{
+                if document != nil && document!.exists{
+                    var maxScoreinSelected = 0
+                    var maxScoreinSelectedTwo = 0
+                    let DocumentData = document!.data()
+                    maxScoreinSelected = DocumentData!["Game_One_lastMaxScore"] as! Int
+                    maxScoreinSelectedTwo = DocumentData!["Game_Two_lastMaxScore"] as! Int
+                    //print("Max Score for today:  \(maxScoreinSelected)")
+                    values[dayi] = maxScoreinSelected
+                    values1[dayi] = maxScoreinSelectedTwo
+                    //print(tempselecteddate,values[dayi])
+                }
+                else{
+                    //print("Max Score for today:  0")
+                    values[dayi] = 0
+                    values1[dayi] = 0
+                    //print(tempselecteddate,values[dayi])
+                }
+            }
+        }
+        
+        selectedDateinDatetype = selectedDateinDatetype! - 3600*24
+    }
+    //print("Helloooooooooo: \(values)")
+    //             for i in 0..<7 {
+    //                 dataEntry = ChartDataEntry(x: Double(i), y: Double(values[i]))
+    //                 dataEntries.append(dataEntry)
+    //                //print("dataEntry: \(dataEntry)")
+    //             }
 }

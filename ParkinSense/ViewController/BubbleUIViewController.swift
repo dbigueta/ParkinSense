@@ -21,7 +21,7 @@ import UIKit
 import AVFoundation
 
 class BubbleUIViewController: UIViewController {
-
+    
     //Bubble Pop title label
     let bubbleLabel: UILabel = {
         let label = UILabel()
@@ -121,10 +121,10 @@ class BubbleUIViewController: UIViewController {
     
     
     /**
-        Loads the view on the screen - adds buttons and sound toggle
+     Loads the view on the screen - adds buttons and sound toggle
      
-         - Returns: None
-    **/
+     - Returns: None
+     **/
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -146,7 +146,7 @@ class BubbleUIViewController: UIViewController {
         bubbleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         bubbleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         bubbleLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 224.0).isActive = true
-
+        
         instructionsLabelLine1.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         instructionsLabelLine1.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         instructionsLabelLine1.topAnchor.constraint(equalTo: bubbleLabel.topAnchor, constant: bubbleLabelHeight + 32.0).isActive = true
@@ -167,13 +167,13 @@ class BubbleUIViewController: UIViewController {
         
         soundToggle.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: soundLabelWidth + 56.0).isActive = true
         soundToggle.topAnchor.constraint(equalTo: startButton.topAnchor, constant: startButtonHeight + 24.0).isActive = true
-
+        
         quitButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: bubbleQuitButtonOffset).isActive = true
         quitButton.topAnchor.constraint(equalTo: soundLabel.topAnchor, constant: soundLabelHeight + 24.0).isActive = true
         
         setupSound()
     }
-
+    
     
     func setupSound() {
         guard let musicFile = Bundle.main.path(forResource: "Roots", ofType: ".mp3") else {
@@ -193,10 +193,10 @@ class BubbleUIViewController: UIViewController {
     }
     
     /**
-        Sets sound to be on/off based on the toggle
+     Sets sound to be on/off based on the toggle
      
-         - Returns: None
-    **/
+     - Returns: None
+     **/
     @objc func soundTogglePressed(_ sender: UISwitch) {
         if (sender.isOn == false)
         {
@@ -209,30 +209,30 @@ class BubbleUIViewController: UIViewController {
     
     
     /**
-        Stops the sound from playing
+     Stops the sound from playing
      
-         - Returns: None
-    **/
+     - Returns: None
+     **/
     @objc func stopSound(_ sender: Any) {
         soundEffect.stop()
     }
     
     
     /**
-        Starts the game bubble
+     Starts the game bubble
      
-         - Returns: None
-    **/
+     - Returns: None
+     **/
     @objc func startGame(_ sender: Any) {
         let bubbleViewController:BubbleViewController = BubbleViewController()
         self.present(bubbleViewController, animated: true, completion: nil)
     }
     
     /**
-        Quits the game bubble
+     Quits the game bubble
      
-         - Returns: None
-    **/
+     - Returns: None
+     **/
     @objc func quitGame(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }

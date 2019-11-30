@@ -233,185 +233,185 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         addNewMedicationDetailButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 32.0).isActive = true
         addNewMedicationDetailButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -32.0).isActive = true
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        //Notifies view controller to perform an update
+        NotificationCenter.default.addObserver(self, selector: #selector(self.setUpElement), name: NSNotification.Name(rawValue: "DoUpdateLabel"), object: nil)
+        
+        //Set background colour of view controller
+        self.view.backgroundColor = UIColor(red:0.96, green:0.95, blue:0.95, alpha:1.0)
+        
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
+        confirmPasswordTextField.delegate = self
+        
+        //Looks for single or multiple taps.
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+        
+        setUpElement()
+    }
+    
+    @objc func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool
+    {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    
+    /**
+     Function to set up the default ErrorLabel to be invisible and set up medication, email, and password labels
      
-        override func viewDidLoad() {
-            super.viewDidLoad()
-            
-            //Notifies view controller to perform an update
-            NotificationCenter.default.addObserver(self, selector: #selector(self.setUpElement), name: NSNotification.Name(rawValue: "DoUpdateLabel"), object: nil)
-            
-            //Set background colour of view controller
-            self.view.backgroundColor = UIColor(red:0.96, green:0.95, blue:0.95, alpha:1.0)
-            
-            emailTextField.delegate = self
-            passwordTextField.delegate = self
-            confirmPasswordTextField.delegate = self
-            
-            //Looks for single or multiple taps.
-            let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
-            view.addGestureRecognizer(tap)
-            
-            setUpElement()
-        }
+     - Returns: No
+     **/
+    @objc func setUpElement(){
         
-        @objc func dismissKeyboard() {
-            //Causes the view (or one of its embedded text fields) to resign the first responder status.
-            view.endEditing(true)
-        }
+        //Hide the error label, medication label and save the Username and Password
+        errorLabel.alpha = 0
         
-        func textFieldShouldReturn(_ textField: UITextField) -> Bool
-         {
-             textField.resignFirstResponder()
-             return true
-         }
+        medicationLabel.alpha = CGFloat(medicationLabelAlpha)
+        medicationLabel.text = medicationName
         
+        medicationLabel1.alpha = CGFloat(medicationLabel1Alpha)
+        medicationLabel1.text = medicationName1
         
-        /**
-         Function to set up the default ErrorLabel to be invisible and set up medication, email, and password labels
-         
-         - Returns: No
-         **/
-        @objc func setUpElement(){
+        medicationLabel2.alpha = CGFloat(medicationLabel2Alpha)
+        medicationLabel2.text = medicationName2
+        
+        medicationLabel3.alpha = CGFloat(medicationLabel3Alpha)
+        medicationLabel3.text = medicationName3
+        
+        medicationLabel4.alpha = CGFloat(medicationLabel4Alpha)
+        medicationLabel4.text = medicationName4
+        
+        emailTextField.text = username
+        passwordTextField.text = password
+        
+    }
+    
+    
+    /**
+     Function to get the error message from text field for username and password
+     
+     - Returns: String
+     **/
+    func validateFields() -> String? {
+        //Check that all fields are filled in
+        if emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == ""  || passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || confirmPasswordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == ""{
             
-            //Hide the error label, medication label and save the Username and Password
-            errorLabel.alpha = 0
-            
-            medicationLabel.alpha = CGFloat(medicationLabelAlpha)
-            medicationLabel.text = medicationName
-            
-            medicationLabel1.alpha = CGFloat(medicationLabel1Alpha)
-            medicationLabel1.text = medicationName1
-            
-            medicationLabel2.alpha = CGFloat(medicationLabel2Alpha)
-            medicationLabel2.text = medicationName2
-            
-            medicationLabel3.alpha = CGFloat(medicationLabel3Alpha)
-            medicationLabel3.text = medicationName3
-            
-            medicationLabel4.alpha = CGFloat(medicationLabel4Alpha)
-            medicationLabel4.text = medicationName4
-            
-            emailTextField.text = username
-            passwordTextField.text = password
+            return "Please fill in all fields."
             
         }
         
-        
-        /**
-         Function to get the error message from text field for username and password
-         
-         - Returns: String
-         **/
-        func validateFields() -> String? {
-            //Check that all fields are filled in
-            if emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == ""  || passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || confirmPasswordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == ""{
-                
-                return "Please fill in all fields."
-                
-            }
+        //check the password match the confirm password
+        if passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) != confirmPasswordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines){
             
-            //check the password match the confirm password
-            if passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) != confirmPasswordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines){
-                
-                return "Passwords do not match. Please re-enter your password."
-            }
-            
-            return nil
-            
+            return "Passwords do not match. Please re-enter your password."
         }
         
+        return nil
         
-        /**
-         Function to create a new account. Will log in and move to home page if signup was successful
-         
-         - Parameter sender: Button itself
-         - Returns: None
-         **/
-        @IBAction func createAnAccountTapped(_ sender: Any) {
+    }
+    
+    
+    /**
+     Function to create a new account. Will log in and move to home page if signup was successful
+     
+     - Parameter sender: Button itself
+     - Returns: None
+     **/
+    @IBAction func createAnAccountTapped(_ sender: Any) {
+        
+        //Validate the fields
+        let error = validateFields()
+        
+        if error != nil{
             
-            //Validate the fields
-            let error = validateFields()
-            
-            if error != nil{
-                
-                //There's something wrong with the fields, show error message
-                showError(error!)
-            }
-            else{
-                //Create cleaned versions of the data
-                username = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-                password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-                
-                print(medicationName1)
-                //Create the user
-                Auth.auth().createUser(withEmail: username, password: password) { (result, err) in
-                    
-                    //Check for errors
-                    if err != nil {
-                        if password.count < 6{
-                            self.showError("Password must be at least 6 characters")
-                        }
-                            //There was an error creating the user
-                        else{
-                            self.showError("User Account should be valid email address")
-                        }
-                    }
-                    else
-                    {
-                        //User was created successfully, now store the username
-                        let db = Firestore.firestore()
-                        
-                        db.collection("users").document(result!.user.uid).setData(["Username": username, "uid": result!.user.uid, "MedicationName": medicationName, "MedicationName1": medicationName1, "MedicationName2": medicationName2, "MedicationName3": medicationName3, "MedicationName4": medicationName4, "login_time":rightNow - 3600*24, "Game_One_lastMaxScore":0, "Game_Two_lastMaxScore":0]) { (error) in
-                            
-                            if error != nil {
-                                //Show error message
-                                self.showError("Error saving user data")
-                            }
-                        }
-            
-                        //Transition to the home screen
-                        let homeViewController:HomeViewController = HomeViewController()
-                        self.present(homeViewController, animated: true, completion: nil)
-                    }
-                }
-            }
+            //There's something wrong with the fields, show error message
+            showError(error!)
         }
-        
-        
-        /**
-         Function to Add New Medication, will direct you to Medication Detail Page, and save the username and password into constant which later on when you go back to the page, the username and password will still remain in the sign up page
-         
-         - Parameter sender: Button itself
-         - Returns: None
-         **/
-        @objc func addNewMedicationDetailTapped(_ sender: Any) {
+        else{
+            //Create cleaned versions of the data
             username = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             
-            let medicationViewController:MedicationDetailViewController = MedicationDetailViewController()
-            self.present(medicationViewController, animated: true, completion: nil)
-        }
-        
-        
-        /**
-         Function that will lead you back to login page if button is pressed
-         
-         - Parameter sender: Self Button
-         - Returns: None
-         **/
-        @objc func alreadyHaveAnAccountTapped(_ sender: Any) {
-            self.dismiss(animated: true, completion: nil)
-        }
-        
-        
-        /**
-         Function will show any errors that may have occurred
-         
-         - Parameter sender: Button itself
-         - Returns: None
-         **/
-        func showError(_ message:String){
-            errorLabel.text = message
-            errorLabel.alpha = 1
+            print(medicationName1)
+            //Create the user
+            Auth.auth().createUser(withEmail: username, password: password) { (result, err) in
+                
+                //Check for errors
+                if err != nil {
+                    if password.count < 6{
+                        self.showError("Password must be at least 6 characters")
+                    }
+                        //There was an error creating the user
+                    else{
+                        self.showError("User Account should be valid email address")
+                    }
+                }
+                else
+                {
+                    //User was created successfully, now store the username
+                    let db = Firestore.firestore()
+                    
+                    db.collection("users").document(result!.user.uid).setData(["Username": username, "uid": result!.user.uid, "MedicationName": medicationName, "MedicationName1": medicationName1, "MedicationName2": medicationName2, "MedicationName3": medicationName3, "MedicationName4": medicationName4, "login_time":rightNow - 3600*24, "Game_One_lastMaxScore":0, "Game_Two_lastMaxScore":0]) { (error) in
+                        
+                        if error != nil {
+                            //Show error message
+                            self.showError("Error saving user data")
+                        }
+                    }
+                    
+                    //Transition to the home screen
+                    let homeViewController:HomeViewController = HomeViewController()
+                    self.present(homeViewController, animated: true, completion: nil)
+                }
+            }
         }
     }
+    
+    
+    /**
+     Function to Add New Medication, will direct you to Medication Detail Page, and save the username and password into constant which later on when you go back to the page, the username and password will still remain in the sign up page
+     
+     - Parameter sender: Button itself
+     - Returns: None
+     **/
+    @objc func addNewMedicationDetailTapped(_ sender: Any) {
+        username = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        let medicationViewController:MedicationDetailViewController = MedicationDetailViewController()
+        self.present(medicationViewController, animated: true, completion: nil)
+    }
+    
+    
+    /**
+     Function that will lead you back to login page if button is pressed
+     
+     - Parameter sender: Self Button
+     - Returns: None
+     **/
+    @objc func alreadyHaveAnAccountTapped(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    
+    /**
+     Function will show any errors that may have occurred
+     
+     - Parameter sender: Button itself
+     - Returns: None
+     **/
+    func showError(_ message:String){
+        errorLabel.text = message
+        errorLabel.alpha = 1
+    }
+}

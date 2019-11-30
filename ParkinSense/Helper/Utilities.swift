@@ -32,7 +32,7 @@ class Utilities: CustomTextField {
         textField.translatesAutoresizingMaskIntoConstraints = false
         if password { textField.isSecureTextEntry = true }
     }
-
+    
     static func styleUILabel(_ label: UILabel, error: Bool) {
         if error { label.textColor = UIColor(red:0.97, green:0.22, blue:0.35, alpha:1.0) }
         else { label.textColor = textColour }
@@ -59,7 +59,7 @@ class Utilities: CustomTextField {
         checkbox.onFillColor = .blue
         checkbox.translatesAutoresizingMaskIntoConstraints = false
     }
-
+    
     static func styleTimePicker(_ timePicker: UIDatePicker) {
         timePicker.translatesAutoresizingMaskIntoConstraints = false
         timePicker.backgroundColor = .clear
@@ -67,33 +67,33 @@ class Utilities: CustomTextField {
         timePicker.datePickerMode = .time
     }
     
-
-//
-//    static func styleTextField(_ textfield:UITextField) {
-//
-//        // Create the bottom line
-//        let bottomLine = CALayer()
-//
-//        bottomLine.frame = CGRect(x: 0, y: textfield.frame.height - 2, width: textfield.frame.width, height: 2)
-//        textfield.backgroundColor = UIColor.init(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
-//        bottomLine.backgroundColor = UIColor.init(red: 48/255, green: 173/255, blue: 99/255, alpha: 1).cgColor
-//
-//        // Remove border on text field
-//        textfield.borderStyle = .none
-//
-//        // Add the line to the text field
-//        //textfield.layer.addSublayer(bottomLine)
-//
-//    }
-//
+    
+    //
+    //    static func styleTextField(_ textfield:UITextField) {
+    //
+    //        // Create the bottom line
+    //        let bottomLine = CALayer()
+    //
+    //        bottomLine.frame = CGRect(x: 0, y: textfield.frame.height - 2, width: textfield.frame.width, height: 2)
+    //        textfield.backgroundColor = UIColor.init(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
+    //        bottomLine.backgroundColor = UIColor.init(red: 48/255, green: 173/255, blue: 99/255, alpha: 1).cgColor
+    //
+    //        // Remove border on text field
+    //        textfield.borderStyle = .none
+    //
+    //        // Add the line to the text field
+    //        //textfield.layer.addSublayer(bottomLine)
+    //
+    //    }
+    //
     /**
-        Button style
+     Button style
      
-         - Parameter sender: Button itself
+     - Parameter sender: Button itself
      
-         - Returns: None
-            
-    **/
+     - Returns: None
+     
+     **/
     static func styleFilledButton(_ button:UIButton) {
         
         // Filled rounded corner style
@@ -103,13 +103,13 @@ class Utilities: CustomTextField {
     }
     
     /**
-        Button style
+     Button style
      
-         - Parameter sender: Button itself
+     - Parameter sender: Button itself
      
-         - Returns: None
-            
-    **/
+     - Returns: None
+     
+     **/
     static func styleFilledDateButton(_ button:UIButton) {
         
         // Filled rounded corner style
@@ -121,13 +121,13 @@ class Utilities: CustomTextField {
     }
     
     /**
-        Button style
+     Button style
      
-         - Parameter sender: Button itself
+     - Parameter sender: Button itself
      
-         - Returns: None
-            
-    **/
+     - Returns: None
+     
+     **/
     static func styleHollowButton(_ button:UIButton) {
         
         // Hollow rounded corner style
@@ -138,13 +138,13 @@ class Utilities: CustomTextField {
     }
     
     /**
-        Check the pass word is Valid, the function will be used later
+     Check the pass word is Valid, the function will be used later
      
-         - Parameter password: String
+     - Parameter password: String
      
-         - Returns: passwordTest.evaluate(with:password)
-            
-    **/
+     - Returns: passwordTest.evaluate(with:password)
+     
+     **/
     static func isPasswordValid(_ password : String) -> Bool {
         
         let passwordTest = NSPredicate(format: "SELF MATCHES %@", "^(?=.*[a-z])(?=.*[$@$#!%*?&])[A-Za-z\\d$@$#!%*?&]{8,}")

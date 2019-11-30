@@ -36,7 +36,7 @@ class BubbleViewController: UIViewController {
         let view = UIView()
         return view
     }()
-
+    
     //Countdown view controls the countdown labels
     let countdownView: UIView = {
         let view = UIView()
@@ -190,7 +190,7 @@ class BubbleViewController: UIViewController {
         let transition:SKTransition = SKTransition.fade(withDuration: 0.5)
         let scene:SKScene = BCountdownGameScene(size: (self.view?.bounds.size)!, parent: self)
         skView.presentScene(scene, transition: transition)
-
+        
     }
     
     

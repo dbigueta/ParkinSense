@@ -20,14 +20,14 @@ import UIKit
 
 extension Date {
     /**
-        Obtains a formatted version of the time to be used in other functions
+     Obtains a formatted version of the time to be used in other functions
      
-         - Parameter hour: Integer containing the hour
-         - Parameter minute: Integer containin the minute
+     - Parameter hour: Integer containing the hour
+     - Parameter minute: Integer containin the minute
      
-         - Returns: calculatedTime
-            
-    **/
+     - Returns: calculatedTime
+     
+     **/
     static func calculateTime(hour:Int, minute: Int) -> Date {
         let formatter = DateFormatter()
         formatter.timeStyle = .short

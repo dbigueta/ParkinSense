@@ -37,7 +37,7 @@ class BCountdownGameScene: SKScene {
         self.viewController = parent
         super.init(size: size)
     }
-
+    
     
     /**
      Required function because of self initialization of init()
@@ -62,9 +62,9 @@ class BCountdownGameScene: SKScene {
     
     /**
      Sets up countdown and displays countdown on the screen.
-
+     
      - Returns: None.
-    */
+     */
     func countdown() {
         viewController.countdownLabel.text = String(count)
         
@@ -78,9 +78,9 @@ class BCountdownGameScene: SKScene {
     
     /**
      Decrements the countdown by 1 and updates label.
-
+     
      - Returns: None.
-    */
+     */
     func countdownAction(){
         count -= 1
         viewController.countdownLabel.text = String(count)
@@ -89,9 +89,9 @@ class BCountdownGameScene: SKScene {
     
     /**
      Ends the countdown by removing the countdown from the screen. Starts transition to main game.
-
+     
      - Returns: None.
-    */
+     */
     func endCountdown() {
         viewController.countdownView.isHidden = true
         viewController.setupGameUI()
@@ -101,9 +101,9 @@ class BCountdownGameScene: SKScene {
     
     /**
      Deinitializes the scene from memory.
-
+     
      - Returns: None.
-    */
+     */
     deinit {
         print("The Countdown Scene has been removed from memory")
     }
@@ -111,9 +111,9 @@ class BCountdownGameScene: SKScene {
     
     /**
      Performs transition to a new scene for the main game.
-    
+     
      - Returns: None.
-    */
+     */
     func transitionToGame() {
         let transition:SKTransition = SKTransition.fade(withDuration: 0.5)
         let scene:SKScene = BubbleGameScene(size: (self.view?.bounds.size)!, parent: self.viewController)
