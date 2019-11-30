@@ -47,6 +47,22 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
     }()
     
     //Progress view that contains the progress label
+    let signOutView: UIView = {
+        let view = UIView()
+        view.heightAnchor.constraint(equalToConstant: signOutViewHeight).isActive = true
+        return view
+    }()
+    
+    // Sign Out Button
+    let signOutButton: UIButton = {
+        let button = UIButton()
+        Utilities.styleUIButton(button)
+        button.setTitle("Sign Out", for: .normal)
+        button.addTarget(self, action: #selector(signOutTapped(_:)), for: .touchUpInside)
+        return button
+    }()
+    
+    //Progress view that contains the progress label
     let progressView: UIView = {
         let view = UIView()
         view.heightAnchor.constraint(equalToConstant: progressViewHeight).isActive = true
@@ -306,6 +322,8 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         super.loadView()
         
         //Add labels, buttons, and views to its respective locations
+        signOutView.addSubview(signOutButton)
+        
         progressView.addSubview(progressLabel)
         
         calendarView.addSubview(pageControl)
@@ -326,6 +344,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         gameView.addSubview(bubblePopButton)
         
         view.addSubview(scrollView)
+        scrollView.addSubview(signOutView)
         scrollView.addSubview(scrollViewContainer)
         scrollViewContainer.addArrangedSubview(progressView)
         scrollViewContainer.addArrangedSubview(dataScrollView)
@@ -338,9 +357,19 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         
+        signOutView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor).isActive = true
+        signOutView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor).isActive = true
+        signOutView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
+        
+        signOutButton.topAnchor.constraint(equalTo: signOutView.topAnchor, constant: 16.0).isActive = true
+        signOutButton.heightAnchor.constraint(equalToConstant: UIButtonHeight).isActive = true
+        signOutButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 32.0).isActive = true
+        signOutButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -32.0).isActive = true
+        
+        
         scrollViewContainer.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor).isActive = true
         scrollViewContainer.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor).isActive = true
-        scrollViewContainer.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
+        scrollViewContainer.topAnchor.constraint(equalTo: signOutView.topAnchor, constant: signOutViewHeight).isActive = true
         scrollViewContainer.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
         
         // this is important for scrolling
@@ -407,6 +436,13 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.setNavigationBarHidden(true, animated: false)
+        
+        
+        self.view.layoutIfNeeded()
+        let newOffset = CGPoint(x: scrollView.contentOffset.x, y: scrollView.contentOffset.y + signOutViewHeight)
+        scrollView.setContentOffset(newOffset, animated: false)
+        
+        //scrollView.setContentOffset(CGPoint(x:0, y: 1000), animated: false)
         
         //Set background colour of the view
         self.view.backgroundColor = UIColor(red:0.96, green:0.95, blue:0.95, alpha:1.0)
@@ -1342,7 +1378,20 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         let page = DataScrollView.contentOffset.x/DataScrollView.frame.width
         pageControl.currentPage = Int(page)
     }
+
+    /**
+     Function that directs you to Login
+     
+     - Returns: None
+     **/
+    @objc func signOutTapped(_ sender: Any) {
+        let loginViewController:LoginViewController = LoginViewController()
+        self.present(loginViewController, animated: true, completion: nil)
+       // self.presentingViewController?.dismiss(animated: true, completion: nil)
+    }
 }
+
+
 
 //
 //    override func viewWillAppear(_ animated: Bool) {

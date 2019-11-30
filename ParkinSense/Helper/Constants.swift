@@ -154,6 +154,7 @@ var homeGameButtonWidth = screenWidth/2 - 20
 var headerHeight:CGFloat = 50
 var gameLabelHeight: CGFloat = 30
 
+var signOutViewHeight: CGFloat = 70
 var progressViewHeight: CGFloat = 50
 var dataScrollViewHeight: CGFloat = 250
 var calendarViewHeight: CGFloat = 340
