@@ -75,6 +75,16 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         return textField
     }()
     
+    // Medication Label Header
+    let medicationLabelHeader: UILabel = {
+        let label = UILabel()
+        Utilities.styleUILabel(label, error: false)
+        label.text = "Medication Details"
+        label.font = UIFont.systemFont(ofSize: medicationLabelHeight, weight: .medium)
+        label.textAlignment = .left
+        return label
+    }()
+    
     // Medication UI Label
     let medicationLabel: UILabel = {
         let label = UILabel()
@@ -164,6 +174,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         self.view.addSubview(emailTextField)
         self.view.addSubview(passwordTextField)
         self.view.addSubview(confirmPasswordTextField)
+        self.view.addSubview(medicationLabelHeader)
         self.view.addSubview(medicationLabel)
         self.view.addSubview(medicationLabel1)
         self.view.addSubview(medicationLabel2)
@@ -180,7 +191,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         appImageView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16.0).isActive = true
         
         createAccountLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 32.0).isActive = true
-        createAccountLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: appImageHeight + 32.0).isActive = true
+        createAccountLabel.leadingAnchor.constraint(equalTo: appImageView.leadingAnchor, constant: appImageHeaderHeight + 32.0).isActive = true
         
         emailTextField.topAnchor.constraint(equalTo: createAccountLabel.topAnchor, constant: headerLabelHeight + 48.0).isActive = true
         emailTextField.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 32.0).isActive = true
@@ -194,7 +205,11 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         confirmPasswordTextField.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 32.0).isActive = true
         confirmPasswordTextField.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -32.0).isActive = true
         
-        medicationLabel.topAnchor.constraint(equalTo: confirmPasswordTextField.topAnchor, constant: textFieldHeight + 16.0).isActive = true
+        medicationLabelHeader.topAnchor.constraint(equalTo: confirmPasswordTextField.topAnchor, constant: textFieldHeight + 16.0).isActive = true
+        medicationLabelHeader.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 32.0).isActive = true
+        medicationLabelHeader.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -32.0).isActive = true
+        
+        medicationLabel.topAnchor.constraint(equalTo: medicationLabelHeader.topAnchor, constant: medicationLabelHeight + 16.0).isActive = true
         medicationLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16.0).isActive = true
         medicationLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16.0).isActive = true
         
@@ -276,6 +291,8 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         //Hide the error label, medication label and save the Username and Password
         errorLabel.alpha = 0
         
+        medicationLabelHeader.alpha = CGFloat(medicationLabelHeaderAlpha)
+        
         medicationLabel.alpha = CGFloat(medicationLabelAlpha)
         medicationLabel.text = medicationName
         
@@ -306,14 +323,17 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         //Check that all fields are filled in
         if emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == ""  || passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || confirmPasswordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == ""{
             
-            return "Please fill in all fields."
+            return "Please fill in all fields"
             
         }
         
         //check the password match the confirm password
         if passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) != confirmPasswordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines){
             
-            return "Passwords do not match. Please re-enter your password."
+            //passwordTextField.text = ""
+            confirmPasswordTextField.text = ""
+            
+            return "Passwords do not match. Re-enter your password."
         }
         
         return nil
@@ -346,22 +366,32 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
             //Create the user
             Auth.auth().createUser(withEmail: username, password: password) { (result, err) in
                 
-                //Check for errors
                 if err != nil {
+                        
+                    let errorDesc = AuthErrorCode(rawValue: err!._code)
+                        
                     if password.count < 6{
-                        self.showError("Password must be at least 6 characters")
-                    }
-                        //There was an error creating the user
-                    else{
-                        self.showError("User Account should be valid email address")
-                    }
+                            self.showError("Password must be at least 6 characters")
+                        }
+                        else {
+                            switch errorDesc {
+                            case .invalidEmail:
+                                self.errorLabel.text = "Invalid email format. Enter a valid email."
+                            case .emailAlreadyInUse:
+                                self.errorLabel.text = "User already exists. Enter a different email address."
+                            default:
+                                self.errorLabel.text = "Unknown error"
+                            }
+                        }
+
+                        self.errorLabel.alpha = 1
                 }
                 else
                 {
                     //User was created successfully, now store the username
                     let db = Firestore.firestore()
                     
-                    db.collection("users").document(result!.user.uid).setData(["Username": username, "uid": result!.user.uid, "MedicationName": medicationName, "MedicationName1": medicationName1, "MedicationName2": medicationName2, "MedicationName3": medicationName3, "MedicationName4": medicationName4, "login_time":rightNow - 3600*24, "Game_One_lastMaxScore":0, "Game_Two_lastMaxScore":0]) { (error) in
+                    db.collection("users").document(result!.user.uid).setData(["Username": username, "uid": result!.user.uid, "MedicationName": medicationName, "MedicationName1": medicationName1, "MedicationName2": medicationName2, "MedicationName3": medicationName3, "MedicationName4": medicationName4, "login_time":rightNow - 3600*24, "Game_One_lastMaxScore":0, "Game_Two_lastMaxScore":0, "feeling": feeling]) { (error) in
                         
                         if error != nil {
                             //Show error message

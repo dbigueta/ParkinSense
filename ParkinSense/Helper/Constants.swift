@@ -20,6 +20,8 @@ import Charts
 
 var medicationName = "None"
 
+var medicationLabelHeaderAlpha = 0
+
 var medicationLabelAlpha = 0
 var medicationName1 = "None"
 
@@ -95,7 +97,7 @@ let dayLabelHeight: CGFloat = 17
 let medicationTimeLabelHeight: CGFloat = 20
 let timePickerHeight: CGFloat = 150
 let screenSize = UIScreen.main.bounds
-let checkboxDiameter = 35
+let checkboxDiameter: CGFloat = 25
 let sectionWidth = screenSize.width/7
 let offset = (sectionWidth - CGFloat(checkboxDiameter))/2
 

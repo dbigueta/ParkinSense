@@ -159,6 +159,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         rememberPassButton.topAnchor.constraint(equalTo: passwordTextField.topAnchor, constant: textFieldHeight + 24.0).isActive = true
         rememberPassButton.leadingAnchor.constraint(equalTo: rememberPassLabel.trailingAnchor, constant: 16.0).isActive = true
+        rememberPassButton.heightAnchor.constraint(equalToConstant: checkboxDiameter).isActive = true
+        rememberPassButton.widthAnchor.constraint(equalToConstant: checkboxDiameter).isActive = true
+        
+        //checkboxDiameter
         
         errorLabel.topAnchor.constraint(equalTo: rememberPassLabel.topAnchor, constant: rememberPassLabelTopPadding + 16.0).isActive = true
         errorLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16.0).isActive = true
@@ -211,7 +215,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
      - Returns: None
      **/
     @objc func signInTapped(_ sender: Any) {
-        //Create cleaned versions of the text field
+        // Remove extraneous space characters from the textfields
         username = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         
@@ -219,8 +223,25 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         Auth.auth().signIn(withEmail: username, password: password) { (result, error) in
             
             if error != nil {
-                //Could not sign in
-                self.errorLabel.text = error!.localizedDescription
+                
+                let errorDesc = AuthErrorCode(rawValue: error!._code)
+                
+                if username.count == 0 || password.count == 0 {
+                    self.errorLabel.text = "Please fill in all fields"
+                }
+                else {
+                    switch errorDesc {
+                    case .wrongPassword:
+                        self.errorLabel.text = "Wrong password. Please try again"
+                    case .invalidEmail:
+                        self.errorLabel.text = "Invalid email. Please try again"
+                    case .userNotFound:
+                        self.errorLabel.text = "User could not be found"
+                    default:
+                        self.errorLabel.text = "Unknown error"
+                    }
+                }
+
                 self.errorLabel.alpha = 1
             }
             else{
