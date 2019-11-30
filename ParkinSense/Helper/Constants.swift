@@ -18,29 +18,52 @@
 import Foundation
 import Charts
 
-var medicationName = "None"
+// MARK: Medication Variables
 
-//var medicationLabelHeaderAlpha = 0
-
+var medicationName = "N/A"
+var medicationTime = "N/A"
+var medicationDate = "N/A"
 var medicationLabelAlpha = 0
-var medicationName1 = "None"
 
+var medicationName1 = "N/A"
+var medicationTime1 = "N/A"
+var medicationDate1 = "N/A"
 var medicationLabel1Alpha = 0
-var medicationName2 = "None"
 
+var medicationName2 = "N/A"
+var medicationTime2 = "N/A"
+var medicationDate2 = "N/A"
 var medicationLabel2Alpha = 0
-var medicationName3 = "None"
 
+var medicationName3 = "N/A"
+var medicationTime3 = "N/A"
+var medicationDate3 = "N/A"
 var medicationLabel3Alpha = 0
-var medicationName4 = "None"
+
+var medicationName4 = "N/A"
+var medicationTime4 = "N/A"
+var medicationDate4 = "N/A"
 var medicationLabel4Alpha = 0
 
 var medicationcount = 0
 
+
+
+
+
+
+
+
+
+// MARK: Mood Variables
+
 var feeling = ""
 
+/* User Account Variables */
 var username = ""
 var password = ""
+
+
 var timePickerTime = ""
 var userid = ""
 var maxScoreTodayOne = 0
@@ -103,7 +126,7 @@ let screenSize = UIScreen.main.bounds
 let checkboxDiameter: CGFloat = 25
 let sectionWidth = screenSize.width/7
 let offset = (sectionWidth - CGFloat(checkboxDiameter))/2
-let medicationLabelWidth = (screenWidth - 64)/4
+let medicationLabelWidth = (screenWidth - 64)/3
 
 
 

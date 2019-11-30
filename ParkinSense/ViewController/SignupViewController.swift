@@ -124,6 +124,56 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         label.textAlignment = .left
         return label
     }()
+    
+    // Medication UI Label
+    let medicationLabelDate: UILabel = {
+        let label = UILabel()
+        Utilities.styleUILabel(label, error: false)
+        label.text = "Medication Date"
+        label.font = UIFont.systemFont(ofSize: medicationLabelHeight, weight: .light)
+        label.textAlignment = .left
+        return label
+    }()
+    
+    // Medication UI Label
+    let medicationLabelDate1: UILabel = {
+        let label = UILabel()
+        Utilities.styleUILabel(label, error: false)
+        label.text = "Medication Date"
+        label.font = UIFont.systemFont(ofSize: medicationLabelHeight, weight: .light)
+        label.textAlignment = .left
+        return label
+    }()
+    
+    // Medication UI Label
+    let medicationLabelDate2: UILabel = {
+        let label = UILabel()
+        Utilities.styleUILabel(label, error: false)
+        label.text = "Medication Date"
+        label.font = UIFont.systemFont(ofSize: medicationLabelHeight, weight: .light)
+        label.textAlignment = .left
+        return label
+    }()
+    
+    // Medication UI Label
+    let medicationLabelDate3: UILabel = {
+        let label = UILabel()
+        Utilities.styleUILabel(label, error: false)
+        label.text = "Medication Date"
+        label.font = UIFont.systemFont(ofSize: medicationLabelHeight, weight: .light)
+        label.textAlignment = .left
+        return label
+    }()
+    
+    // Medication UI Label
+    let medicationLabelDate4: UILabel = {
+        let label = UILabel()
+        Utilities.styleUILabel(label, error: false)
+        label.text = "Medication Date"
+        label.font = UIFont.systemFont(ofSize: medicationLabelHeight, weight: .light)
+        label.textAlignment = .left
+        return label
+    }()
 
     // Medication UI Label
     let medicationLabelTime: UILabel = {
@@ -131,6 +181,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         Utilities.styleUILabel(label, error: false)
         label.text = "Medication Time"
         label.font = UIFont.systemFont(ofSize: medicationLabelHeight, weight: .light)
+        label.textAlignment = .right
         return label
     }()
     
@@ -140,6 +191,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         Utilities.styleUILabel(label, error: false)
         label.text = "Medication Time"
         label.font = UIFont.systemFont(ofSize: medicationLabelHeight, weight: .light)
+        label.textAlignment = .right
         return label
     }()
     
@@ -149,6 +201,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         Utilities.styleUILabel(label, error: false)
         label.text = "Medication Time"
         label.font = UIFont.systemFont(ofSize: medicationLabelHeight, weight: .light)
+        label.textAlignment = .right
         return label
     }()
     
@@ -158,6 +211,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         Utilities.styleUILabel(label, error: false)
         label.text = "Medication Time"
         label.font = UIFont.systemFont(ofSize: medicationLabelHeight, weight: .light)
+        label.textAlignment = .right
         return label
     }()
     
@@ -167,6 +221,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         Utilities.styleUILabel(label, error: false)
         label.text = "Medication Time"
         label.font = UIFont.systemFont(ofSize: medicationLabelHeight, weight: .light)
+        label.textAlignment = .right
         return label
     }()
     
@@ -176,6 +231,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         Utilities.styleUILabel(label, error: true)
         label.text = "Error"
         label.font = UIFont.systemFont(ofSize: errorLabelHeight, weight: .light)
+        
         return label
     }()
     
@@ -215,10 +271,20 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         self.view.addSubview(passwordTextField)
         self.view.addSubview(confirmPasswordTextField)
         self.view.addSubview(medicationLabel)
+        self.view.addSubview(medicationLabelDate)
+        self.view.addSubview(medicationLabelTime)
         self.view.addSubview(medicationLabel1)
+        self.view.addSubview(medicationLabelDate1)
+        self.view.addSubview(medicationLabelTime1)
         self.view.addSubview(medicationLabel2)
+        self.view.addSubview(medicationLabelDate2)
+        self.view.addSubview(medicationLabelTime2)
         self.view.addSubview(medicationLabel3)
+        self.view.addSubview(medicationLabelDate3)
+        self.view.addSubview(medicationLabelTime3)
         self.view.addSubview(medicationLabel4)
+        self.view.addSubview(medicationLabelDate4)
+        self.view.addSubview(medicationLabelTime4)
         self.view.addSubview(errorLabel)
         self.view.addSubview(alreadyHaveAnAccountButton)
         self.view.addSubview(createAnAccountButton)
@@ -246,24 +312,64 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         
         medicationLabel.topAnchor.constraint(equalTo: confirmPasswordTextField.topAnchor, constant: textFieldHeight + 24.0).isActive = true
         medicationLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 32.0).isActive = true
-        medicationLabel.widthAnchor.constraint(equalToConstant: 2*medicationLabelWidth).isActive = true
+        medicationLabel.widthAnchor.constraint(equalToConstant: medicationLabelWidth).isActive = true
+        
+        medicationLabelDate.topAnchor.constraint(equalTo: confirmPasswordTextField.topAnchor, constant: textFieldHeight + 24.0).isActive = true
+        medicationLabelDate.leadingAnchor.constraint(equalTo: medicationLabel.leadingAnchor, constant: medicationLabelWidth).isActive = true
+        medicationLabelDate.widthAnchor.constraint(equalToConstant: medicationLabelWidth).isActive = true
+        
+        medicationLabelTime.topAnchor.constraint(equalTo: confirmPasswordTextField.topAnchor, constant: textFieldHeight + 24.0).isActive = true
+        medicationLabelTime.leadingAnchor.constraint(equalTo: medicationLabelDate.leadingAnchor, constant: medicationLabelWidth).isActive = true
+        medicationLabelTime.widthAnchor.constraint(equalToConstant: medicationLabelWidth).isActive = true
         
         medicationLabel1.topAnchor.constraint(equalTo: medicationLabel.topAnchor, constant: medicationLabelHeight + 16.0).isActive = true
         medicationLabel1.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 32.0).isActive = true
-        medicationLabel1.widthAnchor.constraint(equalToConstant: 2*medicationLabelWidth).isActive = true
+        medicationLabel1.widthAnchor.constraint(equalToConstant: medicationLabelWidth).isActive = true
+        
+        medicationLabelDate1.topAnchor.constraint(equalTo: medicationLabel.topAnchor, constant: medicationLabelHeight + 16.0).isActive = true
+        medicationLabelDate1.leadingAnchor.constraint(equalTo: medicationLabel1.leadingAnchor, constant: medicationLabelWidth).isActive = true
+        medicationLabelDate1.widthAnchor.constraint(equalToConstant: medicationLabelWidth).isActive = true
+        
+        medicationLabelTime1.topAnchor.constraint(equalTo: medicationLabel.topAnchor, constant: medicationLabelHeight + 16.0).isActive = true
+        medicationLabelTime1.leadingAnchor.constraint(equalTo: medicationLabelDate1.leadingAnchor, constant: medicationLabelWidth).isActive = true
+        medicationLabelTime1.widthAnchor.constraint(equalToConstant: medicationLabelWidth).isActive = true
         
         medicationLabel2.topAnchor.constraint(equalTo: medicationLabel1.topAnchor, constant: medicationLabelHeight + 16.0).isActive = true
         medicationLabel2.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 32.0).isActive = true
-        medicationLabel2.widthAnchor.constraint(equalToConstant: 2*medicationLabelWidth).isActive = true
+        medicationLabel2.widthAnchor.constraint(equalToConstant: medicationLabelWidth).isActive = true
 
+        medicationLabelDate2.topAnchor.constraint(equalTo: medicationLabel1.topAnchor, constant: medicationLabelHeight + 16.0).isActive = true
+        medicationLabelDate2.leadingAnchor.constraint(equalTo: medicationLabel2.leadingAnchor, constant: medicationLabelWidth).isActive = true
+        medicationLabelDate2.widthAnchor.constraint(equalToConstant: medicationLabelWidth).isActive = true
+        
+        medicationLabelTime2.topAnchor.constraint(equalTo: medicationLabel1.topAnchor, constant: medicationLabelHeight + 16.0).isActive = true
+        medicationLabelTime2.leadingAnchor.constraint(equalTo: medicationLabelDate2.leadingAnchor, constant: medicationLabelWidth).isActive = true
+        medicationLabelTime2.widthAnchor.constraint(equalToConstant: medicationLabelWidth).isActive = true
+        
         medicationLabel3.topAnchor.constraint(equalTo: medicationLabel2.topAnchor, constant: medicationLabelHeight + 16.0).isActive = true
         medicationLabel3.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 32.0).isActive = true
-        medicationLabel3.widthAnchor.constraint(equalToConstant: 2*medicationLabelWidth).isActive = true
+        medicationLabel3.widthAnchor.constraint(equalToConstant: medicationLabelWidth).isActive = true
+        
+        medicationLabelDate3.topAnchor.constraint(equalTo: medicationLabel2.topAnchor, constant: medicationLabelHeight + 16.0).isActive = true
+        medicationLabelDate3.leadingAnchor.constraint(equalTo: medicationLabel3.leadingAnchor, constant: medicationLabelWidth).isActive = true
+        medicationLabelDate3.widthAnchor.constraint(equalToConstant: medicationLabelWidth).isActive = true
+        
+        medicationLabelTime3.topAnchor.constraint(equalTo: medicationLabel2.topAnchor, constant: medicationLabelHeight + 16.0).isActive = true
+        medicationLabelTime3.leadingAnchor.constraint(equalTo: medicationLabelDate3.leadingAnchor, constant: medicationLabelWidth).isActive = true
+        medicationLabelTime3.widthAnchor.constraint(equalToConstant: medicationLabelWidth).isActive = true
 
         medicationLabel4.topAnchor.constraint(equalTo: medicationLabel3.topAnchor, constant: medicationLabelHeight + 16.0).isActive = true
         medicationLabel4.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 32.0).isActive = true
-        medicationLabel4.widthAnchor.constraint(equalToConstant: 2*medicationLabelWidth).isActive = true
+        medicationLabel4.widthAnchor.constraint(equalToConstant: medicationLabelWidth).isActive = true
 
+        medicationLabelDate4.topAnchor.constraint(equalTo: medicationLabel3.topAnchor, constant: medicationLabelHeight + 16.0).isActive = true
+        medicationLabelDate4.leadingAnchor.constraint(equalTo: medicationLabel4.leadingAnchor, constant: medicationLabelWidth).isActive = true
+        medicationLabelDate4.widthAnchor.constraint(equalToConstant: medicationLabelWidth).isActive = true
+        
+        medicationLabelTime4.topAnchor.constraint(equalTo: medicationLabel3.topAnchor, constant: medicationLabelHeight + 16.0).isActive = true
+        medicationLabelTime4.leadingAnchor.constraint(equalTo: medicationLabelDate4.leadingAnchor, constant: medicationLabelWidth).isActive = true
+        medicationLabelTime4.widthAnchor.constraint(equalToConstant: medicationLabelWidth).isActive = true
+        
         errorLabel.topAnchor.constraint(equalTo: medicationLabel4.topAnchor, constant: medicationLabelHeight + 24.0).isActive = true
         errorLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16.0).isActive = true
         errorLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16.0).isActive = true
@@ -322,30 +428,51 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
      - Returns: No
      **/
     @objc func setUpElement(){
-        
         //Hide the error label, medication label and save the Username and Password
         errorLabel.alpha = 0
         
-        //medicationLabelHeader.alpha = CGFloat(medicationLabelHeaderAlpha)
-        
         medicationLabel.alpha = CGFloat(medicationLabelAlpha)
+        medicationLabelTime.alpha = CGFloat(medicationLabelAlpha)
+        medicationLabelDate.alpha = CGFloat(medicationLabelAlpha)
+        
         medicationLabel.text = medicationName
+        medicationLabelTime.text = medicationTime
+        medicationLabelDate.text = medicationDate
         
         medicationLabel1.alpha = CGFloat(medicationLabel1Alpha)
+        medicationLabelTime1.alpha = CGFloat(medicationLabel1Alpha)
+        medicationLabelDate1.alpha = CGFloat(medicationLabel1Alpha)
+        
         medicationLabel1.text = medicationName1
+        medicationLabelTime1.text = medicationTime1
+        medicationLabelDate1.text = medicationDate1
         
         medicationLabel2.alpha = CGFloat(medicationLabel2Alpha)
+        medicationLabelTime2.alpha = CGFloat(medicationLabel2Alpha)
+        medicationLabelDate2.alpha = CGFloat(medicationLabel2Alpha)
+        
         medicationLabel2.text = medicationName2
+        medicationLabelTime2.text = medicationTime2
+        medicationLabelDate2.text = medicationDate2
         
         medicationLabel3.alpha = CGFloat(medicationLabel3Alpha)
+        medicationLabelTime3.alpha = CGFloat(medicationLabel3Alpha)
+        medicationLabelDate3.alpha = CGFloat(medicationLabel3Alpha)
+        
         medicationLabel3.text = medicationName3
+        medicationLabelTime3.text = medicationTime3
+        medicationLabelDate3.text = medicationDate3
         
         medicationLabel4.alpha = CGFloat(medicationLabel4Alpha)
+        medicationLabelTime4.alpha = CGFloat(medicationLabel4Alpha)
+        medicationLabelDate4.alpha = CGFloat(medicationLabel4Alpha)
+        
         medicationLabel4.text = medicationName4
+        medicationLabelTime4.text = medicationTime4
+        medicationLabelDate4.text = medicationDate4
         
         emailTextField.text = username
         passwordTextField.text = password
-        
     }
     
     

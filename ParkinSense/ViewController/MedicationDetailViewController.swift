@@ -374,32 +374,53 @@ class MedicationDetailViewController: UIViewController, UITextFieldDelegate {
      **/
     @objc func addNewMedicationButton(_ sender: Any) {
         
+        var daysSelected = ""
+        if sundayButton.on {daysSelected = daysSelected + "Su "}
+        if mondayButton.on {daysSelected = daysSelected + "Mo "}
+        if tuesdayButton.on {daysSelected = daysSelected + "Tu "}
+        if wednesdayButton.on {daysSelected = daysSelected + "We "}
+        if thursdayButton.on {daysSelected = daysSelected + "Th "}
+        if fridayButton.on {daysSelected = daysSelected + "Fr "}
+        if saturdayButton.on {daysSelected = daysSelected + "Sa "}
+        
         if medicationTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) != ""
         {
+            let dateFormatter = DateFormatter()
+            dateFormatter.timeStyle = DateFormatter.Style.short
+            
             if medicationcount == 0{
                 medicationName = medicationTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) //read the Medication Name from text field
+                medicationTime = dateFormatter.string(from: timePicker.date)
+                medicationDate = daysSelected
                 medicationLabelAlpha = 1 //change the medicationLabel's alpha from 0 to 1 that display the medication information in sign up page
             }
             if medicationcount == 1 {
                 medicationName1 = medicationTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) //read the Medication Name from text field
+                medicationTime1 = dateFormatter.string(from: timePicker.date)
+                medicationDate1 = daysSelected
                 medicationLabel1Alpha = 1 //change the medicationLabel's alpha from 0 to 1 that display the medication information in sign up page
             }
             if medicationcount == 2 {
                 medicationName2 = medicationTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) //read the Medication Name from text field
+                medicationTime2 = dateFormatter.string(from: timePicker.date)
+                medicationDate2 = daysSelected
                 medicationLabel2Alpha = 1 //change the medicationLabel's alpha from 0 to 1 that display the medication information in sign up page
             }
             if medicationcount == 3 {
                 medicationName3 = medicationTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) //read the Medication Name from text field
+                medicationTime3 = dateFormatter.string(from: timePicker.date)
+                medicationDate3 = daysSelected
                 medicationLabel3Alpha = 1 //change the medicationLabel's alpha from 0 to 1 that display the medication information in sign up page
             }
             if medicationcount > 3 {
                 medicationName4 = medicationTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) //read the Medication Name from text field
+                medicationTime4 = dateFormatter.string(from: timePicker.date)
+                medicationDate4 = daysSelected
                 medicationLabel4Alpha = 1 //change the medicationLabel's alpha from 0 to 1 that display the medication information in sign up page
             }
-            let dateFormatter = DateFormatter()
-            dateFormatter.timeStyle = DateFormatter.Style.short
+
             
-            //timePickerTime = dateFormatter.string(from: timePicker.date) //read the timepicker value for later use
+            timePickerTime = dateFormatter.string(from: timePicker.date) //read the timepicker value for later use
             
             print(timePickerTime)
             
