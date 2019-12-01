@@ -49,6 +49,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
     //Progress view that contains the progress label
     let signOutView: UIView = {
         let view = UIView()
+        view.isUserInteractionEnabled = true
         view.heightAnchor.constraint(equalToConstant: signOutViewHeight).isActive = true
         return view
     }()
@@ -85,6 +86,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         let scrollView = UIScrollView()
         scrollView.heightAnchor.constraint(equalToConstant: dataScrollViewHeight).isActive = true
         scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.isPagingEnabled = true
         return scrollView
     }()
     
@@ -344,8 +346,8 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         gameView.addSubview(bubblePopButton)
         
         view.addSubview(scrollView)
-        scrollView.addSubview(signOutView)
         scrollView.addSubview(scrollViewContainer)
+        scrollViewContainer.addArrangedSubview(signOutView)
         scrollViewContainer.addArrangedSubview(progressView)
         scrollViewContainer.addArrangedSubview(dataScrollView)
         scrollViewContainer.addArrangedSubview(calendarView)
@@ -366,10 +368,9 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         signOutButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 32.0).isActive = true
         signOutButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -32.0).isActive = true
         
-        
         scrollViewContainer.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor).isActive = true
         scrollViewContainer.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor).isActive = true
-        scrollViewContainer.topAnchor.constraint(equalTo: signOutView.topAnchor, constant: signOutViewHeight).isActive = true
+        scrollViewContainer.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
         scrollViewContainer.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
         
         // this is important for scrolling
@@ -437,14 +438,12 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         super.viewDidLoad()
         navigationController?.setNavigationBarHidden(true, animated: false)
         
-        
+        // Sets the scroll view to start at the weekly progress instead of sign out button
         self.view.layoutIfNeeded()
         let newOffset = CGPoint(x: scrollView.contentOffset.x, y: scrollView.contentOffset.y + signOutViewHeight)
         scrollView.setContentOffset(newOffset, animated: false)
         
-        //scrollView.setContentOffset(CGPoint(x:0, y: 1000), animated: false)
-        
-        //Set background colour of the view
+        // Set background colour of the view
         self.view.backgroundColor = UIColor(red:0.96, green:0.95, blue:0.95, alpha:1.0)
         
         setupUserData()
@@ -455,7 +454,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
      Function that sets up user data for buttons and labels
      
      - Returns: None
-     **/
+     */
     func setupUserData() {
         
         // Sets up date range for the weekly calendar section
@@ -527,8 +526,9 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
                         else { self.popoverMedication(haveMedication: false) }
                     }
                     
+                    self.updategamescore()
                     // Set up the page control view
-                    self.setUpDailyDatainit(currentDate: thisTimeLoginDateStr)
+                    //self.setUpDailyDatainit(currentDate: thisTimeLoginDateStr)
                 }
             }
         }
@@ -789,112 +789,98 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
      - Parameter currentdate: String
      - Returns: None
      **/
-    func setUpDailyDatainit(currentDate: String){
-        //============================================================
-        //Create the scroll view of the user's daily data
-        //The first page will be the trendline of the last seven days (image for now)
-        //the second page will be the daily data read from Firebase (text for now)
+    func setupTrendline(currentDate: String){
         
-        //============================================================================================
+        lineChartView?.removeFromSuperview()
+        lineChartView1?.removeFromSuperview()
         
-        //First page modified by create imageView
-        // Get the x position of the view that for the first page content
         let x1Pos = CGFloat(0) * screenWidth
-        lineChartView = LineChartView(frame: CGRect(x: x1Pos, y: 0, width: self.view.frame.size.width, height: (self.dataScrollView.frame.size.height)))
-        
-        
-        
-        updategamescore()
-        
+        let x3Pos = CGFloat(1) * screenWidth
+
         var dataEntries: [ChartDataEntry] = []
+        var dataEntries1: [ChartDataEntry] = []
         
-        pastSevenDatefunc(currentSelectedDate: rightNow)
+        lineChartView = LineChartView(frame: CGRect(x: x1Pos, y: 0, width: screenWidth, height: dataScrollViewHeight))
+        lineChartView1 = LineChartView(frame: CGRect(x: x3Pos, y: 0, width: screenWidth, height: dataScrollViewHeight))
+        
+        selectedDateinDatetype = dateFormatter.date(from: selectedDate)
+        pastSevenDatefunc(currentSelectedDate: selectedDateinDatetype!)
+        
+        lineChartView.isUserInteractionEnabled = false
+//        lineChartView.doubleTapToZoomEnabled = false
+//        lineChartView.pinchZoomEnabled = false
+//        lineChartView.leftAxis.axisMinimum = 0
+//        lineChartView.rightAxis.enabled = false
+//        lineChartView.xAxis.spaceMin = 0.5
+//        lineChartView.xAxis.spaceMax = 0.5
+//        lineChartView.xAxis.drawGridLinesEnabled = false
+        
+        lineChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values:pastSevenDate)
+        lineChartView.xAxis.labelPosition = XAxis.LabelPosition.bottom
+        
+        lineChartView1.isUserInteractionEnabled = false
+//        lineChartView1.doubleTapToZoomEnabled = false
+//        lineChartView1.pinchZoomEnabled = false
+//        lineChartView1.leftAxis.axisMinimum = 0
+//        lineChartView1.rightAxis.enabled = false
+//        lineChartView1.xAxis.spaceMin = 0.5
+//        lineChartView1.xAxis.spaceMax = 0.5
+//        lineChartView1.xAxis.drawGridLinesEnabled = false
+//        
+        lineChartView1.xAxis.valueFormatter = IndexAxisValueFormatter(values:pastSevenDate)
+        lineChartView1.xAxis.labelPosition = XAxis.LabelPosition.bottom
         
         for i in 0..<7 {
             let dataEntry = ChartDataEntry(x: Double(i), y: Double(values[6-i]))
             dataEntries.append(dataEntry)
+            
+            let dataEntry1 = ChartDataEntry(x: Double(i), y: Double(values1[6-i]))
+            dataEntries1.append(dataEntry1)
         }
         
-        
-        let lineChartDataSet = LineChartDataSet(entries: dataEntries, label: "Click the date twice to see last seven days data")
-        
-        
-        self.lineChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values:pastSevenDate)
-        lineChartView.xAxis.labelPosition = XAxis.LabelPosition.bottom
+        let lineChartDataSet = LineChartDataSet(entries: dataEntries)
+        let lineChartDataSet1 = LineChartDataSet(entries: dataEntries1)
         
         let lineChartData = LineChartData(dataSet: lineChartDataSet)
-        lineChartView.data = lineChartData
-        
-        lineChartView.notifyDataSetChanged()
-        lineChartData.notifyDataChanged()
-        lineChartDataSet.notifyDataSetChanged()
-
-        
-        lineChartView.animate(xAxisDuration: 0.05)
-        self.dataScrollView.addSubview(lineChartView)
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        //First page modified by create imageView
-        let x3Pos = CGFloat(1)*self.view.bounds.size.width //get the x position of the view that for the first page content
-        lineChartView1 = LineChartView(frame: CGRect(x: x3Pos, y: 0, width: self.view.frame.size.width, height: (self.dataScrollView.frame.size.height)))
-        
-        updategamescore()
-        var dataEntries1: [ChartDataEntry] = []
-        
-        pastSevenDatefunc(currentSelectedDate: rightNow)
-        for i in 0..<7 {
-            let dataEntry = ChartDataEntry(x: Double(i), y: Double(values1[6-i]))
-            dataEntries1.append(dataEntry)
-        }
-        
-        self.dataScrollView.addSubview(lineChartView1)
-        
-        let lineChartDataSet1 = LineChartDataSet(entries: dataEntries1, label: "Click the date twice to see last seven days data")
-        self.lineChartView1.xAxis.valueFormatter = IndexAxisValueFormatter(values:pastSevenDate)
-        lineChartView1.xAxis.labelPosition = XAxis.LabelPosition.bottom
         let lineChartData1 = LineChartData(dataSet: lineChartDataSet1)
+        
+        lineChartView.data = lineChartData
         lineChartView1.data = lineChartData1
-
-        //Daily date page scroll view
-        let x2Pos = CGFloat(2)*self.view.bounds.size.width //get the x position of the view that for the second page content
-        Datalabeltext1 = UILabel(frame: CGRect(x: x2Pos, y: 40, width: self.view.frame.size.width, height: self.dataScrollView.frame.size.height/4)) //set up the label frame
-        Datalabeltext1.textAlignment = .center //place the label text in the center of the second page
-        Datalabeltext1.text = "Medication Name:  " + medicationName
-        self.dataScrollView.contentSize.width = self.view.frame.size.width*CGFloat(1+2) //set up the Scroll view content size
-        self.dataScrollView.addSubview(Datalabeltext1) //put the label text into scrollView
         
-        Datalabeltext2 = UILabel(frame: CGRect(x: x2Pos, y: 0, width: self.view.frame.size.width, height: self.dataScrollView.frame.size.height/4)) //set up the label frame
-        Datalabeltext2.textAlignment = .center //place the label text in the center of the second page
-        Datalabeltext2.text = "Date:  " + currentDate
-        self.dataScrollView.contentSize.width = self.view.frame.size.width*CGFloat(1+2) //set up the Scroll view content size
-        self.dataScrollView.addSubview(Datalabeltext2)
+        dataScrollView.addSubview(lineChartView)
+        dataScrollView.addSubview(lineChartView1)
+    }
+    
+    
+    func setupDailyData() {
         
-        Datalabeltext3 = UILabel(frame: CGRect(x: x2Pos, y: 80, width: self.view.frame.size.width, height: self.dataScrollView.frame.size.height/4)) //set up the label frame
-        Datalabeltext3.textAlignment = .center //place the label text in the center of the second page
-        Datalabeltext3.text = "Max Score for TILT today:  \(maxScoreTodayOne)"
-        self.dataScrollView.contentSize.width = self.view.frame.size.width*CGFloat(1+2) //set up the Scroll view content size
-        self.dataScrollView.addSubview(Datalabeltext3)
-        self.dataScrollView.delegate = self
-        
-        Datalabeltext4 = UILabel(frame: CGRect(x: x2Pos, y: 120, width: self.view.frame.size.width, height: self.dataScrollView.frame.size.height/4)) //set up the label frame
-        Datalabeltext4.textAlignment = .center //place the label text in the center of the second page
-        Datalabeltext4.text = "Max Score for Bubble Pop today:  \(maxScoreTodayTwo)"
-        self.dataScrollView.contentSize.width = self.view.frame.size.width*CGFloat(1+2) //set up the Scroll view content size
-        self.dataScrollView.addSubview(Datalabeltext4)
-        self.dataScrollView.delegate = self
+//                let x2Pos = CGFloat(2) * screenWidth
+//              //Daily date page scroll viewlet x2Pos = CGFloat(2)*self.view.bounds.size.width //get the x position of the view that for the second page content
+//              Datalabeltext1 = UILabel(frame: CGRect(x: x2Pos, y: 40, width: self.view.frame.size.width, height: self.dataScrollView.frame.size.height/4)) //set up the label frame
+//              Datalabeltext1.textAlignment = .center //place the label text in the center of the second page
+//              Datalabeltext1.text = "Medication Name:  " + medicationName
+//              self.dataScrollView.contentSize.width = self.view.frame.size.width*CGFloat(1+2) //set up the Scroll view content size
+//              self.dataScrollView.addSubview(Datalabeltext1) //put the label text into scrollView
+//
+//              Datalabeltext2 = UILabel(frame: CGRect(x: x2Pos, y: 0, width: self.view.frame.size.width, height: self.dataScrollView.frame.size.height/4)) //set up the label frame
+//              Datalabeltext2.textAlignment = .center //place the label text in the center of the second page
+//              Datalabeltext2.text = "Date:  " + currentDate
+//              self.dataScrollView.contentSize.width = self.view.frame.size.width*CGFloat(1+2) //set up the Scroll view content size
+//              self.dataScrollView.addSubview(Datalabeltext2)
+//
+//              Datalabeltext3 = UILabel(frame: CGRect(x: x2Pos, y: 80, width: self.view.frame.size.width, height: self.dataScrollView.frame.size.height/4)) //set up the label frame
+//              Datalabeltext3.textAlignment = .center //place the label text in the center of the second page
+//              Datalabeltext3.text = "Max Score for TILT today:  \(maxScoreTodayOne)"
+//              self.dataScrollView.contentSize.width = self.view.frame.size.width*CGFloat(1+2) //set up the Scroll view content size
+//              self.dataScrollView.addSubview(Datalabeltext3)
+//              self.dataScrollView.delegate = self
+//
+//              Datalabeltext4 = UILabel(frame: CGRect(x: x2Pos, y: 120, width: self.view.frame.size.width, height: self.dataScrollView.frame.size.height/4)) //set up the label frame
+//              Datalabeltext4.textAlignment = .center //place the label text in the center of the second page
+//              Datalabeltext4.text = "Max Score for Bubble Pop today:  \(maxScoreTodayTwo)"
+//              self.dataScrollView.contentSize.width = self.view.frame.size.width*CGFloat(1+2) //set up the Scroll view content size
+//              self.dataScrollView.addSubview(Datalabeltext4)
+//              self.dataScrollView.delegate = self
     }
     
     
@@ -1214,130 +1200,109 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
     }
     
     @objc func fridayDateSelected(_ sender: Any) {
-        print(values)
-        print(fridayDatewithMY)
         selectedDate = fridayDatewithMY
-        //========================================================================
         updategamescore()
-        var dataEntries: [ChartDataEntry] = []
-        
-        selectedDateinDatetype = dateFormatter.date(from: selectedDate)
-        pastSevenDatefunc(currentSelectedDate: selectedDateinDatetype!)
-        for i in 0..<7 {
-            let dataEntry = ChartDataEntry(x: Double(i), y: Double(values[6-i]))
-            dataEntries.append(dataEntry)
-            
-        }
-        print("values: \(values)")
-        print(dataEntries)
-        let lineChartDataSet = LineChartDataSet(entries: dataEntries, label: "Click the date twice to see last seven days data")
-        self.lineChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values:pastSevenDate)
-        let lineChartData = LineChartData(dataSet: lineChartDataSet)
-        lineChartView.data = lineChartData
-        
-        var dataEntries1: [ChartDataEntry] = []
-        for i in 0..<7 {
-            let dataEntry = ChartDataEntry(x: Double(i), y: Double(values1[6-i]))
-            dataEntries1.append(dataEntry)
-        }
-        let lineChartDataSet1 = LineChartDataSet(entries: dataEntries1, label: "Click the date twice to see last seven days data")
-        self.lineChartView1.xAxis.valueFormatter = IndexAxisValueFormatter(values:pastSevenDate)
-        lineChartView1.xAxis.labelPosition = XAxis.LabelPosition.bottom
-        let lineChartData1 = LineChartData(dataSet: lineChartDataSet1)
-        lineChartView1.data = lineChartData1
-        
-        //=========================================================================
-        
-        let newformattedtartcurrentweek = newStartCurrentWeek(updateNow: rightNow) //get the first date of the choosen week
-        let newformattedendcurrentweek = newEndCurrentWeek(updateNow: rightNow) //get the end date of the choosen week
-        setUp(newformattedtartcurrentweek: newformattedtartcurrentweek, newformattedendcurrentweek: newformattedendcurrentweek)
-        
-        Datalabeltext2.text = "Date:  \(selectedDate)"
-        
-        db.collection("users").document(userid).collection("gaming_score").document(selectedDate).getDocument { (document, error) in
-            if error == nil{
-                if document != nil && document!.exists{
-                    var maxScoreinSelectedOne = 0
-                    let DocumentData = document!.data()
-                    maxScoreinSelectedOne = DocumentData!["Game_One_lastMaxScore"] as! Int
-                    print(maxScoreinSelectedOne)
-                    self.Datalabeltext3.text = "Max Score for TILT today:  \(maxScoreinSelectedOne)"
-                    
-                    var maxScoreinSelectedTwo = 0
-                    maxScoreinSelectedTwo = DocumentData!["Game_Two_lastMaxScore"] as! Int
-                    self.Datalabeltext4.text = "Max Score for Bubble Pop today:  \(maxScoreinSelectedTwo)"
-                }
-                else{
-                    self.Datalabeltext3.text = "Max Score for TILT today:  0"
-                    self.Datalabeltext4.text = "Max Score for Bubble Pop today:  0"
-                }
-            }
-        }
+
+//        let newformattedtartcurrentweek = newStartCurrentWeek(updateNow: rightNow) //get the first date of the choosen week
+//        let newformattedendcurrentweek = newEndCurrentWeek(updateNow: rightNow) //get the end date of the choosen week
+//        setUp(newformattedtartcurrentweek: newformattedtartcurrentweek, newformattedendcurrentweek: newformattedendcurrentweek)
+//
+//        Datalabeltext2.text = "Date:  \(selectedDate)"
+//
+//        db.collection("users").document(userid).collection("gaming_score").document(selectedDate).getDocument { (document, error) in
+//            if error == nil{
+//                if document != nil && document!.exists{
+//                    var maxScoreinSelectedOne = 0
+//                    let DocumentData = document!.data()
+//                    maxScoreinSelectedOne = DocumentData!["Game_One_lastMaxScore"] as! Int
+//                    print(maxScoreinSelectedOne)
+//                    self.Datalabeltext3.text = "Max Score for TILT today:  \(maxScoreinSelectedOne)"
+//
+//                    var maxScoreinSelectedTwo = 0
+//                    maxScoreinSelectedTwo = DocumentData!["Game_Two_lastMaxScore"] as! Int
+//                    self.Datalabeltext4.text = "Max Score for Bubble Pop today:  \(maxScoreinSelectedTwo)"
+//                }
+//                else{
+//                    self.Datalabeltext3.text = "Max Score for TILT today:  0"
+//                    self.Datalabeltext4.text = "Max Score for Bubble Pop today:  0"
+//                }
+//            }
+//        }
         highlightSelectedDate()
     }
     
     @objc func saturdayDateSelected(_ sender: Any) {
-        print(values)
-        print(saturdayDatewithMY)
         selectedDate = saturdayDatewithMY
-        //========================================================================
         updategamescore()
-        var dataEntries: [ChartDataEntry] = []
-        
-        selectedDateinDatetype = dateFormatter.date(from: selectedDate)
-        pastSevenDatefunc(currentSelectedDate: selectedDateinDatetype!)
-        for i in 0..<7 {
-            let dataEntry = ChartDataEntry(x: Double(i), y: Double(values[6-i]))
-            dataEntries.append(dataEntry)
-            //print("dataEntry: \(dataEntry)")
-        }
-        print("values: \(values)")
-        print(dataEntries)
-        let lineChartDataSet = LineChartDataSet(entries: dataEntries, label: "Click the date twice to see last seven days data")
-        self.lineChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values:pastSevenDate)
-        let lineChartData = LineChartData(dataSet: lineChartDataSet)
-        lineChartView.data = lineChartData
-        
-        var dataEntries1: [ChartDataEntry] = []
-        for i in 0..<7 {
-            let dataEntry = ChartDataEntry(x: Double(i), y: Double(values1[6-i]))
-            dataEntries1.append(dataEntry)
-        }
-        let lineChartDataSet1 = LineChartDataSet(entries: dataEntries1, label: "Click the date twice to see last seven days data")
-        self.lineChartView1.xAxis.valueFormatter = IndexAxisValueFormatter(values:pastSevenDate)
-        lineChartView1.xAxis.labelPosition = XAxis.LabelPosition.bottom
-        let lineChartData1 = LineChartData(dataSet: lineChartDataSet1)
-        lineChartView1.data = lineChartData1
-        
-        //=========================================================================
-        
-        let newformattedtartcurrentweek = newStartCurrentWeek(updateNow: rightNow) //get the first date of the choosen week
-        let newformattedendcurrentweek = newEndCurrentWeek(updateNow: rightNow) //get the end date of the choosen week
-        setUp(newformattedtartcurrentweek: newformattedtartcurrentweek, newformattedendcurrentweek: newformattedendcurrentweek)
-        
-        Datalabeltext2.text = "Date:  \(selectedDate)"
-        
-        db.collection("users").document(userid).collection("gaming_score").document(selectedDate).getDocument { (document, error) in
-            if error == nil{
-                if document != nil && document!.exists{
-                    var maxScoreinSelectedOne = 0
-                    let DocumentData = document!.data()
-                    maxScoreinSelectedOne = DocumentData!["Game_One_lastMaxScore"] as! Int
-                    print(maxScoreinSelectedOne)
-                    self.Datalabeltext3.text = "Max Score for TILT today:  \(maxScoreinSelectedOne)"
-                    
-                    var maxScoreinSelectedTwo = 0
-                    maxScoreinSelectedTwo = DocumentData!["Game_Two_lastMaxScore"] as! Int
-                    self.Datalabeltext4.text = "Max Score for Bubble Pop today:  \(maxScoreinSelectedTwo)"
-                }
-                else{
-                    self.Datalabeltext3.text = "Max Score for TILT today:  0"
-                    self.Datalabeltext4.text = "Max Score for Bubble Pop today:  0"
-                }
-            }
-        }
-        
+
+//
+//        let newformattedtartcurrentweek = newStartCurrentWeek(updateNow: rightNow) //get the first date of the choosen week
+//        let newformattedendcurrentweek = newEndCurrentWeek(updateNow: rightNow) //get the end date of the choosen week
+//        setUp(newformattedtartcurrentweek: newformattedtartcurrentweek, newformattedendcurrentweek: newformattedendcurrentweek)
+//
+//        Datalabeltext2.text = "Date:  \(selectedDate)"
+//
+//        db.collection("users").document(userid).collection("gaming_score").document(selectedDate).getDocument { (document, error) in
+//            if error == nil{
+//                if document != nil && document!.exists{
+//                    var maxScoreinSelectedOne = 0
+//                    let DocumentData = document!.data()
+//                    maxScoreinSelectedOne = DocumentData!["Game_One_lastMaxScore"] as! Int
+//                    print(maxScoreinSelectedOne)
+//                    self.Datalabeltext3.text = "Max Score for TILT today:  \(maxScoreinSelectedOne)"
+//
+//                    var maxScoreinSelectedTwo = 0
+//                    maxScoreinSelectedTwo = DocumentData!["Game_Two_lastMaxScore"] as! Int
+//                    self.Datalabeltext4.text = "Max Score for Bubble Pop today:  \(maxScoreinSelectedTwo)"
+//                }
+//                else{
+//                    self.Datalabeltext3.text = "Max Score for TILT today:  0"
+//                    self.Datalabeltext4.text = "Max Score for Bubble Pop today:  0"
+//                }
+//            }
+//        }
+//
         highlightSelectedDate()
+    }
+    
+
+    func updategamescore() {
+        let db = Firestore.firestore()
+        var selectedDateinDatetype = dateFormatter.date(from: selectedDate)
+        
+        for dayi in 0..<7{
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            let tempselecteddate = dateFormatter.string(from: selectedDateinDatetype!)
+            db.collection("users").document(userid).collection("gaming_score").document(tempselecteddate).getDocument { (document, error) in
+                if error == nil {
+                    if document != nil && document!.exists{
+                        var maxScoreinSelected = 0
+                        var maxScoreinSelectedTwo = 0
+                        let DocumentData = document!.data()
+                        
+                        maxScoreinSelected = DocumentData!["Game_One_lastMaxScore"] as! Int
+                        maxScoreinSelectedTwo = DocumentData!["Game_Two_lastMaxScore"] as! Int
+
+                        values[dayi] = maxScoreinSelected
+                        values1[dayi] = maxScoreinSelectedTwo
+                    }
+                    else{
+                        values[dayi] = 0
+                        values1[dayi] = 0
+                    }
+                }
+                self.checkDataStatus()
+            }
+            selectedDateinDatetype = selectedDateinDatetype! - 3600*24
+        }
+    }
+    
+    func checkDataStatus() {
+        loadedInfoTrendline += 1
+        if loadedInfoTrendline == 7 {
+            loadedInfoTrendline = 0
+            setupTrendline(currentDate: selectedDate)
+        }
     }
     
     
@@ -1385,9 +1350,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
      - Returns: None
      **/
     @objc func signOutTapped(_ sender: Any) {
-        let loginViewController:LoginViewController = LoginViewController()
-        self.present(loginViewController, animated: true, completion: nil)
-       // self.presentingViewController?.dismiss(animated: true, completion: nil)
+        self.presentingViewController?.dismiss(animated: true, completion: nil)
     }
 }
 
@@ -1680,12 +1643,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
 //
 //        lineChartView = LineChartView(frame: CGRect(x: x1Pos+8, y: 0, width: self.view.frame.size.width-16, height: (self.dataScrollView.frame.size.height)))
 //
-//        lineChartView.doubleTapToZoomEnabled = false
-//        lineChartView.leftAxis.axisMinimum = 0
-//        lineChartView.rightAxis.enabled = false
-//        lineChartView.xAxis.spaceMin = 0.5
-//        lineChartView.xAxis.spaceMax = 0.5
-//        lineChartView.xAxis.drawGridLinesEnabled = false
+
 //
 //        //let days = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"]
 //        //let formattedToDays = BarChartFormatter(values: days)
@@ -2064,56 +2022,3 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
 //
 //        highlightSelectedDate()
 //    }
-//
-//
-//    /**
-//     Function about the Tilt Button, will direct you to the Tilt page
-//
-//     - Parameter sender: Button itself
-//     - Returns: No
-//
-//     **/
-//    @objc func tiltButtonPressed(_ sender: Any) {
-//        let tiltUIViewController:TiltUIViewController = TiltUIViewController()
-//        self.present(tiltUIViewController, animated: true, completion: nil)
-//    }
-//
-//
-//    /**
-//     Function about the Bubble Pop Button, will direct you to the Bubble Pop  page
-//
-//     - Parameter sender: Button itself
-//     - Returns: No
-//
-//     **/
-//    @objc func bubblePopButtonPressed(_ sender: Any) {
-//        let bubblePopUIViewController:BubbleUIViewController = BubbleUIViewController()
-//        self.present(bubblePopUIViewController, animated: true, completion: nil)
-//    }
-//
-//
-//    /**
-//     Function to  change the scroll view to page control view
-//
-//     - Parameter : Button itself
-//     - Returns: No
-//
-//     **/
-//    func scrollViewDidEndDecelerating(_ DataScrollView: UIScrollView) {
-//        let page = DataScrollView.contentOffset.x/DataScrollView.frame.width
-//        pageControl.currentPage = Int(page)
-//    }
-//}
-//
-//class BarChartFormatter: NSObject, IAxisValueFormatter {
-//
-//    var values : [String]
-//    required init (values : [String]) {
-//        self.values = values
-//        super.init()
-//    }
-//
-//    func stringForValue(_ value: Double, axis: AxisBase?) -> String {
-//        return values[Int(value)]
-//    }
-//}

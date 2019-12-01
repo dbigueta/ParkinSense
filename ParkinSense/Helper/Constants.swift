@@ -134,8 +134,8 @@ let medicationLabelWidth = (screenWidth - 64)/3
 
 
 
-
-
+var loadedInfoTrendline = 0
+var infoUpdated = false
 
 
 

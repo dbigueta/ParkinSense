@@ -269,38 +269,3 @@ func pastSevenDatefunc(currentSelectedDate: Date){
     //    pastSevenDate = [doubleformattedsixDayBefore,doubleformattedfiveDayBefore,doubleformattedfourDayBefore,doubleformattedthreeDayBefore,doubleformattedtwoDayBefore,doubleformattedoneDayBefore,doubleformattedrightNow]
 }
 
-
-
-
-
-func updategamescore() {
-    
-    let db = Firestore.firestore()
-    var selectedDateinDatetype = dateFormatter.date(from: selectedDate)
-    
-    for dayi in 0..<7{
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        let tempselecteddate = dateFormatter.string(from: selectedDateinDatetype!)
-        db.collection("users").document(userid).collection("gaming_score").document(tempselecteddate).getDocument { (document, error) in
-            if error == nil {
-                if document != nil && document!.exists{
-                    var maxScoreinSelected = 0
-                    var maxScoreinSelectedTwo = 0
-                    let DocumentData = document!.data()
-                    maxScoreinSelected = DocumentData!["Game_One_lastMaxScore"] as! Int
-                    maxScoreinSelectedTwo = DocumentData!["Game_Two_lastMaxScore"] as! Int
-                    print(maxScoreinSelected)
-                    print(maxScoreinSelectedTwo)
-                    values[dayi] = maxScoreinSelected
-                    values1[dayi] = maxScoreinSelectedTwo
-                }
-                else{
-                    values[dayi] = 0
-                    values1[dayi] = 0
-                }
-            }
-        }
-        
-        selectedDateinDatetype = selectedDateinDatetype! - 3600*24
-    }
-}
