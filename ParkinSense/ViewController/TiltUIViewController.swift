@@ -38,7 +38,7 @@ class TiltUIViewController: UIViewController {
     let instructionsLabelLine1: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Move your ball towards the target"
+        label.text = "Move the ball towards by tilting your phone"
         label.textAlignment = .center
         label.textColor = tiltTextColour
         label.heightAnchor.constraint(equalToConstant: instructionsLabelHeight).isActive = true
@@ -49,7 +49,7 @@ class TiltUIViewController: UIViewController {
     let instructionsLabelLine2: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Keep your hand as steady as possible"
+        label.text = "Keep the ball inside the target at all times"
         label.textAlignment = .center
         label.textColor = tiltTextColour
         label.heightAnchor.constraint(equalToConstant: instructionsLabelHeight).isActive = true

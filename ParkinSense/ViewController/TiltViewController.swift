@@ -28,7 +28,7 @@ class TiltViewController: UIViewController {
     var tiltGameScene: TiltGameScene!
     
     /* Variables related to game UI */
-    var gameCountdown: Int = 60
+    var gameCountdown: Int = 30
     var currentScore: Int = 0
     
     //HUD view controls the time and score labels

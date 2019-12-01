@@ -135,22 +135,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "5D9DD1EB-0D39-4DF1-860B-670BAD9F0F28"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ParkinSense/ViewController/HomeViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1116"
-            endingLineNumber = "1116"
-            landmarkName = "saturdayDateSelected(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "D0B34A74-8B78-423D-94AC-81FE677F34E1"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -158,8 +142,8 @@
             filePath = "ParkinSense/ViewController/HomeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "813"
-            endingLineNumber = "813"
+            startingLineNumber = "823"
+            endingLineNumber = "823"
             landmarkName = "setupTrendline(currentDate:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -174,8 +158,8 @@
             filePath = "ParkinSense/ViewController/HomeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "868"
-            endingLineNumber = "868"
+            startingLineNumber = "880"
+            endingLineNumber = "880"
             landmarkName = "setupDailyData()"
             landmarkType = "7">
          </BreakpointContent>
@@ -190,25 +174,9 @@
             filePath = "ParkinSense/ViewController/HomeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "462"
-            endingLineNumber = "462"
+            startingLineNumber = "474"
+            endingLineNumber = "474"
             landmarkName = "setupUserData()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "85914BFC-0442-4885-A0D2-812A2CE5F10D"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ParkinSense/ViewController/HomeViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1118"
-            endingLineNumber = "1118"
-            landmarkName = "saturdayDateSelected(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -222,8 +190,8 @@
             filePath = "ParkinSense/ViewController/HomeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1184"
-            endingLineNumber = "1184"
+            startingLineNumber = "1027"
+            endingLineNumber = "1027"
             landmarkName = "tiltButtonPressed(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -238,9 +206,41 @@
             filePath = "ParkinSense/ViewController/HomeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1183"
-            endingLineNumber = "1183"
+            startingLineNumber = "1026"
+            endingLineNumber = "1026"
             landmarkName = "tiltButtonPressed(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "02CFC04D-E602-4252-9265-D44D79C07287"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ParkinSense/ViewController/HomeViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "585"
+            endingLineNumber = "585"
+            landmarkName = "popoverMedication(haveMedication:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C9B10413-539B-436D-968A-EA498ACE7559"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ParkinSense/ViewController/HomeViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "593"
+            endingLineNumber = "593"
+            landmarkName = "popoverMedication(haveMedication:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

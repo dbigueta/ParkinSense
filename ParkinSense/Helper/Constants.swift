@@ -19,6 +19,7 @@ import Foundation
 import Charts
 
 // MARK: Medication Variables
+var timePickerTime = ""
 
 var medicationName = "N/A"
 var medicationTime = "N/A"
@@ -48,26 +49,22 @@ var medicationLabel4Alpha = 0
 var medicationcount = 0
 
 
-
-
-
-
-
-
-
 // MARK: Mood Variables
-
 var feeling = ""
 
-/* User Account Variables */
+
+// MARK: User Information
 var username = ""
 var password = ""
-
-
-var timePickerTime = ""
 var userid = ""
+
+
+// MARK: Game Information
 var maxScoreTodayOne = 0
 var maxScoreTodayTwo = 0
+
+var maxScoreSelectedDateOne = 0
+var maxScoreSelectedDateTwo = 0
 
 var gamedata1 = 0
 var gamedata2 = 0
@@ -88,10 +85,12 @@ var gamedata72 = 0
 var values1 = [gamedata12, gamedata22, gamedata32, gamedata42, gamedata52, gamedata62, gamedata72]
 
 
-/* Shared Constants */
+// MARK: Device Information
 var screenHeight = UIScreen.main.bounds.height
 var screenWidth = UIScreen.main.bounds.width
 
+
+/* Shared Constants */
 let paddingVal: CGFloat = 10
 let textFieldFontSize: CGFloat = 20
 

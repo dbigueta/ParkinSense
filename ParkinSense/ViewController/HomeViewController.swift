@@ -26,19 +26,27 @@ import Firebase
 class HomeViewController: UIViewController, UIScrollViewDelegate{
     
     var ref: DatabaseReference?
-    var currentYear = Calendar.current.component(.year, from: Date()) //get the current Year
-    var currentWeek = Calendar.current.component(.weekOfYear, from: Date()) //get the current week of the year
-    var rightNow = Date() //get the current date and time
-    let db = Firestore.firestore() //use for data read and write in database for later function
     
-    //Scroll view to allow scrolling of content
+    //Obtain current year
+    var currentYear = Calendar.current.component(.year, from: Date())
+    
+    // Obtain current week #
+    var currentWeek = Calendar.current.component(.weekOfYear, from: Date())
+    
+    // Current Date and Time
+    var rightNow = Date()
+    
+    // Database access for Firebase
+    let db = Firestore.firestore()
+    
+    // Scroll view to allow scrolling of content
     let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         return scrollView
     }()
     
-    //Container that keeps all the scrollable content
+    // Container that keeps all the scrollable content
     let scrollViewContainer: UIStackView = {
         let view = UIStackView()
         view.axis = .vertical
@@ -46,7 +54,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         return view
     }()
     
-    //Progress view that contains the progress label
+    // Progress view that contains the progress label
     let signOutView: UIView = {
         let view = UIView()
         view.isUserInteractionEnabled = true
@@ -63,14 +71,14 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         return button
     }()
     
-    //Progress view that contains the progress label
+    // Progress view that contains the progress label
     let progressView: UIView = {
         let view = UIView()
         view.heightAnchor.constraint(equalToConstant: progressViewHeight).isActive = true
         return view
     }()
     
-    //Progress UI label
+    // Progress UI label
     let progressLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -81,7 +89,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         return label
     }()
     
-    //Data scroll view that contains the trendline and the day information
+    // Data scroll view that contains the trendline and the day information
     let dataScrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.heightAnchor.constraint(equalToConstant: dataScrollViewHeight).isActive = true
@@ -90,7 +98,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         return scrollView
     }()
     
-    //variables related to the day information in the trendline
+    // Variables related to the day information in the trendline
     var Datalabeltext1: UILabel!
     var Datalabeltext2: UILabel!
     var Datalabeltext3: UILabel!
@@ -99,8 +107,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
     var lineChartView: LineChartView!
     var lineChartView1: LineChartView!
     
-    
-    //Allows for a consistent switch between trendline and day information
+    // Allows for a consistent switch between trendline and day information
     let pageControl: UIPageControl = {
         let page = UIPageControl()
         page.pageIndicatorTintColor = .gray
@@ -117,18 +124,18 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         return view
     }()
     
-    //Week header UI label
+    // Week header UI label
     let weekLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Weekly Calendar"
+        label.text = "Week Select"
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: headerFontSize, weight: .medium)
         label.heightAnchor.constraint(equalToConstant: headerHeight).isActive = true
         return label
     }()
     
-    //Prev week button
+    // Prev week button
     let prevWeek: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -141,7 +148,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         return button
     }()
     
-    //Date range UI Label
+    // Date range UI Label
     let weekDateLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -152,7 +159,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         return label
     }()
     
-    //next week button
+    // Next week button
     let nextWeek: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -165,7 +172,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         return button
     }()
     
-    //Sunday button
+    // Sunday button
     let sundayButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -180,7 +187,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         return button
     }()
     
-    //Monday button
+    // Monday button
     let mondayButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -194,7 +201,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         return button
     }()
     
-    //Tuesday button
+    // Tuesday button
     let tuesdayButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -208,7 +215,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         return button
     }()
     
-    //Wednesday button
+    // Wednesday button
     let wednesdayButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -222,7 +229,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         return button
     }()
     
-    //Thursday button
+    // Thursday button
     let thursdayButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -236,7 +243,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         return button
     }()
     
-    //Friday button
+    // Friday button
     let fridayButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -250,7 +257,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         return button
     }()
     
-    //Saturday button
+    // Saturday button
     let saturdayButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -264,25 +271,25 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         return button
     }()
     
-    //Game view that contains the two buttons to initiate the games
+    // Game view that contains the two buttons to initiate the games
     let gameView: UIView = {
         let view = UIView()
         view.heightAnchor.constraint(equalToConstant: gameViewHeight).isActive = true
         return view
     }()
     
-    //Game header UI label
+    // Game header UI label
     let gameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Games"
+        label.text = "Game Selection"
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: headerFontSize, weight: .medium)
         label.heightAnchor.constraint(equalToConstant: headerHeight).isActive = true
         return label
     }()
     
-    //Tilt button
+    // Tilt button
     let tiltButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -297,7 +304,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         return button
     }()
     
-    //Bubble Pop button
+    // Bubble Pop button
     let bubblePopButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -429,6 +436,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         bubblePopButton.topAnchor.constraint(equalTo: gameLabel.topAnchor, constant: headerHeight + 16.0).isActive = true
     }
     
+    
     /**
      Function that sets up navigation bar properties and sets up user data
      
@@ -449,6 +457,10 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         setupUserData()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        updateInformation()
+        
+    }
     
     /**
      Function that sets up user data for buttons and labels
@@ -526,9 +538,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
                         else { self.popoverMedication(haveMedication: false) }
                     }
                     
-                    self.updategamescore()
-                    // Set up the page control view
-                    //self.setUpDailyDatainit(currentDate: thisTimeLoginDateStr)
+                    self.updateInformation()
                 }
             }
         }
@@ -629,7 +639,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         
         return mood
     }
-
+    
     
     /**
      Function for displaying next week date by clicking the next week button
@@ -796,7 +806,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         
         let x1Pos = CGFloat(0) * screenWidth
         let x3Pos = CGFloat(1) * screenWidth
-
+        
         var dataEntries: [ChartDataEntry] = []
         var dataEntries1: [ChartDataEntry] = []
         
@@ -822,7 +832,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         lineChartView1.xAxis.spaceMin = 0.5
         lineChartView1.xAxis.spaceMax = 0.5
         lineChartView1.xAxis.drawGridLinesEnabled = false
-    
+        
         lineChartView1.xAxis.valueFormatter = IndexAxisValueFormatter(values:pastSevenDate)
         lineChartView1.xAxis.labelPosition = XAxis.LabelPosition.bottom
         
@@ -864,294 +874,98 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
     
     func setupDailyData() {
         
-//                let x2Pos = CGFloat(2) * screenWidth
-//              //Daily date page scroll viewlet x2Pos = CGFloat(2)*self.view.bounds.size.width //get the x position of the view that for the second page content
-//              Datalabeltext1 = UILabel(frame: CGRect(x: x2Pos, y: 40, width: self.view.frame.size.width, height: self.dataScrollView.frame.size.height/4)) //set up the label frame
-//              Datalabeltext1.textAlignment = .center //place the label text in the center of the second page
-//              Datalabeltext1.text = "Medication Name:  " + medicationName
-//              self.dataScrollView.contentSize.width = self.view.frame.size.width*CGFloat(1+2) //set up the Scroll view content size
-//              self.dataScrollView.addSubview(Datalabeltext1) //put the label text into scrollView
-//
-//              Datalabeltext2 = UILabel(frame: CGRect(x: x2Pos, y: 0, width: self.view.frame.size.width, height: self.dataScrollView.frame.size.height/4)) //set up the label frame
-//              Datalabeltext2.textAlignment = .center //place the label text in the center of the second page
-//              Datalabeltext2.text = "Date:  " + currentDate
-//              self.dataScrollView.contentSize.width = self.view.frame.size.width*CGFloat(1+2) //set up the Scroll view content size
-//              self.dataScrollView.addSubview(Datalabeltext2)
-//
-//              Datalabeltext3 = UILabel(frame: CGRect(x: x2Pos, y: 80, width: self.view.frame.size.width, height: self.dataScrollView.frame.size.height/4)) //set up the label frame
-//              Datalabeltext3.textAlignment = .center //place the label text in the center of the second page
-//              Datalabeltext3.text = "Max Score for TILT today:  \(maxScoreTodayOne)"
-//              self.dataScrollView.contentSize.width = self.view.frame.size.width*CGFloat(1+2) //set up the Scroll view content size
-//              self.dataScrollView.addSubview(Datalabeltext3)
-//              self.dataScrollView.delegate = self
-//
-//              Datalabeltext4 = UILabel(frame: CGRect(x: x2Pos, y: 120, width: self.view.frame.size.width, height: self.dataScrollView.frame.size.height/4)) //set up the label frame
-//              Datalabeltext4.textAlignment = .center //place the label text in the center of the second page
-//              Datalabeltext4.text = "Max Score for Bubble Pop today:  \(maxScoreTodayTwo)"
-//              self.dataScrollView.contentSize.width = self.view.frame.size.width*CGFloat(1+2) //set up the Scroll view content size
-//              self.dataScrollView.addSubview(Datalabeltext4)
-//              self.dataScrollView.delegate = self
+        
+        
+        let x2Pos = CGFloat(2) * screenWidth
+        //Daily date page scroll viewlet x2Pos = CGFloat(2)*self.view.bounds.size.width //get the x position of the view that for the second page content
+        Datalabeltext1 = UILabel(frame: CGRect(x: x2Pos, y: 40, width: self.view.frame.size.width, height: self.dataScrollView.frame.size.height/4)) //set up the label frame
+        Datalabeltext1.textAlignment = .center //place the label text in the center of the second page
+        Datalabeltext1.text = "Medication Name:  " + medicationName
+        self.dataScrollView.contentSize.width = self.view.frame.size.width*CGFloat(1+2) //set up the Scroll view content size
+        self.dataScrollView.addSubview(Datalabeltext1) //put the label text into scrollView
+        
+        Datalabeltext2 = UILabel(frame: CGRect(x: x2Pos, y: 0, width: self.view.frame.size.width, height: self.dataScrollView.frame.size.height/4)) //set up the label frame
+        Datalabeltext2.textAlignment = .center //place the label text in the center of the second page
+        Datalabeltext2.text = "Date:  \(selectedDate)"
+        self.dataScrollView.contentSize.width = self.view.frame.size.width*CGFloat(1+2) //set up the Scroll view content size
+        self.dataScrollView.addSubview(Datalabeltext2)
+        
+        Datalabeltext3 = UILabel(frame: CGRect(x: x2Pos, y: 80, width: self.view.frame.size.width, height: self.dataScrollView.frame.size.height/4)) //set up the label frame
+        Datalabeltext3.textAlignment = .center //place the label text in the center of the second page
+        Datalabeltext3.text = "Max Score for TILT today:  \(maxScoreTodayOne)"
+        self.dataScrollView.contentSize.width = self.view.frame.size.width*CGFloat(1+2) //set up the Scroll view content size
+        self.dataScrollView.addSubview(Datalabeltext3)
+        self.dataScrollView.delegate = self
+        
+        Datalabeltext4 = UILabel(frame: CGRect(x: x2Pos, y: 120, width: self.view.frame.size.width, height: self.dataScrollView.frame.size.height/4)) //set up the label frame
+        Datalabeltext4.textAlignment = .center //place the label text in the center of the second page
+        Datalabeltext4.text = "Max Score for Bubble Pop today:  \(maxScoreTodayTwo)"
+        self.dataScrollView.contentSize.width = self.view.frame.size.width*CGFloat(1+2) //set up the Scroll view content size
+        self.dataScrollView.addSubview(Datalabeltext4)
+        self.dataScrollView.delegate = self
     }
     
     
     @objc func sundayDateSelected(_ sender: Any) {
         selectedDate = sundayDatewithMY
-        updategamescore()
-        
-//        //=========================================================================
-//        let newformattedtartcurrentweek = newStartCurrentWeek(updateNow: rightNow) //get the first date of the choosen week
-//        let newformattedendcurrentweek = newEndCurrentWeek(updateNow: rightNow) //get the end date of the choosen week
-//        setUp(newformattedtartcurrentweek: newformattedtartcurrentweek, newformattedendcurrentweek: newformattedendcurrentweek)
-//        //setUpDailyData(currentDate: selectedDate)
-//        Datalabeltext2.text = "Date:  \(selectedDate)"
-//
-//        db.collection("users").document(userid).collection("game_score").document(selectedDate).getDocument { (document, error) in
-//            if error == nil{
-//                if document != nil && document!.exists{
-//                    var maxScoreinSelectedOne = 0
-//                    let DocumentData = document!.data()
-//                    maxScoreinSelectedOne = DocumentData!["Game_One_lastMaxScore"] as! Int
-//                    self.Datalabeltext3.text = "Max Score for TILT today:  \(maxScoreinSelectedOne)"
-//
-//                    var maxScoreinSelectedTwo = 0
-//                    maxScoreinSelectedTwo = DocumentData!["Game_Two_lastMaxScore"] as! Int
-//                    self.Datalabeltext4.text = "Max Score for Bubble Pop today:  \(maxScoreinSelectedTwo)"
-//
-//                }
-//                else{
-//                    self.Datalabeltext3.text = "Max Score for TILT today:  0"
-//                    self.Datalabeltext4.text = "Max Score for Bubble Pop today:  0"
-//                }
-//            }
-//        }
-//
+        updateInformation()
         highlightSelectedDate()
     }
     
     @objc func mondayDateSelected(_ sender: Any) {
         selectedDate = mondayDatewithMY
-        updategamescore()
-
-        
-//        let newformattedtartcurrentweek = newStartCurrentWeek(updateNow: rightNow) //get the first date of the choosen week
-//        let newformattedendcurrentweek = newEndCurrentWeek(updateNow: rightNow) //get the end date of the choosen week
-//        setUp(newformattedtartcurrentweek: newformattedtartcurrentweek, newformattedendcurrentweek: newformattedendcurrentweek)
-//        Datalabeltext2.text = "Date:  \(selectedDate)"
-//
-//        db.collection("users").document(userid).collection("gaming_score").document(selectedDate).getDocument { (document, error) in
-//            if error == nil{
-//                if document != nil && document!.exists{
-//                    var maxScoreinSelectedOne = 0
-//                    let DocumentData = document!.data()
-//                    maxScoreinSelectedOne = DocumentData!["Game_One_lastMaxScore"] as! Int
-//                    print(maxScoreinSelectedOne)
-//                    self.Datalabeltext3.text = "Max Score for TILT today:  \(maxScoreinSelectedOne)"
-//
-//                    var maxScoreinSelectedTwo = 0
-//                    maxScoreinSelectedTwo = DocumentData!["Game_Two_lastMaxScore"] as! Int
-//                    self.Datalabeltext4.text = "Max Score for Bubble Pop today:  \(maxScoreinSelectedTwo)"
-//                }
-//                else{
-//                    self.Datalabeltext3.text = "Max Score for TILT today:  0"
-//                    self.Datalabeltext4.text = "Max Score for Bubble Pop today:  0"
-//                }
-//            }
-//        }
-        
+        updateInformation()
         highlightSelectedDate()
     }
     
     @objc func tuesdayDateSelected(_ sender: Any) {
         selectedDate = tuesdayDatewithMY
-        updategamescore()
-//
-//        let newformattedtartcurrentweek = newStartCurrentWeek(updateNow: rightNow) //get the first date of the choosen week
-//        let newformattedendcurrentweek = newEndCurrentWeek(updateNow: rightNow) //get the end date of the choosen week
-//        setUp(newformattedtartcurrentweek: newformattedtartcurrentweek, newformattedendcurrentweek: newformattedendcurrentweek)
-//        //setUpDailyData(currentDate: selectedDate)
-//        Datalabeltext2.text = "Date:  \(selectedDate)"
-//
-//        //var maxScoreinSelected = 0
-//
-//        db.collection("users").document(userid).collection("gaming_score").document(selectedDate).getDocument { (document, error) in
-//            if error == nil{
-//                if document != nil && document!.exists{
-//                    var maxScoreinSelectedOne = 0
-//                    let DocumentData = document!.data()
-//                    maxScoreinSelectedOne = DocumentData!["Game_One_lastMaxScore"] as! Int
-//                    print(maxScoreinSelectedOne)
-//                    self.Datalabeltext3.text = "Max Score for TILT today:  \(maxScoreinSelectedOne)"
-//
-//                    var maxScoreinSelectedTwo = 0
-//                    maxScoreinSelectedTwo = DocumentData!["Game_Two_lastMaxScore"] as! Int
-//                    self.Datalabeltext4.text = "Max Score for Bubble Pop today:  \(maxScoreinSelectedTwo)"
-//                }
-//                else{
-//                    self.Datalabeltext3.text = "Max Score for TILT today:  0"
-//                    self.Datalabeltext4.text = "Max Score for Bubble Pop today:  0"
-//                }
-//            }
-//        }
-        
+        updateInformation()
         highlightSelectedDate()
     }
     
     @objc func wednesdayDateSelected(_ sender: Any) {
         selectedDate = wednesdayDatewithMY
-        updategamescore()
-        
-//        let newformattedtartcurrentweek = newStartCurrentWeek(updateNow: rightNow) //get the first date of the choosen week
-//        let newformattedendcurrentweek = newEndCurrentWeek(updateNow: rightNow) //get the end date of the choosen week
-//        setUp(newformattedtartcurrentweek: newformattedtartcurrentweek, newformattedendcurrentweek: newformattedendcurrentweek)
-//        //setUpDailyData(currentDate: selectedDate)
-//        Datalabeltext2.text = "Date:  \(selectedDate)"
-//
-//        db.collection("users").document(userid).collection("gaming_score").document(selectedDate).getDocument { (document, error) in
-//            if error == nil{
-//                if document != nil && document!.exists{
-//                    var maxScoreinSelectedOne = 0
-//                    let DocumentData = document!.data()
-//                    maxScoreinSelectedOne = DocumentData!["Game_One_lastMaxScore"] as! Int
-//                    print(maxScoreinSelectedOne)
-//                    self.Datalabeltext3.text = "Max Score for TILT today:  \(maxScoreinSelectedOne)"
-//
-//                    var maxScoreinSelectedTwo = 0
-//                    maxScoreinSelectedTwo = DocumentData!["Game_Two_lastMaxScore"] as! Int
-//                    self.Datalabeltext4.text = "Max Score for Bubble Pop today:  \(maxScoreinSelectedTwo)"
-//                }
-//                else{
-//                    self.Datalabeltext3.text = "Max Score for TILT today:  0"
-//                    self.Datalabeltext4.text = "Max Score for Bubble Pop today:  0"
-//                }
-//            }
-//        }
-        
+        updateInformation()
         highlightSelectedDate()
     }
     
     @objc func thursdayDateSelected(_ sender: Any) {
         selectedDate = thursdayDatewithMY
-        updategamescore()
-
-        
-//        let newformattedtartcurrentweek = newStartCurrentWeek(updateNow: rightNow) //get the first date of the choosen week
-//        let newformattedendcurrentweek = newEndCurrentWeek(updateNow: rightNow) //get the end date of the choosen week
-//        setUp(newformattedtartcurrentweek: newformattedtartcurrentweek, newformattedendcurrentweek: newformattedendcurrentweek)
-//        //setUpDailyData(currentDate: selectedDate)
-//        Datalabeltext2.text = "Date:  \(selectedDate)"
-//
-//
-//        db.collection("users").document(userid).collection("gaming_score").document(selectedDate).getDocument { (document, error) in
-//            if error == nil{
-//                if document != nil && document!.exists{
-//                    var maxScoreinSelectedOne = 0
-//                    let DocumentData = document!.data()
-//                    maxScoreinSelectedOne = DocumentData!["Game_One_lastMaxScore"] as! Int
-//                    print(maxScoreinSelectedOne)
-//                    self.Datalabeltext3.text = "Max Score for TILT today:  \(maxScoreinSelectedOne)"
-//
-//                    var maxScoreinSelectedTwo = 0
-//                    maxScoreinSelectedTwo = DocumentData!["Game_Two_lastMaxScore"] as! Int
-//                    self.Datalabeltext4.text = "Max Score for Bubble Pop today:  \(maxScoreinSelectedTwo)"
-//                }
-//                else{
-//                    self.Datalabeltext3.text = "Max Score for TILT today:  0"
-//                    self.Datalabeltext4.text = "Max Score for Bubble Pop today:  0"
-//                }
-//            }
-//
-//        }
+        updateInformation()
         highlightSelectedDate()
     }
     
     @objc func fridayDateSelected(_ sender: Any) {
         selectedDate = fridayDatewithMY
-        updategamescore()
-
-//        let newformattedtartcurrentweek = newStartCurrentWeek(updateNow: rightNow) //get the first date of the choosen week
-//        let newformattedendcurrentweek = newEndCurrentWeek(updateNow: rightNow) //get the end date of the choosen week
-//        setUp(newformattedtartcurrentweek: newformattedtartcurrentweek, newformattedendcurrentweek: newformattedendcurrentweek)
-//
-//        Datalabeltext2.text = "Date:  \(selectedDate)"
-//
-//        db.collection("users").document(userid).collection("gaming_score").document(selectedDate).getDocument { (document, error) in
-//            if error == nil{
-//                if document != nil && document!.exists{
-//                    var maxScoreinSelectedOne = 0
-//                    let DocumentData = document!.data()
-//                    maxScoreinSelectedOne = DocumentData!["Game_One_lastMaxScore"] as! Int
-//                    print(maxScoreinSelectedOne)
-//                    self.Datalabeltext3.text = "Max Score for TILT today:  \(maxScoreinSelectedOne)"
-//
-//                    var maxScoreinSelectedTwo = 0
-//                    maxScoreinSelectedTwo = DocumentData!["Game_Two_lastMaxScore"] as! Int
-//                    self.Datalabeltext4.text = "Max Score for Bubble Pop today:  \(maxScoreinSelectedTwo)"
-//                }
-//                else{
-//                    self.Datalabeltext3.text = "Max Score for TILT today:  0"
-//                    self.Datalabeltext4.text = "Max Score for Bubble Pop today:  0"
-//                }
-//            }
-//        }
+        updateInformation()
         highlightSelectedDate()
     }
     
     @objc func saturdayDateSelected(_ sender: Any) {
         selectedDate = saturdayDatewithMY
-        updategamescore()
-
-//
-//        let newformattedtartcurrentweek = newStartCurrentWeek(updateNow: rightNow) //get the first date of the choosen week
-//        let newformattedendcurrentweek = newEndCurrentWeek(updateNow: rightNow) //get the end date of the choosen week
-//        setUp(newformattedtartcurrentweek: newformattedtartcurrentweek, newformattedendcurrentweek: newformattedendcurrentweek)
-//
-//        Datalabeltext2.text = "Date:  \(selectedDate)"
-//
-//        db.collection("users").document(userid).collection("gaming_score").document(selectedDate).getDocument { (document, error) in
-//            if error == nil{
-//                if document != nil && document!.exists{
-//                    var maxScoreinSelectedOne = 0
-//                    let DocumentData = document!.data()
-//                    maxScoreinSelectedOne = DocumentData!["Game_One_lastMaxScore"] as! Int
-//                    print(maxScoreinSelectedOne)
-//                    self.Datalabeltext3.text = "Max Score for TILT today:  \(maxScoreinSelectedOne)"
-//
-//                    var maxScoreinSelectedTwo = 0
-//                    maxScoreinSelectedTwo = DocumentData!["Game_Two_lastMaxScore"] as! Int
-//                    self.Datalabeltext4.text = "Max Score for Bubble Pop today:  \(maxScoreinSelectedTwo)"
-//                }
-//                else{
-//                    self.Datalabeltext3.text = "Max Score for TILT today:  0"
-//                    self.Datalabeltext4.text = "Max Score for Bubble Pop today:  0"
-//                }
-//            }
-//        }
-//
+        updateInformation()
         highlightSelectedDate()
     }
     
-
-    func updategamescore() {
+    
+    func updateInformation() {
         let db = Firestore.firestore()
         var selectedDateinDatetype = dateFormatter.date(from: selectedDate)
         
-        for dayi in 0..<7{
+        for dayi in 0..<7 {
             dateFormatter.dateFormat = "yyyy-MM-dd"
-            let tempselecteddate = dateFormatter.string(from: selectedDateinDatetype!)
-            db.collection("users").document(userid).collection("gaming_score").document(tempselecteddate).getDocument { (document, error) in
+            let tempSelectedDate = dateFormatter.string(from: selectedDateinDatetype!)
+            
+            db.collection("users").document(userid).collection("gaming_score").document(tempSelectedDate).getDocument { (document, error) in
                 if error == nil {
-                    if document != nil && document!.exists{
-                        var maxScoreinSelected = 0
-                        var maxScoreinSelectedTwo = 0
-                        let DocumentData = document!.data()
+                    if document != nil && document!.exists {
+                        let documentData = document!.data()
                         
-                        maxScoreinSelected = DocumentData!["Game_One_lastMaxScore"] as! Int
-                        maxScoreinSelectedTwo = DocumentData!["Game_Two_lastMaxScore"] as! Int
-
-                        values[dayi] = maxScoreinSelected
-                        values1[dayi] = maxScoreinSelectedTwo
+                        values[dayi] = documentData!["Game_One_lastMaxScore"] as! Int
+                        values1[dayi] = documentData!["Game_Two_lastMaxScore"] as! Int
                     }
-                    else{
+                    else {
                         values[dayi] = 0
                         values1[dayi] = 0
                     }
@@ -1160,8 +974,37 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
             }
             selectedDateinDatetype = selectedDateinDatetype! - 3600*24
         }
+        
+        db.collection("users").document(userid).collection("gaming_score").document(selectedDate).getDocument { (document, error) in
+            if error == nil {
+                if document != nil && document!.exists {
+                    let DocumentData = document!.data()
+                    maxScoreSelectedDateOne = DocumentData!["Game_One_lastMaxScore"] as! Int
+                    maxScoreSelectedDateTwo = DocumentData!["Game_Two_lastMaxScore"] as! Int
+                    
+                    //self.Datalabeltext3.text = "Max Score for TILT today:  \(maxScoreinSelectedOne)"
+                    //self.Datalabeltext4.text = "Max Score for Bubble Pop today:  \(maxScoreinSelectedTwo)"
+                }
+                else {
+                    maxScoreSelectedDateOne = 0
+                    maxScoreSelectedDateTwo = 0
+                    
+                    //self.Datalabeltext3.text = "Max Score for TILT today:  0"
+                    //self.Datalabeltext4.text = "Max Score for Bubble Pop today:  0"
+                }
+            }
+            self.setupDailyData()
+        }
     }
     
+    
+    /**
+     Function about the Tilt Button, will direct you to the Tilt page
+     
+     - Parameter sender: Button itself
+     - Returns: No
+     
+     **/
     func checkDataStatus() {
         loadedInfoTrendline += 1
         if loadedInfoTrendline == 7 {
@@ -1208,7 +1051,8 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         let page = DataScrollView.contentOffset.x/DataScrollView.frame.width
         pageControl.currentPage = Int(page)
     }
-
+    
+    
     /**
      Function that directs you to Login
      

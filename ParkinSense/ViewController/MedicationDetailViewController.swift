@@ -34,7 +34,7 @@ class MedicationDetailViewController: UIViewController, UITextFieldDelegate {
     let medicationTitleLabel: UILabel = {
         let label = UILabel()
         Utilities.styleUILabel(label, error: false)
-        label.text = "ADD MEDICATION DETAIL"
+        label.text = "ADD MEDICATION DETAILS"
         label.font = UIFont.systemFont(ofSize: headerLabelHeight, weight: .medium)
         return label
     }()
@@ -260,7 +260,7 @@ class MedicationDetailViewController: UIViewController, UITextFieldDelegate {
         appImageView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16.0).isActive = true
         
         medicationTitleLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 32.0).isActive = true
-        medicationTitleLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: appImageHeight + 32.0).isActive = true
+        medicationTitleLabel.leadingAnchor.constraint(equalTo: appImageView.leadingAnchor, constant: appImageHeaderHeight + 32.0).isActive = true
         
         medicationLabel.topAnchor.constraint(equalTo: medicationTitleLabel.topAnchor, constant: headerLabelHeight + 32.0).isActive = true
         medicationLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16.0).isActive = true

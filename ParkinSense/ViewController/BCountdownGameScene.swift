@@ -23,7 +23,7 @@ import SpriteKit
 
 class BCountdownGameScene: SKScene {
     
-    var count: Int = 5
+    var count: Int = 3
     
     var viewController: BubbleViewController
     

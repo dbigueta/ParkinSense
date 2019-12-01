@@ -123,9 +123,31 @@ class TiltScoreViewController: UIViewController {
         if  tiltFinalScore > maxScoreTodayOne {
             maxScoreTodayOne = tiltFinalScore
             db.collection("users").document(userid).collection("gaming_score").document(currentTimeDate).setData(["date":thisTimeLoginDateStr, "Game_One_lastMaxScore":maxScoreTodayOne, "Game_Two_lastMaxScore":maxScoreTodayTwo, "feeling": feeling])
-            
-            db.collection("users").document(userid).setData(["login_time": rightNow, "Username": username, "MedicationName": medicationName, "uid":userid, "Game_One_lastMaxScore":maxScoreTodayOne, "Game_Two_lastMaxScore":maxScoreTodayTwo, "feeling": feeling])
-            
+         
+            // Updates the Firebase database
+                   db.collection("users").document(userid).setData([
+                       "login_time": rightNow,
+                       "Username": username,
+                       "uid": userid,
+                       "MedicationName": medicationName,
+                       "MedicationDate": medicationDate,
+                       "MedicationTime": medicationTime,
+                       "MedicationName1": medicationName1,
+                       "MedicationDate1": medicationDate1,
+                       "MedicationTime1": medicationTime1,
+                       "MedicationName2": medicationName2,
+                       "MedicationDate2": medicationDate2,
+                       "MedicationTime2": medicationTime2,
+                       "MedicationName3": medicationName3,
+                       "MedicationDate3": medicationDate3,
+                       "MedicationTime3": medicationTime3,
+                       "MedicationName4": medicationName4,
+                       "MedicationDate4": medicationDate4,
+                       "MedicationTime4": medicationTime4,
+                       "Game_One_lastMaxScore": maxScoreTodayOne,
+                       "Game_Two_lastMaxScore": maxScoreTodayTwo,
+                       "feeling": feeling
+                   ])
         }
     }
     

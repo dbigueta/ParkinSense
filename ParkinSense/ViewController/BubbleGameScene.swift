@@ -36,7 +36,7 @@ class BubbleGameScene: SKScene {
     var setMarginY: CGFloat = 30
     var bubbleGenerationRate = 3
     
-    var counter = 60
+    var counter = 30
     var counterTimer = Timer()
     
     
