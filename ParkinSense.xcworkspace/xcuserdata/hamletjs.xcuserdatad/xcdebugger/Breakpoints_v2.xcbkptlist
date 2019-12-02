@@ -62,8 +62,8 @@
             filePath = "ParkinSense/ViewController/LoginViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "225"
-            endingLineNumber = "225"
+            startingLineNumber = "246"
+            endingLineNumber = "246"
             landmarkName = "signInTapped()"
             landmarkType = "7">
          </BreakpointContent>
@@ -78,8 +78,8 @@
             filePath = "ParkinSense/ViewController/LoginViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "228"
-            endingLineNumber = "228"
+            startingLineNumber = "249"
+            endingLineNumber = "249"
             landmarkName = "signInTapped()"
             landmarkType = "7">
          </BreakpointContent>
@@ -94,8 +94,8 @@
             filePath = "ParkinSense/ViewController/LoginViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "226"
-            endingLineNumber = "226"
+            startingLineNumber = "247"
+            endingLineNumber = "247"
             landmarkName = "signInTapped()"
             landmarkType = "7">
          </BreakpointContent>
@@ -110,10 +110,10 @@
             filePath = "ParkinSense/ViewController/SignupViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "570"
-            endingLineNumber = "570"
-            landmarkName = "SignupViewController"
-            landmarkType = "3">
+            startingLineNumber = "595"
+            endingLineNumber = "595"
+            landmarkName = "createAnAccountTapped()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -126,8 +126,8 @@
             filePath = "ParkinSense/ViewController/MedicationDetailViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "426"
-            endingLineNumber = "426"
+            startingLineNumber = "454"
+            endingLineNumber = "454"
             landmarkName = "textFieldShouldReturn(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -142,9 +142,9 @@
             filePath = "ParkinSense/ViewController/HomeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "995"
-            endingLineNumber = "995"
-            landmarkName = "highlightSelectedDate()"
+            startingLineNumber = "1035"
+            endingLineNumber = "1035"
+            landmarkName = "setupTrendline(currentDate:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -158,9 +158,9 @@
             filePath = "ParkinSense/ViewController/HomeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "607"
-            endingLineNumber = "607"
-            landmarkName = "viewDidLoad()"
+            startingLineNumber = "630"
+            endingLineNumber = "630"
+            landmarkName = "setupUserData()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -174,9 +174,9 @@
             filePath = "ParkinSense/ViewController/HomeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1249"
-            endingLineNumber = "1249"
-            landmarkName = "fridayDateSelected(_:)"
+            startingLineNumber = "1372"
+            endingLineNumber = "1372"
+            landmarkName = "tiltButtonPressed(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -190,9 +190,9 @@
             filePath = "ParkinSense/ViewController/HomeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1248"
-            endingLineNumber = "1248"
-            landmarkName = "fridayDateSelected(_:)"
+            startingLineNumber = "1371"
+            endingLineNumber = "1371"
+            landmarkName = "tiltButtonPressed(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -206,9 +206,9 @@
             filePath = "ParkinSense/ViewController/HomeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "742"
-            endingLineNumber = "742"
-            landmarkName = "popoverFeeling()"
+            startingLineNumber = "775"
+            endingLineNumber = "775"
+            landmarkName = "syncDatabase(mood:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -222,9 +222,9 @@
             filePath = "ParkinSense/ViewController/HomeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1072"
-            endingLineNumber = "1072"
-            landmarkName = "setupTrendline(currentDate:)"
+            startingLineNumber = "1128"
+            endingLineNumber = "1128"
+            landmarkName = "sundayDateSelected(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -238,9 +238,9 @@
             filePath = "ParkinSense/ViewController/HomeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "743"
-            endingLineNumber = "743"
-            landmarkName = "popoverFeeling()"
+            startingLineNumber = "776"
+            endingLineNumber = "776"
+            landmarkName = "syncDatabase(mood:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

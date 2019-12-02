@@ -195,6 +195,18 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     
     /**
+     Function that removes username and password from login screen once we sign out
+
+     - Returns: None
+     **/
+    override func viewWillAppear(_ animated: Bool) {
+        // Set error label to be hidden and remove email and password from login
+        errorLabel.alpha = 0
+        emailTextField.text = ""
+        passwordTextField.text = ""
+    }
+    
+    /**
      Function that dismisses the onscreen keyboard
      
      - Returns: None

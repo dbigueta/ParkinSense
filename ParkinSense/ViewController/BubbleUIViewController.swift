@@ -198,6 +198,21 @@ class BubbleUIViewController: UIViewController {
     }
     
     
+    /**
+     Function that sets up sound again when replaying
+
+     - Returns: None
+     **/
+    override func viewWillAppear(_ animated: Bool) {
+        setupSound()
+    }
+    
+    
+    /**
+     Function that sets up the sounds and toggles
+
+     - Returns: None
+     **/
     func setupSound() {
         
         // retrieve music file from app
