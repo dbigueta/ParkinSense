@@ -212,8 +212,12 @@ class TiltViewController: UIViewController {
      */
     override func viewDidDisappear(_ animated: Bool) {
         if (self.view as? SKView) != nil{
-            self.tiltGameScene = nil
+            self.view = nil
         }
+    }
+    
+    deinit {
+        print("The Tilt View has been removed from memory")
     }
 }
 

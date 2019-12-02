@@ -199,7 +199,7 @@ class BubbleUIViewController: UIViewController {
         }
         
         try? soundEffect = AVAudioPlayer(contentsOf: URL(fileURLWithPath: musicFile))
-        soundEffect?.numberOfLoops = -1
+        soundEffect?.numberOfLoops = 0
         
         soundEffect?.play()
     }
@@ -250,4 +250,7 @@ class BubbleUIViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
+    deinit {
+        print("The Bubble Main UI has been removed from memory")
+    }
 }

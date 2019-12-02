@@ -93,7 +93,7 @@ class BubbleGameScene: SKScene {
     }
     
     deinit {
-        print("The Bubble Pop Game Scene has been removed from memory")
+        print("The Bubble Pop Game View has been removed from memory")
     }
     
     func generateBubble(){

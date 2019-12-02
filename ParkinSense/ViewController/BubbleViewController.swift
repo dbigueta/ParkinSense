@@ -214,9 +214,10 @@ class BubbleViewController: UIViewController {
      */
     override func viewDidDisappear(_ animated: Bool) {
         if (self.view as? SKView) != nil{
-            self.bubbleGameScene = nil
+            self.view = nil
         }
     }
+    
     
 }
 

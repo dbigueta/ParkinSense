@@ -173,6 +173,9 @@ class TiltScoreViewController: UIViewController {
         self.presentingViewController?.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
     }
     
+    deinit {
+        print("The Tilt Score View has been removed from memory")
+    }
     
     
 }

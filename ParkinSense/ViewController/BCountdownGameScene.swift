@@ -105,7 +105,7 @@ class BCountdownGameScene: SKScene {
      - Returns: None.
      */
     deinit {
-        print("The Countdown Scene has been removed from memory")
+        print("The Bubble Countdown Scene has been removed from memory")
     }
     
     

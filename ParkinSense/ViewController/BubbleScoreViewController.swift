@@ -172,4 +172,8 @@ class BubbleScoreViewController: UIViewController {
         self.presentingViewController?.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
     }
     
+    deinit {
+        print("The Bubble Score View has been removed from memory")
+    }
+    
 }

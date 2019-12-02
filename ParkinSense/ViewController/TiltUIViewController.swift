@@ -199,7 +199,7 @@ class TiltUIViewController: UIViewController {
         }
         
         try? soundEffect = AVAudioPlayer(contentsOf: URL(fileURLWithPath: musicFile))
-        soundEffect?.numberOfLoops = -1
+        soundEffect?.numberOfLoops = 0
         
         soundEffect?.play()
     }
@@ -249,6 +249,10 @@ class TiltUIViewController: UIViewController {
      **/
     @objc func quitGame(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    deinit {
+        print("The Tilt Main UI has been removed from memory")
     }
     
 }
