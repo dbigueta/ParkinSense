@@ -247,6 +247,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             else{
                 // Transition to home view
                 let homeViewController:HomeViewController = HomeViewController()
+                homeViewController.modalPresentationStyle = .fullScreen
                 self.present(homeViewController, animated: true, completion: nil)
             }
         }
@@ -266,6 +267,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         // Transition to create an account view
         let signUpViewController:SignupViewController = SignupViewController()
+        signUpViewController.modalPresentationStyle = .fullScreen
         self.present(signUpViewController, animated: true, completion: nil)
     }
 }

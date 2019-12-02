@@ -88,6 +88,7 @@ class BubbleGameScene: SKScene {
         viewController.HUDView.isHidden = true
         
         let bubbleScoreViewController:BubbleScoreViewController = BubbleScoreViewController()
+        bubbleScoreViewController.modalPresentationStyle = .fullScreen
         viewController.present(bubbleScoreViewController, animated: true, completion: nil)
     }
     

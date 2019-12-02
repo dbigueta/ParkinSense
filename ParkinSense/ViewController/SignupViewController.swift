@@ -625,6 +625,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
                     
                     //Transition to the home screen
                     let homeViewController:HomeViewController = HomeViewController()
+                    homeViewController.modalPresentationStyle = .fullScreen
                     self.present(homeViewController, animated: true, completion: nil)
                 }
             }
@@ -644,6 +645,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         
         // Transitions to the medication view controller
         let medicationViewController:MedicationDetailViewController = MedicationDetailViewController()
+        medicationViewController.modalPresentationStyle = .fullScreen
         self.present(medicationViewController, animated: true, completion: nil)
     }
     

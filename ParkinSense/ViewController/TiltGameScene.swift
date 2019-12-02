@@ -152,6 +152,7 @@ class TiltGameScene: SKScene {
         viewController.HUDView.isHidden = true
         
         let tiltScoreViewController:TiltScoreViewController = TiltScoreViewController()
+        tiltScoreViewController.modalPresentationStyle = .fullScreen
         viewController.present(tiltScoreViewController, animated: true, completion: nil)
     }
     

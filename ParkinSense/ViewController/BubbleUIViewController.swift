@@ -126,7 +126,7 @@ class BubbleUIViewController: UIViewController {
         return button
     }()
     
-    var soundEffect: AVAudioPlayer = AVAudioPlayer()
+    var soundEffect: AVAudioPlayer?
     
     
     /**
@@ -192,20 +192,16 @@ class BubbleUIViewController: UIViewController {
     
     
     func setupSound() {
+        
         guard let musicFile = Bundle.main.path(forResource: "Roots", ofType: ".mp3") else {
             print("File Not Found")
             return
         }
         
-        do {
-            try soundEffect = AVAudioPlayer(contentsOf: URL(fileURLWithPath: musicFile))
-            soundEffect.numberOfLoops = -1
-        }
-        catch {
-            print(error)
-        }
+        try? soundEffect = AVAudioPlayer(contentsOf: URL(fileURLWithPath: musicFile))
+        soundEffect?.numberOfLoops = -1
         
-        soundEffect.play()
+        soundEffect?.play()
     }
     
     /**
@@ -216,10 +212,10 @@ class BubbleUIViewController: UIViewController {
     @objc func soundTogglePressed(_ sender: UISwitch) {
         if (sender.isOn == false)
         {
-            soundEffect.pause()
+            soundEffect?.pause()
         }
         else{
-            soundEffect.play()
+            soundEffect?.play()
         }
     }
     
@@ -230,7 +226,7 @@ class BubbleUIViewController: UIViewController {
      - Returns: None
      **/
     @objc func stopSound(_ sender: Any) {
-        soundEffect.stop()
+        soundEffect?.stop()
     }
     
     
@@ -241,6 +237,7 @@ class BubbleUIViewController: UIViewController {
      **/
     @objc func startGame(_ sender: Any) {
         let bubbleViewController:BubbleViewController = BubbleViewController()
+        bubbleViewController.modalPresentationStyle = .fullScreen
         self.present(bubbleViewController, animated: true, completion: nil)
     }
     

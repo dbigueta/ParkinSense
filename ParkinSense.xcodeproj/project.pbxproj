@@ -25,12 +25,12 @@
 		0659502B23833FE40040377F /* GameBubbleUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0659502323833FE40040377F /* GameBubbleUITest.swift */; };
 		0659502C23833FE40040377F /* HomePageUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0659502423833FE40040377F /* HomePageUITest.swift */; };
 		065D2FEA237DF8CD00CE1B02 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 065D2FE9237DF8CD00CE1B02 /* CoreFoundation.framework */; };
+		06C51AFF2395A06000E4B051 /* Roots.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8DF7732B236D16930080B392 /* Roots.mp3 */; };
 		1497BF002378F8BD00C9120C /* BubbleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1497BEFF2378F8BD00C9120C /* BubbleViewController.swift */; };
 		1497BF022379254C00C9120C /* BubbleGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1497BF012379254C00C9120C /* BubbleGameScene.swift */; };
 		1497BF0623793EBC00C9120C /* BCountdownGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1497BF0523793EBC00C9120C /* BCountdownGameScene.swift */; };
 		14F06785237A9D4C00484846 /* BubbleScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F06784237A9D4C00484846 /* BubbleScoreViewController.swift */; };
 		29A920A408E6F54C2BE6A195 /* Pods_ParkinSense.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B083E52DCEF6DB9DB20CB12 /* Pods_ParkinSense.framework */; };
-		8DF7732C236D16940080B392 /* Roots.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8DF7732B236D16930080B392 /* Roots.mp3 */; };
 		A61328BE23627A0700C7066C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61328BD23627A0700C7066C /* AppDelegate.swift */; };
 		A61328C823627A0800C7066C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A61328C623627A0800C7066C /* LaunchScreen.storyboard */; };
 		A61328F023627A5F00C7066C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61328EC23627A5F00C7066C /* Constants.swift */; };
@@ -378,11 +378,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06C51AFF2395A06000E4B051 /* Roots.mp3 in Resources */,
 				A61328FE23627A8C00C7066C /* Main.storyboard in Resources */,
 				03AB56A423627D22000A3475 /* GoogleService-Info.plist in Resources */,
 				A613290023627AAB00C7066C /* Assets.xcassets in Resources */,
 				A61328C823627A0800C7066C /* LaunchScreen.storyboard in Resources */,
-				8DF7732C236D16940080B392 /* Roots.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

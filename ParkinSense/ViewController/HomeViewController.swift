@@ -391,7 +391,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         button.backgroundColor = tiltBackgroundColour
         button.setImage(UIImage(named: "tiltBtn.png"), for: .normal)
         button.imageEdgeInsets = UIEdgeInsets(top: 25, left: 25, bottom: 25, right: 25)
-        button.setTitle("Tilt", for: .normal)
+        //button.setTitle("Tilt", for: .normal)
         button.addTarget(self, action: #selector(tiltButtonPressed(_:)), for: .touchUpInside)
         button.widthAnchor.constraint(equalToConstant: homeGameButtonWidth).isActive = true
         button.heightAnchor.constraint(equalToConstant: homeGameButtonWidth).isActive = true
@@ -408,7 +408,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         button.backgroundColor = bubbleBackgroundColour
         button.setImage(UIImage(named: "bubbleBtn.png"), for: .normal)
         button.imageEdgeInsets = UIEdgeInsets(top: 25, left: 20, bottom: 15, right: 20)
-        button.setTitle("Bubble Pop", for: .normal)
+        //button.setTitle("Bubble Pop", for: .normal)
         button.addTarget(self, action: #selector(bubblePopButtonPressed(_:)), for: .touchUpInside)
         button.widthAnchor.constraint(equalToConstant: homeGameButtonWidth).isActive = true
         button.heightAnchor.constraint(equalToConstant: homeGameButtonWidth).isActive = true
@@ -1244,6 +1244,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
      **/
     @objc func tiltButtonPressed(_ sender: Any) {
         let tiltUIViewController:TiltUIViewController = TiltUIViewController()
+        tiltUIViewController.modalPresentationStyle = .fullScreen
         self.present(tiltUIViewController, animated: true, completion: nil)
     }
     
@@ -1257,6 +1258,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
      **/
     @objc func bubblePopButtonPressed(_ sender: Any) {
         let bubblePopUIViewController:BubbleUIViewController = BubbleUIViewController()
+        bubblePopUIViewController.modalPresentationStyle = .fullScreen
         self.present(bubblePopUIViewController, animated: true, completion: nil)
     }
     
