@@ -75,23 +75,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return textField
     }()
     
-    // Remember Password UI Label
-    let rememberPassLabel: UILabel = {
-        let label = UILabel()
-        Utilities.styleUILabel(label, error: false)
-        label.text = "Remember Password"
-        label.textAlignment = .right
-        label.font = UIFont.systemFont(ofSize: rememberPassLabelHeight, weight: .light)
-        return label
-    }()
-    
-    // Remember Password Checkbox
-    let rememberPassButton: BEMCheckBox = {
-        let button = BEMCheckBox()
-        Utilities.styleBEMCheckBox(button)
-        return button
-    }()
-    
     // Error UI Label for error messages
     let errorLabel: UILabel = {
         let label = UILabel()
@@ -136,8 +119,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.view.addSubview(sloganLabel)
         self.view.addSubview(emailTextField)
         self.view.addSubview(passwordTextField)
-        self.view.addSubview(rememberPassLabel)
-        self.view.addSubview(rememberPassButton)
         self.view.addSubview(errorLabel)
         self.view.addSubview(signInButton)
         self.view.addSubview(createAccountButton)
@@ -163,16 +144,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         passwordTextField.topAnchor.constraint(equalTo: emailTextField.topAnchor, constant: textFieldHeight + 16.0).isActive = true
         passwordTextField.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 32.0).isActive = true
         passwordTextField.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -32.0).isActive = true
-        
-        rememberPassLabel.topAnchor.constraint(equalTo: passwordTextField.topAnchor, constant: rememberPassLabelTopPadding + 24.0).isActive = true
-        rememberPassLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 90.0).isActive = true
-        
-        rememberPassButton.topAnchor.constraint(equalTo: passwordTextField.topAnchor, constant: textFieldHeight + 24.0).isActive = true
-        rememberPassButton.leadingAnchor.constraint(equalTo: rememberPassLabel.trailingAnchor, constant: 16.0).isActive = true
-        rememberPassButton.heightAnchor.constraint(equalToConstant: checkboxDiameter).isActive = true
-        rememberPassButton.widthAnchor.constraint(equalToConstant: checkboxDiameter).isActive = true
-        
-        errorLabel.topAnchor.constraint(equalTo: rememberPassLabel.topAnchor, constant: rememberPassLabelTopPadding + 16.0).isActive = true
+
+        errorLabel.topAnchor.constraint(equalTo: passwordTextField.topAnchor, constant: textFieldHeight + 64.0).isActive = true
         errorLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16.0).isActive = true
         errorLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16.0).isActive = true
         

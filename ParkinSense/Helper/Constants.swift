@@ -162,6 +162,8 @@ var offsetTopWeekButtons = (screenWidth - (4*homeDayButtonWidth))/5
 var offsetBottomWeekButtons = (screenWidth - (3*homeDayButtonWidth) - 2*offsetTopWeekButtons)/2
 var offsetGameButtons = (screenWidth - (2*homeGameButtonWidth))/3
 
+var alreadyTappedTodaysDate = false
+
 /* Main UI & Login Colours */
 let textColour = UIColor(red:0.29, green:0.31, blue:0.34, alpha:1.0)
 let buttonTextColour = UIColor(red:0.92, green:0.91, blue:0.88, alpha:1.0)

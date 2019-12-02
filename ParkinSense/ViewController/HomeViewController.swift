@@ -650,8 +650,8 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
                     medicationDate4 = DocumentData!["MedicationDate4"] as! String
                     
                     // Retrieves game scores
-                    maxScoreTodayOne = DocumentData!["Game_One_lastMaxScore"] as! Int
-                    maxScoreTodayTwo = DocumentData!["Game_Two_lastMaxScore"] as! Int
+                    maxScoreSelectedDateOne = DocumentData!["Game_One_lastMaxScore"] as! Int
+                    maxScoreSelectedDateOne = DocumentData!["Game_Two_lastMaxScore"] as! Int
                     
                     // Retrieves mood
                     feeling = DocumentData!["feeling"] as! String
@@ -688,7 +688,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         dateFormatter.dateFormat = "yyyy-MM-dd"
 //        let currentTimeDate = dateFormatter.string(from: Date())
 //
-        var medicineTaken = false
+        //var medicineTaken = false
         //var mood = ""
         
         // Performs medication alert only if there was medication inputted
@@ -698,13 +698,13 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
             
             // Add alert option
             alert.addAction(UIAlertAction(title: "Yes", style: .default) {Void in
-                medicineTaken = true
+                //medicineTaken = true
                 self.popoverFeeling()
             })
             
             // Add alert option
             alert.addAction(UIAlertAction(title: "No", style: .default) {Void in
-                medicineTaken = false
+                //medicineTaken = false
                 self.popoverFeeling()
             })
             
@@ -740,6 +740,8 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
     
     func syncDatabase(mood: String) {
         let currentTimeDate = dateFormatter.string(from: Date())
+        feeling = mood
+        self.moodLabel.text = "Mood:  " + mood
         
         // Updates the Firebase database
         self.db.collection("users").document(userid).collection("gaming_score").document(currentTimeDate).setData([
@@ -1060,52 +1062,115 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         medLabel2.text = "Medication 3:  " + medicationName2
         medLabel3.text = "Medication 4:  " + medicationName3
         medLabel4.text = "Medication 5:  " + medicationName4
-        tiltGameScore.text = "Maximum TILT Score:  \(maxScoreTodayOne)"
-        bubbleGameScore.text = "Maximum Bubble Pop Score:  \(maxScoreTodayTwo)"
+        tiltGameScore.text = "Maximum TILT Score:  \(maxScoreSelectedDateOne)"
+        bubbleGameScore.text = "Maximum Bubble Pop Score:  \(maxScoreSelectedDateTwo)"
         moodLabel.text = "Mood:  " + feeling
     }
     
     
     @objc func sundayDateSelected(_ sender: Any) {
+        let currentTimeDate = dateFormatter.string(from: Date())
+        
         selectedDate = sundayDatewithMY
         updateInformation()
         highlightSelectedDate()
+        
+        if selectedDate == currentTimeDate && alreadyTappedTodaysDate == true {
+            alreadyTappedTodaysDate = false
+            popoverFeeling()
+        }
+        else if selectedDate == currentTimeDate {alreadyTappedTodaysDate = true}
+        else { alreadyTappedTodaysDate = false }
     }
     
     @objc func mondayDateSelected(_ sender: Any) {
+        let currentTimeDate = dateFormatter.string(from: Date())
+        
         selectedDate = mondayDatewithMY
         updateInformation()
         highlightSelectedDate()
+        
+        if selectedDate == currentTimeDate && alreadyTappedTodaysDate == true {
+            alreadyTappedTodaysDate = false
+            popoverFeeling()
+        }
+        else if selectedDate == currentTimeDate {alreadyTappedTodaysDate = true}
+        else { alreadyTappedTodaysDate = false }
     }
     
     @objc func tuesdayDateSelected(_ sender: Any) {
+        let currentTimeDate = dateFormatter.string(from: Date())
+        
         selectedDate = tuesdayDatewithMY
         updateInformation()
         highlightSelectedDate()
+        
+        if selectedDate == currentTimeDate && alreadyTappedTodaysDate == true {
+            alreadyTappedTodaysDate = false
+            popoverFeeling()
+        }
+        else if selectedDate == currentTimeDate {alreadyTappedTodaysDate = true}
+        else { alreadyTappedTodaysDate = false }
     }
     
     @objc func wednesdayDateSelected(_ sender: Any) {
+        let currentTimeDate = dateFormatter.string(from: Date())
+        
         selectedDate = wednesdayDatewithMY
         updateInformation()
         highlightSelectedDate()
+        
+        if selectedDate == currentTimeDate && alreadyTappedTodaysDate == true {
+            alreadyTappedTodaysDate = false
+            popoverFeeling()
+        }
+        else if selectedDate == currentTimeDate {alreadyTappedTodaysDate = true}
+        else { alreadyTappedTodaysDate = false }
     }
     
     @objc func thursdayDateSelected(_ sender: Any) {
+        let currentTimeDate = dateFormatter.string(from: Date())
+        
         selectedDate = thursdayDatewithMY
         updateInformation()
         highlightSelectedDate()
+        
+        if selectedDate == currentTimeDate && alreadyTappedTodaysDate == true {
+            alreadyTappedTodaysDate = false
+            popoverFeeling()
+        }
+        else if selectedDate == currentTimeDate {alreadyTappedTodaysDate = true}
+        else { alreadyTappedTodaysDate = false }
     }
     
     @objc func fridayDateSelected(_ sender: Any) {
+        let currentTimeDate = dateFormatter.string(from: Date())
+        
         selectedDate = fridayDatewithMY
         updateInformation()
         highlightSelectedDate()
+        
+        if selectedDate == currentTimeDate && alreadyTappedTodaysDate == true {
+            alreadyTappedTodaysDate = false
+            popoverFeeling()
+        }
+        else if selectedDate == currentTimeDate {alreadyTappedTodaysDate = true}
+        else { alreadyTappedTodaysDate = false }
     }
     
     @objc func saturdayDateSelected(_ sender: Any) {
+        let currentTimeDate = dateFormatter.string(from: Date())
+        
         selectedDate = saturdayDatewithMY
         updateInformation()
         highlightSelectedDate()
+        
+        if selectedDate == currentTimeDate && alreadyTappedTodaysDate == true {
+            alreadyTappedTodaysDate = false
+            popoverFeeling()
+        }
+        else if selectedDate == currentTimeDate {alreadyTappedTodaysDate = true}
+        else { alreadyTappedTodaysDate = false }
     }
     
     
@@ -1141,10 +1206,12 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
                     let DocumentData = document!.data()
                     maxScoreSelectedDateOne = DocumentData!["Game_One_lastMaxScore"] as! Int
                     maxScoreSelectedDateTwo = DocumentData!["Game_Two_lastMaxScore"] as! Int
+                    feeling = DocumentData!["feeling"] as! String
                 }
                 else {
                     maxScoreSelectedDateOne = 0
                     maxScoreSelectedDateTwo = 0
+                    feeling = "N/A"
                 }
             }
             self.setupDailyData()
