@@ -28,77 +28,77 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     // App Logo UI Image
     let appImageView: UIImageView = {
-        let imageView = UIImageView(image: appImage!)
-        Utilities.styleImageView(imageView)
+        let imageView = UIImageView(image: appImage!)   // Creates view for image
+        Utilities.styleImageView(imageView)             // Styles to view
         return imageView
     }()
     
     // App UI Label for "PARKINSENSE"
     let appLabel: UILabel = {
         let label = UILabel()
-        Utilities.styleUILabel(label, error: false)
-        label.text = "PARKINSENSE"
-        label.font = UIFont.systemFont(ofSize: appLabelHeight, weight: .light)
+        Utilities.styleUILabel(label, error: false) // Style label
+        label.text = "PARKINSENSE"  // Set label text
+        label.font = UIFont.systemFont(ofSize: appLabelHeight, weight: .light)  // Set label font
         return label
     }()
     
     // Slogan UI Label for "SPARK YOUR SENSES"
     let sloganLabel: UILabel = {
         let label = UILabel()
-        Utilities.styleUILabel(label, error: false)
-        label.text = "SPARK YOUR SENSES"
-        label.font = UIFont.systemFont(ofSize: sloganLabelHeight, weight: .light)
+        Utilities.styleUILabel(label, error: false) // Style label
+        label.text = "SPARK YOUR SENSES" // Set label text
+        label.font = UIFont.systemFont(ofSize: sloganLabelHeight, weight: .light) // Set label font
         return label
     }()
     
     // Email UI Textfield to input email address
     let emailTextField: CustomTextField = {
         let textField = CustomTextField()
-        Utilities.styleTextField(textField, password: false)
-        textField.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSAttributedString.Key.foregroundColor: textColour])
-        textField.paddingValue = paddingVal
+        Utilities.styleTextField(textField, password: false) // Style text field
+        textField.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSAttributedString.Key.foregroundColor: textColour]) // Set the placeholder text and colour
+        textField.paddingValue = paddingVal // Set padding to the text field
         textField.awakeFromNib()
-        textField.font = UIFont.systemFont(ofSize: textFieldFontSize, weight: .light)
-        textField.keyboardType = UIKeyboardType.emailAddress
+        textField.font = UIFont.systemFont(ofSize: textFieldFontSize, weight: .light) // Set textfield font
+        textField.keyboardType = UIKeyboardType.emailAddress // Set textfield keyboard type
         return textField
     }()
     
     // Password UI Textfield to input password
     let passwordTextField: CustomTextField = {
         let textField = CustomTextField()
-        Utilities.styleTextField(textField, password: true)
-        textField.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.foregroundColor: textColour])
-        textField.paddingValue = paddingVal
+        Utilities.styleTextField(textField, password: true) // Style text field
+        textField.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.foregroundColor: textColour]) // Set the placeholder text and colour
+        textField.paddingValue = paddingVal // Set padding to the text field
         textField.awakeFromNib()
-        textField.font = UIFont.systemFont(ofSize: textFieldFontSize, weight: .light)
-        textField.keyboardType = UIKeyboardType.default
+        textField.font = UIFont.systemFont(ofSize: textFieldFontSize, weight: .light) // Set textfield font
+        textField.keyboardType = UIKeyboardType.default // Set textfield keyboard type
         return textField
     }()
     
     // Error UI Label for error messages
     let errorLabel: UILabel = {
-        let label = UILabel()
-        Utilities.styleUILabel(label, error: true)
-        label.text = "Error"
-        label.font = UIFont.systemFont(ofSize: errorLabelHeight, weight: .light)
+        let label = UILabel() // Create label
+        Utilities.styleUILabel(label, error: true) // Style label
+        label.text = "Error" // Set label text
+        label.font = UIFont.systemFont(ofSize: errorLabelHeight, weight: .light) // Set label font
         return label
     }()
     
     // Sign In Button
     let signInButton: UIButton = {
         let button = UIButton()
-        Utilities.styleUIButton(button)
-        button.setTitle("Sign In", for: .normal)
-        button.addTarget(self, action: #selector(signInTapped), for: .touchUpInside)
+        Utilities.styleUIButton(button) // Style button
+        button.setTitle("Sign In", for: .normal) // Set button label
+        button.addTarget(self, action: #selector(signInTapped), for: .touchUpInside) // Set function to trigger when tapped
         return button
     }()
     
     // Create Account Button
     let createAccountButton: UIButton = {
         let button = UIButton()
-        Utilities.styleUIButton(button)
-        button.setTitle("Create an Account", for: .normal)
-        button.addTarget(self, action: #selector(createAccountTapped), for: .touchUpInside)
+        Utilities.styleUIButton(button) // Style button
+        button.setTitle("Create an Account", for: .normal) // Set button label
+        button.addTarget(self, action: #selector(createAccountTapped), for: .touchUpInside) // Set function to trigger when tapped
         return button
     }()
     
@@ -114,6 +114,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     override func loadView() {
         super.loadView()
         
+        // Adds each view, label, textfield and button into the current screen
         self.view.addSubview(appImageView)
         self.view.addSubview(appLabel)
         self.view.addSubview(sloganLabel)
@@ -123,37 +124,45 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.view.addSubview(signInButton)
         self.view.addSubview(createAccountButton)
         
+        // Set App Image constraints to allow for multiple device configurations
         appImageView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 32.0).isActive = true
         appImageView.heightAnchor.constraint(equalToConstant: appImageHeight).isActive = true
         appImageView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16.0).isActive = true
         appImageView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16.0).isActive = true
         
+        // Set App Name constraints to allow for multiple device configurations
         appLabel.topAnchor.constraint(equalTo: appImageView.topAnchor, constant: appImageHeight + 16.0).isActive = true
         appLabel.heightAnchor.constraint(equalToConstant: appLabelHeight).isActive = true
         appLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16.0).isActive = true
         appLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16.0).isActive = true
         
+        // Set App Slogan constraints to allow for multiple device configurations
         sloganLabel.topAnchor.constraint(equalTo: appLabel.topAnchor, constant: appLabelHeight + 8.0).isActive = true
         sloganLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16.0).isActive = true
         sloganLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16.0).isActive = true
         
+        // Set email text field constraints to allow for multiple device configurations
         emailTextField.topAnchor.constraint(equalTo: sloganLabel.topAnchor, constant: sloganLabelHeight + 48.0).isActive = true
         emailTextField.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 32.0).isActive = true
         emailTextField.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -32.0).isActive = true
         
+        // Set password text field constraints to allow for multiple device configurations
         passwordTextField.topAnchor.constraint(equalTo: emailTextField.topAnchor, constant: textFieldHeight + 16.0).isActive = true
         passwordTextField.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 32.0).isActive = true
         passwordTextField.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -32.0).isActive = true
 
+        // Set error label constraints to allow for multiple device configurations
         errorLabel.topAnchor.constraint(equalTo: passwordTextField.topAnchor, constant: textFieldHeight + 64.0).isActive = true
         errorLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16.0).isActive = true
         errorLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16.0).isActive = true
         
+        // Set sign in button constraints to allow for multiple device configurations
         signInButton.topAnchor.constraint(equalTo: errorLabel.topAnchor, constant: errorLabelHeight + 32.0).isActive = true
         signInButton.heightAnchor.constraint(equalToConstant: UIButtonHeight).isActive = true
         signInButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 32.0).isActive = true
         signInButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -32.0).isActive = true
         
+        // Set create account button constraints to allow for multiple device configurations
         createAccountButton.topAnchor.constraint(equalTo: signInButton.topAnchor, constant: UIButtonHeight + 24.0).isActive = true
         createAccountButton.heightAnchor.constraint(equalToConstant: UIButtonHeight).isActive = true
         createAccountButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 32.0).isActive = true
@@ -229,6 +238,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     self.errorLabel.text = "Please fill in all fields"
                 }
                 else {
+                    // Sets error messages depending on error
                     switch errorDesc {
                     case .wrongPassword:
                         self.errorLabel.text = "Wrong password. Please try again"
@@ -247,7 +257,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             else{
                 // Transition to home view
                 let homeViewController:HomeViewController = HomeViewController()
-                homeViewController.modalPresentationStyle = .fullScreen
+                homeViewController.modalPresentationStyle = .fullScreen // Set view style to fullscreen
                 self.present(homeViewController, animated: true, completion: nil)
             }
         }
@@ -267,7 +277,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         // Transition to create an account view
         let signUpViewController:SignupViewController = SignupViewController()
-        signUpViewController.modalPresentationStyle = .fullScreen
+        signUpViewController.modalPresentationStyle = .fullScreen // Set view style to fullscreen
         self.present(signUpViewController, animated: true, completion: nil)
     }
 }

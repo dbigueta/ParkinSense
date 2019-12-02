@@ -30,11 +30,11 @@ class TiltScoreViewController: UIViewController {
     let finalScoreStaticLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Score"
-        label.textAlignment = .center
-        label.font = tiltTitleFont
-        label.textColor = tiltTextColour
-        label.heightAnchor.constraint(equalToConstant: finalScoreStaticLabelHeight).isActive = true
+        label.text = "Score" // Set label text
+        label.textAlignment = .center // Set label text alignment
+        label.font = tiltTitleFont // Set label text font
+        label.textColor = tiltTextColour // Set label text font colour
+        label.heightAnchor.constraint(equalToConstant: finalScoreStaticLabelHeight).isActive = true // Set label height
         return label
     }()
     
@@ -42,11 +42,11 @@ class TiltScoreViewController: UIViewController {
     let finalScoreLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Score"
-        label.textAlignment = .center
-        label.font = tiltFinalScoreFont
-        label.textColor = tiltTextColour
-        label.heightAnchor.constraint(equalToConstant: finalScoreLabelHeight).isActive = true
+        label.text = "Score" // Set label text
+        label.textAlignment = .center // Set label text alignment
+        label.font = tiltFinalScoreFont // Set label text font
+        label.textColor = tiltTextColour // Set label text font colour
+        label.heightAnchor.constraint(equalToConstant: finalScoreLabelHeight).isActive = true // Set label height
         return label
     }()
     
@@ -54,14 +54,14 @@ class TiltScoreViewController: UIViewController {
     let replayButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("REPLAY", for: .normal)
-        button.setTitleColor(tiltTextColour, for: .normal)
-        button.layer.cornerRadius = 25
-        button.backgroundColor = tiltButtonColour
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 20.0, weight: .medium)
+        button.setTitle("REPLAY", for: .normal) // Set button label text
+        button.setTitleColor(tiltTextColour, for: .normal) // Set button label text font colour
+        button.layer.cornerRadius = 25 // Make button to have rounded corners
+        button.backgroundColor = tiltButtonColour // Set button background colour
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 20.0, weight: .medium) // Set button label text font
         button.addTarget(self, action: #selector(replayButtonPressed(_:)), for: .touchUpInside)
-        button.widthAnchor.constraint(equalToConstant: replayButtonWidth).isActive = true
-        button.heightAnchor.constraint(equalToConstant: replayButtonHeight).isActive = true
+        button.widthAnchor.constraint(equalToConstant: replayButtonWidth).isActive = true // Set button width
+        button.heightAnchor.constraint(equalToConstant: replayButtonHeight).isActive = true // Set button height
         return button
     }()
     
@@ -69,14 +69,14 @@ class TiltScoreViewController: UIViewController {
     let finalQuitButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("QUIT", for: .normal)
-        button.setTitleColor(tiltTextColour, for: .normal)
-        button.layer.cornerRadius = 25
-        button.backgroundColor = tiltButtonColour
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 20.0, weight: .medium)
+        button.setTitle("QUIT", for: .normal) // Set button label text
+        button.setTitleColor(tiltTextColour, for: .normal) // Set button label text font colour
+        button.layer.cornerRadius = 25 // Make button to have rounded corners
+        button.backgroundColor = tiltButtonColour // Set button background colour
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 20.0, weight: .medium) // Set button label text font
         button.addTarget(self, action: #selector(quitButtonPressed(_:)), for: .touchUpInside)
-        button.widthAnchor.constraint(equalToConstant: finalQuitButtonWidth).isActive = true
-        button.heightAnchor.constraint(equalToConstant: finalQuitButtonHeight).isActive = true
+        button.widthAnchor.constraint(equalToConstant: finalQuitButtonWidth).isActive = true // Set button width
+        button.heightAnchor.constraint(equalToConstant: finalQuitButtonHeight).isActive = true // Set button height
         return button
     }()
     
@@ -102,13 +102,16 @@ class TiltScoreViewController: UIViewController {
         finalScoreStaticLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         finalScoreStaticLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 128.0).isActive = true
         
+         // Set tilt final score constraints to allow for multiple device configurations
         finalScoreLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         finalScoreLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         finalScoreLabel.topAnchor.constraint(equalTo: finalScoreStaticLabel.topAnchor, constant: finalScoreStaticLabelHeight + 16.0).isActive = true
         
+         // Set tilt replay button constraints to allow for multiple device configurations
         replayButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: tiltReplayButtonButtonOffset).isActive = true
         replayButton.topAnchor.constraint(equalTo: finalScoreLabel.topAnchor, constant: finalScoreLabelHeight + 64.0).isActive = true
         
+         // Set tilt quit button constraints to allow for multiple device configurations
         finalQuitButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: tiltFinalQuitButtonOffset).isActive = true
         finalQuitButton.topAnchor.constraint(equalTo: replayButton.topAnchor, constant: replayButtonHeight + 24.0).isActive = true
         
@@ -124,6 +127,8 @@ class TiltScoreViewController: UIViewController {
         //Updates score on database
         if  tiltFinalScore > maxScoreTodayOne {
             maxScoreTodayOne = tiltFinalScore
+           
+            // Update the database
             db.collection("users").document(userid).collection("gaming_score").document(currentTimeDate).setData(["date":thisTimeLoginDateStr, "Game_One_lastMaxScore":maxScoreTodayOne, "Game_Two_lastMaxScore":maxScoreTodayTwo, "feeling": feeling])
          
             // Updates the Firebase database

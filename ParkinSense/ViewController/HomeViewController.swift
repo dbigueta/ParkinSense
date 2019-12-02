@@ -49,7 +49,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
     // Container that keeps all the scrollable content
     let scrollViewContainer: UIStackView = {
         let view = UIStackView()
-        view.axis = .vertical
+        view.axis = .vertical // Set content stacking
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -57,7 +57,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
     // Progress view that contains the progress label
     let signOutView: UIView = {
         let view = UIView()
-        view.isUserInteractionEnabled = true
+        view.isUserInteractionEnabled = true // enables user interaction
         view.heightAnchor.constraint(equalToConstant: signOutViewHeight).isActive = true
         return view
     }()
@@ -65,18 +65,18 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
     // Sign Out Button
     let signOutButton: UIButton = {
         let button = UIButton()
-        Utilities.styleUIButton(button)
-        button.setTitle("S I G N    O U T", for: .normal)
-        button.layer.cornerRadius = 0
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 20.0, weight: .medium)
-        button.addTarget(self, action: #selector(signOutTapped(_:)), for: .touchUpInside)
+        Utilities.styleUIButton(button) // Styles button
+        button.setTitle("S I G N    O U T", for: .normal) // Set button label
+        button.layer.cornerRadius = 0 // Set the button to be rectangular
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 20.0, weight: .medium) // Set font size
+        button.addTarget(self, action: #selector(signOutTapped(_:)), for: .touchUpInside) // Set function to be triggered if tapped
         return button
     }()
     
     // Progress view that contains the progress label
     let progressView: UIView = {
         let view = UIView()
-        view.heightAnchor.constraint(equalToConstant: progressViewHeight).isActive = true
+        view.heightAnchor.constraint(equalToConstant: progressViewHeight).isActive = true // Set height
         return view
     }()
     
@@ -84,35 +84,29 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
     let progressLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Weekly Progress"
-        label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: headerFontSize, weight: .medium)
-        label.heightAnchor.constraint(equalToConstant: headerHeight).isActive = true
+        label.text = "Weekly Progress" // Set text label
+        label.textAlignment = .center // Set text alignment
+        label.font = UIFont.systemFont(ofSize: headerFontSize, weight: .medium) // Set label font
+        label.heightAnchor.constraint(equalToConstant: headerHeight).isActive = true // Set label height
         return label
     }()
     
     // Data scroll view that contains the trendline and the day information
     let dataScrollView: UIScrollView = {
         let scrollView = UIScrollView()
-        scrollView.heightAnchor.constraint(equalToConstant: dataScrollViewHeight).isActive = true
+        scrollView.heightAnchor.constraint(equalToConstant: dataScrollViewHeight).isActive = true // Set label height
         scrollView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.isPagingEnabled = true
+        scrollView.isPagingEnabled = true // Set pages for scroll view
         return scrollView
     }()
-    
-    // Variables related to the day information in the trendline
-    var Datalabeltext1: UILabel!
-    var Datalabeltext2: UILabel!
-    var Datalabeltext3: UILabel!
-    var Datalabeltext4: UILabel!
     
     // Date UI label
     let dateLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Date"
-        label.textAlignment = .left
-        label.font = UIFont.systemFont(ofSize: textFontSize, weight: .regular)
+        label.text = "Date" // Set label text
+        label.textAlignment = .left // Set label text alignment
+        label.font = UIFont.systemFont(ofSize: textFontSize, weight: .regular) // Set label font
         return label
     }()
 
@@ -120,9 +114,9 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
     let medLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Medication 1"
-        label.textAlignment = .left
-        label.font = UIFont.systemFont(ofSize: textFontSize, weight: .regular)
+        label.text = "Medication 1" // Set label text
+        label.textAlignment = .left // Set label text alignment
+        label.font = UIFont.systemFont(ofSize: textFontSize, weight: .regular) // Set label font
         return label
     }()
     
@@ -130,9 +124,9 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
     let medLabel1: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Medication 2"
-        label.textAlignment = .left
-        label.font = UIFont.systemFont(ofSize: textFontSize, weight: .regular)
+        label.text = "Medication 2" // Set label text
+        label.textAlignment = .left // Set label text alignment
+        label.font = UIFont.systemFont(ofSize: textFontSize, weight: .regular) // Set label font
         return label
     }()
     
@@ -140,9 +134,9 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
     let medLabel2: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Medication 3"
-        label.textAlignment = .left
-        label.font = UIFont.systemFont(ofSize: textFontSize, weight: .regular)
+        label.text = "Medication 3" // Set label text
+        label.textAlignment = .left // Set label text alignment
+        label.font = UIFont.systemFont(ofSize: textFontSize, weight: .regular) // Set label font
         return label
     }()
     
@@ -150,9 +144,9 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
     let medLabel3: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Medication 4"
-        label.textAlignment = .left
-        label.font = UIFont.systemFont(ofSize: textFontSize, weight: .regular)
+        label.text = "Medication 4" // Set label text
+        label.textAlignment = .left // Set label text alignment
+        label.font = UIFont.systemFont(ofSize: textFontSize, weight: .regular) // Set label font
         return label
     }()
     
@@ -160,9 +154,9 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
     let medLabel4: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Medication 5"
-        label.textAlignment = .left
-        label.font = UIFont.systemFont(ofSize: textFontSize, weight: .regular)
+        label.text = "Medication 5" // Set label text
+        label.textAlignment = .left // Set label text alignment
+        label.font = UIFont.systemFont(ofSize: textFontSize, weight: .regular) // Set label font
         return label
     }()
     
@@ -170,9 +164,9 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
     let tiltGameScore: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Tilt Game Score"
-        label.textAlignment = .left
-        label.font = UIFont.systemFont(ofSize: textFontSize, weight: .regular)
+        label.text = "Tilt Game Score" // Set label text
+        label.textAlignment = .left // Set label text alignment
+        label.font = UIFont.systemFont(ofSize: textFontSize, weight: .regular) // Set label font
         return label
     }()
     
@@ -180,9 +174,9 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
     let bubbleGameScore: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Bubble Game Score"
-        label.textAlignment = .left
-        label.font = UIFont.systemFont(ofSize: textFontSize, weight: .regular)
+        label.text = "Bubble Game Score" // Set label text
+        label.textAlignment = .left // Set label text alignment
+        label.font = UIFont.systemFont(ofSize: textFontSize, weight: .regular) // Set label font
         return label
     }()
     
@@ -190,9 +184,9 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
     let moodLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Mood"
-        label.textAlignment = .left
-        label.font = UIFont.systemFont(ofSize: textFontSize, weight: .regular)
+        label.text = "Mood" // Set label text
+        label.textAlignment = .left // Set label text alignment
+        label.font = UIFont.systemFont(ofSize: textFontSize, weight: .regular) // Set label font
         return label
     }()
     
@@ -202,9 +196,9 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
     // Allows for a consistent switch between trendline and day information
     let pageControl: UIPageControl = {
         let page = UIPageControl()
-        page.pageIndicatorTintColor = .gray
-        page.currentPageIndicatorTintColor = .black
-        page.numberOfPages = 3
+        page.pageIndicatorTintColor = .gray // Set page control colour
+        page.currentPageIndicatorTintColor = .black // Set active page control colour
+        page.numberOfPages = 3 // Set number of pages for trendline and daily data
         page.translatesAutoresizingMaskIntoConstraints = false
         return page
     }()
@@ -212,7 +206,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
     // Calendar view that displays the days of the week, and the next/prev buttons
     let calendarView: UIView = {
         let view = UIView()
-        view.heightAnchor.constraint(equalToConstant: calendarViewHeight).isActive = true
+        view.heightAnchor.constraint(equalToConstant: calendarViewHeight).isActive = true // Set view height
         return view
     }()
     
@@ -220,10 +214,10 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
     let weekLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Week Select"
-        label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: headerFontSize, weight: .medium)
-        label.heightAnchor.constraint(equalToConstant: headerHeight).isActive = true
+        label.text = "Week Select" // Set label text
+        label.textAlignment = .center // Set label text alignment
+        label.font = UIFont.systemFont(ofSize: headerFontSize, weight: .medium) // Set label font
+        label.heightAnchor.constraint(equalToConstant: headerHeight).isActive = true // Set font height
         return label
     }()
     
@@ -231,12 +225,12 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
     let prevWeek: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("< Prev", for: .normal)
-        button.contentHorizontalAlignment = .left
-        button.setTitleColor(homeButtonFontColour, for: .normal)
-        button.addTarget(self, action: #selector(prevWeekButtonPressed(_:)), for: .touchUpInside)
-        button.widthAnchor.constraint(equalToConstant: screenWidth/3).isActive = true
-        button.heightAnchor.constraint(equalToConstant: weekButtonHeight).isActive = true
+        button.setTitle("< Prev", for: .normal) // Set button label text
+        button.contentHorizontalAlignment = .left // Set button label text alignment
+        button.setTitleColor(homeButtonFontColour, for: .normal) // Set button label colour
+        button.addTarget(self, action: #selector(prevWeekButtonPressed(_:)), for: .touchUpInside) // Set function to trigger if tapped
+        button.widthAnchor.constraint(equalToConstant: screenWidth/3).isActive = true // Set button width
+        button.heightAnchor.constraint(equalToConstant: weekButtonHeight).isActive = true // Set button height
         return button
     }()
     
@@ -244,10 +238,10 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
     let weekDateLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Date Range"
-        label.textAlignment = .center
-        label.widthAnchor.constraint(equalToConstant: screenWidth/3).isActive = true
-        label.heightAnchor.constraint(equalToConstant: weekButtonHeight).isActive = true
+        label.text = "Date Range" // Set label text
+        label.textAlignment = .center // Set label text alignment
+        label.widthAnchor.constraint(equalToConstant: screenWidth/3).isActive = true // Set label width
+        label.heightAnchor.constraint(equalToConstant: weekButtonHeight).isActive = true // Set label height
         return label
     }()
     
@@ -255,12 +249,12 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
     let nextWeek: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Next >", for: .normal)
-        button.contentHorizontalAlignment = .right
-        button.setTitleColor(homeButtonFontColour, for: .normal)
-        button.addTarget(self, action: #selector(nextWeekButtonPressed(_:)), for: .touchUpInside)
-        button.widthAnchor.constraint(equalToConstant: screenWidth/3).isActive = true
-        button.heightAnchor.constraint(equalToConstant: weekButtonHeight).isActive = true
+        button.setTitle("Next >", for: .normal) // Set button label text
+        button.contentHorizontalAlignment = .right // Set button label text alignment
+        button.setTitleColor(homeButtonFontColour, for: .normal) // Set button label colour
+        button.addTarget(self, action: #selector(nextWeekButtonPressed(_:)), for: .touchUpInside) // Set function to trigger if tapped
+        button.widthAnchor.constraint(equalToConstant: screenWidth/3).isActive = true // Set button width
+        button.heightAnchor.constraint(equalToConstant: weekButtonHeight).isActive = true // Set button height
         return button
     }()
     
@@ -268,13 +262,13 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
     let sundayButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitleColor(homeButtonFontColour, for: .normal)
-        button.layer.borderWidth = homeDayButtonBorderWidth
-        button.layer.cornerRadius = 5
-        button.backgroundColor = homeBtnColour
-        button.addTarget(self, action: #selector(sundayDateSelected(_:)), for: .touchUpInside)
-        button.widthAnchor.constraint(equalToConstant: homeDayButtonWidth).isActive = true
-        button.heightAnchor.constraint(equalToConstant: homeDayButtonWidth).isActive = true
+        button.setTitleColor(homeButtonFontColour, for: .normal) // Set button text colour
+        button.layer.borderWidth = homeDayButtonBorderWidth // Set button border width
+        button.layer.cornerRadius = 5 // Set button to be rounded corners
+        button.backgroundColor = homeBtnColour // Set button background colour
+        button.addTarget(self, action: #selector(sundayDateSelected(_:)), for: .touchUpInside) // Set function to trigger if tapped
+        button.widthAnchor.constraint(equalToConstant: homeDayButtonWidth).isActive = true  // Set button width
+        button.heightAnchor.constraint(equalToConstant: homeDayButtonWidth).isActive = true // Set button height
         //button.layer.borderColor = UIColor(red:0.75, green:0.85, blue:0.84, alpha:1.0).cgColor
         return button
     }()
@@ -283,13 +277,13 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
     let mondayButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitleColor(homeButtonFontColour, for: .normal)
-        button.layer.borderWidth = homeDayButtonBorderWidth
-        button.layer.cornerRadius = 5
-        button.backgroundColor = homeBtnColour
-        button.addTarget(self, action: #selector(mondayDateSelected(_:)), for: .touchUpInside)
-        button.widthAnchor.constraint(equalToConstant: homeDayButtonWidth).isActive = true
-        button.heightAnchor.constraint(equalToConstant: homeDayButtonWidth).isActive = true
+        button.setTitleColor(homeButtonFontColour, for: .normal) // Set button text colour
+        button.layer.borderWidth = homeDayButtonBorderWidth // Set button border width
+        button.layer.cornerRadius = 5 // Set button to be rounded corners
+        button.backgroundColor = homeBtnColour // Set button background colour
+        button.addTarget(self, action: #selector(mondayDateSelected(_:)), for: .touchUpInside) // Set function to trigger if tapped
+        button.widthAnchor.constraint(equalToConstant: homeDayButtonWidth).isActive = true // Set button width
+        button.heightAnchor.constraint(equalToConstant: homeDayButtonWidth).isActive = true // Set button height
         return button
     }()
     
@@ -297,13 +291,13 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
     let tuesdayButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitleColor(homeButtonFontColour, for: .normal)
-        button.layer.borderWidth = homeDayButtonBorderWidth
-        button.layer.cornerRadius = 5
-        button.backgroundColor = homeBtnColour
-        button.addTarget(self, action: #selector(tuesdayDateSelected(_:)), for: .touchUpInside)
-        button.widthAnchor.constraint(equalToConstant: homeDayButtonWidth).isActive = true
-        button.heightAnchor.constraint(equalToConstant: homeDayButtonWidth).isActive = true
+        button.setTitleColor(homeButtonFontColour, for: .normal) // Set button text colour
+        button.layer.borderWidth = homeDayButtonBorderWidth // Set button border width
+        button.layer.cornerRadius = 5 // Set button to be rounded corners
+        button.backgroundColor = homeBtnColour // Set button background colour
+        button.addTarget(self, action: #selector(tuesdayDateSelected(_:)), for: .touchUpInside) // Set function to trigger if tapped
+        button.widthAnchor.constraint(equalToConstant: homeDayButtonWidth).isActive = true // Set button width
+        button.heightAnchor.constraint(equalToConstant: homeDayButtonWidth).isActive = true // Set button height
         return button
     }()
     
@@ -311,13 +305,13 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
     let wednesdayButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitleColor(homeButtonFontColour, for: .normal)
-        button.layer.borderWidth = homeDayButtonBorderWidth
-        button.layer.cornerRadius = 5
-        button.backgroundColor = homeBtnColour
-        button.addTarget(self, action: #selector(wednesdayDateSelected(_:)), for: .touchUpInside)
-        button.widthAnchor.constraint(equalToConstant: homeDayButtonWidth).isActive = true
-        button.heightAnchor.constraint(equalToConstant: homeDayButtonWidth).isActive = true
+        button.setTitleColor(homeButtonFontColour, for: .normal) // Set button text colour
+        button.layer.borderWidth = homeDayButtonBorderWidth // Set button border width
+        button.layer.cornerRadius = 5 // Set button to be rounded corners
+        button.backgroundColor = homeBtnColour // Set button background colour
+        button.addTarget(self, action: #selector(wednesdayDateSelected(_:)), for: .touchUpInside) // Set function to trigger if tapped
+        button.widthAnchor.constraint(equalToConstant: homeDayButtonWidth).isActive = true // Set button width
+        button.heightAnchor.constraint(equalToConstant: homeDayButtonWidth).isActive = true // Set button height
         return button
     }()
     
@@ -325,13 +319,13 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
     let thursdayButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitleColor(homeButtonFontColour, for: .normal)
-        button.layer.borderWidth = homeDayButtonBorderWidth
-        button.layer.cornerRadius = 5
-        button.backgroundColor = homeBtnColour
-        button.addTarget(self, action: #selector(thursdayDateSelected(_:)), for: .touchUpInside)
-        button.widthAnchor.constraint(equalToConstant: homeDayButtonWidth).isActive = true
-        button.heightAnchor.constraint(equalToConstant: homeDayButtonWidth).isActive = true
+        button.setTitleColor(homeButtonFontColour, for: .normal) // Set button text colour
+        button.layer.borderWidth = homeDayButtonBorderWidth // Set button border width
+        button.layer.cornerRadius = 5 // Set button to be rounded corners
+        button.backgroundColor = homeBtnColour // Set button background colour
+        button.addTarget(self, action: #selector(thursdayDateSelected(_:)), for: .touchUpInside) // Set function to trigger if tapped
+        button.widthAnchor.constraint(equalToConstant: homeDayButtonWidth).isActive = true // Set button width
+        button.heightAnchor.constraint(equalToConstant: homeDayButtonWidth).isActive = true // Set button height
         return button
     }()
     
@@ -339,13 +333,13 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
     let fridayButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitleColor(homeButtonFontColour, for: .normal)
-        button.layer.borderWidth = homeDayButtonBorderWidth
-        button.layer.cornerRadius = 5
-        button.backgroundColor = homeBtnColour
-        button.addTarget(self, action: #selector(fridayDateSelected(_:)), for: .touchUpInside)
-        button.widthAnchor.constraint(equalToConstant: homeDayButtonWidth).isActive = true
-        button.heightAnchor.constraint(equalToConstant: homeDayButtonWidth).isActive = true
+        button.setTitleColor(homeButtonFontColour, for: .normal) // Set button text colour
+        button.layer.borderWidth = homeDayButtonBorderWidth // Set button border width
+        button.layer.cornerRadius = 5 // Set button to be rounded corners
+        button.backgroundColor = homeBtnColour // Set button background colour
+        button.addTarget(self, action: #selector(fridayDateSelected(_:)), for: .touchUpInside) // Set function to trigger if tapped
+        button.widthAnchor.constraint(equalToConstant: homeDayButtonWidth).isActive = true // Set button width
+        button.heightAnchor.constraint(equalToConstant: homeDayButtonWidth).isActive = true // Set button height
         return button
     }()
     
@@ -353,20 +347,20 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
     let saturdayButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitleColor(homeButtonFontColour, for: .normal)
-        button.layer.borderWidth = homeDayButtonBorderWidth
-        button.layer.cornerRadius = 5
-        button.backgroundColor = homeBtnColour
-        button.addTarget(self, action: #selector(saturdayDateSelected(_:)), for: .touchUpInside)
-        button.widthAnchor.constraint(equalToConstant: homeDayButtonWidth).isActive = true
-        button.heightAnchor.constraint(equalToConstant: homeDayButtonWidth).isActive = true
+        button.setTitleColor(homeButtonFontColour, for: .normal) // Set button text colour
+        button.layer.borderWidth = homeDayButtonBorderWidth // Set button border width
+        button.layer.cornerRadius = 5 // Set button to be rounded corners
+        button.backgroundColor = homeBtnColour // Set button background colour
+        button.addTarget(self, action: #selector(saturdayDateSelected(_:)), for: .touchUpInside) // Set function to trigger if tapped
+        button.widthAnchor.constraint(equalToConstant: homeDayButtonWidth).isActive = true // Set button width
+        button.heightAnchor.constraint(equalToConstant: homeDayButtonWidth).isActive = true // Set button height
         return button
     }()
     
     // Game view that contains the two buttons to initiate the games
     let gameView: UIView = {
         let view = UIView()
-        view.heightAnchor.constraint(equalToConstant: gameViewHeight).isActive = true
+        view.heightAnchor.constraint(equalToConstant: gameViewHeight).isActive = true // Set view height
         return view
     }()
     
@@ -374,9 +368,9 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
     let gameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Game Selection"
-        label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: headerFontSize, weight: .medium)
+        label.text = "Game Selection" // Set label text
+        label.textAlignment = .center // Set label text alignment
+        label.font = UIFont.systemFont(ofSize: headerFontSize, weight: .medium) // Set label font
         label.heightAnchor.constraint(equalToConstant: headerHeight).isActive = true
         return label
     }()
@@ -385,16 +379,16 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
     let tiltButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitleColor(tiltButtonColour, for: .normal)
-        button.layer.borderWidth = homeGameButtonBorderWidth
-        button.layer.cornerRadius = 5
-        button.backgroundColor = tiltBackgroundColour
-        button.setImage(UIImage(named: "tiltBtn.png"), for: .normal)
-        button.imageEdgeInsets = UIEdgeInsets(top: 25, left: 25, bottom: 25, right: 25)
+        button.setTitleColor(tiltButtonColour, for: .normal) // Set button text colour
+        button.layer.borderWidth = homeGameButtonBorderWidth // Set button border width
+        button.layer.cornerRadius = 5 // Set button to be rounded corners
+        button.backgroundColor = tiltBackgroundColour // Set button background colour
+        button.setImage(UIImage(named: "tiltBtn.png"), for: .normal) // Set button image
+        button.imageEdgeInsets = UIEdgeInsets(top: 25, left: 25, bottom: 25, right: 25) // Set button image padding
         //button.setTitle("Tilt", for: .normal)
-        button.addTarget(self, action: #selector(tiltButtonPressed(_:)), for: .touchUpInside)
-        button.widthAnchor.constraint(equalToConstant: homeGameButtonWidth).isActive = true
-        button.heightAnchor.constraint(equalToConstant: homeGameButtonWidth).isActive = true
+        button.addTarget(self, action: #selector(tiltButtonPressed(_:)), for: .touchUpInside) // Set function to trigger if tapped
+        button.widthAnchor.constraint(equalToConstant: homeGameButtonWidth).isActive = true // Set button width
+        button.heightAnchor.constraint(equalToConstant: homeGameButtonWidth).isActive = true // Set button height
         return button
     }()
     
@@ -402,16 +396,16 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
     let bubblePopButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitleColor(buttonTextColour, for: .normal)
-        button.layer.borderWidth = homeGameButtonBorderWidth
-        button.layer.cornerRadius = 5
-        button.backgroundColor = bubbleBackgroundColour
-        button.setImage(UIImage(named: "bubbleBtn.png"), for: .normal)
-        button.imageEdgeInsets = UIEdgeInsets(top: 25, left: 20, bottom: 15, right: 20)
+        button.setTitleColor(buttonTextColour, for: .normal) // Set button text colour
+        button.layer.borderWidth = homeGameButtonBorderWidth // Set button border width
+        button.layer.cornerRadius = 5 // Set button to be rounded corners
+        button.backgroundColor = bubbleBackgroundColour // Set button background colour
+        button.setImage(UIImage(named: "bubbleBtn.png"), for: .normal) // Set button image
+        button.imageEdgeInsets = UIEdgeInsets(top: 25, left: 20, bottom: 15, right: 20) // Set button image padding
         //button.setTitle("Bubble Pop", for: .normal)
-        button.addTarget(self, action: #selector(bubblePopButtonPressed(_:)), for: .touchUpInside)
-        button.widthAnchor.constraint(equalToConstant: homeGameButtonWidth).isActive = true
-        button.heightAnchor.constraint(equalToConstant: homeGameButtonWidth).isActive = true
+        button.addTarget(self, action: #selector(bubblePopButtonPressed(_:)), for: .touchUpInside) // Set function to trigger if tapped
+        button.widthAnchor.constraint(equalToConstant: homeGameButtonWidth).isActive = true // Set button width
+        button.heightAnchor.constraint(equalToConstant: homeGameButtonWidth).isActive = true // Set button height
         return button
     }()
     
@@ -426,11 +420,13 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
     override func loadView(){
         super.loadView()
         
-        //Add labels, buttons, and views to its respective locations
+        // Add signout button to signout view
         signOutView.addSubview(signOutButton)
         
+        // Add label to progressView view
         progressView.addSubview(progressLabel)
         
+        // Add all respective labels to data scroll view
         dataScrollView.addSubview(dateLabel)
         dataScrollView.addSubview(medLabel)
         dataScrollView.addSubview(medLabel1)
@@ -441,6 +437,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         dataScrollView.addSubview(bubbleGameScore)
         dataScrollView.addSubview(moodLabel)
         
+        // Add all respective labels, buttons, and page controls to calendar view
         calendarView.addSubview(pageControl)
         calendarView.addSubview(weekLabel)
         calendarView.addSubview(prevWeek)
@@ -454,10 +451,12 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         calendarView.addSubview(fridayButton)
         calendarView.addSubview(saturdayButton)
         
+        // Add all respective buttons and labels to game view
         gameView.addSubview(gameLabel)
         gameView.addSubview(tiltButton)
         gameView.addSubview(bubblePopButton)
         
+        // Place each view in its proper location on the screen
         view.addSubview(scrollView)
         scrollView.addSubview(scrollViewContainer)
         scrollViewContainer.addArrangedSubview(signOutView)
@@ -466,105 +465,131 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         scrollViewContainer.addArrangedSubview(calendarView)
         scrollViewContainer.addArrangedSubview(gameView)
         
-        //Setup constraints for all views, labels, and buttons
+        // Set scroll view constraints to allow for scrollable content
         scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         
+        // Set sign out view constraints to allow for multiple device configurations
         signOutView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor).isActive = true
         signOutView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor).isActive = true
         signOutView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
         
+        // Set sign out button constraints to allow for multiple device configurations
         signOutButton.topAnchor.constraint(equalTo: signOutView.topAnchor).isActive = true
         signOutButton.heightAnchor.constraint(equalToConstant: signOutViewHeight).isActive = true
         signOutButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
         signOutButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
         
+        // Set scroll view container constraints to allow content to scroll based on device height
         scrollViewContainer.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor).isActive = true
         scrollViewContainer.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor).isActive = true
         scrollViewContainer.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
         scrollViewContainer.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
-        
-        // this is important for scrolling
         scrollViewContainer.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
         
+        // Set date label constraints to allow for multiple device configurations
         dateLabel.leadingAnchor.constraint(equalTo: dataScrollView.leadingAnchor, constant: screenWidth * 2 +  24.0).isActive = true
         dateLabel.topAnchor.constraint(equalTo: dataScrollView.topAnchor, constant: (dataScrollViewHeight - 9*textFontSize - 64.0)/2).isActive = true
         
+        // Set medication label constraints to allow for multiple device configurations
         medLabel.leadingAnchor.constraint(equalTo: dataScrollView.leadingAnchor, constant: screenWidth * 2 +  24.0).isActive = true
         medLabel.topAnchor.constraint(equalTo: dateLabel.topAnchor, constant: textFontSize + 8.0).isActive = true
         
+        // Set medication 2 label constraints to allow for multiple device configurations
         medLabel1.leadingAnchor.constraint(equalTo: dataScrollView.leadingAnchor, constant: screenWidth * 2 +  24.0).isActive = true
         medLabel1.topAnchor.constraint(equalTo: medLabel.topAnchor, constant: textFontSize + 8.0).isActive = true
         
+        // Set medication 3 label constraints to allow for multiple device configurations
         medLabel2.leadingAnchor.constraint(equalTo: dataScrollView.leadingAnchor, constant: screenWidth * 2 +  24.0).isActive = true
         medLabel2.topAnchor.constraint(equalTo: medLabel1.topAnchor, constant: textFontSize + 8.0).isActive = true
         
+        // Set medication 4 label constraints to allow for multiple device configurations
         medLabel3.leadingAnchor.constraint(equalTo: dataScrollView.leadingAnchor, constant: screenWidth * 2 +  24.0).isActive = true
         medLabel3.topAnchor.constraint(equalTo: medLabel2.topAnchor, constant: textFontSize + 8.0).isActive = true
         
+        // Set medication 5 label constraints to allow for multiple device configurations
         medLabel4.leadingAnchor.constraint(equalTo: dataScrollView.leadingAnchor, constant: screenWidth * 2 +  24.0).isActive = true
         medLabel4.topAnchor.constraint(equalTo: medLabel3.topAnchor, constant: textFontSize + 8.0).isActive = true
         
+        // Set tilt score label constraints to allow for multiple device configurations
         tiltGameScore.leadingAnchor.constraint(equalTo: dataScrollView.leadingAnchor, constant: screenWidth * 2 +  24.0).isActive = true
         tiltGameScore.topAnchor.constraint(equalTo: medLabel4.topAnchor, constant: textFontSize + 8.0).isActive = true
         
+        // Set bubble pop label constraints to allow for multiple device configurations
         bubbleGameScore.leadingAnchor.constraint(equalTo: dataScrollView.leadingAnchor, constant: screenWidth * 2 +  24.0).isActive = true
         bubbleGameScore.topAnchor.constraint(equalTo: tiltGameScore.topAnchor, constant: textFontSize + 8.0).isActive = true
         
+        // Set mood label constraints to allow for multiple device configurations
         moodLabel.leadingAnchor.constraint(equalTo: dataScrollView.leadingAnchor, constant: screenWidth * 2 +  24.0).isActive = true
         moodLabel.topAnchor.constraint(equalTo: bubbleGameScore.topAnchor, constant: textFontSize + 8.0).isActive = true
         
+        // Set progress label constraints to allow for multiple device configurations
         progressLabel.leadingAnchor.constraint(equalTo: progressView.leadingAnchor, constant: 16.0).isActive = true
         progressLabel.trailingAnchor.constraint(equalTo: progressView.trailingAnchor, constant: -16.0).isActive = true
         progressLabel.topAnchor.constraint(equalTo: progressView.topAnchor).isActive = true
         
+        // Set page controls constraints to allow for multiple device configurations
         pageControl.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 16.0).isActive = true
         pageControl.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -16.0).isActive = true
         pageControl.topAnchor.constraint(equalTo: dataScrollView.topAnchor, constant: dataScrollViewHeight - 4.0).isActive = true
         
+        // Set week select label constraints to allow for multiple device configurations
         weekLabel.leadingAnchor.constraint(equalTo: calendarView.leadingAnchor, constant: 16.0).isActive = true
         weekLabel.trailingAnchor.constraint(equalTo: calendarView.trailingAnchor, constant: -16.0).isActive = true
         weekLabel.topAnchor.constraint(equalTo: calendarView.topAnchor, constant: 24.0).isActive = true
         
+        // Set prev week button constraints to allow for multiple device configurations
         prevWeek.leadingAnchor.constraint(equalTo: calendarView.leadingAnchor, constant: 8.0).isActive = true
         prevWeek.topAnchor.constraint(equalTo: weekLabel.topAnchor, constant: headerHeight).isActive = true
         
+        // Set week range label constraints to allow for multiple device configurations
         weekDateLabel.leadingAnchor.constraint(equalTo: prevWeek.leadingAnchor, constant: screenWidth/3).isActive = true
         weekDateLabel.topAnchor.constraint(equalTo: weekLabel.topAnchor, constant: headerHeight).isActive = true
         
+        // Set next week button constraints to allow for multiple device configurations
         nextWeek.trailingAnchor.constraint(equalTo: calendarView.trailingAnchor, constant: -8.0).isActive = true
         nextWeek.topAnchor.constraint(equalTo: weekLabel.topAnchor, constant: headerHeight).isActive = true
         
+        // Set day button constraints to allow for multiple device configurations
         sundayButton.leadingAnchor.constraint(equalTo: calendarView.leadingAnchor, constant: offsetTopWeekButtons).isActive = true
         sundayButton.topAnchor.constraint(equalTo: weekDateLabel.topAnchor, constant: weekButtonHeight + 24.0).isActive = true
         
+        // Set day button constraints to allow for multiple device configurations
         mondayButton.leadingAnchor.constraint(equalTo: sundayButton.leadingAnchor, constant: homeDayButtonWidth + offsetTopWeekButtons).isActive = true
         mondayButton.topAnchor.constraint(equalTo: weekDateLabel.topAnchor, constant: weekButtonHeight + 24.0).isActive = true
         
+        // Set day button constraints to allow for multiple device configurations
         tuesdayButton.leadingAnchor.constraint(equalTo: mondayButton.leadingAnchor, constant: homeDayButtonWidth + offsetTopWeekButtons).isActive = true
         tuesdayButton.topAnchor.constraint(equalTo: weekDateLabel.topAnchor, constant: weekButtonHeight + 24.0).isActive = true
         
+        // Set day button constraints to allow for multiple device configurations
         wednesdayButton.leadingAnchor.constraint(equalTo: tuesdayButton.leadingAnchor, constant: homeDayButtonWidth + offsetTopWeekButtons).isActive = true
         wednesdayButton.topAnchor.constraint(equalTo: weekDateLabel.topAnchor, constant: weekButtonHeight + 24.0).isActive = true
         
+        // Set day button constraints to allow for multiple device configurations
         thursdayButton.leadingAnchor.constraint(equalTo: calendarView.leadingAnchor, constant: offsetBottomWeekButtons).isActive = true
         thursdayButton.topAnchor.constraint(equalTo: sundayButton.topAnchor, constant: homeDayButtonWidth + 16.0).isActive = true
         
+        // Set day button constraints to allow for multiple device configurations
         fridayButton.leadingAnchor.constraint(equalTo: thursdayButton.leadingAnchor, constant: homeDayButtonWidth + offsetTopWeekButtons).isActive = true
         fridayButton.topAnchor.constraint(equalTo: sundayButton.topAnchor, constant: homeDayButtonWidth + 16.0).isActive = true
         
+        // Set day button constraints to allow for multiple device configurations
         saturdayButton.leadingAnchor.constraint(equalTo: fridayButton.leadingAnchor, constant: homeDayButtonWidth + offsetTopWeekButtons).isActive = true
         saturdayButton.topAnchor.constraint(equalTo: sundayButton.topAnchor, constant: homeDayButtonWidth + 16.0).isActive = true
         
+        // Set game select header constraints to allow for multiple device configurations
         gameLabel.leadingAnchor.constraint(equalTo: gameView.leadingAnchor, constant: 16.0).isActive = true
         gameLabel.trailingAnchor.constraint(equalTo: gameView.trailingAnchor, constant: -16.0).isActive = true
         gameLabel.topAnchor.constraint(equalTo: gameView.topAnchor).isActive = true
         
+        // Set tilt game button constraints to allow for multiple device configurations
         tiltButton.leadingAnchor.constraint(equalTo: gameView.leadingAnchor, constant: offsetGameButtons).isActive = true
         tiltButton.topAnchor.constraint(equalTo: gameLabel.topAnchor, constant: headerHeight + 16.0).isActive = true
         
+        // Set bubble pop button constraints to allow for multiple device configurations
         bubblePopButton.leadingAnchor.constraint(equalTo: tiltButton.leadingAnchor, constant: homeGameButtonWidth + offsetGameButtons).isActive = true
         bubblePopButton.topAnchor.constraint(equalTo: gameLabel.topAnchor, constant: headerHeight + 16.0).isActive = true
     }
@@ -585,14 +610,12 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         scrollView.setContentOffset(newOffset, animated: false)
         
         // Set background colour of the view
-        //self.view.backgroundColor = UIColor(red:0.96, green:0.95, blue:0.95, alpha:1.0)
         self.view.backgroundColor = UIColor(red:0.96, green:0.95, blue:0.95, alpha:1.0)
         setupUserData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        updateInformation()
-        
+        updateInformation() // Updates information on the daily data trendline
     }
     
     /**
@@ -686,11 +709,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
      **/
     func popoverMedication(haveMedication: Bool){
         dateFormatter.dateFormat = "yyyy-MM-dd"
-//        let currentTimeDate = dateFormatter.string(from: Date())
-//
-        //var medicineTaken = false
-        //var mood = ""
-        
+
         // Performs medication alert only if there was medication inputted
         if haveMedication == true {
             // Create a new alert controller to display alerts
@@ -698,20 +717,18 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
             
             // Add alert option
             alert.addAction(UIAlertAction(title: "Yes", style: .default) {Void in
-                //medicineTaken = true
-                self.popoverFeeling()
+                self.popoverFeeling() // Make mood popup appear
             })
             
             // Add alert option
             alert.addAction(UIAlertAction(title: "No", style: .default) {Void in
-                //medicineTaken = false
-                self.popoverFeeling()
+                self.popoverFeeling() // Make mood popup appear
             })
             
             self.present(alert,animated: true)
         }
         else {
-            popoverFeeling()
+            popoverFeeling() // Make mood popup appear
         }
     }
     
@@ -727,17 +744,33 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         // Create a new alert controller to display alerts
         let alert = UIAlertController(title: "Daily Mood", message: "What is your current mood?", preferredStyle: .alert)
         
-        // Add alert options for each mood option
+        // Add alert options for happy option and updates the database and info within the app
         alert.addAction(UIAlertAction(title: "Happy", style: .default) {Void in mood = "Happy"; self.syncDatabase(mood: mood)})
+        
+        // Add alert options for excited option and updates the database and info within the app
         alert.addAction(UIAlertAction(title: "Excited", style: .default) {Void in mood = "Excited"; self.syncDatabase(mood: mood)})
+        
+        // Add alert options for calm option and updates the database and info within the app
         alert.addAction(UIAlertAction(title: "Calm", style: .default) {Void in mood = "Calm"; self.syncDatabase(mood: mood)})
+        
+        // Add alert options for anxious option and updates the database and info within the app
         alert.addAction(UIAlertAction(title: "Anxious", style: .default) {Void in mood = "Anxious"; self.syncDatabase(mood: mood)})
+        
+        // Add alert options for sad option and updates the database and info within the app
         alert.addAction(UIAlertAction(title: "Sad", style: .default) {Void in mood = "Sad"; self.syncDatabase(mood: mood)})
+        
+        // Add alert options for angry option and updates the database and info within the app
         alert.addAction(UIAlertAction(title: "Angry", style: .default) {Void in mood = "Angry"; self.syncDatabase(mood: mood)})
         
         self.present(alert,animated: true)
     }
     
+    
+    /**
+     Function that syncs up the firebase database when there is a change in local data
+     
+     - Parameters: String containing selected mood
+     **/
     func syncDatabase(mood: String) {
         let currentTimeDate = dateFormatter.string(from: Date())
         feeling = mood
@@ -856,7 +889,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
     
     
     /**
-     Function to det week range on calendar
+     Function to determine week range on calendar
      
      - Parameter newformattedtartcurrentweek: String
      - Parameter newformattedendcurrentweek: String
@@ -910,6 +943,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         fridayButton.backgroundColor = homeBtnColour
         saturdayButton.backgroundColor = homeBtnColour
         
+        // Resets all font weights of the buttons
         sundayButton.titleLabel?.font = UIFont.systemFont(ofSize: 20.0, weight: .regular)
         mondayButton.titleLabel?.font = UIFont.systemFont(ofSize: 20.0, weight: .regular)
         tuesdayButton.titleLabel?.font = UIFont.systemFont(ofSize: 20.0, weight: .regular)
@@ -918,6 +952,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         fridayButton.titleLabel?.font = UIFont.systemFont(ofSize: 20.0, weight: .regular)
         saturdayButton.titleLabel?.font = UIFont.systemFont(ofSize: 20.0, weight: .regular)
         
+        // Resets all button background colours
         sundayButton.setTitleColor(homeButtonFontColour, for: .normal)
         mondayButton.setTitleColor(homeButtonFontColour, for: .normal)
         tuesdayButton.setTitleColor(homeButtonFontColour, for: .normal)
@@ -928,38 +963,38 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         
         // Sets the background of the current selected date
         if selectedDate == sundayDatewithMY{
-            sundayButton.backgroundColor = selectedDayBackgroundColour
-            sundayButton.titleLabel?.font = UIFont.systemFont(ofSize: 20.0, weight: .bold)
+            sundayButton.backgroundColor = selectedDayBackgroundColour // Set background colour to indicate current selection
+            sundayButton.titleLabel?.font = UIFont.systemFont(ofSize: 20.0, weight: .bold) // Set button font weight to bold to indicate current selection
             sundayButton.setTitleColor(buttonTextColour, for: .normal)
         }
         if selectedDate == mondayDatewithMY{
-            mondayButton.backgroundColor = selectedDayBackgroundColour
-            mondayButton.titleLabel?.font = UIFont.systemFont(ofSize: 20.0, weight: .bold)
+            mondayButton.backgroundColor = selectedDayBackgroundColour // Set background colour to indicate current selection
+            mondayButton.titleLabel?.font = UIFont.systemFont(ofSize: 20.0, weight: .bold) // Set button font weight to bold to indicate current selection
             mondayButton.setTitleColor(buttonTextColour, for: .normal)
         }
         if selectedDate == tuesdayDatewithMY{
-            tuesdayButton.backgroundColor = selectedDayBackgroundColour
-            tuesdayButton.titleLabel?.font = UIFont.systemFont(ofSize: 20.0, weight: .bold)
+            tuesdayButton.backgroundColor = selectedDayBackgroundColour // Set background colour to indicate current selection
+            tuesdayButton.titleLabel?.font = UIFont.systemFont(ofSize: 20.0, weight: .bold) // Set button font weight to bold to indicate current selection
             tuesdayButton.setTitleColor(buttonTextColour, for: .normal)
         }
         if selectedDate == wednesdayDatewithMY{
-            wednesdayButton.backgroundColor = selectedDayBackgroundColour
-            wednesdayButton.titleLabel?.font = UIFont.systemFont(ofSize: 20.0, weight: .bold)
+            wednesdayButton.backgroundColor = selectedDayBackgroundColour // Set background colour to indicate current selection
+            wednesdayButton.titleLabel?.font = UIFont.systemFont(ofSize: 20.0, weight: .bold) // Set button font weight to bold to indicate current selection
             wednesdayButton.setTitleColor(buttonTextColour, for: .normal)
         }
         if selectedDate == thursdayDatewithMY{
-            thursdayButton.backgroundColor = selectedDayBackgroundColour
-            thursdayButton.titleLabel?.font = UIFont.systemFont(ofSize: 20.0, weight: .bold)
+            thursdayButton.backgroundColor = selectedDayBackgroundColour // Set background colour to indicate current selection
+            thursdayButton.titleLabel?.font = UIFont.systemFont(ofSize: 20.0, weight: .bold) // Set button font weight to bold to indicate current selection
             thursdayButton.setTitleColor(buttonTextColour, for: .normal)
         }
         if selectedDate == fridayDatewithMY{
-            fridayButton.backgroundColor = selectedDayBackgroundColour
-            fridayButton.titleLabel?.font = UIFont.systemFont(ofSize: 20.0, weight: .bold)
+            fridayButton.backgroundColor = selectedDayBackgroundColour // Set background colour to indicate current selection
+            fridayButton.titleLabel?.font = UIFont.systemFont(ofSize: 20.0, weight: .bold) // Set button font weight to bold to indicate current selection
             fridayButton.setTitleColor(buttonTextColour, for: .normal)
         }
         if selectedDate == saturdayDatewithMY{
-            saturdayButton.backgroundColor = selectedDayBackgroundColour
-            saturdayButton.titleLabel?.font = UIFont.systemFont(ofSize: 20.0, weight: .bold)
+            saturdayButton.backgroundColor = selectedDayBackgroundColour // Set background colour to indicate current selection
+            saturdayButton.titleLabel?.font = UIFont.systemFont(ofSize: 20.0, weight: .bold) // Set button font weight to bold to indicate current selection
             saturdayButton.setTitleColor(buttonTextColour, for: .normal)
         }
     }
@@ -973,108 +1008,131 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
      **/
     func setupTrendline(currentDate: String){
         
+        // remove current trendlines from the screen
         lineChartView?.removeFromSuperview()
         lineChartView1?.removeFromSuperview()
         
+        // Sets up relative positions of the trendlines
         let x1Pos = CGFloat(0) * screenWidth
         let x3Pos = CGFloat(1) * screenWidth
         
+        // Holds trendline data entries for the past 7 days
         var dataEntries: [ChartDataEntry] = []
         var dataEntries1: [ChartDataEntry] = []
         
+        // Set up line chart to the corresponding locations
         lineChartView = LineChartView(frame: CGRect(x: x1Pos, y: 0, width: screenWidth, height: dataScrollViewHeight))
         lineChartView1 = LineChartView(frame: CGRect(x: x3Pos, y: 0, width: screenWidth, height: dataScrollViewHeight))
         
+        // Retrieve last seven days
         selectedDateinDatetype = dateFormatter.date(from: selectedDate)
         pastSevenDatefunc(currentSelectedDate: selectedDateinDatetype!)
         
-        lineChartView.isUserInteractionEnabled = false
-        lineChartView.leftAxis.axisMinimum = 0
-        lineChartView.rightAxis.enabled = false
-        lineChartView.xAxis.spaceMin = 0.5
-        lineChartView.xAxis.spaceMax = 0.5
-        lineChartView.xAxis.drawGridLinesEnabled = false
-        lineChartView.legend.font = UIFont.systemFont(ofSize: 15)
-        lineChartView.xAxis.labelFont = UIFont.systemFont(ofSize: 12)
-        lineChartView.leftAxis.labelFont = UIFont.systemFont(ofSize: 12)
-        lineChartView.legend.font = UIFont.systemFont(ofSize: 15)
+        lineChartView.isUserInteractionEnabled = false // Stops user from interacting with trendline
+        lineChartView.leftAxis.axisMinimum = 0 // Sets the axis minimum
+        lineChartView.rightAxis.enabled = false // Removes right axis
+        lineChartView.xAxis.spaceMin = 0.5 // Sets padding of x-axis
+        lineChartView.xAxis.spaceMax = 0.5 // Sets padding of x-axis
+        lineChartView.xAxis.drawGridLinesEnabled = false // Removes gridlines
+        lineChartView.legend.font = UIFont.systemFont(ofSize: 15) // Sets the legend font size
+        lineChartView.xAxis.labelFont = UIFont.systemFont(ofSize: 12) // Sets the axis font size
+        lineChartView.leftAxis.labelFont = UIFont.systemFont(ofSize: 12) // Sets the yaxis font size
         
+        // Sets the x axis labels to the 7 days
         lineChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values:pastSevenDate)
-        lineChartView.xAxis.labelPosition = XAxis.LabelPosition.bottom
+        lineChartView.xAxis.labelPosition = XAxis.LabelPosition.bottom // Sets x-axis to be at the bottom
         
-        lineChartView1.isUserInteractionEnabled = false
-        lineChartView1.leftAxis.axisMinimum = 0
-        lineChartView1.rightAxis.enabled = false
-        lineChartView1.xAxis.spaceMin = 0.5
-        lineChartView1.xAxis.spaceMax = 0.5
-        lineChartView1.xAxis.drawGridLinesEnabled = false
-        lineChartView1.xAxis.labelFont = UIFont.systemFont(ofSize: 12)
-        lineChartView1.leftAxis.labelFont = UIFont.systemFont(ofSize: 12)
-        lineChartView1.legend.font = UIFont.systemFont(ofSize: 15)
+        lineChartView1.isUserInteractionEnabled = false // Stops user from interacting with trendline
+        lineChartView1.leftAxis.axisMinimum = 0 // Sets the axis minimum
+        lineChartView1.rightAxis.enabled = false// Removes right axis
+        lineChartView1.xAxis.spaceMin = 0.5 // Sets padding of x-axis
+        lineChartView1.xAxis.spaceMax = 0.5 // Sets padding of x-axis
+        lineChartView1.xAxis.drawGridLinesEnabled = false // Removes gridlines
+        lineChartView1.xAxis.labelFont = UIFont.systemFont(ofSize: 12) // Sets the axis font size
+        lineChartView1.leftAxis.labelFont = UIFont.systemFont(ofSize: 12) // Sets the yaxis font size
+        lineChartView1.legend.font = UIFont.systemFont(ofSize: 15) // Sets the legend font size
         
+        // Sets the x axis labels to the 7 days
         lineChartView1.xAxis.valueFormatter = IndexAxisValueFormatter(values:pastSevenDate)
-        lineChartView1.xAxis.labelPosition = XAxis.LabelPosition.bottom
+        lineChartView1.xAxis.labelPosition = XAxis.LabelPosition.bottom // Sets x-axis to be at the bottom
         
         for i in 0..<7 {
+            // Add in all the data points to be plotted
             let dataEntry = ChartDataEntry(x: Double(i), y: Double(values[6-i]))
             dataEntries.append(dataEntry)
             
+            // Add in all the data points to be plotted
             let dataEntry1 = ChartDataEntry(x: Double(i), y: Double(values1[6-i]))
             dataEntries1.append(dataEntry1)
         }
         
+        // Set the trendline data and legend labels
         let lineChartDataSet = LineChartDataSet(entries: dataEntries, label: "Tilt Score")
         let lineChartDataSet1 = LineChartDataSet(entries: dataEntries1, label: "Bubble Pop Score")
         
-        lineChartDataSet.colors = [tiltButtonColour]
-        lineChartDataSet.setCircleColor(tiltButtonColour)
-        lineChartDataSet.circleHoleColor = tiltButtonColour
-        lineChartDataSet.circleRadius = 4.0
-        lineChartDataSet.lineWidth = 3.0
-        lineChartDataSet.valueFont = (UIFont.systemFont(ofSize: 12))
+        lineChartDataSet.colors = [tiltButtonColour] // Set the colour of the trendline
+        lineChartDataSet.setCircleColor(tiltButtonColour) // Set the circle colour of the trendline
+        lineChartDataSet.circleHoleColor = tiltButtonColour // Set the hole colour of the trendline
+        lineChartDataSet.circleRadius = 4.0 // Set the circle radius of the trendline
+        lineChartDataSet.lineWidth = 3.0 // Set the line width of the trendline
+        lineChartDataSet.valueFont = (UIFont.systemFont(ofSize: 12)) // Sets the font size
         
-        lineChartDataSet1.colors = [bubbleTextColour]
-        lineChartDataSet1.setCircleColor(bubbleTextColour)
-        lineChartDataSet1.circleHoleColor = bubbleTextColour
-        lineChartDataSet1.circleRadius = 4.0
-        lineChartDataSet1.lineWidth = 3.0
-        lineChartDataSet1.valueFont = (UIFont.systemFont(ofSize: 12))
+        lineChartDataSet1.colors = [bubbleTextColour] // Set the colour of the trendline
+        lineChartDataSet1.setCircleColor(bubbleTextColour) // Set the circle colour of the trendline
+        lineChartDataSet1.circleHoleColor = bubbleTextColour // Set the hole colour of the trendline
+        lineChartDataSet1.circleRadius = 4.0 // Set the circle radius of the trendline
+        lineChartDataSet1.lineWidth = 3.0 // Set the line width of the trendline
+        lineChartDataSet1.valueFont = (UIFont.systemFont(ofSize: 12)) // Sets the font size
         
         let lineChartData = LineChartData(dataSet: lineChartDataSet)
         let lineChartData1 = LineChartData(dataSet: lineChartDataSet1)
         
+         // Set the respective trendline data
         lineChartView.data = lineChartData
         lineChartView1.data = lineChartData1
         
+         // Set the trendline data to animate when loaded
         lineChartView.animate(yAxisDuration: 1.5, easingOption: .easeInSine)
         lineChartView1.animate(yAxisDuration: 1.5, easingOption: .easeInSine)
         
+         // Add all trendlines to the screen
         dataScrollView.addSubview(lineChartView)
         dataScrollView.addSubview(lineChartView1)
         dataScrollView.contentSize.width = screenWidth * 3
     }
     
-    
+    /**
+     Function that updates the labels on the daily data portion
+     
+     - Returns: None
+     **/
     func setupDailyData() {
-        dateLabel.text = "Date:  \(selectedDate)"
-        medLabel.text = "Medication 1:  " + medicationName
-        medLabel1.text = "Medication 2:  " + medicationName1
-        medLabel2.text = "Medication 3:  " + medicationName2
-        medLabel3.text = "Medication 4:  " + medicationName3
-        medLabel4.text = "Medication 5:  " + medicationName4
-        tiltGameScore.text = "Maximum TILT Score:  \(maxScoreSelectedDateOne)"
-        bubbleGameScore.text = "Maximum Bubble Pop Score:  \(maxScoreSelectedDateTwo)"
-        moodLabel.text = "Mood:  " + feeling
+        dateLabel.text = "Date:  \(selectedDate)" // Set updated selected date
+        medLabel.text = "Medication 1:  " + medicationName // Set updated medication name
+        medLabel1.text = "Medication 2:  " + medicationName1 // Set updated medication name 2
+        medLabel2.text = "Medication 3:  " + medicationName2 // Set updated medication name 3
+        medLabel3.text = "Medication 4:  " + medicationName3 // Set updated medication name 4
+        medLabel4.text = "Medication 5:  " + medicationName4 // Set updated medication name 5
+        tiltGameScore.text = "Maximum TILT Score:  \(maxScoreSelectedDateOne)" // Set updated tilt score
+        bubbleGameScore.text = "Maximum Bubble Pop Score:  \(maxScoreSelectedDateTwo)" //Set updated bubble pop score
+        moodLabel.text = "Mood:  " + feeling // Set updated mood
     }
     
     
+    /**
+     Function that is triggered when the Sunday button is pressed
+     
+     - Returns: None
+     **/
     @objc func sundayDateSelected(_ sender: Any) {
         let currentTimeDate = dateFormatter.string(from: Date())
         
         selectedDate = sundayDatewithMY
-        updateInformation()
-        highlightSelectedDate()
+        updateInformation() // Update information to firebase
+        highlightSelectedDate() // Highlight new selected date
         
+        // Checks to see if you have tapped the current date twice
+        // If you have selected the current date twice, have the mood popup display to allow changes to the mood
         if selectedDate == currentTimeDate && alreadyTappedTodaysDate == true {
             alreadyTappedTodaysDate = false
             popoverFeeling()
@@ -1083,13 +1141,21 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         else { alreadyTappedTodaysDate = false }
     }
     
+    
+    /**
+     Function that is triggered when the Monday button is pressed
+     
+     - Returns: None
+     **/
     @objc func mondayDateSelected(_ sender: Any) {
         let currentTimeDate = dateFormatter.string(from: Date())
         
         selectedDate = mondayDatewithMY
-        updateInformation()
-        highlightSelectedDate()
+        updateInformation() // Update information to firebase
+        highlightSelectedDate() // Highlight new selected date
         
+        // Checks to see if you have tapped the current date twice
+        // If you have selected the current date twice, have the mood popup display to allow changes to the mood
         if selectedDate == currentTimeDate && alreadyTappedTodaysDate == true {
             alreadyTappedTodaysDate = false
             popoverFeeling()
@@ -1098,13 +1164,21 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         else { alreadyTappedTodaysDate = false }
     }
     
+    
+    /**
+     Function that is triggered when the Tuesday button is pressed
+     
+     - Returns: None
+     **/
     @objc func tuesdayDateSelected(_ sender: Any) {
         let currentTimeDate = dateFormatter.string(from: Date())
         
         selectedDate = tuesdayDatewithMY
-        updateInformation()
-        highlightSelectedDate()
+        updateInformation() // Update information to firebase
+        highlightSelectedDate() // Highlight new selected date
         
+        // Checks to see if you have tapped the current date twice
+        // If you have selected the current date twice, have the mood popup display to allow changes to the mood
         if selectedDate == currentTimeDate && alreadyTappedTodaysDate == true {
             alreadyTappedTodaysDate = false
             popoverFeeling()
@@ -1113,13 +1187,21 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         else { alreadyTappedTodaysDate = false }
     }
     
+    
+    /**
+     Function that is triggered when the Wednesday button is pressed
+     
+     - Returns: None
+     **/
     @objc func wednesdayDateSelected(_ sender: Any) {
         let currentTimeDate = dateFormatter.string(from: Date())
         
         selectedDate = wednesdayDatewithMY
-        updateInformation()
-        highlightSelectedDate()
+        updateInformation() // Update information to firebase
+        highlightSelectedDate() // Highlight new selected date
         
+        // Checks to see if you have tapped the current date twice
+        // If you have selected the current date twice, have the mood popup display to allow changes to the mood
         if selectedDate == currentTimeDate && alreadyTappedTodaysDate == true {
             alreadyTappedTodaysDate = false
             popoverFeeling()
@@ -1128,13 +1210,21 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         else { alreadyTappedTodaysDate = false }
     }
     
+    
+    /**
+     Function that is triggered when the Thursday button is pressed
+     
+     - Returns: None
+     **/
     @objc func thursdayDateSelected(_ sender: Any) {
         let currentTimeDate = dateFormatter.string(from: Date())
         
         selectedDate = thursdayDatewithMY
-        updateInformation()
-        highlightSelectedDate()
+        updateInformation() // Update information to firebase
+        highlightSelectedDate() // Highlight new selected date
         
+        // Checks to see if you have tapped the current date twice
+        // If you have selected the current date twice, have the mood popup display to allow changes to the mood
         if selectedDate == currentTimeDate && alreadyTappedTodaysDate == true {
             alreadyTappedTodaysDate = false
             popoverFeeling()
@@ -1143,13 +1233,21 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         else { alreadyTappedTodaysDate = false }
     }
     
+    
+    /**
+     Function that is triggered when the Friday button is pressed
+     
+     - Returns: None
+     **/
     @objc func fridayDateSelected(_ sender: Any) {
         let currentTimeDate = dateFormatter.string(from: Date())
         
         selectedDate = fridayDatewithMY
-        updateInformation()
-        highlightSelectedDate()
+        updateInformation() // Update information to firebase
+        highlightSelectedDate() // Highlight new selected date
         
+        // Checks to see if you have tapped the current date twice
+        // If you have selected the current date twice, have the mood popup display to allow changes to the mood
         if selectedDate == currentTimeDate && alreadyTappedTodaysDate == true {
             alreadyTappedTodaysDate = false
             popoverFeeling()
@@ -1158,13 +1256,21 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         else { alreadyTappedTodaysDate = false }
     }
     
+    
+    /**
+     Function that is triggered when the Saturday button is pressed
+     
+     - Returns: None
+     **/
     @objc func saturdayDateSelected(_ sender: Any) {
         let currentTimeDate = dateFormatter.string(from: Date())
         
         selectedDate = saturdayDatewithMY
-        updateInformation()
-        highlightSelectedDate()
+        updateInformation() // Update information to firebase
+        highlightSelectedDate() // Highlight new selected date
         
+        // Checks to see if you have tapped the current date twice
+        // If you have selected the current date twice, have the mood popup display to allow changes to the mood
         if selectedDate == currentTimeDate && alreadyTappedTodaysDate == true {
             alreadyTappedTodaysDate = false
             popoverFeeling()
@@ -1174,61 +1280,78 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
     }
     
     
+    /**
+     Function that grabs information from firebase and updates the local information
+     
+     - Returns: None
+     **/
     func updateInformation() {
         let db = Firestore.firestore()
         var selectedDateinDatetype = dateFormatter.date(from: selectedDate)
         
+        // Grab information for the past seven days from the selected date
         for dayi in 0..<7 {
             dateFormatter.dateFormat = "yyyy-MM-dd"
             let tempSelectedDate = dateFormatter.string(from: selectedDateinDatetype!)
             
+            // Call firebase to retrieve data
             db.collection("users").document(userid).collection("gaming_score").document(tempSelectedDate).getDocument { (document, error) in
                 if error == nil {
                     if document != nil && document!.exists {
                         let documentData = document!.data()
                         
+                        // Update values if there is data in firebase
                         values[dayi] = documentData!["Game_One_lastMaxScore"] as! Int
                         values1[dayi] = documentData!["Game_Two_lastMaxScore"] as! Int
                     }
                     else {
+                        // If there is no data in firebase, set values to 0
                         values[dayi] = 0
                         values1[dayi] = 0
                     }
                 }
+                // Check to see that all the data has been retrieved from firebase
                 self.checkDataStatus()
             }
+            // Update new date to retrieve information for
             selectedDateinDatetype = selectedDateinDatetype! - 3600*24
         }
         
+        // Call firebase to retrieve information about the mood and max score
         db.collection("users").document(userid).collection("gaming_score").document(selectedDate).getDocument { (document, error) in
             if error == nil {
                 if document != nil && document!.exists {
                     let DocumentData = document!.data()
+                    
+                    // If there is data in firebase, retrieve the data and store it locally
                     maxScoreSelectedDateOne = DocumentData!["Game_One_lastMaxScore"] as! Int
                     maxScoreSelectedDateTwo = DocumentData!["Game_Two_lastMaxScore"] as! Int
                     feeling = DocumentData!["feeling"] as! String
                 }
                 else {
+                    // If no data exists in firebase, set the default values for mood and scores
                     maxScoreSelectedDateOne = 0
                     maxScoreSelectedDateTwo = 0
                     feeling = "N/A"
                 }
             }
+            // Update the trendline and daily data section
             self.setupDailyData()
         }
     }
     
     
     /**
-     Function about the Tilt Button, will direct you to the Tilt page
+     Helper function of updateInformation that allows us to check if we have successfully retrieved all the data
      
-     - Parameter sender: Button itself
-     - Returns: No
-     
+     - Returns: None
      **/
     func checkDataStatus() {
+        // Checks to see if 7 data values have been retrieved
         loadedInfoTrendline += 1
+        
         if loadedInfoTrendline == 7 {
+            // If all data has been retrieved, update the trendline again to make sure we have the correct values
             loadedInfoTrendline = 0
             setupTrendline(currentDate: selectedDate)
         }
@@ -1244,7 +1367,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
      **/
     @objc func tiltButtonPressed(_ sender: Any) {
         let tiltUIViewController:TiltUIViewController = TiltUIViewController()
-        tiltUIViewController.modalPresentationStyle = .fullScreen
+        tiltUIViewController.modalPresentationStyle = .fullScreen // Set the view style to be fullscreen
         self.present(tiltUIViewController, animated: true, completion: nil)
     }
     
@@ -1258,7 +1381,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
      **/
     @objc func bubblePopButtonPressed(_ sender: Any) {
         let bubblePopUIViewController:BubbleUIViewController = BubbleUIViewController()
-        bubblePopUIViewController.modalPresentationStyle = .fullScreen
+        bubblePopUIViewController.modalPresentationStyle = .fullScreen // Set the view style to be fullscreen
         self.present(bubblePopUIViewController, animated: true, completion: nil)
     }
     
@@ -1271,8 +1394,8 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
      
      **/
     func scrollViewDidEndDecelerating(_ DataScrollView: UIScrollView) {
-        let page = DataScrollView.contentOffset.x/DataScrollView.frame.width
-        pageControl.currentPage = Int(page)
+        let page = DataScrollView.contentOffset.x/DataScrollView.frame.width // Set the page bounds
+        pageControl.currentPage = Int(page) // Change the page control active page
     }
     
     

@@ -47,12 +47,12 @@ class TiltViewController: UIViewController {
     let timeStaticLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Time"
-        label.textAlignment = .center
-        label.textColor = tiltTextColour
-        label.font = tiltStaticFont
-        label.heightAnchor.constraint(equalToConstant: timeStaticLabelHeight).isActive = true
-        label.widthAnchor.constraint(equalToConstant: timeStaticLabelWidth).isActive = true
+        label.text = "Time" // Set label text
+        label.textAlignment = .center // Set label text alignment
+        label.textColor = tiltTextColour // Set label text colour
+        label.font = tiltStaticFont // Set label text font
+        label.heightAnchor.constraint(equalToConstant: timeStaticLabelHeight).isActive = true // Set label height
+        label.widthAnchor.constraint(equalToConstant: timeStaticLabelWidth).isActive = true // Set label width
         return label
     }()
     
@@ -60,12 +60,12 @@ class TiltViewController: UIViewController {
     let scoreStaticLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Score"
-        label.textAlignment = .center
-        label.textColor = tiltTextColour
-        label.font = tiltStaticFont
-        label.heightAnchor.constraint(equalToConstant: scoreStaticLabelHeight).isActive = true
-        label.widthAnchor.constraint(equalToConstant: scoreStaticLabelWidth).isActive = true
+        label.text = "Score" // Set label text
+        label.textAlignment = .center // Set label text alignment
+        label.textColor = tiltTextColour // Set label text colour
+        label.font = tiltStaticFont // Set label text font
+        label.heightAnchor.constraint(equalToConstant: scoreStaticLabelHeight).isActive = true // Set label height
+        label.widthAnchor.constraint(equalToConstant: scoreStaticLabelWidth).isActive = true // Set label width
         return label
     }()
     
@@ -73,12 +73,12 @@ class TiltViewController: UIViewController {
     let timeLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Time"
-        label.textAlignment = .center
-        label.font = tiltFont
-        label.textColor = tiltTextColour
-        label.heightAnchor.constraint(equalToConstant: timeLabelHeight).isActive = true
-        label.widthAnchor.constraint(equalToConstant: timeLabelWidth).isActive = true
+        label.text = "Time" // Set label text
+        label.textAlignment = .center // Set label text alignment
+        label.font = tiltFont // Set label text font
+        label.textColor = tiltTextColour // Set label text colour
+        label.heightAnchor.constraint(equalToConstant: timeLabelHeight).isActive = true // Set label height
+        label.widthAnchor.constraint(equalToConstant: timeLabelWidth).isActive = true // Set label width
         return label
     }()
     
@@ -86,12 +86,12 @@ class TiltViewController: UIViewController {
     let scoreLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Score"
-        label.textAlignment = .center
-        label.font = tiltFont
-        label.textColor = tiltTextColour
-        label.heightAnchor.constraint(equalToConstant: scoreLabelHeight).isActive = true
-        label.widthAnchor.constraint(equalToConstant: scoreLabelWidth).isActive = true
+        label.text = "Score" // Set label text
+        label.textAlignment = .center // Set label text alignment
+        label.font = tiltFont // Set label text font
+        label.textColor = tiltTextColour // Set label text colour
+        label.heightAnchor.constraint(equalToConstant: scoreLabelHeight).isActive = true // Set label height
+        label.widthAnchor.constraint(equalToConstant: scoreLabelWidth).isActive = true // Set label width
         return label
     }()
     
@@ -99,9 +99,9 @@ class TiltViewController: UIViewController {
     let countdownLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textAlignment = .center
-        label.textColor = countdownTextColour
-        label.font = countdownFont
+        label.textAlignment = .center  // Set label text alignment
+        label.textColor = countdownTextColour // Set label text colour
+        label.font = countdownFont // Set label text font
         return label
     }()
     
@@ -159,13 +159,14 @@ class TiltViewController: UIViewController {
         HUDView.addSubview(timeLabel)
         HUDView.addSubview(scoreLabel)
         
-        //Sets up constraints for all labels in HUD view
         timeStaticLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8.0).isActive = true
         timeStaticLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 16.0).isActive = true
         
+        // Set score label constraints to allow for multiple device configurations
         scoreStaticLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8.0).isActive = true
         scoreStaticLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 16.0).isActive = true
         
+        // Set time label constraints to allow for multiple device configurations
         timeLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8.0).isActive = true
         timeLabel.topAnchor.constraint(equalTo: timeStaticLabel.topAnchor, constant: timeStaticLabelHeight + 8.0).isActive = true
         
@@ -184,6 +185,7 @@ class TiltViewController: UIViewController {
         
         print("Set up Countdown")
         
+        // Setup countdown
         setupCountdownScene()
         
         let transition:SKTransition = SKTransition.fade(withDuration: 0.5)
@@ -199,6 +201,7 @@ class TiltViewController: UIViewController {
      - Returns: None.
      */
     func setupCountdownScene() {
+        // hide HUD and set the respective text labels
         HUDView.isHidden = true
         timeLabel.text = String(gameCountdown)
         scoreLabel.text = String(currentScore)
@@ -212,12 +215,10 @@ class TiltViewController: UIViewController {
      */
     override func viewDidDisappear(_ animated: Bool) {
         if (self.view as? SKView) != nil{
+            // Remove view to be deallocated from memory
             self.view = nil
         }
     }
-    
-    deinit {
-        print("The Tilt View has been removed from memory")
-    }
+
 }
 

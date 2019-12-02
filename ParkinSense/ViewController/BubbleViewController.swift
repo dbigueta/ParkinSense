@@ -47,12 +47,12 @@ class BubbleViewController: UIViewController {
     let timeStaticLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Time"
-        label.textAlignment = .center
-        label.textColor = bubbleTextColour
-        label.font = bubbleStaticFont
-        label.heightAnchor.constraint(equalToConstant: timeStaticLabelHeight).isActive = true
-        label.widthAnchor.constraint(equalToConstant: timeStaticLabelWidth).isActive = true
+        label.text = "Time" // Set label text
+        label.textAlignment = .center // Set label text alignment
+        label.textColor = bubbleTextColour // Set label text colour
+        label.font = bubbleStaticFont // Set label text font
+        label.heightAnchor.constraint(equalToConstant: timeStaticLabelHeight).isActive = true // Set label height
+        label.widthAnchor.constraint(equalToConstant: timeStaticLabelWidth).isActive = true // Set label width
         return label
     }()
     
@@ -60,12 +60,12 @@ class BubbleViewController: UIViewController {
     let scoreStaticLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Score"
-        label.textAlignment = .center
-        label.textColor = bubbleTextColour
-        label.font = bubbleStaticFont
-        label.heightAnchor.constraint(equalToConstant: scoreStaticLabelHeight).isActive = true
-        label.widthAnchor.constraint(equalToConstant: scoreStaticLabelWidth).isActive = true
+        label.text = "Score" // Set label text
+        label.textAlignment = .center // Set label text alignment
+        label.textColor = bubbleTextColour // Set label text colour
+        label.font = bubbleStaticFont // Set label text font
+        label.heightAnchor.constraint(equalToConstant: scoreStaticLabelHeight).isActive = true // Set label height
+        label.widthAnchor.constraint(equalToConstant: scoreStaticLabelWidth).isActive = true // Set label width
         return label
     }()
     
@@ -73,12 +73,12 @@ class BubbleViewController: UIViewController {
     let timeLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Time"
-        label.textAlignment = .center
-        label.font = bubbleFont
-        label.textColor = bubbleTextColour
-        label.heightAnchor.constraint(equalToConstant: timeLabelHeight).isActive = true
-        label.widthAnchor.constraint(equalToConstant: timeLabelWidth).isActive = true
+        label.text = "Time" // Set label text
+        label.textAlignment = .center // Set label text alignment
+        label.font = bubbleFont // Set label text font
+        label.textColor = bubbleTextColour // Set label text colour
+        label.heightAnchor.constraint(equalToConstant: timeLabelHeight).isActive = true // Set label height
+        label.widthAnchor.constraint(equalToConstant: timeLabelWidth).isActive = true // Set label width
         return label
     }()
     
@@ -86,12 +86,12 @@ class BubbleViewController: UIViewController {
     let scoreLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Score"
-        label.textAlignment = .center
-        label.font = bubbleFont
-        label.textColor = bubbleTextColour
-        label.heightAnchor.constraint(equalToConstant: scoreLabelHeight).isActive = true
-        label.widthAnchor.constraint(equalToConstant: scoreLabelWidth).isActive = true
+        label.text = "Score" // Set label text
+        label.textAlignment = .center // Set label text alignment
+        label.font = bubbleFont // Set label text font
+        label.textColor = bubbleTextColour // Set label text colour
+        label.heightAnchor.constraint(equalToConstant: scoreLabelHeight).isActive = true // Set label height
+        label.widthAnchor.constraint(equalToConstant: scoreLabelWidth).isActive = true // Set label width
         return label
     }()
     
@@ -99,9 +99,9 @@ class BubbleViewController: UIViewController {
     let countdownLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textAlignment = .center
-        label.textColor = countdownBubbleTextColour
-        label.font = countdownFont
+        label.textAlignment = .center  // Set label text alignment
+        label.textColor = countdownBubbleTextColour // Set label text colour
+        label.font = countdownFont // Set label text font
         return label
     }()
     
@@ -164,9 +164,11 @@ class BubbleViewController: UIViewController {
         timeStaticLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8.0).isActive = true
         timeStaticLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 16.0).isActive = true
         
+        // Set score label constraints to allow for multiple device configurations
         scoreStaticLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8.0).isActive = true
         scoreStaticLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 16.0).isActive = true
         
+         // Set time label constraints to allow for multiple device configurations
         timeLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8.0).isActive = true
         timeLabel.topAnchor.constraint(equalTo: timeStaticLabel.topAnchor, constant: timeStaticLabelHeight + 8.0).isActive = true
         
@@ -185,6 +187,7 @@ class BubbleViewController: UIViewController {
         
         print("Set up Countdown")
         
+        // Setup countdown
         setupCountdownScene()
         
         let transition:SKTransition = SKTransition.fade(withDuration: 0.5)
@@ -200,6 +203,7 @@ class BubbleViewController: UIViewController {
      - Returns: None.
      */
     func setupCountdownScene() {
+        // hide HUD and set the respective text labels
         HUDView.isHidden = true
         //timeScoreUI.isHidden = true
         timeLabel.text = String(gameCountdown)
@@ -214,6 +218,7 @@ class BubbleViewController: UIViewController {
      */
     override func viewDidDisappear(_ animated: Bool) {
         if (self.view as? SKView) != nil{
+            // Remove view to be deallocated from memory
             self.view = nil
         }
     }

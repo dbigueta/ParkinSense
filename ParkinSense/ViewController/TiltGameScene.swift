@@ -127,6 +127,7 @@ class TiltGameScene: SKScene {
             generateHole()
         }
         
+        // End game if countdown is zero
         if counter == 0 {
             counterTimer.invalidate()
             endGame()
@@ -144,13 +145,16 @@ class TiltGameScene: SKScene {
      - Returns: None.
      */
     func endGame() {
+        // Remove all objects from scene and stop all activities
         motionManager.stopAccelerometerUpdates()
         hole.removeFromParent()
         ball.removeFromParent()
         
+        // Set final scores
         tiltFinalScore = viewController.currentScore
         viewController.HUDView.isHidden = true
         
+        // Transition to score view
         let tiltScoreViewController:TiltScoreViewController = TiltScoreViewController()
         tiltScoreViewController.modalPresentationStyle = .fullScreen
         viewController.present(tiltScoreViewController, animated: true, completion: nil)
@@ -173,15 +177,18 @@ class TiltGameScene: SKScene {
      - Returns: None.
      */
     func generateBall() {
+        // Set up ball physics
         ball.physicsBody = SKPhysicsBody(circleOfRadius: CGFloat(ballRadius))
         ball.physicsBody?.allowsRotation = false
         ball.physicsBody?.linearDamping = ballLinearDamping
         
+        // Set up bounds for the ball
         xRange = SKRange(lowerLimit:CGFloat(ballRadius),upperLimit:size.width - CGFloat(ballRadius))
         yRange = SKRange(lowerLimit:CGFloat(ballRadius),upperLimit:size.height - CGFloat(ballRadius))
         
         ball.constraints = [SKConstraint.positionX(xRange!,y:yRange!)]
         
+        // Set up ball colours and positions
         ball.position = CGPoint(x: frame.size.width/2, y: frame.size.height/2)
         ball.fillColor = tiltBallColour
         ball.strokeColor = tiltBallColour
@@ -198,6 +205,7 @@ class TiltGameScene: SKScene {
     func generateHole() {
         hole.removeFromParent()
         
+        // Set hole colours and position
         hole.position = randomHolePosition()
         hole.strokeColor = tiltHoleColour
         hole.lineWidth = 5
@@ -223,6 +231,7 @@ class TiltGameScene: SKScene {
             xHolePosition = (view?.bounds.maxX)! - holeRadius - setMarginX
         }
         
+        // Checks hole y-axis bounds
         if yHolePosition < holeRadius {
             yHolePosition = holeRadius + setMarginY
         }
@@ -271,8 +280,6 @@ class TiltGameScene: SKScene {
     /**
      Updates the position of the ball and increases the score counter
      
-     - TODO: score should only count up when the whole ball is in the hole
-     
      - Parameter currentTime: TimeInterval.
      
      - Returns: None.
@@ -289,10 +296,12 @@ class TiltGameScene: SKScene {
         }
         #endif
         
+        // Add to score if we detect a collision between the ball and the hole
         if hole.frame.contains(ball.position) {
             viewController.currentScore += 1
             viewController.scoreLabel.text = String(viewController.currentScore)
             
+            // grab accelerometer data
             if let accelerometerData = motionManager.accelerometerData {
                 let x = accelerometerData.acceleration.x
                 let y = accelerometerData.acceleration.y

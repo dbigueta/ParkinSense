@@ -71,11 +71,6 @@ class Utilities: CustomTextField {
         timePicker.datePickerMode = .time
     }
     
-    
-    
-    
-    
-    
     /**
      Button style
      

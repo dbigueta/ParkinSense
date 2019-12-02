@@ -25,7 +25,7 @@ class BubbleUIViewController: UIViewController {
     // App Logo UI Image
     let gameImageView: UIImageView = {
         let imageView = UIImageView(image: bubbleImage)
-        Utilities.styleImageView(imageView)
+        Utilities.styleImageView(imageView) // Style game icon
         return imageView
     }()
     
@@ -33,10 +33,10 @@ class BubbleUIViewController: UIViewController {
     let bubbleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "BUBBLE POP"
-        label.textAlignment = .center
-        label.font = bubbleTitleFont
-        label.textColor = bubbleTextColour
+        label.text = "BUBBLE POP" // Set label text
+        label.textAlignment = .center // Set text alignment
+        label.font = bubbleTitleFont // Set label font
+        label.textColor = bubbleTextColour  // Set label font colour
         label.heightAnchor.constraint(equalToConstant: bubbleLabelHeight).isActive = true
         return label
     }()
@@ -45,9 +45,9 @@ class BubbleUIViewController: UIViewController {
     let instructionsLabelLine1: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Tap on the bubble as it pops up"
-        label.textAlignment = .center
-        label.textColor = bubbleTextColour
+        label.text = "Tap on the bubble as it pops up" // Set label text
+        label.textAlignment = .center // Set text alignment
+        label.textColor = bubbleTextColour  // Set label font colour
         label.heightAnchor.constraint(equalToConstant: instructionsLabelHeight).isActive = true
         return label
     }()
@@ -56,9 +56,9 @@ class BubbleUIViewController: UIViewController {
     let instructionsLabelLine2: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Tap them as quickly as you can"
-        label.textAlignment = .center
-        label.textColor = bubbleTextColour
+        label.text = "Tap them as quickly as you can" // Set label text
+        label.textAlignment = .center // Set text alignment
+        label.textColor = bubbleTextColour  // Set label font colour
         label.heightAnchor.constraint(equalToConstant: instructionsLabelHeight).isActive = true
         return label
     }()
@@ -67,9 +67,9 @@ class BubbleUIViewController: UIViewController {
     let instructionsLabelLine3: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Good Luck!"
-        label.textAlignment = .center
-        label.textColor = bubbleTextColour
+        label.text = "Good Luck!" // Set label text
+        label.textAlignment = .center // Set text alignment
+        label.textColor = bubbleTextColour  // Set label font colour
         label.heightAnchor.constraint(equalToConstant: instructionsLabelHeight).isActive = true
         return label
     }()
@@ -78,14 +78,14 @@ class BubbleUIViewController: UIViewController {
     let startButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("START", for: .normal)
-        button.setTitleColor(bubbleTextColour, for: .normal)
-        button.layer.cornerRadius = 25
-        button.backgroundColor = bubbleButtonColour
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 20.0, weight: .medium)
-        button.addTarget(self, action: #selector(startGame(_:)), for: .touchUpInside)
-        button.widthAnchor.constraint(equalToConstant: startButtonWidth).isActive = true
-        button.heightAnchor.constraint(equalToConstant: startButtonHeight).isActive = true
+        button.setTitle("START", for: .normal) // Set button label text
+        button.setTitleColor(bubbleTextColour, for: .normal) // Set button label text colour
+        button.layer.cornerRadius = 25 // Make button have rounded corners
+        button.backgroundColor = bubbleButtonColour // Set button background colour
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 20.0, weight: .medium) // Set button label font size
+        button.addTarget(self, action: #selector(startGame(_:)), for: .touchUpInside) // Set function to be triggered if button is tapped
+        button.widthAnchor.constraint(equalToConstant: startButtonWidth).isActive = true // Set button width
+        button.heightAnchor.constraint(equalToConstant: startButtonHeight).isActive = true // Set button height
         return button
     }()
     
@@ -93,9 +93,9 @@ class BubbleUIViewController: UIViewController {
     let soundLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Sound Effects"
-        label.textAlignment = .right
-        label.textColor = bubbleTextColour
+        label.text = "Sound Effects" // Set label text
+        label.textAlignment = .right // Set text alignment
+        label.textColor = bubbleTextColour  // Set label font colour
         label.heightAnchor.constraint(equalToConstant: soundLabelHeight).isActive = true
         label.widthAnchor.constraint(equalToConstant: soundLabelWidth).isActive = true
         return label
@@ -105,9 +105,9 @@ class BubbleUIViewController: UIViewController {
     let soundToggle: UISwitch = {
         let toggle = UISwitch()
         toggle.translatesAutoresizingMaskIntoConstraints = false
-        toggle.setOn(true, animated: false)
-        toggle.addTarget(self, action: #selector(soundTogglePressed(_:)), for: .touchUpInside)
-        toggle.widthAnchor.constraint(equalToConstant: soundToggleWidth).isActive = true
+        toggle.setOn(true, animated: false) // Set default toggle status of toggle
+        toggle.addTarget(self, action: #selector(soundTogglePressed(_:)), for: .touchUpInside) // Set function to be triggered if toggled
+        toggle.widthAnchor.constraint(equalToConstant: soundToggleWidth).isActive = true // Set toggle width
         return toggle
     }()
     
@@ -115,14 +115,14 @@ class BubbleUIViewController: UIViewController {
     let quitButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("QUIT", for: .normal)
-        button.setTitleColor(bubbleTextColour, for: .normal)
-        button.layer.cornerRadius = 25
-        button.backgroundColor = bubbleButtonColour
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 20.0, weight: .medium)
-        button.addTarget(self, action: #selector(quitGame(_:)), for: .touchUpInside)
-        button.widthAnchor.constraint(equalToConstant: quitButtonWidth).isActive = true
-        button.heightAnchor.constraint(equalToConstant: quitButtonHeight).isActive = true
+        button.setTitle("QUIT", for: .normal) // Set button label text
+        button.setTitleColor(bubbleTextColour, for: .normal) // Set button label text colour
+        button.layer.cornerRadius = 25 // Make button have rounded corners
+        button.backgroundColor = bubbleButtonColour // Set button background colour
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 20.0, weight: .medium) // Set button label font size
+        button.addTarget(self, action: #selector(quitGame(_:)), for: .touchUpInside) // Set function to be triggered if button is tapped
+        button.widthAnchor.constraint(equalToConstant: quitButtonWidth).isActive = true // Set button width
+        button.heightAnchor.constraint(equalToConstant: quitButtonHeight).isActive = true // Set button height
         return button
     }()
     
@@ -158,32 +158,39 @@ class BubbleUIViewController: UIViewController {
         gameImageView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16.0).isActive = true
         gameImageView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16.0).isActive = true
         
+        // Set bubblepop title constraints to allow for multiple device configurations
         bubbleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
          bubbleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
          bubbleLabel.topAnchor.constraint(equalTo: gameImageView.topAnchor, constant: gameImageHeight + 24.0).isActive = true
          
-        
+       // Set bubblepop instructions constraints to allow for multiple device configurations
         instructionsLabelLine1.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         instructionsLabelLine1.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         instructionsLabelLine1.topAnchor.constraint(equalTo: bubbleLabel.topAnchor, constant: bubbleLabelHeight + 32.0).isActive = true
         
+        // Set bubblepop instructions constraints to allow for multiple device configurations
         instructionsLabelLine2.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         instructionsLabelLine2.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         instructionsLabelLine2.topAnchor.constraint(equalTo: instructionsLabelLine1.topAnchor, constant: instructionsLabelHeight + 4.0).isActive = true
         
+        // Set bubblepop instructions constraints to allow for multiple device configurations
         instructionsLabelLine3.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         instructionsLabelLine3.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         instructionsLabelLine3.topAnchor.constraint(equalTo: instructionsLabelLine2.topAnchor, constant: instructionsLabelHeight + 4.0).isActive = true
         
+        // Set bubblepop start button constraints to allow for multiple device configurations
         startButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: bubbleStartButtonOffset).isActive = true
         startButton.topAnchor.constraint(equalTo: instructionsLabelLine3.topAnchor, constant: instructionsLabelHeight + 40.0).isActive = true
         
+        // Set sound label constraints to allow for multiple device configurations
         soundLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         soundLabel.topAnchor.constraint(equalTo: startButton.topAnchor, constant: startButtonHeight + 24.0).isActive = true
         
+        // Set sound toggle constraints to allow for multiple device configurations
         soundToggle.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: soundLabelWidth + 56.0).isActive = true
         soundToggle.topAnchor.constraint(equalTo: startButton.topAnchor, constant: startButtonHeight + 24.0).isActive = true
         
+        // Set quit button constraints to allow for multiple device configurations
         quitButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: bubbleQuitButtonOffset).isActive = true
         quitButton.topAnchor.constraint(equalTo: soundLabel.topAnchor, constant: soundLabelHeight + 24.0).isActive = true
         
@@ -193,15 +200,16 @@ class BubbleUIViewController: UIViewController {
     
     func setupSound() {
         
+        // retrieve music file from app
         guard let musicFile = Bundle.main.path(forResource: "Roots", ofType: ".mp3") else {
             print("File Not Found")
             return
         }
         
         try? soundEffect = AVAudioPlayer(contentsOf: URL(fileURLWithPath: musicFile))
-        soundEffect?.numberOfLoops = 0
+        soundEffect?.numberOfLoops = 0 // Set it so that music does not repeat
         
-        soundEffect?.play()
+        soundEffect?.play() // Play sounds
     }
     
     /**
@@ -212,10 +220,10 @@ class BubbleUIViewController: UIViewController {
     @objc func soundTogglePressed(_ sender: UISwitch) {
         if (sender.isOn == false)
         {
-            soundEffect?.pause()
+            soundEffect?.pause() // Stop sound from playing
         }
         else{
-            soundEffect?.play()
+            soundEffect?.play() // Start music
         }
     }
     
@@ -240,6 +248,7 @@ class BubbleUIViewController: UIViewController {
         bubbleViewController.modalPresentationStyle = .fullScreen
         self.present(bubbleViewController, animated: true, completion: nil)
     }
+    
     
     /**
      Quits the game bubble
