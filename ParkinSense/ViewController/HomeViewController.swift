@@ -176,10 +176,10 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
     let sundayButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitleColor(buttonTextColour, for: .normal)
+        button.setTitleColor(homeButtonFontColour, for: .normal)
         button.layer.borderWidth = homeDayButtonBorderWidth
         button.layer.cornerRadius = 5
-        button.backgroundColor = buttonColour
+        button.backgroundColor = homeBtnColour
         button.addTarget(self, action: #selector(sundayDateSelected(_:)), for: .touchUpInside)
         button.widthAnchor.constraint(equalToConstant: homeDayButtonWidth).isActive = true
         button.heightAnchor.constraint(equalToConstant: homeDayButtonWidth).isActive = true
@@ -191,10 +191,10 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
     let mondayButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitleColor(buttonTextColour, for: .normal)
+        button.setTitleColor(homeButtonFontColour, for: .normal)
         button.layer.borderWidth = homeDayButtonBorderWidth
         button.layer.cornerRadius = 5
-        button.backgroundColor = buttonColour
+        button.backgroundColor = homeBtnColour
         button.addTarget(self, action: #selector(mondayDateSelected(_:)), for: .touchUpInside)
         button.widthAnchor.constraint(equalToConstant: homeDayButtonWidth).isActive = true
         button.heightAnchor.constraint(equalToConstant: homeDayButtonWidth).isActive = true
@@ -205,10 +205,10 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
     let tuesdayButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitleColor(buttonTextColour, for: .normal)
+        button.setTitleColor(homeButtonFontColour, for: .normal)
         button.layer.borderWidth = homeDayButtonBorderWidth
         button.layer.cornerRadius = 5
-        button.backgroundColor = buttonColour
+        button.backgroundColor = homeBtnColour
         button.addTarget(self, action: #selector(tuesdayDateSelected(_:)), for: .touchUpInside)
         button.widthAnchor.constraint(equalToConstant: homeDayButtonWidth).isActive = true
         button.heightAnchor.constraint(equalToConstant: homeDayButtonWidth).isActive = true
@@ -219,10 +219,10 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
     let wednesdayButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitleColor(buttonTextColour, for: .normal)
+        button.setTitleColor(homeButtonFontColour, for: .normal)
         button.layer.borderWidth = homeDayButtonBorderWidth
         button.layer.cornerRadius = 5
-        button.backgroundColor = buttonColour
+        button.backgroundColor = homeBtnColour
         button.addTarget(self, action: #selector(wednesdayDateSelected(_:)), for: .touchUpInside)
         button.widthAnchor.constraint(equalToConstant: homeDayButtonWidth).isActive = true
         button.heightAnchor.constraint(equalToConstant: homeDayButtonWidth).isActive = true
@@ -233,10 +233,10 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
     let thursdayButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitleColor(buttonTextColour, for: .normal)
+        button.setTitleColor(homeButtonFontColour, for: .normal)
         button.layer.borderWidth = homeDayButtonBorderWidth
         button.layer.cornerRadius = 5
-        button.backgroundColor = buttonColour
+        button.backgroundColor = homeBtnColour
         button.addTarget(self, action: #selector(thursdayDateSelected(_:)), for: .touchUpInside)
         button.widthAnchor.constraint(equalToConstant: homeDayButtonWidth).isActive = true
         button.heightAnchor.constraint(equalToConstant: homeDayButtonWidth).isActive = true
@@ -247,10 +247,10 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
     let fridayButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitleColor(buttonTextColour, for: .normal)
+        button.setTitleColor(homeButtonFontColour, for: .normal)
         button.layer.borderWidth = homeDayButtonBorderWidth
         button.layer.cornerRadius = 5
-        button.backgroundColor = buttonColour
+        button.backgroundColor = homeBtnColour
         button.addTarget(self, action: #selector(fridayDateSelected(_:)), for: .touchUpInside)
         button.widthAnchor.constraint(equalToConstant: homeDayButtonWidth).isActive = true
         button.heightAnchor.constraint(equalToConstant: homeDayButtonWidth).isActive = true
@@ -261,10 +261,10 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
     let saturdayButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitleColor(buttonTextColour, for: .normal)
+        button.setTitleColor(homeButtonFontColour, for: .normal)
         button.layer.borderWidth = homeDayButtonBorderWidth
         button.layer.cornerRadius = 5
-        button.backgroundColor = buttonColour
+        button.backgroundColor = homeBtnColour
         button.addTarget(self, action: #selector(saturdayDateSelected(_:)), for: .touchUpInside)
         button.widthAnchor.constraint(equalToConstant: homeDayButtonWidth).isActive = true
         button.heightAnchor.constraint(equalToConstant: homeDayButtonWidth).isActive = true
@@ -297,6 +297,8 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         button.layer.borderWidth = homeGameButtonBorderWidth
         button.layer.cornerRadius = 5
         button.backgroundColor = buttonColour
+        button.setImage(UIImage(named: "tiltBtn.png"), for: .normal)
+        button.imageEdgeInsets = UIEdgeInsets(top: 25, left: 25, bottom: 25, right: 25)
         button.setTitle("Tilt", for: .normal)
         button.addTarget(self, action: #selector(tiltButtonPressed(_:)), for: .touchUpInside)
         button.widthAnchor.constraint(equalToConstant: homeGameButtonWidth).isActive = true
@@ -370,10 +372,10 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         signOutView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor).isActive = true
         signOutView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
         
-        signOutButton.topAnchor.constraint(equalTo: signOutView.topAnchor, constant: 16.0).isActive = true
-        signOutButton.heightAnchor.constraint(equalToConstant: UIButtonHeight).isActive = true
-        signOutButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 32.0).isActive = true
-        signOutButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -32.0).isActive = true
+        signOutButton.topAnchor.constraint(equalTo: signOutView.topAnchor).isActive = true
+        signOutButton.heightAnchor.constraint(equalToConstant: signOutViewHeight).isActive = true
+        signOutButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+        signOutButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
         
         scrollViewContainer.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor).isActive = true
         scrollViewContainer.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor).isActive = true
@@ -452,8 +454,8 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         scrollView.setContentOffset(newOffset, animated: false)
         
         // Set background colour of the view
-        self.view.backgroundColor = UIColor(red:0.96, green:0.95, blue:0.95, alpha:1.0)
-        
+        //self.view.backgroundColor = UIColor(red:0.96, green:0.95, blue:0.95, alpha:1.0)
+        self.view.backgroundColor =  UIColor(red:0.96, green:0.96, blue:0.96, alpha:1.0)
         setupUserData()
     }
     
@@ -760,35 +762,50 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
      **/
     func highlightSelectedDate(){
         // Resets all button colours
-        sundayButton.backgroundColor = buttonColour
-        mondayButton.backgroundColor = buttonColour
-        tuesdayButton.backgroundColor = buttonColour
-        wednesdayButton.backgroundColor = buttonColour
-        thursdayButton.backgroundColor = buttonColour
-        fridayButton.backgroundColor = buttonColour
-        saturdayButton.backgroundColor = buttonColour
+        sundayButton.backgroundColor = homeBtnColour
+        mondayButton.backgroundColor = homeBtnColour
+        tuesdayButton.backgroundColor = homeBtnColour
+        wednesdayButton.backgroundColor = homeBtnColour
+        thursdayButton.backgroundColor = homeBtnColour
+        fridayButton.backgroundColor = homeBtnColour
+        saturdayButton.backgroundColor = homeBtnColour
+        
+        sundayButton.titleLabel?.font = UIFont.systemFont(ofSize: 20.0, weight: .regular)
+        mondayButton.titleLabel?.font = UIFont.systemFont(ofSize: 20.0, weight: .regular)
+        tuesdayButton.titleLabel?.font = UIFont.systemFont(ofSize: 20.0, weight: .regular)
+        wednesdayButton.titleLabel?.font = UIFont.systemFont(ofSize: 20.0, weight: .regular)
+        thursdayButton.titleLabel?.font = UIFont.systemFont(ofSize: 20.0, weight: .regular)
+        fridayButton.titleLabel?.font = UIFont.systemFont(ofSize: 20.0, weight: .regular)
+        saturdayButton.titleLabel?.font = UIFont.systemFont(ofSize: 20.0, weight: .regular)
         
         // Sets the background of the current selected date
         if selectedDate == sundayDatewithMY{
             sundayButton.backgroundColor = selectedDayBackgroundColour
+            sundayButton.titleLabel?.font = UIFont.systemFont(ofSize: 20.0, weight: .bold)
         }
         if selectedDate == mondayDatewithMY{
             mondayButton.backgroundColor = selectedDayBackgroundColour
+            mondayButton.titleLabel?.font = UIFont.systemFont(ofSize: 20.0, weight: .bold)
         }
         if selectedDate == tuesdayDatewithMY{
             tuesdayButton.backgroundColor = selectedDayBackgroundColour
+            tuesdayButton.titleLabel?.font = UIFont.systemFont(ofSize: 20.0, weight: .bold)
         }
         if selectedDate == wednesdayDatewithMY{
             wednesdayButton.backgroundColor = selectedDayBackgroundColour
+            wednesdayButton.titleLabel?.font = UIFont.systemFont(ofSize: 20.0, weight: .bold)
         }
         if selectedDate == thursdayDatewithMY{
             thursdayButton.backgroundColor = selectedDayBackgroundColour
+            thursdayButton.titleLabel?.font = UIFont.systemFont(ofSize: 20.0, weight: .bold)
         }
         if selectedDate == fridayDatewithMY{
             fridayButton.backgroundColor = selectedDayBackgroundColour
+            fridayButton.titleLabel?.font = UIFont.systemFont(ofSize: 20.0, weight: .bold)
         }
         if selectedDate == saturdayDatewithMY{
             saturdayButton.backgroundColor = selectedDayBackgroundColour
+            saturdayButton.titleLabel?.font = UIFont.systemFont(ofSize: 20.0, weight: .bold)
         }
     }
     
@@ -847,14 +864,14 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         let lineChartDataSet = LineChartDataSet(entries: dataEntries, label: "Tilt Score")
         let lineChartDataSet1 = LineChartDataSet(entries: dataEntries1, label: "Bubble Pop Score")
         
-        lineChartDataSet.colors = [UIColor(red:0.69, green:0.75, blue:0.84, alpha:1.0)]
-        lineChartDataSet.setCircleColor(UIColor(red:0.69, green:0.75, blue:0.84, alpha:1.0))
-        lineChartDataSet.circleHoleColor = UIColor(red:0.69, green:0.75, blue:0.84, alpha:1.0)
+        lineChartDataSet.colors = [selectedDayBackgroundColour]
+        lineChartDataSet.setCircleColor(selectedDayBackgroundColour)
+        lineChartDataSet.circleHoleColor = selectedDayBackgroundColour
         lineChartDataSet.circleRadius = 4.0
         
-        lineChartDataSet1.colors = [UIColor(red:0.69, green:0.75, blue:0.84, alpha:1.0)]
-        lineChartDataSet1.setCircleColor(UIColor(red:0.69, green:0.75, blue:0.84, alpha:1.0))
-        lineChartDataSet1.circleHoleColor = UIColor(red:0.69, green:0.75, blue:0.84, alpha:1.0)
+        lineChartDataSet1.colors = [selectedDayBackgroundColour]
+        lineChartDataSet1.setCircleColor(selectedDayBackgroundColour)
+        lineChartDataSet1.circleHoleColor = selectedDayBackgroundColour
         lineChartDataSet1.circleRadius = 4.0
         
         let lineChartData = LineChartData(dataSet: lineChartDataSet)

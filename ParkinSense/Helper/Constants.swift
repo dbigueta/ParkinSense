@@ -95,6 +95,7 @@ let paddingVal: CGFloat = 10
 let textFieldFontSize: CGFloat = 20
 
 let appImageName = "AppLogoImage.png"
+//let appImageName = "tilt.png"
 let appImage = UIImage(named: appImageName)
 let appImageHeaderHeight: CGFloat = 40
 
@@ -168,7 +169,11 @@ let textColour = UIColor(red:0.29, green:0.31, blue:0.34, alpha:1.0)
 let buttonTextColour = UIColor(red:0.29, green:0.31, blue:0.34, alpha:1.0)
 let buttonColour = UIColor(red:0.75, green:0.85, blue:0.84, alpha:1.0)
 let font = UIFont.systemFont(ofSize: 20, weight: .light)
-let selectedDayBackgroundColour = UIColor(red:0.69, green:0.75, blue:0.84, alpha:1.0)
+//let selectedDayBackgroundColour = UIColor(red:0.69, green:0.75, blue:0.84, alpha:1.0)
+
+let homeBtnColour = UIColor(red:0.96, green:0.58, blue:0.65, alpha:1.0)
+let selectedDayBackgroundColour = UIColor(red:0.96, green:0.22, blue:0.35, alpha:1.0)
+let homeButtonFontColour = UIColor(red:0.20, green:0.20, blue:0.20, alpha:1.0)
 
 
 /* TILT Game */
