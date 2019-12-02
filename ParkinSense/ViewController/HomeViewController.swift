@@ -66,7 +66,9 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
     let signOutButton: UIButton = {
         let button = UIButton()
         Utilities.styleUIButton(button)
-        button.setTitle("Sign Out", for: .normal)
+        button.setTitle("S I G N    O U T", for: .normal)
+        button.layer.cornerRadius = 0
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 20.0, weight: .medium)
         button.addTarget(self, action: #selector(signOutTapped(_:)), for: .touchUpInside)
         return button
     }()
@@ -141,7 +143,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("< Prev", for: .normal)
         button.contentHorizontalAlignment = .left
-        button.setTitleColor(buttonTextColour, for: .normal)
+        button.setTitleColor(homeButtonFontColour, for: .normal)
         button.addTarget(self, action: #selector(prevWeekButtonPressed(_:)), for: .touchUpInside)
         button.widthAnchor.constraint(equalToConstant: screenWidth/3).isActive = true
         button.heightAnchor.constraint(equalToConstant: weekButtonHeight).isActive = true
@@ -165,7 +167,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Next >", for: .normal)
         button.contentHorizontalAlignment = .right
-        button.setTitleColor(buttonTextColour, for: .normal)
+        button.setTitleColor(homeButtonFontColour, for: .normal)
         button.addTarget(self, action: #selector(nextWeekButtonPressed(_:)), for: .touchUpInside)
         button.widthAnchor.constraint(equalToConstant: screenWidth/3).isActive = true
         button.heightAnchor.constraint(equalToConstant: weekButtonHeight).isActive = true
@@ -293,10 +295,10 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
     let tiltButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitleColor(buttonTextColour, for: .normal)
+        button.setTitleColor(tiltButtonColour, for: .normal)
         button.layer.borderWidth = homeGameButtonBorderWidth
         button.layer.cornerRadius = 5
-        button.backgroundColor = buttonColour
+        button.backgroundColor = tiltBackgroundColour
         button.setImage(UIImage(named: "tiltBtn.png"), for: .normal)
         button.imageEdgeInsets = UIEdgeInsets(top: 25, left: 25, bottom: 25, right: 25)
         button.setTitle("Tilt", for: .normal)
@@ -313,7 +315,9 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         button.setTitleColor(buttonTextColour, for: .normal)
         button.layer.borderWidth = homeGameButtonBorderWidth
         button.layer.cornerRadius = 5
-        button.backgroundColor = buttonColour
+        button.backgroundColor = bubbleBackgroundColour
+        button.setImage(UIImage(named: "bubbleBtn.png"), for: .normal)
+        button.imageEdgeInsets = UIEdgeInsets(top: 25, left: 20, bottom: 15, right: 20)
         button.setTitle("Bubble Pop", for: .normal)
         button.addTarget(self, action: #selector(bubblePopButtonPressed(_:)), for: .touchUpInside)
         button.widthAnchor.constraint(equalToConstant: homeGameButtonWidth).isActive = true
@@ -455,7 +459,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         
         // Set background colour of the view
         //self.view.backgroundColor = UIColor(red:0.96, green:0.95, blue:0.95, alpha:1.0)
-        self.view.backgroundColor =  UIColor(red:0.96, green:0.96, blue:0.96, alpha:1.0)
+        self.view.backgroundColor = UIColor(red:0.96, green:0.95, blue:0.95, alpha:1.0)
         setupUserData()
     }
     
@@ -778,34 +782,49 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         fridayButton.titleLabel?.font = UIFont.systemFont(ofSize: 20.0, weight: .regular)
         saturdayButton.titleLabel?.font = UIFont.systemFont(ofSize: 20.0, weight: .regular)
         
+        sundayButton.setTitleColor(homeButtonFontColour, for: .normal)
+        mondayButton.setTitleColor(homeButtonFontColour, for: .normal)
+        tuesdayButton.setTitleColor(homeButtonFontColour, for: .normal)
+        wednesdayButton.setTitleColor(homeButtonFontColour, for: .normal)
+        thursdayButton.setTitleColor(homeButtonFontColour, for: .normal)
+        fridayButton.setTitleColor(homeButtonFontColour, for: .normal)
+        saturdayButton.setTitleColor(homeButtonFontColour, for: .normal)
+        
         // Sets the background of the current selected date
         if selectedDate == sundayDatewithMY{
             sundayButton.backgroundColor = selectedDayBackgroundColour
             sundayButton.titleLabel?.font = UIFont.systemFont(ofSize: 20.0, weight: .bold)
+            sundayButton.setTitleColor(buttonTextColour, for: .normal)
         }
         if selectedDate == mondayDatewithMY{
             mondayButton.backgroundColor = selectedDayBackgroundColour
             mondayButton.titleLabel?.font = UIFont.systemFont(ofSize: 20.0, weight: .bold)
+            mondayButton.setTitleColor(buttonTextColour, for: .normal)
         }
         if selectedDate == tuesdayDatewithMY{
             tuesdayButton.backgroundColor = selectedDayBackgroundColour
             tuesdayButton.titleLabel?.font = UIFont.systemFont(ofSize: 20.0, weight: .bold)
+            tuesdayButton.setTitleColor(buttonTextColour, for: .normal)
         }
         if selectedDate == wednesdayDatewithMY{
             wednesdayButton.backgroundColor = selectedDayBackgroundColour
             wednesdayButton.titleLabel?.font = UIFont.systemFont(ofSize: 20.0, weight: .bold)
+            wednesdayButton.setTitleColor(buttonTextColour, for: .normal)
         }
         if selectedDate == thursdayDatewithMY{
             thursdayButton.backgroundColor = selectedDayBackgroundColour
             thursdayButton.titleLabel?.font = UIFont.systemFont(ofSize: 20.0, weight: .bold)
+            thursdayButton.setTitleColor(buttonTextColour, for: .normal)
         }
         if selectedDate == fridayDatewithMY{
             fridayButton.backgroundColor = selectedDayBackgroundColour
             fridayButton.titleLabel?.font = UIFont.systemFont(ofSize: 20.0, weight: .bold)
+            fridayButton.setTitleColor(buttonTextColour, for: .normal)
         }
         if selectedDate == saturdayDatewithMY{
             saturdayButton.backgroundColor = selectedDayBackgroundColour
             saturdayButton.titleLabel?.font = UIFont.systemFont(ofSize: 20.0, weight: .bold)
+            saturdayButton.setTitleColor(buttonTextColour, for: .normal)
         }
     }
     
@@ -864,15 +883,17 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         let lineChartDataSet = LineChartDataSet(entries: dataEntries, label: "Tilt Score")
         let lineChartDataSet1 = LineChartDataSet(entries: dataEntries1, label: "Bubble Pop Score")
         
-        lineChartDataSet.colors = [selectedDayBackgroundColour]
-        lineChartDataSet.setCircleColor(selectedDayBackgroundColour)
-        lineChartDataSet.circleHoleColor = selectedDayBackgroundColour
+        lineChartDataSet.colors = [tiltButtonColour]
+        lineChartDataSet.setCircleColor(tiltButtonColour)
+        lineChartDataSet.circleHoleColor = tiltButtonColour
         lineChartDataSet.circleRadius = 4.0
+        lineChartDataSet.lineWidth = 3.0
         
-        lineChartDataSet1.colors = [selectedDayBackgroundColour]
-        lineChartDataSet1.setCircleColor(selectedDayBackgroundColour)
-        lineChartDataSet1.circleHoleColor = selectedDayBackgroundColour
+        lineChartDataSet1.colors = [bubbleTextColour]
+        lineChartDataSet1.setCircleColor(bubbleTextColour)
+        lineChartDataSet1.circleHoleColor = bubbleTextColour
         lineChartDataSet1.circleRadius = 4.0
+        lineChartDataSet1.lineWidth = 3.0
         
         let lineChartData = LineChartData(dataSet: lineChartDataSet)
         let lineChartData1 = LineChartData(dataSet: lineChartDataSet1)

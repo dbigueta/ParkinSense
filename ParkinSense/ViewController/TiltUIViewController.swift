@@ -22,6 +22,13 @@ import AVFoundation
 
 class TiltUIViewController: UIViewController {
     
+    // App Logo UI Image
+    let gameImageView: UIImageView = {
+        let imageView = UIImageView(image: tiltImage)
+        Utilities.styleImageView(imageView)
+        return imageView
+    }()
+    
     // Tilt Title UI label
     let tiltLabel: UILabel = {
         let label = UILabel()
@@ -71,10 +78,11 @@ class TiltUIViewController: UIViewController {
     let startButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Start", for: .normal)
-        button.setTitleColor(tiltTextColour, for: .normal)
+        button.setTitle("START", for: .normal)
+        button.setTitleColor(tiltButtonTextColour, for: .normal)
         button.layer.cornerRadius = 25
         button.backgroundColor = tiltButtonColour
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 20.0, weight: .medium)
         button.addTarget(self, action: #selector(startGame(_:)), for: .touchUpInside)
         button.widthAnchor.constraint(equalToConstant: startButtonWidth).isActive = true
         button.heightAnchor.constraint(equalToConstant: startButtonHeight).isActive = true
@@ -107,10 +115,11 @@ class TiltUIViewController: UIViewController {
     let quitButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Quit", for: .normal)
-        button.setTitleColor(tiltTextColour, for: .normal)
+        button.setTitle("QUIT", for: .normal)
+        button.setTitleColor(tiltButtonTextColour, for: .normal)
         button.layer.cornerRadius = 25
         button.backgroundColor = tiltButtonColour
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 20.0, weight: .medium)
         button.addTarget(self, action: #selector(quitGame(_:)), for: .touchUpInside)
         button.widthAnchor.constraint(equalToConstant: quitButtonWidth).isActive = true
         button.heightAnchor.constraint(equalToConstant: quitButtonHeight).isActive = true
@@ -133,6 +142,7 @@ class TiltUIViewController: UIViewController {
         self.view.backgroundColor = tiltBackgroundColour
         
         //Add all labels, buttons, toggles into the view
+        view.addSubview(gameImageView)
         view.addSubview(tiltLabel)
         view.addSubview(instructionsLabelLine1)
         view.addSubview(instructionsLabelLine2)
@@ -142,10 +152,16 @@ class TiltUIViewController: UIViewController {
         view.addSubview(soundToggle)
         view.addSubview(quitButton)
         
+        gameImageView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 32.0).isActive = true
+        gameImageView.heightAnchor.constraint(equalToConstant: gameImageHeight).isActive = true
+        gameImageView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16.0).isActive = true
+        gameImageView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16.0).isActive = true
+               
+        
         //Sets up all the constraints needed for the labels, buttons, toggles
         tiltLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         tiltLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        tiltLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 224.0).isActive = true
+        tiltLabel.topAnchor.constraint(equalTo: gameImageView.topAnchor, constant: gameImageHeight + 24.0).isActive = true
         
         instructionsLabelLine1.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         instructionsLabelLine1.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true

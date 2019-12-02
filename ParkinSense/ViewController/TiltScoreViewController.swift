@@ -54,10 +54,11 @@ class TiltScoreViewController: UIViewController {
     let replayButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Replay", for: .normal)
-        button.setTitleColor(buttonTextColour, for: .normal)
+        button.setTitle("REPLAY", for: .normal)
+        button.setTitleColor(tiltTextColour, for: .normal)
         button.layer.cornerRadius = 25
         button.backgroundColor = tiltButtonColour
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 20.0, weight: .medium)
         button.addTarget(self, action: #selector(replayButtonPressed(_:)), for: .touchUpInside)
         button.widthAnchor.constraint(equalToConstant: replayButtonWidth).isActive = true
         button.heightAnchor.constraint(equalToConstant: replayButtonHeight).isActive = true
@@ -68,10 +69,11 @@ class TiltScoreViewController: UIViewController {
     let finalQuitButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Quit", for: .normal)
-        button.setTitleColor(buttonTextColour, for: .normal)
+        button.setTitle("QUIT", for: .normal)
+        button.setTitleColor(tiltTextColour, for: .normal)
         button.layer.cornerRadius = 25
         button.backgroundColor = tiltButtonColour
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 20.0, weight: .medium)
         button.addTarget(self, action: #selector(quitButtonPressed(_:)), for: .touchUpInside)
         button.widthAnchor.constraint(equalToConstant: finalQuitButtonWidth).isActive = true
         button.heightAnchor.constraint(equalToConstant: finalQuitButtonHeight).isActive = true

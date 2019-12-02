@@ -22,6 +22,13 @@ import AVFoundation
 
 class BubbleUIViewController: UIViewController {
     
+    // App Logo UI Image
+    let gameImageView: UIImageView = {
+        let imageView = UIImageView(image: bubbleImage)
+        Utilities.styleImageView(imageView)
+        return imageView
+    }()
+    
     //Bubble Pop title label
     let bubbleLabel: UILabel = {
         let label = UILabel()
@@ -71,10 +78,11 @@ class BubbleUIViewController: UIViewController {
     let startButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Start", for: .normal)
+        button.setTitle("START", for: .normal)
         button.setTitleColor(bubbleTextColour, for: .normal)
         button.layer.cornerRadius = 25
         button.backgroundColor = bubbleButtonColour
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 20.0, weight: .medium)
         button.addTarget(self, action: #selector(startGame(_:)), for: .touchUpInside)
         button.widthAnchor.constraint(equalToConstant: startButtonWidth).isActive = true
         button.heightAnchor.constraint(equalToConstant: startButtonHeight).isActive = true
@@ -107,10 +115,11 @@ class BubbleUIViewController: UIViewController {
     let quitButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Quit", for: .normal)
+        button.setTitle("QUIT", for: .normal)
         button.setTitleColor(bubbleTextColour, for: .normal)
         button.layer.cornerRadius = 25
         button.backgroundColor = bubbleButtonColour
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 20.0, weight: .medium)
         button.addTarget(self, action: #selector(quitGame(_:)), for: .touchUpInside)
         button.widthAnchor.constraint(equalToConstant: quitButtonWidth).isActive = true
         button.heightAnchor.constraint(equalToConstant: quitButtonHeight).isActive = true
@@ -133,6 +142,7 @@ class BubbleUIViewController: UIViewController {
         self.view.backgroundColor = bubbleBackgroundColour
         
         //Adds the respective labels, buttons, toggles to the view
+        view.addSubview(gameImageView)
         view.addSubview(bubbleLabel)
         view.addSubview(instructionsLabelLine1)
         view.addSubview(instructionsLabelLine2)
@@ -143,9 +153,15 @@ class BubbleUIViewController: UIViewController {
         view.addSubview(quitButton)
         
         //Sets up the constraints for all labels, toggles, and buttons
+        gameImageView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 32.0).isActive = true
+        gameImageView.heightAnchor.constraint(equalToConstant: gameImageHeight).isActive = true
+        gameImageView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16.0).isActive = true
+        gameImageView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16.0).isActive = true
+        
         bubbleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        bubbleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        bubbleLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 224.0).isActive = true
+         bubbleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+         bubbleLabel.topAnchor.constraint(equalTo: gameImageView.topAnchor, constant: gameImageHeight + 24.0).isActive = true
+         
         
         instructionsLabelLine1.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         instructionsLabelLine1.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true

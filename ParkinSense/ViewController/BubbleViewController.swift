@@ -100,7 +100,7 @@ class BubbleViewController: UIViewController {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
-        label.textColor = countdownTextColour
+        label.textColor = countdownBubbleTextColour
         label.font = countdownFont
         return label
     }()

@@ -56,7 +56,10 @@ class Utilities: CustomTextField {
     }
     
     static func styleBEMCheckBox(_ checkbox: BEMCheckBox) {
-        checkbox.onFillColor = .blue
+        checkbox.onTintColor = UIColor(red:0.27, green:0.45, blue:0.62, alpha:1.0)
+        checkbox.onCheckColor = UIColor(red:0.92, green:0.91, blue:0.88, alpha:1.0)
+        checkbox.onFillColor = UIColor(red:0.27, green:0.45, blue:0.62, alpha:1.0)
+        checkbox.tintColor = UIColor(red:0.27, green:0.45, blue:0.62, alpha:1.0)
         checkbox.translatesAutoresizingMaskIntoConstraints = false
     }
     

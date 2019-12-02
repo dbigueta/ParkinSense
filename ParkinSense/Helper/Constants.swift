@@ -95,7 +95,11 @@ let paddingVal: CGFloat = 10
 let textFieldFontSize: CGFloat = 20
 
 let appImageName = "AppLogoImage.png"
-//let appImageName = "tilt.png"
+let tiltImageName = "tilt.png"
+let bubbleImageName = "bubblepop.png"
+let gameImageHeight: CGFloat = 170
+let bubbleImage = UIImage(named: bubbleImageName)
+let tiltImage = UIImage(named: tiltImageName)
 let appImage = UIImage(named: appImageName)
 let appImageHeaderHeight: CGFloat = 40
 
@@ -129,14 +133,8 @@ let checkboxHeightDays = sectionWidth - 20
 let offset = (sectionWidth - CGFloat(checkboxHeightDays))/2
 let medicationLabelWidth = (screenWidth - 64)/3
 
-
-
-
-
-
 var loadedInfoTrendline = 0
 var infoUpdated = false
-
 
 
 /* Home UI Constants*/
@@ -166,13 +164,13 @@ var offsetGameButtons = (screenWidth - (2*homeGameButtonWidth))/3
 
 /* Main UI & Login Colours */
 let textColour = UIColor(red:0.29, green:0.31, blue:0.34, alpha:1.0)
-let buttonTextColour = UIColor(red:0.29, green:0.31, blue:0.34, alpha:1.0)
-let buttonColour = UIColor(red:0.75, green:0.85, blue:0.84, alpha:1.0)
+let buttonTextColour = UIColor(red:0.92, green:0.91, blue:0.88, alpha:1.0)
+let buttonColour = UIColor(red:0.27, green:0.45, blue:0.62, alpha:1.0)
 let font = UIFont.systemFont(ofSize: 20, weight: .light)
 //let selectedDayBackgroundColour = UIColor(red:0.69, green:0.75, blue:0.84, alpha:1.0)
 
-let homeBtnColour = UIColor(red:0.96, green:0.58, blue:0.65, alpha:1.0)
-let selectedDayBackgroundColour = UIColor(red:0.96, green:0.22, blue:0.35, alpha:1.0)
+let homeBtnColour = UIColor(red:0.78, green:0.83, blue:0.88, alpha:1.0)
+let selectedDayBackgroundColour = UIColor(red:0.27, green:0.45, blue:0.62, alpha:1.0)
 let homeButtonFontColour = UIColor(red:0.20, green:0.20, blue:0.20, alpha:1.0)
 
 
@@ -226,18 +224,19 @@ var tiltFinalScore = 0
 
 
 /*Tilt Colours*/
-let tiltBackgroundColour = UIColor(red:0.92, green:0.91, blue:0.88, alpha:1.0)
-let tiltTextColour = UIColor(red:0.27, green:0.45, blue:0.62, alpha:1.0)
-let tiltButtonColour = UIColor(red:0.78, green:0.83, blue:0.88, alpha:1.0)
+let tiltBackgroundColour = UIColor(red:1.00, green:0.91, blue:0.86, alpha:1.0)
+let tiltTextColour = UIColor(red:0.39, green:0.39, blue:0.39, alpha:1.0)
+let tiltButtonColour = UIColor(red:1.00, green:0.58, blue:0.52, alpha:1.0)
+let tiltButtonTextColour = UIColor(red:0.39, green:0.39, blue:0.39, alpha:1.0)
 let tiltTitleFont = UIFont.systemFont(ofSize: 50, weight: .regular)
 let tiltFinalScoreFont = UIFont.systemFont(ofSize: 40, weight: .regular)
 
-let tiltGameBackgroundColour = UIColor(red:0.92, green:0.91, blue:0.88, alpha:1.0)
-let tiltBallColour = UIColor(red:0.27, green:0.45, blue:0.62, alpha:1.0)
-let tiltHoleColour = UIColor(red:0.74, green:0.72, blue:0.68, alpha:1.0)
+let tiltGameBackgroundColour = UIColor(red:1.00, green:0.91, blue:0.86, alpha:1.0)
+let tiltBallColour = UIColor(red:1.00, green:0.58, blue:0.52, alpha:1.0)
+let tiltHoleColour = UIColor(red:0.70, green:0.73, blue:0.64, alpha:1.0)
 
-let countdownBackgroundColour = UIColor(red:0.27, green:0.45, blue:0.62, alpha:1.0)
-let countdownTextColour = UIColor(red:0.74, green:0.72, blue:0.68, alpha:1.0)
+let countdownBackgroundColour = UIColor(red:0.39, green:0.39, blue:0.39, alpha:1.0)
+let countdownTextColour = UIColor(red:1.00, green:0.91, blue:0.86, alpha:1.0)
 
 
 /* Bubble Game */
@@ -259,10 +258,12 @@ var bubbleFinalScore = 0
 
 
 /* Bubble Colours */
-let bubbleBackgroundColour = UIColor(red:0.92, green:0.91, blue:0.88, alpha:1.0)
-let bubbleTextColour = UIColor(red:0.27, green:0.45, blue:0.62, alpha:1.0)
-let bubbleButtonColour = UIColor(red:0.78, green:0.83, blue:0.88, alpha:1.0)
+let bubbleBackgroundColour = UIColor(red:0.91, green:0.96, blue:0.85, alpha:1.0)
+let bubbleTextColour = UIColor(red:0.30, green:0.26, blue:0.36, alpha:1.0)
+let bubbleButtonColour = UIColor(red:0.76, green:0.85, blue:0.79, alpha:1.0)
 
-let bubbleGameBackgroundColour = UIColor(red:0.92, green:0.91, blue:0.88, alpha:1.0)
-let bubbleBallColour = UIColor(red:0.27, green:0.45, blue:0.62, alpha:1.0)
-let bubbleHoleColour = UIColor(red:0.74, green:0.72, blue:0.68, alpha:1.0)
+let bubbleGameBackgroundColour = UIColor(red:0.84, green:0.95, blue:0.83, alpha:1.0)
+let bubbleBallColour = UIColor(red:0.20, green:0.38, blue:0.35, alpha:1.0)
+
+let countdownBubbleBackgroundColour = UIColor(red:0.30, green:0.26, blue:0.36, alpha:1.0)
+let countdownBubbleTextColour = UIColor(red:0.91, green:0.96, blue:0.85, alpha:1.0)
