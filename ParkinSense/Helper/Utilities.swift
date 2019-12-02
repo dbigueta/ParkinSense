@@ -23,6 +23,7 @@ class Utilities: CustomTextField {
     
     static func styleTextField(_ textField: UITextField, password: Bool) {
         textField.textColor = textColour
+        textField.tintColor = textColour
         textField.backgroundColor = .clear
         textField.autocorrectionType = UITextAutocorrectionType.no
         textField.autocapitalizationType = UITextAutocapitalizationType.none

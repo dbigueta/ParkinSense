@@ -106,6 +106,96 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
     var Datalabeltext3: UILabel!
     var Datalabeltext4: UILabel!
     
+    // Date UI label
+    let dateLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Date"
+        label.textAlignment = .left
+        label.font = UIFont.systemFont(ofSize: textFontSize, weight: .regular)
+        return label
+    }()
+
+    // Medication UI label
+    let medLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Medication 1"
+        label.textAlignment = .left
+        label.font = UIFont.systemFont(ofSize: textFontSize, weight: .regular)
+        return label
+    }()
+    
+    // Medication UI label
+    let medLabel1: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Medication 2"
+        label.textAlignment = .left
+        label.font = UIFont.systemFont(ofSize: textFontSize, weight: .regular)
+        return label
+    }()
+    
+    // Medication UI label
+    let medLabel2: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Medication 3"
+        label.textAlignment = .left
+        label.font = UIFont.systemFont(ofSize: textFontSize, weight: .regular)
+        return label
+    }()
+    
+    // Medication UI label
+    let medLabel3: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Medication 4"
+        label.textAlignment = .left
+        label.font = UIFont.systemFont(ofSize: textFontSize, weight: .regular)
+        return label
+    }()
+    
+    // Medication UI label
+    let medLabel4: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Medication 5"
+        label.textAlignment = .left
+        label.font = UIFont.systemFont(ofSize: textFontSize, weight: .regular)
+        return label
+    }()
+    
+    // Tilt UI label
+    let tiltGameScore: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Tilt Game Score"
+        label.textAlignment = .left
+        label.font = UIFont.systemFont(ofSize: textFontSize, weight: .regular)
+        return label
+    }()
+    
+    // Bubble Pop UI label
+    let bubbleGameScore: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Bubble Game Score"
+        label.textAlignment = .left
+        label.font = UIFont.systemFont(ofSize: textFontSize, weight: .regular)
+        return label
+    }()
+    
+    // Mood UI label
+    let moodLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Mood"
+        label.textAlignment = .left
+        label.font = UIFont.systemFont(ofSize: textFontSize, weight: .regular)
+        return label
+    }()
+    
     var lineChartView: LineChartView!
     var lineChartView1: LineChartView!
     
@@ -341,6 +431,16 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         
         progressView.addSubview(progressLabel)
         
+        dataScrollView.addSubview(dateLabel)
+        dataScrollView.addSubview(medLabel)
+        dataScrollView.addSubview(medLabel1)
+        dataScrollView.addSubview(medLabel2)
+        dataScrollView.addSubview(medLabel3)
+        dataScrollView.addSubview(medLabel4)
+        dataScrollView.addSubview(tiltGameScore)
+        dataScrollView.addSubview(bubbleGameScore)
+        dataScrollView.addSubview(moodLabel)
+        
         calendarView.addSubview(pageControl)
         calendarView.addSubview(weekLabel)
         calendarView.addSubview(prevWeek)
@@ -388,6 +488,33 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         
         // this is important for scrolling
         scrollViewContainer.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
+        
+        dateLabel.leadingAnchor.constraint(equalTo: dataScrollView.leadingAnchor, constant: screenWidth * 2 +  24.0).isActive = true
+        dateLabel.topAnchor.constraint(equalTo: dataScrollView.topAnchor, constant: (dataScrollViewHeight - 9*textFontSize - 64.0)/2).isActive = true
+        
+        medLabel.leadingAnchor.constraint(equalTo: dataScrollView.leadingAnchor, constant: screenWidth * 2 +  24.0).isActive = true
+        medLabel.topAnchor.constraint(equalTo: dateLabel.topAnchor, constant: textFontSize + 8.0).isActive = true
+        
+        medLabel1.leadingAnchor.constraint(equalTo: dataScrollView.leadingAnchor, constant: screenWidth * 2 +  24.0).isActive = true
+        medLabel1.topAnchor.constraint(equalTo: medLabel.topAnchor, constant: textFontSize + 8.0).isActive = true
+        
+        medLabel2.leadingAnchor.constraint(equalTo: dataScrollView.leadingAnchor, constant: screenWidth * 2 +  24.0).isActive = true
+        medLabel2.topAnchor.constraint(equalTo: medLabel1.topAnchor, constant: textFontSize + 8.0).isActive = true
+        
+        medLabel3.leadingAnchor.constraint(equalTo: dataScrollView.leadingAnchor, constant: screenWidth * 2 +  24.0).isActive = true
+        medLabel3.topAnchor.constraint(equalTo: medLabel2.topAnchor, constant: textFontSize + 8.0).isActive = true
+        
+        medLabel4.leadingAnchor.constraint(equalTo: dataScrollView.leadingAnchor, constant: screenWidth * 2 +  24.0).isActive = true
+        medLabel4.topAnchor.constraint(equalTo: medLabel3.topAnchor, constant: textFontSize + 8.0).isActive = true
+        
+        tiltGameScore.leadingAnchor.constraint(equalTo: dataScrollView.leadingAnchor, constant: screenWidth * 2 +  24.0).isActive = true
+        tiltGameScore.topAnchor.constraint(equalTo: medLabel4.topAnchor, constant: textFontSize + 8.0).isActive = true
+        
+        bubbleGameScore.leadingAnchor.constraint(equalTo: dataScrollView.leadingAnchor, constant: screenWidth * 2 +  24.0).isActive = true
+        bubbleGameScore.topAnchor.constraint(equalTo: tiltGameScore.topAnchor, constant: textFontSize + 8.0).isActive = true
+        
+        moodLabel.leadingAnchor.constraint(equalTo: dataScrollView.leadingAnchor, constant: screenWidth * 2 +  24.0).isActive = true
+        moodLabel.topAnchor.constraint(equalTo: bubbleGameScore.topAnchor, constant: textFontSize + 8.0).isActive = true
         
         progressLabel.leadingAnchor.constraint(equalTo: progressView.leadingAnchor, constant: 16.0).isActive = true
         progressLabel.trailingAnchor.constraint(equalTo: progressView.trailingAnchor, constant: -16.0).isActive = true
@@ -559,10 +686,10 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
      **/
     func popoverMedication(haveMedication: Bool){
         dateFormatter.dateFormat = "yyyy-MM-dd"
-        let currentTimeDate = dateFormatter.string(from: Date())
-        
+//        let currentTimeDate = dateFormatter.string(from: Date())
+//
         var medicineTaken = false
-        var mood = ""
+        //var mood = ""
         
         // Performs medication alert only if there was medication inputted
         if haveMedication == true {
@@ -572,20 +699,47 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
             // Add alert option
             alert.addAction(UIAlertAction(title: "Yes", style: .default) {Void in
                 medicineTaken = true
-                mood = self.popoverFeeling()
+                self.popoverFeeling()
             })
             
             // Add alert option
             alert.addAction(UIAlertAction(title: "No", style: .default) {Void in
                 medicineTaken = false
-                mood = self.popoverFeeling()
+                self.popoverFeeling()
             })
             
             self.present(alert,animated: true)
         }
         else {
-            mood = popoverFeeling()
+            popoverFeeling()
         }
+    }
+    
+    
+    /**
+     Function that sets up the daily pop up notification for mood
+     
+     - Returns: String containing selected mood
+     **/
+    func popoverFeeling(){
+        var mood = ""
+        
+        // Create a new alert controller to display alerts
+        let alert = UIAlertController(title: "Daily Mood", message: "What is your current mood?", preferredStyle: .alert)
+        
+        // Add alert options for each mood option
+        alert.addAction(UIAlertAction(title: "Happy", style: .default) {Void in mood = "Happy"; self.syncDatabase(mood: mood)})
+        alert.addAction(UIAlertAction(title: "Excited", style: .default) {Void in mood = "Excited"; self.syncDatabase(mood: mood)})
+        alert.addAction(UIAlertAction(title: "Calm", style: .default) {Void in mood = "Calm"; self.syncDatabase(mood: mood)})
+        alert.addAction(UIAlertAction(title: "Anxious", style: .default) {Void in mood = "Anxious"; self.syncDatabase(mood: mood)})
+        alert.addAction(UIAlertAction(title: "Sad", style: .default) {Void in mood = "Sad"; self.syncDatabase(mood: mood)})
+        alert.addAction(UIAlertAction(title: "Angry", style: .default) {Void in mood = "Angry"; self.syncDatabase(mood: mood)})
+        
+        self.present(alert,animated: true)
+    }
+    
+    func syncDatabase(mood: String) {
+        let currentTimeDate = dateFormatter.string(from: Date())
         
         // Updates the Firebase database
         self.db.collection("users").document(userid).collection("gaming_score").document(currentTimeDate).setData([
@@ -596,54 +750,34 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         ]);
         
         // Updates the Firebase database
-        self.db.collection("users").document(userid).setData([
-            "login_time": self.rightNow,
-            "Username": username,
-            "uid": userid,
-            "MedicationName": medicationName,
-            "MedicationDate": medicationDate,
-            "MedicationTime": medicationTime,
-            "MedicationName1": medicationName1,
-            "MedicationDate1": medicationDate1,
-            "MedicationTime1": medicationTime1,
-            "MedicationName2": medicationName2,
-            "MedicationDate2": medicationDate2,
-            "MedicationTime2": medicationTime2,
-            "MedicationName3": medicationName3,
-            "MedicationDate3": medicationDate3,
-            "MedicationTime3": medicationTime3,
-            "MedicationName4": medicationName4,
-            "MedicationDate4": medicationDate4,
-            "MedicationTime4": medicationTime4,
-            "Game_One_lastMaxScore": 0,
-            "Game_Two_lastMaxScore": 0,
-            "feeling": mood
-        ])
-    }
-    
-    
-    /**
-     Function that sets up the daily pop up notification for mood
-     
-     - Returns: String containing selected mood
-     **/
-    func popoverFeeling() -> String{
-        var mood = ""
-        
-        // Create a new alert controller to display alerts
-        let alert = UIAlertController(title: "Daily Mood", message: "What is your current mood?", preferredStyle: .alert)
-        
-        // Add alert options for each mood option
-        alert.addAction(UIAlertAction(title: "Happy", style: .default) {Void in mood = "Happy" })
-        alert.addAction(UIAlertAction(title: "Excited", style: .default) {Void in mood = "Excited" })
-        alert.addAction(UIAlertAction(title: "Calm", style: .default) {Void in mood = "Calm" })
-        alert.addAction(UIAlertAction(title: "Anxious", style: .default) {Void in mood = "Anxious" })
-        alert.addAction(UIAlertAction(title: "Sad", style: .default) {Void in mood = "Sad" })
-        alert.addAction(UIAlertAction(title: "Angry", style: .default) {Void in mood = "Angry" })
-        
-        self.present(alert,animated: true)
-        
-        return mood
+        db.collection("users").document(userid).setData([
+                "login_time": rightNow,
+                   "Username": username,
+                   "uid": userid,
+                   "MedicationName": medicationName,
+                   "MedicationDate": medicationDate,
+                   "MedicationTime": medicationTime,
+                   "MedicationName1": medicationName1,
+                   "MedicationDate1": medicationDate1,
+                   "MedicationTime1": medicationTime1,
+                   "MedicationName2": medicationName2,
+                   "MedicationDate2": medicationDate2,
+                   "MedicationTime2": medicationTime2,
+                   "MedicationName3": medicationName3,
+                   "MedicationDate3": medicationDate3,
+                   "MedicationTime3": medicationTime3,
+                   "MedicationName4": medicationName4,
+                   "MedicationDate4": medicationDate4,
+                   "MedicationTime4": medicationTime4,
+                   "Game_One_lastMaxScore": maxScoreTodayOne,
+                   "Game_Two_lastMaxScore": maxScoreTodayTwo,
+                   "feeling": mood
+        ]){ (error) in
+            if error != nil {
+                //Show error message
+                self.moodLabel.text = "Mood:  " + mood
+            }
+        }
     }
     
     
@@ -858,6 +992,10 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         lineChartView.xAxis.spaceMin = 0.5
         lineChartView.xAxis.spaceMax = 0.5
         lineChartView.xAxis.drawGridLinesEnabled = false
+        lineChartView.legend.font = UIFont.systemFont(ofSize: 15)
+        lineChartView.xAxis.labelFont = UIFont.systemFont(ofSize: 12)
+        lineChartView.leftAxis.labelFont = UIFont.systemFont(ofSize: 12)
+        lineChartView.legend.font = UIFont.systemFont(ofSize: 15)
         
         lineChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values:pastSevenDate)
         lineChartView.xAxis.labelPosition = XAxis.LabelPosition.bottom
@@ -868,6 +1006,9 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         lineChartView1.xAxis.spaceMin = 0.5
         lineChartView1.xAxis.spaceMax = 0.5
         lineChartView1.xAxis.drawGridLinesEnabled = false
+        lineChartView1.xAxis.labelFont = UIFont.systemFont(ofSize: 12)
+        lineChartView1.leftAxis.labelFont = UIFont.systemFont(ofSize: 12)
+        lineChartView1.legend.font = UIFont.systemFont(ofSize: 15)
         
         lineChartView1.xAxis.valueFormatter = IndexAxisValueFormatter(values:pastSevenDate)
         lineChartView1.xAxis.labelPosition = XAxis.LabelPosition.bottom
@@ -888,12 +1029,14 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
         lineChartDataSet.circleHoleColor = tiltButtonColour
         lineChartDataSet.circleRadius = 4.0
         lineChartDataSet.lineWidth = 3.0
+        lineChartDataSet.valueFont = (UIFont.systemFont(ofSize: 12))
         
         lineChartDataSet1.colors = [bubbleTextColour]
         lineChartDataSet1.setCircleColor(bubbleTextColour)
         lineChartDataSet1.circleHoleColor = bubbleTextColour
         lineChartDataSet1.circleRadius = 4.0
         lineChartDataSet1.lineWidth = 3.0
+        lineChartDataSet1.valueFont = (UIFont.systemFont(ofSize: 12))
         
         let lineChartData = LineChartData(dataSet: lineChartDataSet)
         let lineChartData1 = LineChartData(dataSet: lineChartDataSet1)
@@ -911,36 +1054,15 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
     
     
     func setupDailyData() {
-        
-        
-        
-        let x2Pos = CGFloat(2) * screenWidth
-        //Daily date page scroll viewlet x2Pos = CGFloat(2)*self.view.bounds.size.width //get the x position of the view that for the second page content
-        Datalabeltext1 = UILabel(frame: CGRect(x: x2Pos, y: 40, width: self.view.frame.size.width, height: self.dataScrollView.frame.size.height/4)) //set up the label frame
-        Datalabeltext1.textAlignment = .center //place the label text in the center of the second page
-        Datalabeltext1.text = "Medication Name:  " + medicationName
-        self.dataScrollView.contentSize.width = self.view.frame.size.width*CGFloat(1+2) //set up the Scroll view content size
-        self.dataScrollView.addSubview(Datalabeltext1) //put the label text into scrollView
-        
-        Datalabeltext2 = UILabel(frame: CGRect(x: x2Pos, y: 0, width: self.view.frame.size.width, height: self.dataScrollView.frame.size.height/4)) //set up the label frame
-        Datalabeltext2.textAlignment = .center //place the label text in the center of the second page
-        Datalabeltext2.text = "Date:  \(selectedDate)"
-        self.dataScrollView.contentSize.width = self.view.frame.size.width*CGFloat(1+2) //set up the Scroll view content size
-        self.dataScrollView.addSubview(Datalabeltext2)
-        
-        Datalabeltext3 = UILabel(frame: CGRect(x: x2Pos, y: 80, width: self.view.frame.size.width, height: self.dataScrollView.frame.size.height/4)) //set up the label frame
-        Datalabeltext3.textAlignment = .center //place the label text in the center of the second page
-        Datalabeltext3.text = "Max Score for TILT today:  \(maxScoreTodayOne)"
-        self.dataScrollView.contentSize.width = self.view.frame.size.width*CGFloat(1+2) //set up the Scroll view content size
-        self.dataScrollView.addSubview(Datalabeltext3)
-        self.dataScrollView.delegate = self
-        
-        Datalabeltext4 = UILabel(frame: CGRect(x: x2Pos, y: 120, width: self.view.frame.size.width, height: self.dataScrollView.frame.size.height/4)) //set up the label frame
-        Datalabeltext4.textAlignment = .center //place the label text in the center of the second page
-        Datalabeltext4.text = "Max Score for Bubble Pop today:  \(maxScoreTodayTwo)"
-        self.dataScrollView.contentSize.width = self.view.frame.size.width*CGFloat(1+2) //set up the Scroll view content size
-        self.dataScrollView.addSubview(Datalabeltext4)
-        self.dataScrollView.delegate = self
+        dateLabel.text = "Date:  \(selectedDate)"
+        medLabel.text = "Medication 1:  " + medicationName
+        medLabel1.text = "Medication 2:  " + medicationName1
+        medLabel2.text = "Medication 3:  " + medicationName2
+        medLabel3.text = "Medication 4:  " + medicationName3
+        medLabel4.text = "Medication 5:  " + medicationName4
+        tiltGameScore.text = "Maximum TILT Score:  \(maxScoreTodayOne)"
+        bubbleGameScore.text = "Maximum Bubble Pop Score:  \(maxScoreTodayTwo)"
+        moodLabel.text = "Mood:  " + feeling
     }
     
     
@@ -1019,16 +1141,10 @@ class HomeViewController: UIViewController, UIScrollViewDelegate{
                     let DocumentData = document!.data()
                     maxScoreSelectedDateOne = DocumentData!["Game_One_lastMaxScore"] as! Int
                     maxScoreSelectedDateTwo = DocumentData!["Game_Two_lastMaxScore"] as! Int
-                    
-                    //self.Datalabeltext3.text = "Max Score for TILT today:  \(maxScoreinSelectedOne)"
-                    //self.Datalabeltext4.text = "Max Score for Bubble Pop today:  \(maxScoreinSelectedTwo)"
                 }
                 else {
                     maxScoreSelectedDateOne = 0
                     maxScoreSelectedDateTwo = 0
-                    
-                    //self.Datalabeltext3.text = "Max Score for TILT today:  0"
-                    //self.Datalabeltext4.text = "Max Score for Bubble Pop today:  0"
                 }
             }
             self.setupDailyData()

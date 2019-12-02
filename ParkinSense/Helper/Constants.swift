@@ -50,7 +50,7 @@ var medicationcount = 0
 
 
 // MARK: Mood Variables
-var feeling = ""
+var feeling = "N/A"
 
 
 // MARK: User Information
@@ -173,6 +173,7 @@ let homeBtnColour = UIColor(red:0.78, green:0.83, blue:0.88, alpha:1.0)
 let selectedDayBackgroundColour = UIColor(red:0.27, green:0.45, blue:0.62, alpha:1.0)
 let homeButtonFontColour = UIColor(red:0.20, green:0.20, blue:0.20, alpha:1.0)
 
+let textFontSize: CGFloat = 17
 
 /* TILT Game */
 var tiltLabelHeight:CGFloat = 50
